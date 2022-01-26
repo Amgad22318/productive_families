@@ -35,98 +35,98 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Expanded(
-                          flex: 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                      Column(mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    child: IconButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      padding: EdgeInsetsDirectional.zero,
-                                      icon: const Icon(Icons.arrow_back_ios),
-                                    ),
-                                  ),
-                                  DefaultText(
-                                    text: 'رجوع',
-                                    textStyle:
-                                        Theme.of(context).textTheme.headline6,
-                                  )
-                                ],
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional.topStart,
-                                child: DefaultText(
-                                  text: 'تسجيل الدخول',
-                                  textStyle:
-                                      Theme.of(context).textTheme.headline6,
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: aboutGrey,
-                                ),
+                              SizedBox(
                                 child: IconButton(
-                                  padding: const EdgeInsetsDirectional.all(20),
-                                  icon: Image.asset('assets/icons/info.png'),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  padding: EdgeInsetsDirectional.zero,
+                                  icon: const Icon(Icons.arrow_back_ios),
                                 ),
                               ),
+                              DefaultText(
+                                text: 'رجوع',
+                                textStyle:
+                                Theme.of(context).textTheme.headline6,
+                              )
                             ],
-                          )),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional.topStart,
+                            child: DefaultText(
+                              text: 'تسجيل الدخول',
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: aboutGrey,
+                            ),
+                            child: IconButton(
+                              padding: const EdgeInsetsDirectional.all(20),
+                              icon: Image.asset('assets/icons/info.png'),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+
                       Expanded(
-                          flex: 5,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              DefaultText(
-                                text: 'الإسم او رقم الهاتف',
-                                color: Colors.white,
-                                textStyle:
-                                    Theme.of(context).textTheme.headline6,
-                              ),
-                              DefaultFormField(
-                                  controller: nameOrPhoneController,
-                                  validator: (text) {
-                                    if (text!.isEmpty) {
-                                      return 'ادخل الإسم او رقم الهاتف';
-                                    }
-                                  },
-                                  keyboardType: TextInputType.text),
-                              DefaultText(
-                                text: 'كلمة المرور',
-                                color: Colors.white,
-                                textStyle:
-                                    Theme.of(context).textTheme.headline6,
-                              ),
-                              DefaultFormField(
-                                  controller: passwordController,
-                                  validator: (text) {
-                                    if (text!.isEmpty) {
-                                      return 'ادخل كلمة المرور';
-                                    }
-                                  },
-                                  keyboardType: TextInputType.text),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              DefaultMaterialButton(
-                                onPressed: () {
-                                  if (loginFormKey.currentState!.validate()) {}
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            DefaultText(
+                              text: 'الإسم او رقم الهاتف',
+                              color: Colors.white,
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+                            DefaultFormField(
+                                controller: nameOrPhoneController,
+                                validator: (text) {
+                                  if (text!.isEmpty) {
+                                    return 'ادخل الإسم او رقم الهاتف';
+                                  }
                                 },
-                                text: 'تسجيل الدخول',
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                            ],
-                          ))
+                                keyboardType: TextInputType.text),
+                            DefaultText(
+                              text: 'كلمة المرور',
+                              color: Colors.white,
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+                            DefaultFormField(
+                                controller: passwordController,
+                                validator: (text) {
+                                  if (text!.isEmpty) {
+                                    return 'ادخل كلمة المرور';
+                                  }
+                                },
+                                keyboardType: TextInputType.text),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            DefaultMaterialButton(
+                              onPressed: () {
+                                if (loginFormKey.currentState!.validate()) {}
+                              },
+                              text: 'تسجيل الدخول',
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),

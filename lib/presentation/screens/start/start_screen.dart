@@ -31,7 +31,7 @@ class StartScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 30,),
+                    const SizedBox(height: 30,),
                     Container(
                       alignment: AlignmentDirectional.center,
                       width: 188,
@@ -61,7 +61,9 @@ class StartScreen extends StatelessWidget {
                     ),
                     DefaultTextButton(
                       text: 'إنشاء حساب جديد',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context,REGISTER_SCREEN );
+                      },
                     ),
 
                   ],
