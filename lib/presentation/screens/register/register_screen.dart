@@ -22,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/image/login_background.png"),
+                        image: AssetImage("assets/image/register_background.png"),
                         fit: BoxFit.fill,
                         alignment: Alignment.center)),
               ),
@@ -83,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             DefaultText(
-                              text: 'الإسم او رقم الهاتف',
+                              text: 'الاسم الاول',
                               color: Colors.white,
                               textStyle:
                               Theme.of(context).textTheme.headline6,
@@ -92,10 +92,26 @@ class RegisterScreen extends StatelessWidget {
                                 controller: nameOrPhoneController,
                                 validator: (text) {
                                   if (text!.isEmpty) {
-                                    return 'ادخل الإسم او رقم الهاتف';
+                                    return 'ادخل الاسم الاول';
                                   }
                                 },
                                 keyboardType: TextInputType.text),
+
+                            DefaultText(
+                              text: 'رقم الهاتف',
+                              color: Colors.white,
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+                            DefaultFormField(
+                                controller: nameOrPhoneController,
+                                validator: (text) {
+                                  if (text!.isEmpty) {
+                                    return 'ادخل رقم الهاتف';
+                                  }
+                                },
+                                keyboardType: TextInputType.text),
+
                             DefaultText(
                               text: 'كلمة المرور',
                               color: Colors.white,
@@ -110,6 +126,29 @@ class RegisterScreen extends StatelessWidget {
                                   }
                                 },
                                 keyboardType: TextInputType.text),
+
+                            DefaultText(
+                              text: 'تاكيد كلمة المرور',
+                              color: Colors.white,
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+                            DefaultFormField(
+                                controller: passwordController,
+                                validator: (text) {
+                                  if (text!.isEmpty) {
+                                    return 'ادخل كلمة المرور';
+                                  }
+                                },
+                                keyboardType: TextInputType.text),
+                            DefaultText(
+                              text: 'سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك',
+                              color: Colors.grey,
+                              textStyle:
+                              Theme.of(context).textTheme.headline6,
+                            ),
+
+
                             const SizedBox(
                               height: 30,
                             ),
