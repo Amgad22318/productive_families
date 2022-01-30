@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -15,7 +17,10 @@ class DefaultFormField extends StatelessWidget {
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final String? initialValue;
+  final String? hintText;
   final Color? suffixIconColor;
+  final Color? backgroundColor;
+  final double radius;
 
   const DefaultFormField(
       {Key? key,
@@ -32,17 +37,19 @@ class DefaultFormField extends StatelessWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.initialValue,
-      this.suffixIconColor})
+      this.suffixIconColor,
+      this.hintText = 'أكتب هنا..',
+      this.backgroundColor = formFieldBackGroundLightBlue,
+      this.radius=30.0})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      decoration: const BoxDecoration(
-          color: formFieldBackGround,
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius:  BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
         textDirection: TextDirection.rtl,
         initialValue: initialValue,
@@ -58,7 +65,8 @@ class DefaultFormField extends StatelessWidget {
           color: Colors.white,
         ),
         decoration: InputDecoration(
-          hintText: 'أكتب هنا..',
+          border: InputBorder.none,
+          hintText: hintText,
           hintStyle: const TextStyle(
             color: Colors.grey,
           ),
