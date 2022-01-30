@@ -39,6 +39,7 @@ dependencies:
   bloc: ^8.0.1
   flutter_bloc: ^8.0.0
   conditional_builder_null_safety: ^0.0.6
+  otp_text_field: ^1.1.1
 
 
 dev_dependencies:
