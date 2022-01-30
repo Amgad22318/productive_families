@@ -53,7 +53,10 @@ class StartScreen extends StatelessWidget {
                       height: 16,
                     ),
                     DefaultOutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.pushNamed(context,SHOP_LAYOUT );
+                      },
                       text: 'الدخول كزائر',
                     ),
                     const SizedBox(

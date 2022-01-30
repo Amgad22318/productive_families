@@ -21,9 +21,10 @@ class MyApp extends StatelessWidget {
       GlobalWidgetsLocalizations.delegate,
     ],
       supportedLocales: const [
-        Locale("en", "")
+        Locale("en", ""),
+        Locale("ar", "")
       ],
-      locale: const Locale("en", ""),
+      locale: const Locale("ar", ""),
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       themeMode: ThemeMode.light,
