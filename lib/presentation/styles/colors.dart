@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-const defaultYellow = Color(0xFFFFE97B);
-const backGroundWhite = Color(0xffffffff);
-const darkBlue = Color(0xff0F1F41);
-const aboutGrey = Color(0xffEEEEEE);
-const formFieldBackGround = Color(0xff2A3B5E);
+const Color defaultYellow = Color(0xFFFFE97B);
+const Color backGroundWhite = Color(0xffffffff);
+const Color darkBlue = Color(0xff0F1F41);
+const Color aboutGrey = Color(0xffEEEEEE);
+const Color goldTextAndStars = Color(0xffFFD138);
+const Color formFieldBackGroundLightBlue = Color(0xff2A3B5E);
+Color formFieldBackGroundGrey = const Color(0xff000000).withOpacity(0.08);
 
 
 
