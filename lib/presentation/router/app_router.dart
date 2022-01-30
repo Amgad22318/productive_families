@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
+import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/screens/start/start_screen.dart';
 class AppRouter {
   late Widget startWidget;
@@ -23,6 +24,11 @@ startWidget=StartScreen();
         return MaterialPageRoute(
           builder: (_) =>
              RegisterScreen(),
+        );
+      case SHOP_LAYOUT:
+        return MaterialPageRoute(
+          builder: (_) =>
+              ShopLayout(),
         );
 
 
