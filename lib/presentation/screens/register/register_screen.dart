@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/message/otp_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -67,6 +69,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 icon: const Icon(Icons.arrow_forward_ios),
                               ),
                             ),
+
+                            DefaultMaterialButton(
+                              onPressed: () {
+                                if (loginFormKey.currentState!.validate()) {}
+                                Navigator.pushNamed(context,OTP_SCREEN);
+
 
                           ],
                         ),
