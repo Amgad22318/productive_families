@@ -35,33 +35,34 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Column(mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
+                              DefaultText(
+                                text: 'رجوع',
+                                textStyle: Theme.of(context).textTheme.headline6,
+                              ),
                               SizedBox(
                                 child: IconButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
                                   padding: EdgeInsetsDirectional.zero,
-                                  icon: const Icon(Icons.arrow_back_ios),
+                                  icon: const Icon(Icons.arrow_forward_ios),
                                 ),
                               ),
-                              DefaultText(
-                                text: 'رجوع',
-                                textStyle:
-                                Theme.of(context).textTheme.headline6,
-                              )
+
                             ],
                           ),
                           Align(
-                            alignment: AlignmentDirectional.topStart,
+                            alignment: AlignmentDirectional.topEnd,
                             child: DefaultText(
                               text: 'تسجيل الدخول',
-                              textStyle:
-                              Theme.of(context).textTheme.headline6,
+                              textStyle: Theme.of(context).textTheme.headline6,
                             ),
                           ),
                           Container(
@@ -81,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                       Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             DefaultText(
