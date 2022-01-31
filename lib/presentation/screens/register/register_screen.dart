@@ -69,11 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
 
-                            DefaultMaterialButton(
-                              onPressed: () {
-                                if (loginFormKey.currentState!.validate()) {}
-                                Navigator.pushNamed(context, OTP_SCREEN);
-                              })
+
 
                           ],
                         ),
@@ -193,7 +189,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         DefaultMaterialButton(
                           onPressed: () {
-                            if (loginFormKey.currentState!.validate()) {}
+                            if (true) {
+                              Navigator.pushNamed(context, OTP_SCREEN);
+
+                            }
                           },
                           text: 'تسجيل الدخول',
                         ),

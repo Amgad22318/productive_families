@@ -15,9 +15,9 @@ class NavigationDrawer extends StatelessWidget {
         children: [
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: const CircleAvatar(radius: 50,backgroundImage:AssetImage('assets/image/user_photo.png') ,),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: CircleAvatar(radius: 50,backgroundImage:AssetImage('assets/image/user_photo.png') ,),
               ),
               Column(
                 children: [
