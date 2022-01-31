@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/screens/home/home_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
+import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 
 class ShopLayout extends StatefulWidget {
   const ShopLayout({Key? key}) : super(key: key);
@@ -35,20 +36,8 @@ class _ShopLayoutState extends State<ShopLayout>
     return Scaffold(
       key: _scaffoldKey,
       drawer:NavigationDrawer(),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: <Color>[
-                Color(0xFFFFDC2A),
-                Color(0xFFFFF2B3),
-              ],
-            ),
-          ),
-        ),
+      appBar: DefaultShopAppbar(
+
         actions: [
           IconButton(
               onPressed: () {},
@@ -66,7 +55,6 @@ class _ShopLayoutState extends State<ShopLayout>
             icon: const Icon(
               Icons.menu,
             )),
-        backgroundColor: defaultYellow,
       ),
       body: Column(
         children: [
