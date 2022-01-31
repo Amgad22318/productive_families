@@ -112,7 +112,7 @@ class LocationPicker extends StatelessWidget {
                       Container(
                           height: size.height * 0.06,
                           decoration: BoxDecoration(
-                            color: formFieldBackGround,
+                            color: formFieldBackGroundLightBlue,
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: TextFormField(
