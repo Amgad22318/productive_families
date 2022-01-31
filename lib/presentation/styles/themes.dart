@@ -26,4 +26,5 @@ ThemeData lightTheme = ThemeData(
       thickness: MaterialStateProperty.all(8),
       radius: const Radius.circular(16),
       thumbColor: MaterialStateProperty.all(defaultYellow),
-    ));
+    )
+);

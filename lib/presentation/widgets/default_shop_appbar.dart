@@ -6,8 +6,9 @@ class DefaultShopAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final Widget? title;
   final bool centerTitle;
+  final double? height;
 
-  DefaultShopAppbar({Key? key, this.actions, this.leading, this.title, this.centerTitle=false}) : super(key: key);
+  DefaultShopAppbar({Key? key, this.actions, this.leading, this.title, this.centerTitle=false,  this.height}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -15,6 +16,7 @@ class DefaultShopAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      toolbarHeight: height,
       centerTitle: centerTitle,
       automaticallyImplyLeading: false,
       flexibleSpace: Container(
