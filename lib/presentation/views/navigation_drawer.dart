@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/drawer_list_tiles.dart';
@@ -46,12 +47,17 @@ class NavigationDrawer extends StatelessWidget {
           DrawerListTiles(
             text: 'البنود و الشروط',
             icon: 'assets/icons/contract.svg',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
+            },
           ),
           DrawerListTiles(
             text: 'معلومات عنا',
             icon: 'assets/icons/info.svg',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, ABOUT_US);
+
+            },
           ),
           DrawerListTiles(
             text: 'طلباتك',
