@@ -3,6 +3,7 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/location/location_picker.dart';
 import 'package:productive_families/presentation/screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
+import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
 import 'package:productive_families/presentation/screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/otp/otp_screen.dart';
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
@@ -14,9 +15,9 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    // startWidget = StartScreen();
+    startWidget = StartScreen();
     // startWidget = LocationPicker();
-    startWidget = OrdersScreen();
+    // startWidget = OrdersScreen();
   }
 
 
@@ -49,6 +50,16 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) =>
               AboutUsScreen(),
+        );
+        case ORDERED_MEALS:
+        return MaterialPageRoute(
+          builder: (_) =>
+              OrdersScreen(),
+        );
+        case MEALS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              MealsScreen(),
         );
       default:
         return null;

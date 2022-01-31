@@ -106,6 +106,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 child: DefaultMaterialButton(
                   onPressed: () {
                     Navigator.of(context).pop();
+                    Navigator.pushNamed(context, '/shop_layout');
                   },
                   text: 'إبدأ',
                 ),
