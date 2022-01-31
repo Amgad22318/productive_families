@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
-  primaryColor: darkBlue,
+    primaryColor: darkBlue,
     scaffoldBackgroundColor: backGroundWhite,
     appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(color: Colors.black),
@@ -14,8 +14,16 @@ ThemeData lightTheme = ThemeData(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark),
     ),
-    tabBarTheme:  TabBarTheme(
-      unselectedLabelColor: Colors.grey,
-      labelColor:defaultYellow,
-indicator: UnderlineTabIndicator(borderSide: BorderSide(color: defaultYellow))
+    tabBarTheme: const TabBarTheme(
+        unselectedLabelColor: Colors.grey,
+        labelColor: defaultYellow,
+        indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(color: defaultYellow))),
+    scrollbarTheme: ScrollbarThemeData(
+      crossAxisMargin: 4,
+      interactive: true,
+      showTrackOnHover: true,
+      thickness: MaterialStateProperty.all(8),
+      radius: const Radius.circular(16),
+      thumbColor: MaterialStateProperty.all(defaultYellow),
     ));

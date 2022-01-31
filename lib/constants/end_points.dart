@@ -19,6 +19,7 @@ const LOGIN_SCREEN='/login';
 const REGISTER_SCREEN='/register';
 const TERMS_AND_CONDITIONS='/terms_and_conditions';
 const ABOUT_US='/about_us';
+const ABOUT_PRODUCT='/about_product';
 
 const OTP_SCREEN='/otp';
 

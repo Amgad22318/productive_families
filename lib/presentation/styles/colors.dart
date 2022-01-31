@@ -6,6 +6,7 @@ const Color darkBlue = Color(0xff0F1F41);
 const Color aboutGrey = Color(0xffEEEEEE);
 const Color goldTextAndStars = Color(0xffFFD138);
 const Color formFieldBackGroundLightBlue = Color(0xff2A3B5E);
+const Color productDescriptionBackGround = Color(0xffECF3FF);
 Color formFieldBackGroundGrey = const Color(0xff000000).withOpacity(0.08);
 
 

@@ -43,6 +43,8 @@ dependencies:
   flutter_svg: ^1.0.3
   video_player: ^2.2.16
   flutter_rating_bar: ^4.0.0
+  smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:
