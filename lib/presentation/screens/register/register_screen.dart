@@ -68,9 +68,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 icon: const Icon(Icons.arrow_forward_ios),
                               ),
                             ),
-
-
-
                           ],
                         ),
                         Align(
