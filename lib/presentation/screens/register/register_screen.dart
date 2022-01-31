@@ -68,12 +68,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 icon: const Icon(Icons.arrow_forward_ios),
                               ),
                             ),
-
-                            DefaultMaterialButton(
-                              onPressed: () {
-                                if (loginFormKey.currentState!.validate()) {}
-                                Navigator.pushNamed(context, OTP_SCREEN);
-                              })
                           ],
                         ),
                         Align(
@@ -192,7 +186,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         DefaultMaterialButton(
                           onPressed: () {
-                            if (loginFormKey.currentState!.validate()) {}
+                            if (true) {
+                              Navigator.pushNamed(context, OTP_SCREEN);
+
+                            }
                           },
                           text: 'تسجيل الدخول',
                         ),

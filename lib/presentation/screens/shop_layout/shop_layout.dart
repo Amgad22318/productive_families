@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/presentation/screens/home/home_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/navigation_drawer.dart';
+import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 
 class ShopLayout extends StatefulWidget {
   const ShopLayout({Key? key}) : super(key: key);
@@ -11,52 +15,61 @@ class ShopLayout extends StatefulWidget {
 class _ShopLayoutState extends State<ShopLayout>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
+  late int index;
 
   @override
   void initState() {
+    index = 0;
     controller = TabController(length: 4, vsync: this);
+
     super.initState();
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: <Color>[
-                Color(0xFFFFDC2A),
-                Color(0xFFFFF2B3),
-              ],
-            ),
-          ),
-        ),
+      key: _scaffoldKey,
+      drawer:NavigationDrawer(),
+      appBar: DefaultShopAppbar(
+
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              'assets/icons/shopping-cart-outline-badged.png',
-            ),
-          ),
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                'assets/icons/bell.svg',
+              )),
           IconButton(
-              onPressed: () {}, icon: Image.asset('assets/icons/bell.png')),
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                'assets/icons/shopping-cart-outline-badged.svg',
+              )),
         ],
         leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
+            onPressed: () {_scaffoldKey.currentState!.openDrawer();},
+            icon: const Icon(
               Icons.menu,
             )),
-        backgroundColor: defaultYellow,
       ),
       body: Column(
-        children: const [
-          Center(
-              child: Image(
-                  image: AssetImage('assets/image/appbar_half_circle.png')))
+        children: [
+          Image.asset('assets/image/appbar_half_circle.png',),
+          Expanded(
+            child: TabBarView(
+              children: [
+                HomeScreen(),
+                HomeScreen(),
+                HomeScreen(),
+                HomeScreen(),
+              ],
+              controller: controller,
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: Material(
@@ -64,13 +77,31 @@ class _ShopLayoutState extends State<ShopLayout>
         child: TabBar(
           controller: controller,
           onTap: (index) {
-            setState(() {});
+            setState(() {
+              this.index = index;
+            });
           },
-          tabs: const [
-            Tab(icon: Icon(Icons.menu_rounded,)),
-            Tab(icon: Icon(Icons.piano)),
-            Tab(icon: Icon(Icons.car_rental_rounded)),
-            Tab(icon: Icon(Icons.settings_rounded))
+          tabs: [
+            Tab(
+                icon: SvgPicture.asset(
+              'assets/icons/home-solid.svg',
+              color: index == 0 ? defaultYellow : Colors.grey,
+            )),
+            Tab(
+                icon: SvgPicture.asset(
+              'assets/icons/shop.svg',
+              color: index == 1 ? defaultYellow : Colors.grey,
+            )),
+            Tab(
+                icon: SvgPicture.asset(
+              'assets/icons/heart.svg',
+              color: index == 2 ? defaultYellow : Colors.grey,
+            )),
+            Tab(
+                icon: SvgPicture.asset(
+              'assets/icons/account.svg',
+              color: index == 3 ? defaultYellow : Colors.grey,
+            ))
           ],
         ),
       ),
