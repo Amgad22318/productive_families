@@ -17,6 +17,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
             'assets/image/appbar_half_circle.png',
           ),
           Expanded(
+
             child: Padding(
               padding: const EdgeInsetsDirectional.only(start: 16,end: 16),
               child: Scrollbar(thickness: 8,radius: const Radius.circular(16),
