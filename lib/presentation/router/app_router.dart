@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/presentation/screens/location/location_picker.dart';
+import 'package:productive_families/presentation/screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
 import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
@@ -20,8 +20,6 @@ class AppRouter {
     // startWidget = OrdersScreen();
   }
 
-
-
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case START_SCREEN:
@@ -38,28 +36,27 @@ class AppRouter {
         );
       case SHOP_LAYOUT:
         return MaterialPageRoute(
-          builder: (_) =>
-              ShopLayout(),
+          builder: (_) => ShopLayout(),
         );
       case TERMS_AND_CONDITIONS:
         return MaterialPageRoute(
-          builder: (_) =>
-             TermsAndConditionsScreen(),
+          builder: (_) => TermsAndConditionsScreen(),
         );
       case ABOUT_US:
         return MaterialPageRoute(
-          builder: (_) =>
-              AboutUsScreen(),
+          builder: (_) => AboutUsScreen(),
         );
-        case ORDERED_MEALS:
+      case ABOUT_PRODUCT:
         return MaterialPageRoute(
-          builder: (_) =>
-              OrdersScreen(),
+          builder: (_) => AboutProduct(),
         );
-        case MEALS_SCREEN:
+      case ORDERED_MEALS:
         return MaterialPageRoute(
-          builder: (_) =>
-              MealsScreen(),
+          builder: (_) => OrdersScreen(),
+        );
+      case MEALS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MealsScreen(),
         );
       default:
         return null;
