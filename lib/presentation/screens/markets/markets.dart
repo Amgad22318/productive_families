@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/presentation/views/home_section_item.dart';
+import 'package:productive_families/presentation/views/market_section_item.dart';
 import 'package:productive_families/presentation/views/markets_grid_view_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -32,15 +32,13 @@ class Markets extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 100,
-                    child: Expanded(
-                      child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) =>  HomeSectionItem(index:index,isMarket: true,),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
-                          itemCount: 20),
-                    ),
+                    child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) =>  MarketSectionItem(index:index,isMarket: true,),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemCount: 20),
                   ),
                   GridView.count(
                     shrinkWrap: true,

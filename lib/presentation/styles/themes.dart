@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
+  colorScheme:const ColorScheme.light(secondary:defaultYellow) ,
     primaryColor: darkBlue,
     scaffoldBackgroundColor: backGroundWhite,
     appBarTheme: const AppBarTheme(
