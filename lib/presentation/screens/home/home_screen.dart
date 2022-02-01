@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/home_grid_view_item.dart';
 import 'package:productive_families/presentation/views/home_section_item.dart';
+import 'package:productive_families/presentation/views/market_section_item.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
@@ -158,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => HomeSectionItem(index: index,),
+                              itemBuilder: (context, index) => HomeSectionItem(),
                               separatorBuilder: (context, index) => const SizedBox(
                                     width: 10,
                                   ),

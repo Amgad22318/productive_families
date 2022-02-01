@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/screens/home/home_screen.dart';
 import 'package:productive_families/presentation/screens/markets/markets.dart';
+import 'package:productive_families/presentation/screens/user_profile/user_profile_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
@@ -43,7 +44,7 @@ class _ShopLayoutState extends State<ShopLayout>
                 HomeScreen(),
                 Markets(),
                 HomeScreen(),
-                HomeScreen(),
+                UserProfileScreen(),
               ],
               controller: controller,
             ),
@@ -59,15 +60,15 @@ class _ShopLayoutState extends State<ShopLayout>
               controller.index = index;
             });
           },
-          tabs: [
+          tabs: const [
             Tab(
-                icon:Icon(CustomIcons.home_solid,)),
+                icon:Icon(CustomIcons.home_solid,size: 18)),
             Tab(
-                icon:Icon(CustomIcons.shop)),
+                icon:Icon(CustomIcons.shop,size: 18)),
             Tab(
-                icon:Icon(CustomIcons.heart)),
+                icon:Icon(CustomIcons.heart,size: 18,)),
             Tab(
-                icon:Icon(CustomIcons.account)),
+                icon:Icon(Icons.person)),
 
           ],
         ),
