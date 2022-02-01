@@ -34,7 +34,7 @@ class OrdersScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image(image: AssetImage('assets/image/appbar_half_circle.png')),
+          const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -44,17 +44,49 @@ class OrdersScreen extends StatelessWidget {
                       margin: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.black,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 2, bottom: 2, left: 15, right: 15),
-                        child: SvgPicture.asset(
-                          "assets/icons/delete.svg",
-                        ),
+                      child: Row(
+                        children: const [
+                          CircleAvatar(
+                            backgroundColor: Color(0xFFFF0000),
+                            radius: 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          DefaultText(
+                            text: 'قيد التحضير',color: Color(0xFFFF0000),
+                            textStyle: TextStyle(
+                                fontSize: 10, ),
+                          ),
+                        ],
                       ),
                     ),
-                  )
+                  ),
+                  OrdersAndMealItem(
+                    iconButton: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        children: const [
+                          CircleAvatar(
+                            backgroundColor: Color(0xFF15C808),
+                            radius: 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          DefaultText(
+                            text: 'قيد التحضير',color: Color(0xFF15C808),
+                            textStyle: TextStyle(
+                                fontSize: 10, ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

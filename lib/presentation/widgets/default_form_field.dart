@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -20,6 +21,8 @@ class DefaultFormField extends StatelessWidget {
   final Color? suffixIconColor;
   final Color? backgroundColor;
   final double radius;
+  final double? height;
+  final int? maxLines;
 
   const DefaultFormField(
       {Key? key,
@@ -39,17 +42,20 @@ class DefaultFormField extends StatelessWidget {
       this.suffixIconColor,
       this.hintText = 'أكتب هنا..',
       this.backgroundColor = formFieldBackGroundLightBlue,
-      this.radius=30.0})
+      this.radius=30.0, this.height = 50, this.maxLines})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius:  BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
+        textAlignVertical: TextAlignVertical.center,
+        maxLines: maxLines,
         textDirection: TextDirection.rtl,
         initialValue: initialValue,
         controller: controller,

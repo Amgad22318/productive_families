@@ -4,10 +4,11 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
+import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class LocationPicker extends StatelessWidget {
-  LocationPicker({Key? key}) : super(key: key);
-  TextEditingController locationController = TextEditingController();
+class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
+  DeliveryRepresentativeLocatorScreen({Key? key}) : super(key: key);
+  TextEditingController deliveryRepresentativeLocationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,65 +30,11 @@ class LocationPicker extends StatelessWidget {
                 Navigator.pop(context);
               })
         ],
-        title:
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.storefront_outlined),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'المتاجر',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.assignment_late),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'استفسارات',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+        title: const DefaultText(
+          text: 'مندوب التوصيل',
+          textStyle: TextStyle(),
         ),
       ),
-
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,14 +61,14 @@ class LocationPicker extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'أدخل موقعك الحالى',
+                        'أدخل الموقع',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       // DefaultMaterialButton(text: 'text', onPressed: () {}),
                       DefaultFormField(
-                        hintText: '',
-                        prefixIcon: Icons.location_on_outlined,
-                          controller: locationController,
+                          hintText: '',
+                          prefixIcon: Icons.location_on_outlined,
+                          controller: deliveryRepresentativeLocationController,
                           validator: (p0) {},
                           keyboardType: TextInputType.text),
                       const SizedBox(height: 15),

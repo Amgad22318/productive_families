@@ -9,6 +9,8 @@ class DefaultIconButton extends StatelessWidget {
   final VoidCallback onPressed; // voidCallback = void Function()
   final String? text;
   final Widget? child;
+  final double height;
+  final double width;
 
   const DefaultIconButton({
     Key? key,
@@ -19,11 +21,15 @@ class DefaultIconButton extends StatelessWidget {
     this.child,
     this.splashColor,
     required this.icon,
+    this.height = 40,
+    this.width = 40,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(height: 40,width: 40,
+    return Container(
+      height: height,
+      width: height,
       decoration: BoxDecoration(
           color: background,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
