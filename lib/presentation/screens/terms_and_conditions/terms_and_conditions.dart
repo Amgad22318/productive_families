@@ -10,6 +10,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultShopAppbar(centerTitle: true,
+
         title: DefaultText(textStyle: Theme.of(context).textTheme.headline5,text: 'البنود و الشروط',),
         actions: [IconButton(onPressed: () {
           Navigator.pop(context);

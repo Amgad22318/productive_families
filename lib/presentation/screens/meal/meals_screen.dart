@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
@@ -16,38 +15,87 @@ class MealsScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           GestureDetector(
-              child: const Icon(
-                Icons.arrow_back_ios,
-              ),
+              child: Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: SvgPicture.asset('assets/icons/back_arrow.svg')),
               onTap: () {
                 Navigator.pop(context);
               })
         ],
         title: const DefaultText(
-          text: 'طلباتك',
+          text: 'طعام',
           textStyle: TextStyle(),
         ),
       ),
       body: Column(
         children: [
-          Image(image: AssetImage('assets/image/appbar_half_circle.png')),
+          const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.2,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
+                    iconButton: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: SvgPicture.asset(
+                          "assets/icons/heart.svg",
+                          color: Colors.yellow,
+                        ),
+                      ),
+                    ),
+                  ),
+                  OrdersAndMealItem(
+                    iconButton: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: SvgPicture.asset(
+                          "assets/icons/heart.svg",
+                          color: Colors.yellow,
+                        ),
+                      ),
+                    ),
+                  ),
+                  OrdersAndMealItem(
+                    iconButton: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: SvgPicture.asset(
+                          "assets/icons/heart.svg",
+                          color: Colors.yellow,
+                        ),
+                      ),
+                    ),
+                  ),
+                  OrdersAndMealItem(
+                    iconButton: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: SvgPicture.asset(
+                          "assets/icons/heart.svg",
+                          color: Colors.yellow,
+                        ),
+                      ),
                     ),
                   ),
                 ],

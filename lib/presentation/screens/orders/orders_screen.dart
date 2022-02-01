@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
@@ -16,9 +16,12 @@ class OrdersScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           GestureDetector(
-              child: const Icon(
-                Icons.arrow_back_ios,
-                textDirection: TextDirection.ltr,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: SvgPicture.asset(
+                  "assets/icons/back_arrow.svg",
+                  color: Colors.black,
+                ),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -37,80 +40,21 @@ class OrdersScreen extends StatelessWidget {
               child: Column(
                 children: [
                   OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
+                    iconButton: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 2, bottom: 2, left: 15, right: 15),
+                        child: SvgPicture.asset(
+                          "assets/icons/delete.svg",
+                        ),
+                      ),
                     ),
-                  ),
-                  OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
-                  OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
-                  OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
-                  OrdersAndMealItem(
-                    icon: Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/image/meal.png',
-                              ),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),

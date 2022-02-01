@@ -5,8 +5,8 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrdersAndMealItem extends StatelessWidget {
-  Widget icon = Container();
-  OrdersAndMealItem({required this.icon,Key? key}) : super(key: key);
+  Widget iconButton = Container();
+   OrdersAndMealItem({required this.iconButton,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,19 @@ class OrdersAndMealItem extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
-            icon,
+            Container(
+              height: size.height * 0.2,
+              width: size.width * 0.4,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/image/meal.png',
+                      ),
+                      fit: BoxFit.fill)),
+            ),
             const SizedBox(
               width: 10,
             ),
@@ -38,20 +50,7 @@ class OrdersAndMealItem extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.headline6,
                           // textStyle: TextStyle(),
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.black,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 2, bottom: 2, left: 15, right: 15),
-                            child: SvgPicture.asset(
-                              "assets/icons/delete.svg",
-                            ),
-                          ),
-                        ),
+                       iconButton,
                       ],
                     ),
                     const SizedBox(
@@ -99,16 +98,3 @@ class OrdersAndMealItem extends StatelessWidget {
     );
   }
 }
-// Container(
-// height: size.height * 0.2,
-// width: size.width * 0.4,
-// decoration: const BoxDecoration(
-// borderRadius: BorderRadius.only(
-// bottomRight: Radius.circular(20),
-// topRight: Radius.circular(20)),
-// image: DecorationImage(
-// image: AssetImage(
-// 'assets/image/meal.png',
-// ),
-// fit: BoxFit.fill)),
-// ),
