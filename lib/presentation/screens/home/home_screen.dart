@@ -74,6 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        DefaultText(
+                          color: greyUserNameText,
+                          text: 'مرحبا ( إسم المستخدم )',
+                          textStyle:
+                          Theme.of(context).textTheme.headline6,
+                        ),
+
                         DefaultFormField(
                             radius: 16,
                             backgroundColor: formFieldBackGroundGrey,
@@ -140,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 82,
+                    height: 91,
                     child: Column(
                       children: [
                         Container(
@@ -151,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => HomeSectionItem(),
+                              itemBuilder: (context, index) => HomeSectionItem(index: index,),
                               separatorBuilder: (context, index) => const SizedBox(
                                     width: 10,
                                   ),
