@@ -26,4 +26,5 @@ const OTP_SCREEN='/otp';
 const SHOP_LAYOUT='/shop_layout';
 const ORDERED_MEALS = '/ordered_meals';
 const MEALS_SCREEN = '/meals_screen';
+const CUSTOMER_SERVICES_CHAT_SCREEN = '/customer_services_chat_screen';
 
