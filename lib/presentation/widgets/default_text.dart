@@ -3,7 +3,7 @@ import 'package:productive_families/presentation/styles/colors.dart';
 
 class DefaultText extends StatelessWidget {
   final String text;
-  final int maxLines;
+  final int? maxLines;
   final Color color;
   final TextStyle? textStyle;
 

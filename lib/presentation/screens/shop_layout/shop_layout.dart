@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/screens/home/home_screen.dart';
+import 'package:productive_families/presentation/screens/markets/markets.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/styles/custom_icons.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 
@@ -15,12 +17,10 @@ class ShopLayout extends StatefulWidget {
 class _ShopLayoutState extends State<ShopLayout>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
-  late int index;
 
   @override
   void initState() {
-    index = 0;
-    controller = TabController(length: 4, vsync: this);
+    controller = TabController(length: 4, vsync: this)..addListener(() { });
 
     super.initState();
   }
@@ -30,40 +30,18 @@ class _ShopLayoutState extends State<ShopLayout>
     controller.dispose();
     super.dispose();
   }
-  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      drawer:NavigationDrawer(),
-      appBar: DefaultShopAppbar(
 
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/bell.svg',
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/shopping-cart-outline-badged.svg',
-              )),
-        ],
-        leading: IconButton(
-            onPressed: () {_scaffoldKey.currentState!.openDrawer();},
-            icon: const Icon(
-              Icons.menu,
-            )),
-      ),
+
       body: Column(
         children: [
-          Image.asset('assets/image/appbar_half_circle.png',),
           Expanded(
             child: TabBarView(
               children: [
                 HomeScreen(),
-                HomeScreen(),
+                Markets(),
                 HomeScreen(),
                 HomeScreen(),
               ],
@@ -78,30 +56,19 @@ class _ShopLayoutState extends State<ShopLayout>
           controller: controller,
           onTap: (index) {
             setState(() {
-              this.index = index;
+              controller.index = index;
             });
           },
           tabs: [
             Tab(
-                icon: SvgPicture.asset(
-              'assets/icons/home-solid.svg',
-              color: index == 0 ? defaultYellow : Colors.grey,
-            )),
+                icon:Icon(CustomIcons.home_solid,)),
             Tab(
-                icon: SvgPicture.asset(
-              'assets/icons/shop.svg',
-              color: index == 1 ? defaultYellow : Colors.grey,
-            )),
+                icon:Icon(CustomIcons.shop)),
             Tab(
-                icon: SvgPicture.asset(
-              'assets/icons/heart.svg',
-              color: index == 2 ? defaultYellow : Colors.grey,
-            )),
+                icon:Icon(CustomIcons.heart)),
             Tab(
-                icon: SvgPicture.asset(
-              'assets/icons/account.svg',
-              color: index == 3 ? defaultYellow : Colors.grey,
-            ))
+                icon:Icon(CustomIcons.account)),
+
           ],
         ),
       ),
