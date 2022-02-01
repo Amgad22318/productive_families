@@ -5,6 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
+import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -183,6 +184,7 @@ class _AboutProductState extends State<AboutProduct> {
                             ),
                           ],
                         ),
+                        const SizedBox(height: 50,),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -222,6 +224,12 @@ class _AboutProductState extends State<AboutProduct> {
                               )
                             ],
                           ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 50),
+                          child: DefaultMaterialButton(onPressed: () {
+
+                          },height: 50,text: 'اضافة للسلة',),
                         )
                       ],
                     ),
