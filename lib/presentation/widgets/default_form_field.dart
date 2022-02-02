@@ -10,48 +10,61 @@ class DefaultFormField extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
   final void Function()? onEditingComplete;
   final void Function(String)? onChanged;
-  final void Function()? suffixIconOnPressed;
   final bool obscureText;
   final bool enabled;
-  final IconData? prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final String? initialValue;
   final String? hintText;
-  final Color? suffixIconColor;
   final Color? backgroundColor;
+  final Color? textColor;
   final double radius;
   final double? height;
+  final double horizontalPadding;
+
   final int? maxLines;
+  final InputBorder? inputBorder;
+  final InputBorder? inputEnabledBorder;
+  final InputBorder? inputFocusedBorder;
+  final InputBorder? inputDisabledBorder;
+  final EdgeInsetsGeometry? contentPadding;
 
   const DefaultFormField(
       {Key? key,
-        required this.controller,
-        required this.validator,
-        this.onTap,
-        this.labelText,
-        required this.keyboardType,
-        this.onFieldSubmitted,
-        this.onEditingComplete,
-        this.onChanged,
-        this.obscureText = false,
-        this.suffixIconOnPressed,
-        this.prefixIcon,
-        this.suffixIcon,
-        this.initialValue,
-        this.suffixIconColor,
-        this.hintText = 'أكتب هنا..',
-        this.backgroundColor = formFieldBackGroundLightBlue,
-        this.radius=30.0, this.height = 50, this.maxLines, this.enabled=true})
+      required this.controller,
+      required this.validator,
+      this.onTap,
+      this.labelText,
+      required this.keyboardType,
+      this.onFieldSubmitted,
+      this.onEditingComplete,
+      this.onChanged,
+      this.obscureText = false,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.initialValue,
+      this.hintText = 'أكتب هنا..',
+      this.backgroundColor = formFieldBackGroundLightBlue,
+      this.radius = 30.0,
+      this.height = 50,
+      this.maxLines,
+      this.enabled = true,
+      this.inputBorder = InputBorder.none,
+      this.inputEnabledBorder,
+      this.inputFocusedBorder,
+      this.inputDisabledBorder,
+      this.horizontalPadding = 16,
+      this.textColor = Colors.white, this.contentPadding})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius:  BorderRadius.all(Radius.circular(radius))),
+          borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
@@ -66,29 +79,34 @@ class DefaultFormField extends StatelessWidget {
         onChanged: onChanged,
         onTap: onTap,
         obscureText: obscureText,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: textColor,
         ),
         decoration: InputDecoration(
-          border: InputBorder.none,
+          contentPadding:contentPadding,
+          isDense: true,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          suffixIconConstraints: const BoxConstraints(
+              minHeight: 0,
+              minWidth: 0,
+              maxWidth: double.infinity,
+              maxHeight: double.infinity),
+          labelStyle:
+              Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
+          labelText: labelText,
+          border: inputBorder,
+          enabledBorder: inputEnabledBorder,
+          disabledBorder: inputDisabledBorder,
+          focusedBorder: inputFocusedBorder,
           hintText: hintText,
           hintStyle: const TextStyle(
             color: Colors.grey,
           ),
           hintTextDirection: TextDirection.rtl,
-          prefixIcon: Icon(
-            prefixIcon,
-          ),
-          suffixIcon: IconButton(
-            onPressed: suffixIconOnPressed,
-            icon: Icon(
-              suffixIcon,
-              color: suffixIconColor,
-            ),
-          ),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
         ),
       ),
     );
   }
-
 }

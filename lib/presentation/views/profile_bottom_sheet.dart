@@ -18,7 +18,6 @@ class ProfileBottomSheet extends StatelessWidget {
         children: [
           ProfileBottomSheetItem(userType: 'مستخدم',isActive: true,),
           ProfileBottomSheetItem(userType: 'متجر',isActive: false,),
-
           ProfileBottomSheetItem(userType: 'مندوب',isActive: false,),
         ],
       ),

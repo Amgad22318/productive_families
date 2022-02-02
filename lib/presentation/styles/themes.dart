@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
+
   colorScheme:const ColorScheme.light(secondary:defaultYellow) ,
     primaryColor: darkBlue,
     scaffoldBackgroundColor: backGroundWhite,
@@ -21,6 +22,7 @@ ThemeData lightTheme = ThemeData(
         indicator: UnderlineTabIndicator(
             borderSide: BorderSide(color: defaultYellow))),
     scrollbarTheme: ScrollbarThemeData(
+
       crossAxisMargin: 4,
       interactive: true,
       showTrackOnHover: true,

@@ -27,7 +27,7 @@ class NavigationDrawer extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.bodyText2,
                   ),
                   Row(children: [
-                    SvgPicture.asset('assets/icons/map-location.svg'),
+                    SvgPicture.asset('assets/icons/map-location.svg',width: 18,height: 18,),
 
                     DefaultText(color: Colors.white,
                       text: 'العنوان',
@@ -46,14 +46,14 @@ class NavigationDrawer extends StatelessWidget {
           ),
           DrawerListTiles(
             text: 'البنود و الشروط',
-            icon: 'assets/icons/contract.svg',
+            icon: 'assets/icons/contract.png',
             onTap: () {
               Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
             },
           ),
           DrawerListTiles(
             text: 'معلومات عنا',
-            icon: 'assets/icons/info.svg',
+            icon: 'assets/icons/info.png',
             onTap: () {
               Navigator.pushNamed(context, ABOUT_US);
 
@@ -61,14 +61,14 @@ class NavigationDrawer extends StatelessWidget {
           ),
           DrawerListTiles(
             text: 'طلباتك',
-            icon: 'assets/icons/shopping-bag (1).svg',
+            icon: 'assets/icons/shopping-bag (1).png',
             onTap: () {
               Navigator.pushNamed(context, '/ordered_meals');
             },
           ),
           DrawerListTiles(
             text: 'تسجيل خروج',
-            icon: 'assets/icons/log-out.svg',
+            icon: 'assets/icons/log-out.png',
             onTap: () {},
           ),
         ],
