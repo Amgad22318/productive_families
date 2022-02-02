@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
@@ -165,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Checkbox(
                               checkColor: darkBlue,
                               fillColor: MaterialStateProperty.resolveWith(
-                                  (states) => getColor(states)),
+                                  (states) => getColor(states,defaultYellow)),
                               shape: const CircleBorder(),
                               onChanged: (bool? value) {
                                 setState(() {
@@ -208,13 +209,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Color getColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-    };
-    if (states.any(interactiveStates.contains)) {
-      return defaultYellow;
-    }
-    return defaultYellow;
-  }
 }
