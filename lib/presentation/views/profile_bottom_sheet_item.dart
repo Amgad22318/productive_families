@@ -21,6 +21,7 @@ class ProfileBottomSheetItem extends StatelessWidget {
               const CircleAvatar(
                   radius: 30,
                   backgroundImage: AssetImage('assets/image/user_photo.png')),
+              const SizedBox(width: 8,),
               DefaultText(
                 text: 'حسام سعيد محمد',
                 textStyle: Theme.of(context).textTheme.bodyText2,
