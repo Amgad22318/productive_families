@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/presentation/screens/favorite/favorite_screen.dart';
 import 'package:productive_families/presentation/screens/home/home_screen.dart';
 import 'package:productive_families/presentation/screens/markets/markets.dart';
 import 'package:productive_families/presentation/screens/user_profile/user_profile_screen.dart';
@@ -43,7 +44,7 @@ class _ShopLayoutState extends State<ShopLayout>
               children: [
                 HomeScreen(),
                 Markets(),
-                HomeScreen(),
+                FavoriteScreen(),
                 UserProfileScreen(),
               ],
               controller: controller,

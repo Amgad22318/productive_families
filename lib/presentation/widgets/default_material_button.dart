@@ -30,6 +30,7 @@ class DefaultMaterialButton extends StatelessWidget {
       height: height,
       width: width,
       child: MaterialButton(padding:padding ,
+
         elevation: 0,
         splashColor: splashColor,
         color: background,

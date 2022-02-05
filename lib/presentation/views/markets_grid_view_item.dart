@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class MarketsGridViewItems extends StatelessWidget {
@@ -7,20 +8,25 @@ class MarketsGridViewItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8),
-      child: Column(
-        children: [
-          CircleAvatar(
-              radius: 50,
-              backgroundImage: const AssetImage('assets/image/user_photo.png')),
-          DefaultText(
-            maxLines: 2,
-            text: 'الاسم',
-            textStyle: Theme.of(context).textTheme.headline6,
-          ),
+      margin: const EdgeInsets.all(8),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, CHOSEN_MARKET_SCREEN);
+        },
+        child: Column(
+          children: [
+            CircleAvatar(
+                radius: 50,
+                backgroundImage: const AssetImage('assets/image/user_photo.png')),
+            DefaultText(
+              maxLines: 2,
+              text: 'الاسم',
+              textStyle: Theme.of(context).textTheme.headline6,
+            ),
 
 
-        ],
+          ],
+        ),
       ),
     );
   }

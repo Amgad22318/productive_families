@@ -15,7 +15,7 @@ class _MarketSectionItemState extends State<MarketSectionItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0),
+      padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
       child: GestureDetector(
         onTap: () {
 setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/profile_bottom_sheet.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
@@ -71,7 +72,7 @@ class UserProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(
-              height: 32,
+              height: 8,
             ),
             DefaultFormField(
               hintText: '',
@@ -93,7 +94,7 @@ class UserProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 32,
+              height: 8,
             ),
             DefaultFormField(
               hintText: '',
@@ -127,7 +128,7 @@ class UserProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 32,
+              height: 8,
             ),
             DefaultFormField(
               height: 60,
@@ -140,8 +141,8 @@ class UserProfileScreen extends StatelessWidget {
               keyboardType: TextInputType.text,
               backgroundColor: Colors.transparent,
               suffixIcon: IconButton(
-                padding: EdgeInsets.zero,iconSize: 51,
-
+                padding: EdgeInsets.zero,
+                iconSize: 51,
                 onPressed: () {},
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -149,6 +150,7 @@ class UserProfileScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: DefaultText(
+                        textScaleFactor: 1,
                         text: 'تغيير',
                         textStyle: Theme.of(context)
                             .textTheme
@@ -176,8 +178,76 @@ class UserProfileScreen extends StatelessWidget {
                 borderSide: BorderSide(color: darkBlue),
               ),
             ),
-            const SizedBox(
-              height: 60,
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Image.asset('assets/icons/bounce.png'),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                          child: DefaultText(
+                            text: '41',
+                            textStyle: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                        DefaultText(
+                          text: 'عدد النقاط',
+                          color: greyText,
+                          textStyle: Theme.of(context).textTheme.bodyText2,
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        CircularPercentIndicator(
+                          circularStrokeCap: CircularStrokeCap.round,
+                          lineWidth: 13.0,
+                          animation: true,
+                          progressColor: defaultYellow,
+                          percent: 0.35,
+                          backgroundColor: Colors.grey,
+                          radius: 60,
+                          center: DefaultText(
+                            textStyle: Theme.of(context).textTheme.bodyText1,
+                            text: '35\nطلب',
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                          'assets/icons/money.png',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: DefaultText(
+                            text: '12000.00',
+                            textStyle: Theme.of(context).textTheme.bodyText1,
+                            textScaleFactor: 0.9,
+                          ),
+                        ),
+                        DefaultText(
+                          text: 'رصيد',
+                          textStyle: Theme.of(context).textTheme.bodyText2,
+                          color: greyText,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsetsDirectional.only(
