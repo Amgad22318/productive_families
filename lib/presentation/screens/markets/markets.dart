@@ -31,14 +31,15 @@ class Markets extends StatelessWidget {
                       textStyle: Theme.of(context).textTheme.headline6,
                     ),
                   ),
-                  SizedBox(height: 100,
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>  MarketSectionItem(index:index,isMarket: true,),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 10,
-                        ),
-                        itemCount: 20),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children:
+                      List.generate(20, (index) {
+                        return MarketSectionItem(index: index,isMarket: true,);
+                      })
+                      ,
+                    ),
                   ),
                   GridView.count(
                     shrinkWrap: true,

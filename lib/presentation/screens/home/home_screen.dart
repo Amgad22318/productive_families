@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/home_grid_view_item.dart';
 import 'package:productive_families/presentation/views/home_section_item.dart';
-import 'package:productive_families/presentation/views/market_section_item.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
@@ -28,15 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
         'https://dribbble.com/shots/2444148-A-B-Testing/attachments/9303579?mode=media');
     super.initState();
   }
-  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer:NavigationDrawer(),
+      drawer: NavigationDrawer(),
       appBar: DefaultShopAppbar(
-
         actions: [
           IconButton(
               onPressed: () {},
@@ -50,7 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
         ],
         leading: IconButton(
-            onPressed: () {_scaffoldKey.currentState!.openDrawer();},
+            onPressed: () {
+              _scaffoldKey.currentState!.openDrawer();
+            },
             icon: const Icon(
               Icons.menu,
             )),
@@ -63,25 +64,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          Image.asset('assets/image/appbar_half_circle.png',),
-
+          Image.asset(
+            'assets/image/appbar_half_circle.png',
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         DefaultText(
-                          color: greyUserNameText,
+                          color: greyText,
                           text: 'مرحبا ( إسم المستخدم )',
-                          textStyle:
-                          Theme.of(context).textTheme.headline6,
+                          textStyle: Theme.of(context).textTheme.headline6,
                         ),
-
                         DefaultFormField(
                             radius: 16,
                             backgroundColor: formFieldBackGroundGrey,
@@ -128,7 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       maxLines: 2,
                                       text:
                                           'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة سهلة  الاستخدام لطالبي خدماتهم و على أن يكون احترافى يسمح بالتواصل بشكل منظم ومرن',
-                                      textStyle: Theme.of(context).textTheme.caption,
+                                      textStyle:
+                                          Theme.of(context).textTheme.caption,
                                     ),
                                   ],
                                 ),
@@ -147,45 +148,44 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 91,
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.grey,
-                          height: 0.5,
-                          width: double.infinity,
+                  Column(
+                    children: [
+                      Container(
+                        color: Colors.grey,
+                        height: 0.5,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children:
+                            List.generate(20, (index) {
+                              return HomeSectionItem();
+                            })
+                          ,
                         ),
-                        Expanded(
-                          child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => HomeSectionItem(),
-                              separatorBuilder: (context, index) => const SizedBox(
-                                    width: 10,
-                                  ),
-                              itemCount: 20),
-                        ),
-                        Container(
-                          color: Colors.grey,
-                          height: 0.5,
-                          width: double.infinity,
-                        ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        color: Colors.grey,
+                        height: 0.5,
+                      ),
+                    ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.only(start: 8.0),
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 8.0),
                               child: DefaultText(
                                 maxLines: 2,
                                 text: 'الاعلى تقييما',
-                                textStyle: Theme.of(context).textTheme.headline6,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
                               ),
                             ),
                             const Spacer(),
@@ -198,7 +198,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 )),
                           ],
                         ),
-                        ListView(shrinkWrap: true,physics: NeverScrollableScrollPhysics(),
+                        ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           children: [
                             HomeGridViewItem(),
                             HomeGridViewItem(),
