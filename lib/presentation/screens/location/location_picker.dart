@@ -126,7 +126,7 @@ class LocationPicker extends StatelessWidget {
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                             hintText: '',
-                            prefixIcon: Icons.location_on_outlined,
+                            prefixIcon:  const Icon(Icons.location_on_outlined),
                               controller: locationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),
