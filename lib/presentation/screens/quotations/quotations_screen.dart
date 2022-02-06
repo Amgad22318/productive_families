@@ -1,19 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:productive_families/presentation/views/orders_item.dart';
+
+import 'package:productive_families/presentation/views/quotations_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
-import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
 
-class OrdersScreen extends StatelessWidget {
-  const OrdersScreen({Key? key}) : super(key: key);
+class QuotationsScreen extends StatelessWidget {
+  const QuotationsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
+        height: 80,
         centerTitle: true,
         actions: [
           GestureDetector(
@@ -29,7 +29,7 @@ class OrdersScreen extends StatelessWidget {
               })
         ],
         title: const DefaultText(
-          text: 'طلباتك',
+          text: 'عروض الأسعار',
           textStyle: TextStyle(),
         ),
       ),
@@ -37,25 +37,13 @@ class OrdersScreen extends StatelessWidget {
         children: [
           const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  OrdersItem(
-                    color: Color(0xFFFF0000),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFF15C808),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFFFF0000),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFF15C808),
-                  ),
-                ],
-              ),
-            ),
-          )
+              child: ListView(
+            children: [
+              QuotationsItem(),
+              QuotationsItem(),
+              QuotationsItem(),
+            ],
+          )),
         ],
       ),
     );

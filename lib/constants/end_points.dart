@@ -28,7 +28,14 @@ const ORDERED_MEALS = '/ordered_meals';
 const MEALS_SCREEN = '/meals_screen';
 const CUSTOMER_SERVICES_CHAT_SCREEN = '/customer_services_chat_screen';
 const SELLER_CHAT_SCREEN = '/seller_chat_screen';
-const ORDER_CONFIRMATION = '/order_confirmation';
+const ORDER_CONFIRMATION_SCREEN = '/order_confirmation_screen';
 const DELIVERY_REPRESENTATIVE_SCREEN = '/delivery_representative_screen';
 const DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN = '/delivery_representative_locator_screen';
+const SPECIFY_LOCATION = '/specify_location';
+const BASKET_SCREEN = '/basket_screen';
+const ORDER_LOCATION = '/order_location';
+const ORDER_DETAILS_SCREEN = '/order_details_screen';
+const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
+const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
+const QUOTATIONS_SCREEN = '/quotations_screen';
 

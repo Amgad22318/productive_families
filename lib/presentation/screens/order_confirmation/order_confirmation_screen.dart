@@ -8,8 +8,8 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class OrderConfirmation extends StatelessWidget {
-  OrderConfirmation({Key? key}) : super(key: key);
+class OrderConfirmationScreen extends StatelessWidget {
+  OrderConfirmationScreen({Key? key}) : super(key: key);
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController discountCodeController = TextEditingController();

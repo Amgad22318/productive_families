@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -120,119 +121,116 @@ class _OtpScreenState extends State<OtpScreen> {
     double screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: darkBlue,
+        actions: [
+          Row(
+            children: [
+
+              DefaultText(
+                color: Colors.white,
+                text: 'رجوع',
+                textStyle: Theme.of(context).textTheme.headline6,
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                padding: EdgeInsetsDirectional.zero,
+                icon:  SvgPicture.asset(
+                  "assets/icons/back_arrow.svg",
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       backgroundColor: darkBlue,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: SizedBox(
-            height: screenHeight,
-            child: Column(
-              children: [
-                Row(
+          child: Column(
+            children: [
+
+              Image.asset("assets/image/msg_background.png"),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        padding: EdgeInsetsDirectional.zero,
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                        ),
-                      ),
+                    DefaultText(
+                      color: aboutGrey,
+                      text: 'تحقق تسجيل الدخول',
+                      textStyle: Theme.of(context).textTheme.headline6,
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     DefaultText(
-                      color: Colors.white,
-                      text: 'رجوع',
+                      color: Colors.white38,
+                      text: 'برجاء إدخال كود التحقق الذى تم ارساله الى رقم هاتفك الذى قمت بادخاله',
                       textStyle: Theme.of(context).textTheme.headline6,
+                      maxLines: 2,
+                    ),
+
+                    Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: OTPTextField(
+
+                            length: 4,
+                            width: MediaQuery.of(context).size.width,
+                            fieldWidth: 80,
+                            style: TextStyle(fontSize: 17),
+                            textFieldAlignment: MainAxisAlignment.spaceAround,
+                            fieldStyle: FieldStyle.underline,
+                            onCompleted: (pin) {
+                              print("Completed: " + pin);
+                            },
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        DefaultText(
+                          text: 'إعادة إرسال الكود؟',
+                          color: defaultYellow,
+                          textStyle: Theme.of(context).textTheme.headline6,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 100),
+                          child: DefaultMaterialButton(
+                            onPressed: () {
+                              msgSuccess? _onSuccess():_onFailure();
+                            },
+                            text: 'تسجيل الدخول',
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        DefaultText(
+                          text: 'تعديل رقم الهاتف',
+                          color: defaultYellow,
+                          textStyle: Theme.of(context).textTheme.headline6,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Image.asset("assets/image/msg_background.png"),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      Align(
-                        child: DefaultText(
-                          color: aboutGrey,
-                          text: 'تحقق تسجيل الدخول',
-                          textStyle: Theme.of(context).textTheme.headline6,
-                        ),
-                        alignment: AlignmentDirectional.topEnd,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Align(
-                        child: DefaultText(
-                          color: Colors.white38,
-                          text: 'برجاء إدخال كود التحقق الذى تم ارساله الى',
-                          textStyle: Theme.of(context).textTheme.headline6,
-                        ),
-                        alignment: AlignmentDirectional.topEnd,
-                      ),
-                      Align(
-                        child: DefaultText(
-                          color: Colors.white38,
-                          text: 'رقم هاتفك الذى قمت بادخاله',
-                          textStyle: Theme.of(context).textTheme.headline6,
-                        ),
-                        alignment: AlignmentDirectional.topEnd,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: OTPTextField(
-                          length: 4,
-                          width: MediaQuery.of(context).size.width,
-                          fieldWidth: 80,
-                          style: TextStyle(fontSize: 17),
-                          textFieldAlignment: MainAxisAlignment.spaceAround,
-                          fieldStyle: FieldStyle.underline,
-                          onCompleted: (pin) {
-                            print("Completed: " + pin);
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      DefaultText(
-                        text: 'إعادة إرسال الكود؟',
-                        color: defaultYellow,
-                        textStyle: Theme.of(context).textTheme.headline6,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 100),
-                        child: DefaultMaterialButton(
-                          onPressed: () {
-                            msgSuccess? _onSuccess():_onFailure();
-                          },
-                          text: 'تسجيل الدخول',
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      DefaultText(
-                        text: 'تعديل رقم الهاتف',
-                        color: defaultYellow,
-                        textStyle: Theme.of(context).textTheme.headline6,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

@@ -35,53 +35,63 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
           textStyle: TextStyle(),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
+      body: Stack(
         children: [
-          const Center(
-              child: Image(
-                  image: AssetImage('assets/image/appbar_half_circle.png'))),
-          Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(32),
-                topRight: Radius.circular(32),
-              ),
-              color: darkBlue,
+          Expanded(
+            child: Container(
+              color: Colors.white30,
+              child: const Center(child: Text('map')),
             ),
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'أدخل الموقع',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      // DefaultMaterialButton(text: 'text', onPressed: () {}),
-                      DefaultFormField(
-                          hintText: '',
-                          prefixIcon: Icons.location_on_outlined,
-                          controller: deliveryRepresentativeLocationController,
-                          validator: (p0) {},
-                          keyboardType: TextInputType.text),
-                      const SizedBox(height: 15),
-                      DefaultMaterialButton(
-                        text: 'تأكيد العنوان',
-                        onPressed: () {},
-                        height: size.height * 0.06,
-                      )
-                    ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Center(
+                  child: Image(
+                      image: AssetImage('assets/image/appbar_half_circle.png'))),
+              Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(32),
+                    topRight: Radius.circular(32),
                   ),
+                  color: darkBlue,
                 ),
-              ],
-            ),
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'أدخل الموقع',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          // DefaultMaterialButton(text: 'text', onPressed: () {}),
+                          DefaultFormField(
+                              hintText: '',
+                              prefixIcon: Icons.location_on_outlined,
+                              controller: deliveryRepresentativeLocationController,
+                              validator: (p0) {},
+                              keyboardType: TextInputType.text),
+                          const SizedBox(height: 15),
+                          DefaultMaterialButton(
+                            text: 'تأكيد العنوان',
+                            onPressed: () {},
+                            height: size.height * 0.06,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -1,19 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/order_details_item.dart';
 import 'package:productive_families/presentation/views/orders_item.dart';
+import 'package:productive_families/presentation/views/payment_summary_item.dart';
+import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
 
-class OrdersScreen extends StatelessWidget {
-  const OrdersScreen({Key? key}) : super(key: key);
+class OrderDetailsScreen extends StatelessWidget {
+  const OrderDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
+        height: 80,
         centerTitle: true,
         actions: [
           GestureDetector(
@@ -29,7 +33,7 @@ class OrdersScreen extends StatelessWidget {
               })
         ],
         title: const DefaultText(
-          text: 'طلباتك',
+          text: 'تفاصيل الطلب',
           textStyle: TextStyle(),
         ),
       ),
@@ -37,24 +41,19 @@ class OrdersScreen extends StatelessWidget {
         children: [
           const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  OrdersItem(
-                    color: Color(0xFFFF0000),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFF15C808),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFFFF0000),
-                  ),
-                  OrdersItem(
-                    color: Color(0xFF15C808),
-                  ),
-                ],
-              ),
+            child: ListView(
+              children: [
+                OrderDetailsItem(color: backGroundRed),
+                OrderDetailsItem(color: backGroundRed),
+                OrderDetailsItem(color: backGroundRed),
+                OrderDetailsItem(color: backGroundRed),
+              ],
             ),
+          ),
+          PaymentSummaryItem(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20,right: 20,left: 20,top: 30),
+            child: DefaultMaterialButton(onPressed: (){},text: 'تأكيد الطلب',),
           )
         ],
       ),

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/basket/basket_screen.dart';
 import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/chat/seller_chat_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/location/location_picker.dart';
 import 'package:productive_families/presentation/screens/about_us/about_us.dart';
+import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
+import 'package:productive_families/presentation/screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
 import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
-import 'package:productive_families/presentation/screens/order_confirmation/OrderConfirmation.dart';
+import 'package:productive_families/presentation/screens/order_address_confirmation/order_address_confirmation_screen.dart';
+import 'package:productive_families/presentation/screens/order_confirmation/order_confirmation_screen.dart';
+import 'package:productive_families/presentation/screens/order_details/order_details_screen.dart';
+import 'package:productive_families/presentation/screens/order_details/order_details_second_screen.dart';
 import 'package:productive_families/presentation/screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/otp/otp_screen.dart';
+import 'package:productive_families/presentation/screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/screens/start/start_screen.dart';
@@ -21,7 +28,7 @@ class AppRouter {
 
   AppRouter() {
     // startWidget = StartScreen();
-    startWidget = LocationPicker();
+    startWidget = QuotationsScreen();
 
   }
 
@@ -76,10 +83,10 @@ class AppRouter {
           builder: (_) =>
               SellerChatScreen(),
         );
-        case ORDER_CONFIRMATION:
+        case ORDER_CONFIRMATION_SCREEN:
         return MaterialPageRoute(
           builder: (_) =>
-              OrderConfirmation(),
+              OrderConfirmationScreen(),
         );
         case DELIVERY_REPRESENTATIVE_SCREEN:
         return MaterialPageRoute(
@@ -90,6 +97,40 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) =>
               DeliveryRepresentativeLocatorScreen(),
+        );
+        case SPECIFY_LOCATION:
+        return MaterialPageRoute(
+          builder: (_) =>
+              SpecifyLocation(),
+        );
+          case BASKET_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              BasketScreen(),
+        );
+        case ORDER_LOCATION:
+        return MaterialPageRoute(
+          builder: (_) =>
+              OrderLocation(),
+        );
+        case ORDER_DETAILS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              OrderDetailsScreen(),
+        );
+        case ORDER_DETAILS_SECOND_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              OrderDetailsSecondScreen(),
+        ); case QUOTATIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              QuotationsScreen(),
+        );
+        case ORDER_ADDRESS_CONFIRMATION_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              OrderAddressConfirmationScreen(paypalRadioValue:'shopPay', shopPayRadioValue: 'paypal',),
         );
       default:
         return null;
