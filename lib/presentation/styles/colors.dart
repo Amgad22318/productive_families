@@ -6,9 +6,13 @@ const Color backGroundRed = Color(0xFFFF0000);
 const Color backGroundGreen = Color(0xFF15C808);
 const Color darkBlue = Color(0xff0F1F41);
 const Color aboutGrey = Color(0xffEEEEEE);
-const Color goldTextAndStars = Color(0xffFFD138);
+const Color goldTextAndStars = Color(0xffffd138);
 const Color formFieldBackGroundLightBlue = Color(0xff2A3B5E);
 const Color productDescriptionBackGround = Color(0xffECF3FF);
+const Color greyText = Color(0xff707070);
+const Color lightDefaultYellow = Color(0xffFFEFA1);
+const Color filterYellow =  Color(0xffffdd2e);
+const Color filterInActiveYellow =  Color(0xffBEAD54);
 Color formFieldBackGroundGrey = const Color(0xff000000).withOpacity(0.08);
 Color orderFormFieldBackGroundGrey = const Color(0xff2A3B5E).withOpacity(0.3);
 

@@ -9,6 +9,12 @@ import 'package:productive_families/presentation/screens/location/location_picke
 import 'package:productive_families/presentation/screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
+import 'package:productive_families/presentation/screens/about_product/about_product.dart';
+import 'package:productive_families/presentation/screens/about_us/about_us.dart';
+import 'package:productive_families/presentation/screens/chosen_market/chosen_market_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/Filtering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/ordering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
 import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
 import 'package:productive_families/presentation/screens/order_address_confirmation/order_address_confirmation_screen.dart';
@@ -27,12 +33,12 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    // startWidget = StartScreen();
-    startWidget = QuotationsScreen();
+
+    startWidget = StartScreen();
+    // startWidget = FilteringScreen();
+    // startWidget = OrdersScreen();
 
   }
-
-
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -50,28 +56,43 @@ class AppRouter {
         );
       case SHOP_LAYOUT:
         return MaterialPageRoute(
-          builder: (_) =>
-              ShopLayout(),
+          builder: (_) => ShopLayout(),
         );
       case TERMS_AND_CONDITIONS:
         return MaterialPageRoute(
-          builder: (_) =>
-             TermsAndConditionsScreen(),
+          builder: (_) => TermsAndConditionsScreen(),
         );
       case ABOUT_US:
         return MaterialPageRoute(
-          builder: (_) =>
-              AboutUsScreen(),
+          builder: (_) => AboutUsScreen(),
         );
-        case ORDERED_MEALS:
+      case ABOUT_PRODUCT:
         return MaterialPageRoute(
-          builder: (_) =>
-              OrdersScreen(),
+          builder: (_) => AboutProduct(),
         );
-        case MEALS_SCREEN:
+      case ORDERED_MEALS:
         return MaterialPageRoute(
-          builder: (_) =>
-              MealsScreen(),
+          builder: (_) => OrdersScreen(),
+        );
+      case MEALS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MealsScreen(),
+        );
+      case CHOSEN_MARKET_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => ChosenMarketScreen(),
+        );
+      case FILTERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => FilteringScreen(),
+        );
+      case PRICE_FILTERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => PriceFilteringScreen(),
+        );
+      case ORDERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => OrderingScreen(),
         );
         case CUSTOMER_SERVICES_CHAT_SCREEN:
         return MaterialPageRoute(

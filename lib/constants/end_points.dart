@@ -20,9 +20,7 @@ const REGISTER_SCREEN='/register';
 const TERMS_AND_CONDITIONS='/terms_and_conditions';
 const ABOUT_US='/about_us';
 const ABOUT_PRODUCT='/about_product';
-
 const OTP_SCREEN='/otp';
-
 const SHOP_LAYOUT='/shop_layout';
 const ORDERED_MEALS = '/ordered_meals';
 const MEALS_SCREEN = '/meals_screen';
@@ -38,4 +36,9 @@ const ORDER_DETAILS_SCREEN = '/order_details_screen';
 const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
 const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
 const QUOTATIONS_SCREEN = '/quotations_screen';
+const CHOSEN_MARKET_SCREEN = '/chosen_market_screen';
+const FILTERING_SCREEN = '/FILTERING_SCREEN';
+const PRICE_FILTERING_SCREEN = '/PRICE_FILTERING_SCREEN';
+const ORDERING_SCREEN = '/ORDERING_SCREEN';
+
 

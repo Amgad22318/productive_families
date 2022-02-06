@@ -42,7 +42,8 @@ class DefaultMaterialButton extends StatelessWidget {
         child: child ??
             Text(
               isUpperCase ? text!.toUpperCase() : text!,
-              style:  TextStyle(color: textColor,fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.button!.copyWith(color: textColor),
+
             ),
       ),
     );

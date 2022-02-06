@@ -23,7 +23,7 @@ class DrawerListTiles extends StatelessWidget {
             text: text,
             textStyle: Theme.of(context).textTheme.bodyText2,
           ),
-          leading: SvgPicture.asset(
+          leading: Image.asset(
             icon,
           ),
         ),

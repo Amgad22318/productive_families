@@ -23,6 +23,7 @@ class DefaultShopAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+
       toolbarHeight: height,
       centerTitle: centerTitle,
       automaticallyImplyLeading: false,
