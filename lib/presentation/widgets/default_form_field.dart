@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -20,14 +21,14 @@ class DefaultFormField extends StatelessWidget {
   final Color? textColor;
   final double radius;
   final double? height;
-  final double horizontalPadding;
-
   final int? maxLines;
+  final double horizontalPadding;
   final InputBorder? inputBorder;
   final InputBorder? inputEnabledBorder;
   final InputBorder? inputFocusedBorder;
   final InputBorder? inputDisabledBorder;
   final EdgeInsetsGeometry? contentPadding;
+
 
   const DefaultFormField(
       {Key? key,
@@ -45,8 +46,8 @@ class DefaultFormField extends StatelessWidget {
       this.initialValue,
       this.hintText = 'أكتب هنا..',
       this.backgroundColor = formFieldBackGroundLightBlue,
+      this.height = 50, 
       this.radius = 30.0,
-      this.height = 50,
       this.maxLines,
       this.enabled = true,
       this.inputBorder = InputBorder.none,
@@ -55,6 +56,7 @@ class DefaultFormField extends StatelessWidget {
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
       this.textColor = Colors.white, this.contentPadding})
+
       : super(key: key);
 
   @override

@@ -38,7 +38,7 @@ class DefaultOutlinedButton extends StatelessWidget {
         child: child ??
             Text(
               isUpperCase ? text!.toUpperCase() : text!,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: darkBlue),
             ),
       ),
     );

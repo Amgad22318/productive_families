@@ -6,7 +6,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class SellerChatScreen extends StatelessWidget {
   SellerChatScreen({Key? key}) : super(key: key);
-  TextEditingController chatController = TextEditingController();
+  TextEditingController sellerChatController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +37,25 @@ class SellerChatScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       const ChatBuble(),
-                      const ChatBubleForFriend(),
+                      const ChatBubleForFriend(
+                          color: Color(0xFF30B893),
+                      ),
                       DefaultText(
                         text: 'الأن',
                         textStyle: Theme.of(context).textTheme.headline6,
                       ),
                       const ChatBuble(),
-                      const ChatBubleForFriend(),
+                      const ChatBubleForFriend(
+                        color: Color(0xFF30B893),
+                      ),
                       const ChatBuble(),
-                      const ChatBubleForFriend(),
+                      const ChatBubleForFriend(
+                        color: Color(0xFF30B893),
+                      ),
                       const ChatBuble(),
-                      const ChatBubleForFriend(),
+                      const ChatBubleForFriend(
+                        color: Color(0xFF30B893),
+                      ),
                     ],
                   ),
                 ),
@@ -62,7 +70,7 @@ class SellerChatScreen extends StatelessWidget {
                 shadowColor: Colors.black,
                 borderRadius: BorderRadius.circular(25),
                 child: TextFormField(
-                  controller: chatController,
+                  controller: sellerChatController,
                   textDirection: TextDirection.rtl,
                   decoration: InputDecoration(
                       icon: Row(
@@ -70,32 +78,37 @@ class SellerChatScreen extends StatelessWidget {
                           const SizedBox(
                             width: 40,
                           ),
-                          SvgPicture.asset(
-                            "assets/icons/sendIcon.svg",
-                            color: const Color(0xFF4FBC87),
+                          GestureDetector(
+                            onTap: (){},
+                            child: SvgPicture.asset(
+                              "assets/icons/sendIcon.svg",
+                              color: const Color(0xFF4FBC87),
+                            ),
                           ),
                           const SizedBox(
-                            width: 30,
+                            width: 25,
                           ),
                           SvgPicture.asset(
                             "assets/icons/mic.svg",
                             color: const Color(0xFFD3D4D6),
                           ),
-                          const SizedBox(
-                            width: 70,
-                          ),
-                          const Text(
-                            '| Type a Message',
-                            style: TextStyle(
-                              color: Color(0xFFD3D4D6),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){},
+                              child: const Text(
+                                '                     | Type a Message',
+                                style: TextStyle(
+                                  color: Color(0xFFD3D4D6),
+                                ),
+                              ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          SvgPicture.asset(
-                            "assets/icons/pin.svg",
-                            color: const Color(0xFFD3D4D6),
+                          GestureDetector(
+                            onTap: (){},
+                            child: SvgPicture.asset(
+                              "assets/icons/pin.svg",
+                              color: const Color(0xFFD3D4D6),
+                            ),
                           ),
                         ],
                       )),

@@ -4,10 +4,11 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
+import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class LocationPicker extends StatelessWidget {
-  LocationPicker({Key? key}) : super(key: key);
-  TextEditingController locationController = TextEditingController();
+class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
+  DeliveryRepresentativeLocatorScreen({Key? key}) : super(key: key);
+  TextEditingController deliveryRepresentativeLocationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,82 +17,30 @@ class LocationPicker extends StatelessWidget {
       appBar: DefaultShopAppbar(
         height: 80,
         centerTitle: true,
-        title:
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/shop.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'المتاجر',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
+        actions: [
+          GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: SvgPicture.asset(
+                  "assets/icons/back_arrow.svg",
+                  color: Colors.black,
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/patch-question-fll.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'استفسارات',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+              onTap: () {
+                Navigator.pop(context);
+              })
+        ],
+        title: const DefaultText(
+          text: 'مندوب التوصيل',
+          textStyle: TextStyle(),
         ),
       ),
-
       body: Stack(
         children: [
           Expanded(
             child: Container(
-              width: double.infinity,
               color: Colors.white30,
-              // map location
-              child: const  Image(
-                image: AssetImage('assets/image/map.png'),
-                fit: BoxFit.fill,
-              ),
+              child: const Center(child: Text('map')),
             ),
           ),
           Column(
@@ -120,14 +69,14 @@ class LocationPicker extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'أدخل موقعك الحالى',
+                            'أدخل الموقع',
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
-                            hintText: '',
-                            prefixIcon: Icons.location_on_outlined,
-                              controller: locationController,
+                              hintText: '',
+                              prefixIcon: Icons.location_on_outlined,
+                              controller: deliveryRepresentativeLocationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),
                           const SizedBox(height: 15),

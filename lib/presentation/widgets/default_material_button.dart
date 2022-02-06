@@ -7,6 +7,7 @@ class DefaultMaterialButton extends StatelessWidget {
   final double height;
   final double radius;
   final Color background;
+  final Color textColor;
   final Color? splashColor;
   final VoidCallback onPressed; // voidCallback = void Function()
   final String? text;
@@ -15,6 +16,7 @@ class DefaultMaterialButton extends StatelessWidget {
 
   const DefaultMaterialButton(
       {Key? key,
+        this.textColor = darkBlue,
         required this.onPressed, this.text,
         this.width = double.infinity,
         this.isUpperCase = true,
@@ -40,7 +42,8 @@ class DefaultMaterialButton extends StatelessWidget {
         child: child ??
             Text(
               isUpperCase ? text!.toUpperCase() : text!,
-              style: Theme.of(context).textTheme.button!.copyWith(color: darkBlue),
+              style: Theme.of(context).textTheme.button!.copyWith(color: textColor),
+
             ),
       ),
     );

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class ChatBuble extends StatelessWidget {
-
-  const ChatBuble({
+const ChatBuble({
     Key? key,
   }) : super(key: key);
 
@@ -68,8 +67,10 @@ class ChatBuble extends StatelessWidget {
 }
 
 class ChatBubleForFriend extends StatelessWidget {
+  final Color color;
+
   const ChatBubleForFriend({
-    Key? key,
+    Key? key,required this.color
   }) : super(key: key);
 
   @override
@@ -87,13 +88,13 @@ class ChatBubleForFriend extends StatelessWidget {
                 padding:
                 const EdgeInsets.only(left: 32, top: 15, bottom: 15, right: 32),
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(18),
-                    topLeft: Radius.circular(18),
-                    bottomLeft: Radius.circular(18),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topRight: const Radius.circular(18),
+                    topLeft: const Radius.circular(18),
+                    bottomLeft: const Radius.circular(18),
                   ),
-                  color: Color(0xFF3698D9),
+                  color: color,
                 ),
                 child: const Text(
                   "is simply dummy",
@@ -118,4 +119,3 @@ class ChatBubleForFriend extends StatelessWidget {
     );
   }
 }
-// color: Color(0xFF3698D9),
