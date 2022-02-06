@@ -118,8 +118,7 @@ class _OtpScreenState extends State<OtpScreen> {
       );
     }
 
-    double screenHeight =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

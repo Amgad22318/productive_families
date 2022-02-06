@@ -35,8 +35,6 @@ class _ShopLayoutState extends State<ShopLayout>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       body: Column(
         children: [
           Expanded(

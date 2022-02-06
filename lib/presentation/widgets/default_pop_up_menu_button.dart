@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
-class DefaultIconButton extends StatelessWidget {
+class DefaultPopUpMenuButton extends StatelessWidget {
   final Widget icon;
+  final void  Function(dynamic)? onSelected;
+  final List<PopupMenuEntry<dynamic>> Function(BuildContext) itemBuilder;
   final double radius;
   final Color background;
-  final Color? splashColor;
-  final VoidCallback onPressed; // voidCallback = void Function()
-  final String? text;
-  final Widget? child;
   final double height;
   final double width;
 
-  const DefaultIconButton({
+  const DefaultPopUpMenuButton({
     Key? key,
-    required this.onPressed,
-    this.text,
     this.background = defaultYellow,
     this.radius = 12,
-    this.child,
-    this.splashColor,
     required this.icon,
     this.height = 40,
-    this.width = 40,
+    this.width = 40, this.onSelected, required this.itemBuilder,
   }) : super(key: key);
 
   @override
@@ -33,12 +27,11 @@ class DefaultIconButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: background,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
-      child: IconButton(
-        alignment: AlignmentDirectional.center,
-        splashColor: splashColor,
+      child: PopupMenuButton(
         color: background,
-        onPressed: onPressed,
+        onSelected: onSelected,
         icon: icon,
+        itemBuilder: itemBuilder,
       ),
     );
   }
