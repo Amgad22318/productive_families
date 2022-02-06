@@ -9,6 +9,7 @@ class DefaultOutlinedButton extends StatelessWidget {
   final VoidCallback onPressed; // voidCallback = void Function()
   final String? text;
   final Widget? child;
+  final Color? textColor;
 
   const DefaultOutlinedButton(
       {Key? key,
@@ -18,7 +19,7 @@ class DefaultOutlinedButton extends StatelessWidget {
       this.isUpperCase = true,
       this.radius = 30,
       this.child,
-      this.height = 59})
+      this.height = 59, this.textColor= darkBlue})
       : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class DefaultOutlinedButton extends StatelessWidget {
         child: child ??
             Text(
               isUpperCase ? text!.toUpperCase() : text!,
-              style: const TextStyle(color: darkBlue),
+              style:  TextStyle(color: textColor),
             ),
       ),
     );
