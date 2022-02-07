@@ -20,37 +20,44 @@ class FilteringGridFavDialog extends StatelessWidget {
         textStyle: Theme.of(context).textTheme.headline6,
         textAlign: TextAlign.center,
       ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          DefaultSearchBar(
-              textColor: darkBlue,
-              backgroundColor: Colors.transparent,
-              controller: _searchController,
-              validator: (text) {},
-              keyboardType: TextInputType.text),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      content: SizedBox(
+        height: 300,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            DefaultSearchBar(
+                textColor: darkBlue,
+                backgroundColor: Colors.transparent,
+                controller: _searchController,
+                validator: (text) {},
+                keyboardType: TextInputType.text),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
 
-              children: [
-                DefaultText(
-                  text: 'مجموعاتك',
-                  textStyle: Theme.of(context).textTheme.caption,
-                ),
-                SizedBox(height: 200,
-                  child: ListView(
-                    children: List.generate(
-                      13,
-                      (index) => FilteringGridFavDialogItem(),
-                    ),
+                    children: [
+                      DefaultText(
+                        text: 'مجموعاتك',
+                        textStyle: Theme.of(context).textTheme.caption,
+                      ),
+                      ListView(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        children: List.generate(
+                          13,
+                          (index) => FilteringGridFavDialogItem(),
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

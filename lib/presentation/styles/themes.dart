@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
+  radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(darkBlue)),
     colorScheme: const ColorScheme.light(
         secondary: defaultYellow,
 

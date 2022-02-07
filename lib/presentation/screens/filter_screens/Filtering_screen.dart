@@ -17,7 +17,11 @@ class FilteringScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Image.asset('assets/icons/chat.png'),
         backgroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () {
+
+          Navigator.pushNamed(context, SELLER_CHAT_SCREEN);
+
+        },
       ),
       appBar: DefaultShopAppbar(
         centerTitle: true,
@@ -67,51 +71,54 @@ class FilteringScreen extends StatelessWidget {
           Image.asset(
             'assets/image/appbar_half_circle.png',
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, PRICE_FILTERING_SCREEN);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/icons/filter.png'),
-                        DefaultText(
-                          text: 'تصفية',
-                          textStyle: Theme.of(context).textTheme.button,
-                          color: greyText,
-                        )
-                      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, CHOSEN_MARKET_PRICE_FILTERING_SCREEN);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset('assets/icons/filter.png'),
+                          DefaultText(
+                            text: 'تصفية',
+                            textStyle: Theme.of(context).textTheme.button,
+                            color: greyText,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, ORDERING_SCREEN);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/icons/sort.png'),
-                        DefaultText(
-                          text: 'ترتيب',
-                          textStyle: Theme.of(context).textTheme.button,
-                          color: greyText,
-                        )
-                      ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, CHOSEN_MARKET_ORDERING_SCREEN);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset('assets/icons/sort.png'),
+                          DefaultText(
+                            text: 'ترتيب',
+                            textStyle: Theme.of(context).textTheme.button,
+                            color: greyText,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Expanded(
             child: Scrollbar(

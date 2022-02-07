@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/home_first_section_item.dart';
 import 'package:productive_families/presentation/views/home_grid_view_item.dart';
 import 'package:productive_families/presentation/views/home_section_item.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
-import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavigationDrawer(),
+      drawer: const NavigationDrawer(),
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(
@@ -43,7 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/icons/bell.svg',
               )),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, BASKET_SCREEN);
+
+              },
               icon: SvgPicture.asset(
                 'assets/icons/shopping-cart-outline-badged.svg',
               )),
@@ -60,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         child: SvgPicture.asset('assets/icons/contact.svg'),
         backgroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);
+        },
       ),
       body: Column(
         children: [
@@ -82,13 +88,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           text: 'مرحبا ( إسم المستخدم )',
                           textStyle: Theme.of(context).textTheme.headline6,
                         ),
-                        DefaultFormField(
-                            radius: 16,
-                            backgroundColor: formFieldBackGroundGrey,
-                            hintText: 'إبحث عن متجر / طبق..',
-                            controller: searchController,
-                            validator: (text) {},
-                            keyboardType: TextInputType.text),
+                        InkWell(
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          onTap: () {
+                            Navigator.pushNamed(context, SEARCH_SCREEN);
+                          },
+                          child: Container(
+                            alignment: AlignmentDirectional.centerStart,
+                            decoration: BoxDecoration(
+                                color: formFieldBackGroundGrey,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(16))),
+                            width: double.infinity,
+                            height: 50,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 8.0),
+                              child: DefaultText(
+                                textAlign: TextAlign.start,
+                                text: 'إبحث عن متجر / طبق..',
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyText1,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
                         Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
@@ -157,11 +182,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children:
-                            List.generate(20, (index) {
-                              return HomeSectionItem();
-                            })
-                          ,
+                          children: [
+                            HomeFirstSectionItem(),
+
+                            Row(
+                              children: List.generate(20, (index) {
+                                return HomeSectionItem();
+                              }),
+                            ),
+                          ],
                         ),
                       ),
                       Container(
@@ -200,13 +229,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         ListView(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           children: [
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
+                            const HomeGridViewItem(),
+                            const HomeGridViewItem(),
+                            const HomeGridViewItem(),
+                            const HomeGridViewItem(),
+                            const HomeGridViewItem(),
                           ],
                         )
                       ],

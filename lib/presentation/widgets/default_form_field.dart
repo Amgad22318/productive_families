@@ -28,6 +28,7 @@ class DefaultFormField extends StatelessWidget {
   final InputBorder? inputFocusedBorder;
   final InputBorder? inputDisabledBorder;
   final EdgeInsetsGeometry? contentPadding;
+  final AlignmentGeometry? containerAlignment;
 
 
   const DefaultFormField(
@@ -55,13 +56,14 @@ class DefaultFormField extends StatelessWidget {
       this.inputFocusedBorder,
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
-      this.textColor = Colors.white, this.contentPadding})
+      this.textColor = Colors.white, this.contentPadding, this.containerAlignment})
 
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: containerAlignment ,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(

@@ -8,8 +8,10 @@ import 'package:productive_families/presentation/screens/chat/seller_chat_screen
 import 'package:productive_families/presentation/screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/Filtering_screen.dart';
-import 'package:productive_families/presentation/screens/filter_screens/ordering_screen.dart';
-import 'package:productive_families/presentation/screens/filter_screens/price_filtering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/ordering/chosen_market_ordering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/ordering/markets_ordering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
+import 'package:productive_families/presentation/screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
@@ -25,13 +27,14 @@ import 'package:productive_families/presentation/screens/quotations/quotations_s
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
 import 'package:productive_families/presentation/screens/search/search_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/start/start_screen.dart';
 import 'package:productive_families/presentation/screens/terms_and_conditions/terms_and_conditions.dart';
 
 class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    startWidget = SearchScreen();
+    startWidget = StartScreen();
     // startWidget = FilteringScreen();
     // startWidget = OrdersScreen();
   }
@@ -82,13 +85,21 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => FilteringScreen(),
         );
-      case PRICE_FILTERING_SCREEN:
+      case CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => PriceFilteringScreen(),
+          builder: (_) => ChosenMarketPriceFilteringScreen(),
         );
-      case ORDERING_SCREEN:
+      case MARKETS_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => OrderingScreen(),
+          builder: (_) => MarketsPriceFilteringScreen(),
+        );
+      case MARKETS_ORDERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketsOrderingScreen(),
+        );
+      case CHOSEN_MARKET_ORDERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => ChosenMarketOrderingScreen(),
         );
       case CUSTOMER_SERVICES_CHAT_SCREEN:
         return MaterialPageRoute(
@@ -134,7 +145,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => QuotationsScreen(),
         );
-        case SEARCH_SCREEN:
+      case SEARCH_SCREEN:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
         );
