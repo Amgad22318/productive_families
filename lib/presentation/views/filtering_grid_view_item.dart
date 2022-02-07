@@ -64,7 +64,7 @@ class FilteringGridViewItem extends StatelessWidget {
                   children: [
                     Expanded(flex: 7,
                       child: DefaultText(
-                        text: 'اسم المنتج',
+                        text: 'اسم المنتج ',
                         textStyle: Theme.of(context).textTheme.overline,
                       ),
                     ),

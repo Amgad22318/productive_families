@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/market_section_item.dart';
 import 'package:productive_families/presentation/views/markets_grid_view_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
@@ -18,11 +21,60 @@ class Markets extends StatelessWidget {
           Image.asset(
             'assets/image/appbar_half_circle.png',
           ),
- 
           Expanded(
             child: SingleChildScrollView(
               child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, MARKETS_PRICE_FILTERING_SCREEN);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/icons/filter.png'),
+                                  DefaultText(
+                                    text: 'تصفية',
+                                    textStyle: Theme.of(context).textTheme.button,
+                                    color: greyText,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, MARKETS_ORDERING_SCREEN);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/icons/sort.png'),
+                                  DefaultText(
+                                    text: 'ترتيب',
+                                    textStyle: Theme.of(context).textTheme.button,
+                                    color: greyText,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
                   Padding(
                     padding: const EdgeInsetsDirectional.only(start: 8.0),
                     child: DefaultText(
@@ -41,15 +93,13 @@ class Markets extends StatelessWidget {
                       ,
                     ),
                   ),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+                  StaggeredGrid.count(
                     crossAxisCount: 2,
                     mainAxisSpacing: 4,
                     crossAxisSpacing: 2,
-                    childAspectRatio: 1 / 1,
-                    children: List.generate(11, (index) => MarketsGridViewItems()),
-                  )
+                    children: List.generate(11, (index) => StaggeredGridTile.fit(crossAxisCellCount: 1,
+                    child: MarketsGridViewItems())),
+                  ) 
 
                 ],
               ),

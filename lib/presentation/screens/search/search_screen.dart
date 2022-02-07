@@ -8,17 +8,25 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class SearchScreen extends StatelessWidget {
-   SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
   TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultShopAppbar(centerTitle: true,
-        title: DefaultText(textStyle: Theme.of(context).textTheme.headline5,text: 'بحث',),
-        actions: [IconButton(onPressed: () {
-          Navigator.pop(context);
-        }, icon: SvgPicture.asset('assets/icons/back_arrow.svg'))],
+      appBar: DefaultShopAppbar(
+        centerTitle: true,
+        title: DefaultText(
+          textStyle: Theme.of(context).textTheme.headline5,
+          text: 'بحث',
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
+        ],
       ),
       body: Column(
         children: [
@@ -28,7 +36,10 @@ class SearchScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: DefaultSearchBar(
-              prefixIcon: Icon(Icons.search,color: Colors.grey,),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
                 textColor: darkBlue,
                 backgroundColor: Colors.transparent,
                 controller: _searchController,
@@ -37,8 +48,7 @@ class SearchScreen extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SingleChildScrollView(
                 child: StaggeredGrid.count(
                   crossAxisCount: 2,
@@ -46,18 +56,15 @@ class SearchScreen extends StatelessWidget {
                   mainAxisSpacing: 6,
                   children: List.generate(
                       13,
-                          (index) => const StaggeredGridTile.fit(
-                          crossAxisCellCount: 1, child: FilteringGridViewItem())),
+                      (index) => const StaggeredGridTile.fit(
+                          crossAxisCellCount: 1,
+                          child: FilteringGridViewItem())),
                 ),
               ),
             ),
           )
-
-
-
         ],
       ),
     );
-
   }
 }

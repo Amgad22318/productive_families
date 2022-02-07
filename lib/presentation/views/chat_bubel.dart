@@ -39,8 +39,7 @@ const ChatBuble({
                   color: const Color(0xFFD8D8D8),
                 ),
                 child: const Text(
-                  "is simply dummy text of the printing and typesetting industry",
-                  maxLines: 6,
+                  "is simply dummy text of the printing and typesvettinga text of the printing and typesvettinga     text of the printing and typesvettinga     text of the printing and typesvettinga          s as a fsa fsa fas fs fsa fsf af sa fas fsa fsa fsa fas fsaf13 2f112124 saf fsa fsa fas21421421412 421412 42 14 21412  industry",
 
                   style: const TextStyle(
                     color: Colors.black,
@@ -97,7 +96,7 @@ class ChatBubleForFriend extends StatelessWidget {
                   color: color,
                 ),
                 child: const Text(
-                  "is simply dummy",
+                  "is simply dumm 214214 2142 1 421 421 421 421 4 12saf say",
                   style: TextStyle(
                     color: Colors.white,
                   ),

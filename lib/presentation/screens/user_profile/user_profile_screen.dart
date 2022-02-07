@@ -39,8 +39,11 @@ class UserProfileScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      _scaffoldKey.currentState!.showBottomSheet(
-                          (context) => const ProfileBottomSheet());
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) => const ProfileBottomSheet(),
+                      );
                     },
                     icon: const Icon(
                       Icons.edit,
