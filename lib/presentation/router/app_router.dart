@@ -5,6 +5,7 @@ import 'package:productive_families/presentation/screens/about_us/about_us.dart'
 import 'package:productive_families/presentation/screens/basket/basket_screen.dart';
 import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/chat/seller_chat_screen.dart';
+import 'package:productive_families/presentation/screens/choose_account/choose_account.dart';
 import 'package:productive_families/presentation/screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/Filtering_screen.dart';
@@ -17,10 +18,12 @@ import 'package:productive_families/presentation/screens/location/order_locatoin
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
 import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
+import 'package:productive_families/presentation/screens/notifications/notifications_screen.dart';
 import 'package:productive_families/presentation/screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/order_details/order_details_screen.dart';
 import 'package:productive_families/presentation/screens/order_details/order_details_second_screen.dart';
+import 'package:productive_families/presentation/screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/otp/otp_screen.dart';
 import 'package:productive_families/presentation/screens/quotations/quotations_screen.dart';
@@ -34,9 +37,11 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
+
     startWidget = StartScreen();
     // startWidget = FilteringScreen();
     // startWidget = OrdersScreen();
+
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
@@ -148,6 +153,12 @@ class AppRouter {
       case SEARCH_SCREEN:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
+        );
+
+        case NOTIFICATIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>
+              NotificationsScreen(),
         );
       case ORDER_ADDRESS_CONFIRMATION_SCREEN:
         return MaterialPageRoute(

@@ -9,6 +9,7 @@ class DefaultText extends StatelessWidget {
   final TextAlign? textAlign;
   final double? textScaleFactor;
 
+
   const DefaultText(
       {Key? key,
         required this.text,

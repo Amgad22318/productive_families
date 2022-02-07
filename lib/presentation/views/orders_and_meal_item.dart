@@ -36,7 +36,7 @@ class OrdersAndMealItem extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                height: size.height * 0.17,
+                height: size.height * 0.16,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,15 +47,13 @@ class OrdersAndMealItem extends StatelessWidget {
                       children: [
                         DefaultText(
                           text: "اسم المنتج",
-                          textStyle: Theme.of(context).textTheme.headline6,
+                          textStyle: Theme.of(context).textTheme.bodyText1,
                           // textStyle: TextStyle(),
                         ),
                        iconButton,
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+
                     const DefaultText(
                       text: "\$2121",
                       textStyle: TextStyle(),

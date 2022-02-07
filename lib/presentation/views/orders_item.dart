@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrdersItem extends StatelessWidget {
  final Color color;
-  OrdersItem({required this.color
-    ,Key? key}) : super(key: key);
+final bool ifDelete;
+  OrdersItem({this.ifDelete = false,required this.color,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,78 +42,76 @@ class OrdersItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DefaultText(
-                          text: "اسم المتجر",
-                          textStyle: Theme.of(context).textTheme.headline6,
-                          // textStyle: TextStyle(),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Row(
+
+                    Expanded(
+                      child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CircleAvatar(
-                                backgroundColor: color,
-                                radius: 5,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
                               DefaultText(
-                                text: 'قيد التحضير',color: color,
-                                textStyle: TextStyle(
-                                  fontSize: 10, ),
+                                text: "اسم المتجر",
+                                textStyle: Theme.of(context).textTheme.bodyText1,
+                                // textStyle: TextStyle(),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: color,
+                                      radius: 5,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    DefaultText(
+                                      text: 'قيد التحضير',color: color,
+                                      textStyle: const TextStyle(
+                                        fontSize: 10, ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DefaultText(
+                                text: 'السعر الكلى',
+                                textStyle: Theme.of(context).textTheme.bodyText2,
+                              ),
+                              const DefaultText(
+                                text: "\$2121",
+                                textStyle: TextStyle(),
+                                color: defaultYellow,
                               ),
                             ],
                           ),
                         ),
+                         if( color ==Color(0xFFFF0000)  )...[ SizedBox(
+                             height: size.height*0.04,
+                             width: size.width*0.2,
+                             child: DefaultOutlinedButton(onPressed: (){},text: 'إلغاء',)),
+                           SizedBox(width: size.width*0.02,),]else...[SizedBox(width: size.width*0.02,),]
+
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    Expanded(
+                      child: DefaultText(
+                        text:
+                            "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
+                        textStyle: Theme.of(context).textTheme.caption, maxLines: 2,
+                      ),
                     ),
-                    DefaultText(
-                      text: 'السعر الكلى',
-                      textStyle: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    const DefaultText(
-                      text: "\$2121",
-                      textStyle: TextStyle(),
-                      color: defaultYellow,
-                    ),
-                    const DefaultText(
-                      text:
-                          "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
-                      // textStyle: Theme.of(context).textTheme.bodyText1
-                      textStyle: TextStyle(fontSize: 12), maxLines: 2,
-                    ),
-                    // Row(
-                    //   children: [
-                    //     RatingBarIndicator(
-                    //       rating: 2.6,
-                    //       itemBuilder: (context, index) => const Icon(
-                    //         Icons.star,
-                    //         color: Colors.amber,
-                    //       ),
-                    //       itemCount: 5,
-                    //       itemSize: 15.0,
-                    //       direction: Axis.horizontal,
-                    //     ),
-                    //     const SizedBox(
-                    //       width: 10,
-                    //     ),
-                    //     const DefaultText(
-                    //       text: '(تقييم 30)',
-                    //       textStyle: TextStyle(color: Colors.grey,fontSize: 12),
-                    //     ),
-                    //   ],
-                    // ),
                   ],
                 ),
               ),

@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class DottedLineSeparator extends StatelessWidget {
   final double height;
   final Color color;
-
-  const DottedLineSeparator({this.height = 1, this.color = Colors.black});
+  final Axis axis ;
+  const DottedLineSeparator({this.axis = Axis.horizontal,this.height = 1, this.color = Colors.black});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class DottedLineSeparator extends StatelessWidget {
             );
           }),
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          direction: Axis.horizontal,
+          direction: axis,
         );
       },
     );
