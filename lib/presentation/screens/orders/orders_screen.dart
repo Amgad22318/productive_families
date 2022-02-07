@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/orders_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -41,16 +42,17 @@ class OrdersScreen extends StatelessWidget {
               child: Column(
                 children: [
                   OrdersItem(
-                    color: Color(0xFFFF0000),
+                    color: backGroundRed,
+                    ifDelete: true,
                   ),
                   OrdersItem(
-                    color: Color(0xFF15C808),
+                    color: backGroundGreen,
                   ),
                   OrdersItem(
-                    color: Color(0xFFFF0000),
+                    color: backGroundRed,
                   ),
                   OrdersItem(
-                    color: Color(0xFF15C808),
+                    color: backGroundGreen,
                   ),
                 ],
               ),

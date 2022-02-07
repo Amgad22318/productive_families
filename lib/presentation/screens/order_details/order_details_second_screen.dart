@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/order_details_item.dart';
+import 'package:productive_families/presentation/views/order_details_second_screen_item.dart';
 import 'package:productive_families/presentation/views/orders_item.dart';
 import 'package:productive_families/presentation/views/payment_summary_item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -11,7 +12,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
 
 class OrderDetailsSecondScreen extends StatelessWidget {
-  const OrderDetailsSecondScreen({Key? key}) : super(key: key);
+   OrderDetailsSecondScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +45,12 @@ class OrderDetailsSecondScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                OrderDetailsItem(color: backGroundRed),
-                OrderDetailsItem(color: backGroundRed),
-                OrderDetailsItem(color: backGroundRed),
-                OrderDetailsItem(color: backGroundRed),
+                OrderDetailsSecondScreenItem(color: backGroundRed),
+                OrderDetailsSecondScreenItem(color: backGroundRed),
+                OrderDetailsSecondScreenItem(color: backGroundRed),
+                OrderDetailsSecondScreenItem(color: backGroundRed),
+
+
               ],
             ),
           ),

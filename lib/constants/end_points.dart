@@ -37,8 +37,9 @@ const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
 const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
 const QUOTATIONS_SCREEN = '/quotations_screen';
 const CHOSEN_MARKET_SCREEN = '/chosen_market_screen';
-const FILTERING_SCREEN = '/FILTERING_SCREEN';
-const PRICE_FILTERING_SCREEN = '/PRICE_FILTERING_SCREEN';
-const ORDERING_SCREEN = '/ORDERING_SCREEN';
+const FILTERING_SCREEN = '/filtering_screen';
+const PRICE_FILTERING_SCREEN = '/price_filtering_screen';
+const ORDERING_SCREEN = '/ordering_screen';
+const NOTIFICATIONS_SCREEN = '/notifications_screen';
 
 
