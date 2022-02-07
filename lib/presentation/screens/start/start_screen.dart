@@ -58,6 +58,7 @@ class StartScreen extends StatelessWidget {
                         Navigator.pushNamed(context,SHOP_LAYOUT );
                       },
                       text: 'الدخول كزائر',
+                      textColor: defaultYellow,
                     ),
                     const SizedBox(
                       height: 16,

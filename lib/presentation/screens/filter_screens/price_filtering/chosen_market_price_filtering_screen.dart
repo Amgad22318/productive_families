@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/ordering_screen_filter_Item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+import 'package:productive_families/presentation/widgets/favorite_button_with_number.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class PriceFilteringScreen extends StatefulWidget {
-  const PriceFilteringScreen({Key? key}) : super(key: key);
+class ChosenMarketPriceFilteringScreen extends StatefulWidget {
+  const ChosenMarketPriceFilteringScreen({Key? key}) : super(key: key);
 
   @override
-  State<PriceFilteringScreen> createState() => _PriceFilteringScreenState();
+  State<ChosenMarketPriceFilteringScreen> createState() => _ChosenMarketPriceFilteringScreenState();
 }
 
-class _PriceFilteringScreenState extends State<PriceFilteringScreen> {
+class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilteringScreen> {
   late SfRangeValues _initialValues;
 
   late double firstSliderValue;
   late double secondSliderValue;
   late double max;
   late double min;
+  FilteringScreenPriceFilterRadioValues? _character = FilteringScreenPriceFilterRadioValues.offers;
+
 
   @override
   void initState() {
@@ -50,35 +53,7 @@ class _PriceFilteringScreenState extends State<PriceFilteringScreen> {
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
-        leading: Stack(
-          alignment: AlignmentDirectional.topEnd,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                )),
-            Positioned.directional(
-              textDirection: TextDirection.rtl,
-              top: 10,
-              end: 5,
-              child: Container(
-                height: 14,
-                width: 14,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24),
-                    color: Colors.white,
-                    border: Border.all(width: 2, color: lightDefaultYellow)),
-                child: const Center(
-                    child: DefaultText(
-                  text: '5',
-                  textStyle: TextStyle(fontSize: 7),
-                )),
-              ),
-            )
-          ],
-        ),
+        leading: FavoriteButtonWithNumber(),
       ),
       body: Column(
         children: [
@@ -91,7 +66,8 @@ class _PriceFilteringScreenState extends State<PriceFilteringScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {                      Navigator.pop(context);
+                    },
                     icon: Image.asset('assets/icons/filter.png')),
                 DefaultText(
                   textStyle: Theme.of(context).textTheme.headline6,
@@ -127,8 +103,31 @@ class _PriceFilteringScreenState extends State<PriceFilteringScreen> {
                     ),
                   ),
                 ),
-                OrderingScreenFilterItem(text: 'العروض'),
-                OrderingScreenFilterItem(text: 'الأقرب للمنزل'),
+                ListTile(
+                  title: const Text('العروض'),
+                  leading: Radio<FilteringScreenPriceFilterRadioValues>(
+                    value: FilteringScreenPriceFilterRadioValues.offers,
+                    groupValue: _character,
+                    onChanged: (FilteringScreenPriceFilterRadioValues? value) {
+                      setState(() {
+                        _character = value;
+                      });
+                    },
+                  ),
+                ),
+                ListTile(
+                  title: const Text('الأقرب للمنزل'),
+                  leading: Radio<FilteringScreenPriceFilterRadioValues>(
+                    value: FilteringScreenPriceFilterRadioValues.closeToHome,
+                    groupValue: _character,
+                    onChanged: (FilteringScreenPriceFilterRadioValues? value) {
+                      setState(() {
+                        _character = value;
+                      });
+                    },
+                  ),
+                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 64),

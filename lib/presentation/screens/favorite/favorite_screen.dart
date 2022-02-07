@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:productive_families/presentation/views/category_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -27,14 +28,12 @@ class FavoriteScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                    StaggeredGrid.count(
                       crossAxisCount: 2,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
-                      childAspectRatio: 1 / 1.35,
-                      children: List.generate(11, (index) => CategoryItem()),
+                      children: List.generate(11, (index) => StaggeredGridTile.fit(crossAxisCellCount: 1,
+                      child: CategoryItem())),
                     ),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -45,6 +46,15 @@ class _AboutProductState extends State<AboutProduct> {
             icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
           )
         ],
+        leading:           IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, BASKET_SCREEN);
+
+            },
+            icon: SvgPicture.asset(
+              'assets/icons/shopping-cart-outline-badged.svg',
+            )),
+
       ),
       body: Column(
         children: [
@@ -228,6 +238,7 @@ class _AboutProductState extends State<AboutProduct> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 50),
                           child: DefaultMaterialButton(onPressed: () {
+                            Navigator.pushNamed(context, BASKET_SCREEN);
 
                           },height: 50,text: 'اضافة للسلة',),
                         )
