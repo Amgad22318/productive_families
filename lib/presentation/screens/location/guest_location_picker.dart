@@ -4,6 +4,7 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
+import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class GuestLocationPicker extends StatelessWidget {
   GuestLocationPicker({Key? key}) : super(key: key);
@@ -11,42 +12,38 @@ class GuestLocationPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
         centerTitle: true,
-        title:
-        Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-
             Flexible(
               child: DefaultMaterialButton(
                 height: 50,
                 background: backGroundWhite,
-                onPressed: (){},
-                child:Row(
+                onPressed: () {},
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
-                  SvgPicture.asset(
-                    "assets/icons/shop.svg",
-                    color: Colors.black,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Text(
-                    'المتاجر',
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                ],
-              ),),
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/shop.svg",
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'المتاجر',
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
             ),
-
             const SizedBox(
               width: 10,
             ),
@@ -54,10 +51,10 @@ class GuestLocationPicker extends StatelessWidget {
               child: DefaultMaterialButton(
                 height: 50,
                 background: backGroundWhite,
-                onPressed: (){},
-                child:Row(
+                onPressed: () {},
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
+                  children: [
                     SvgPicture.asset(
                       "assets/icons/patch-question-fll.svg",
                       color: Colors.black,
@@ -70,25 +67,21 @@ class GuestLocationPicker extends StatelessWidget {
                       style: TextStyle(color: Colors.black),
                     ),
                   ],
-                ),),
-
-
+                ),
+              ),
             ),
           ],
         ),
       ),
-
       body: Stack(
         children: [
-          Expanded(
-            child: Container(
-
-              color: Colors.white30,
-              // map location
-              child: const  Image(
-                image: AssetImage('assets/image/map.png'),
-                fit: BoxFit.fill,
-              ),
+          SizedBox(
+            height: size.height * 0.7,
+            width: double.maxFinite,
+            // map location
+            child: const Image(
+              image: AssetImage('assets/image/map.png'),
+              fit: BoxFit.fill,
             ),
           ),
           Column(
@@ -98,8 +91,10 @@ class GuestLocationPicker extends StatelessWidget {
             children: [
               const Center(
                   child: Image(
-                      image: AssetImage('assets/image/appbar_half_circle.png'))),
+                      image:
+                          AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
+                width: double.maxFinite,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(32),
@@ -107,7 +102,6 @@ class GuestLocationPicker extends StatelessWidget {
                   ),
                   color: darkBlue,
                 ),
-                width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -116,24 +110,24 @@ class GuestLocationPicker extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'أدخل موقعك الحالى',
-                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          DefaultText(
+                            text: 'أدخل موقعك الحالى',
+                            textStyle: Theme.of(context).textTheme.subtitle1,
+                            color: Colors.white,
                           ),
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
-                            hintText: '',
-                            prefixIcon:  const Icon(Icons.location_on_outlined),
+                              hintText: '',
+                              prefixIcon:
+                                  const Icon(Icons.location_on_outlined),
                               controller: locationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),
                           const SizedBox(height: 15),
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
-
                             onPressed: () {},
                             height: size.height * 0.06,
-
                           )
                         ],
                       ),
