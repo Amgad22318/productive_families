@@ -13,7 +13,7 @@ import 'package:productive_families/presentation/screens/filter_screens/ordering
 import 'package:productive_families/presentation/screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/location/delivery_representative_locator_screen.dart';
-import 'package:productive_families/presentation/screens/location/location_picker.dart';
+import 'package:productive_families/presentation/screens/location/guest_location_picker.dart';
 import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
@@ -37,7 +37,7 @@ class AppRouter {
 
   AppRouter() {
     // startWidget = StartScreen();
-    startWidget = OtpScreen();
+    startWidget = GuestLocationPicker();
   }
 
   Route? onGenerateRoute(RouteSettings settings) {

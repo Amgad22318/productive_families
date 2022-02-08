@@ -22,7 +22,7 @@ class GuestLocationPicker extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
+             /* GestureDetector(
                 onTap: () {},
                 child: Container(
                   decoration: BoxDecoration(
@@ -32,7 +32,7 @@ class GuestLocationPicker extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
-                      children:  [
+                      children: [
                         SvgPicture.asset(
                           "assets/icons/shop.svg",
                           color: Colors.black,
@@ -48,36 +48,54 @@ class GuestLocationPicker extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),*/
+              Flexible(
+                child: DefaultMaterialButton(
+                  height: 50,
+                  background: backGroundWhite,
+                  onPressed: (){},
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:  [
+                    SvgPicture.asset(
+                      "assets/icons/shop.svg",
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'المتاجر',
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),),
               ),
+
               const SizedBox(
                 width: 10,
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children:  [
-                        SvgPicture.asset(
-                          "assets/icons/patch-question-fll.svg",
-                          color: Colors.black,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const Text(
-                          'استفسارات',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              Flexible(
+                child: DefaultMaterialButton(
+                  height: 50,
+                  background: backGroundWhite,
+                  onPressed: (){},
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:  [
+                      SvgPicture.asset(
+                        "assets/icons/patch-question-fll.svg",
+                        color: Colors.black,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text(
+                        'استفسارات',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),),
               ),
             ],
           ),
