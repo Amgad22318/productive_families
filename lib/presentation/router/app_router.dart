@@ -30,6 +30,7 @@ import 'package:productive_families/presentation/screens/quotations/quotations_s
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
 import 'package:productive_families/presentation/screens/search/search_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/start/start_screen.dart';
 import 'package:productive_families/presentation/screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/display_representative_price_item.dart';
 
