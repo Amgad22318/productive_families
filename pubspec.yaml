@@ -39,7 +39,7 @@ dependencies:
   bloc: ^8.0.1
   flutter_bloc: ^8.0.0
   conditional_builder_null_safety: ^0.0.6
-  otp_text_field: ^1.1.1
+  flutter_otp_text_field: ^1.0.0
   flutter_svg: ^1.0.3
   video_player: ^2.2.16
   flutter_rating_bar: ^4.0.0

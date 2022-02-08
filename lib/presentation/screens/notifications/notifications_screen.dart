@@ -49,29 +49,13 @@ class NotificationsScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children:const [
+                children: const [
                   AppNotificationItem(),
-                  SizedBox(
-                    height: 10,
-                  ),
                   DisplayRepresentativePriceItem(),
-                  SizedBox(
-                    height: 10,
-                  ),AppNotificationItem(),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  AppNotificationItem(),
                   DisplayRepresentativePriceItem(),
-                  SizedBox(
-                    height: 10,
-                  ),AppNotificationItem(),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  AppNotificationItem(),
                   DisplayRepresentativePriceItem(),
-                  SizedBox(
-                    height: 10,
-                  ),
                 ],
               ),
             )

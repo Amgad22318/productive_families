@@ -6,8 +6,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrdersItem extends StatelessWidget {
  final Color color;
-final bool ifDelete;
-  OrdersItem({this.ifDelete = false,required this.color,Key? key}) : super(key: key);
+  OrdersItem({required this.color,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,66 +18,62 @@ final bool ifDelete;
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
-            Container(
-              height: size.height * 0.2,
-              width: size.width * 0.4,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  image: DecorationImage(
-                      image: AssetImage(
-                        'assets/image/meal.png',
-                      ),
-                      fit: BoxFit.fill)),
+            Expanded(
+              child: Container(
+                height: size.height * 0.2,
+                width: size.width * 0.4,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    image: DecorationImage(
+                        image: AssetImage(
+                          'assets/image/meal.png',
+                        ),
+                        fit: BoxFit.cover)),
+              ),
             ),
             const SizedBox(
-              width: 10,
+              width: 10
             ),
             Expanded(
               child: Container(
-                height: size.height * 0.17,
+                height: size.height * 0.2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    Expanded(
-                      child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              DefaultText(
-                                text: "اسم المتجر",
-                                textStyle: Theme.of(context).textTheme.bodyText1,
-                                // textStyle: TextStyle(),
+                    Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            DefaultText(
+                              text: "اسم المتجر",
+                              textStyle: Theme.of(context).textTheme.bodyText1,
+                              // textStyle: TextStyle(),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: color,
+                                    radius: 5,
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  DefaultText(
+                                    text: 'قيد التحضير',color: color,
+                                    textStyle: const TextStyle(
+                                      fontSize: 10, ),
+                                  ),
+                                ],
                               ),
-                              Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundColor: color,
-                                      radius: 5,
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    DefaultText(
-                                      text: 'قيد التحضير',color: color,
-                                      textStyle: const TextStyle(
-                                        fontSize: 10, ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-
-                    ),
+                            ),
+                          ],
+                        ),
                     Row(
                       children: [
                         Expanded(
@@ -97,11 +92,11 @@ final bool ifDelete;
                             ],
                           ),
                         ),
-                         if( color ==Color(0xFFFF0000)  )...[ SizedBox(
+                         if( color == backGroundRed  )...[ SizedBox(
                              height: size.height*0.04,
                              width: size.width*0.2,
                              child: DefaultOutlinedButton(onPressed: (){},text: 'إلغاء',)),
-                           SizedBox(width: size.width*0.02,),]else...[SizedBox(width: size.width*0.02,),]
+                           SizedBox(width: size.width*0.02,),]
 
                       ],
                     ),
@@ -109,7 +104,7 @@ final bool ifDelete;
                       child: DefaultText(
                         text:
                             "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
-                        textStyle: Theme.of(context).textTheme.caption, maxLines: 2,
+                        textStyle: Theme.of(context).textTheme.caption, maxLines: 5,
                       ),
                     ),
                   ],

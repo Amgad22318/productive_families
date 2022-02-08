@@ -10,15 +10,16 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){},
       child: Container(
         padding: const EdgeInsets.all(10),
-        height: size.height * 0.20,
+        margin: EdgeInsets.only(top: 10),
+
         width: double.infinity,
         color: const Color(0xFFFFF4BE),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +29,8 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
                     )
               ],
             ),
-            SizedBox(
-              width: size.width * 0.05,
+            const SizedBox(
+              width: 10,
             ),
             Expanded(
               child: Column(
@@ -39,9 +40,7 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
                       maxLines: 1,
                       text: 'إشعار من التطبيق',
                       textStyle: Theme.of(context).textTheme.bodyText1),
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -52,9 +51,7 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
                               text: 'اسم المندوب',
                               textStyle: Theme.of(context).textTheme.bodyText1,
                           ),
-                          SizedBox(
-                            height: size.height * 0.01,
-                          ),
+
                           DefaultText(
                               color: backGroundRed,
                               maxLines: 1,
@@ -64,9 +61,7 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
+
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -80,7 +75,7 @@ class DisplayRepresentativePriceItem extends StatelessWidget {
                         itemSize: 20.0,
                         direction: Axis.horizontal,
                       ),
-                      SizedBox(width: size.width * 0.01,),
+
                       const DefaultText(
                         text: '(تقييم 30)',
                         textStyle: TextStyle(color: Colors.grey, fontSize:10),

@@ -5,8 +5,8 @@ import 'package:productive_families/presentation/widgets/default_form_field.dart
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 
-class LocationPicker extends StatelessWidget {
-  LocationPicker({Key? key}) : super(key: key);
+class GuestLocationPicker extends StatelessWidget {
+  GuestLocationPicker({Key? key}) : super(key: key);
   TextEditingController locationController = TextEditingController();
 
   @override
@@ -17,67 +17,70 @@ class LocationPicker extends StatelessWidget {
         height: 80,
         centerTitle: true,
         title:
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/shop.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'المتاجر',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ],
+        SizedBox(
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children:  [
+                        SvgPicture.asset(
+                          "assets/icons/shop.svg",
+                          color: Colors.black,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'المتاجر',
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/patch-question-fll.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'استفسارات',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
+              const SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children:  [
+                        SvgPicture.asset(
+                          "assets/icons/patch-question-fll.svg",
+                          color: Colors.black,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'استفسارات',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
 

@@ -10,10 +10,11 @@ class AppNotificationItem extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.all(10),
-      height: size.height * 0.12,
+      margin: EdgeInsets.only(top: 10),
       width: double.infinity,
-      color: Color(0xFFECECEC),
+      color: greyText.withOpacity(0.2),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -23,28 +24,19 @@ class AppNotificationItem extends StatelessWidget {
                   )
             ],
           ),
-          SizedBox(
-            width: size.width * 0.05,
-          ),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: DefaultText(
-                    maxLines: 1,
-                      text: 'إشعار من التطبيق',
-                      textStyle: Theme.of(context).textTheme.bodyText1),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: DefaultText(
-                    maxLines: 2,
-                      text: 'النص تص تجريبي لتيبي لتحسين تصميمالنص تص تجريبي ل لتيبي لتحسين تصميمالنص تص لتحسين تصميم',
-                      textStyle: Theme.of(context).textTheme.caption),
-
-                ),
+                DefaultText(
+                    text: 'إشعار من التطبيق',
+                    textStyle: Theme.of(context).textTheme.bodyText1),
+                DefaultText(
+                    maxLines: 5,
+                    text:
+                        'النص تص تجريبي لتيبي لتحسين تصميمالنص تص تجريبي ل لتيبي لتحسين تصميمالنص تص لتaحسين تصميم',
+                    textStyle: Theme.of(context).textTheme.caption),
               ],
             ),
           )
