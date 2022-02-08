@@ -36,34 +36,16 @@ class NotificationsScreen extends StatelessWidget {
             const Image(
                 image: AssetImage('assets/image/appbar_half_circle.png')),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsetsDirectional.only(top: 4),
-                child: ListView(
-                  children:const [
-                    AppNotificationItem(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    DisplayRepresentativePriceItem(),
-                    SizedBox(
-                      height: 10,
-                    ),AppNotificationItem(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    DisplayRepresentativePriceItem(),
-                    SizedBox(
-                      height: 10,
-                    ),AppNotificationItem(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    DisplayRepresentativePriceItem(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
+
+              child: ListView(
+                children: const [
+                  AppNotificationItem(),
+                  DisplayRepresentativePriceItem(),
+                  AppNotificationItem(),
+                  DisplayRepresentativePriceItem(),
+                  AppNotificationItem(),
+                  DisplayRepresentativePriceItem(),
+                ],
               ),
             )
           ],

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:otp_text_field/style.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
-import 'package:otp_text_field/otp_text_field.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -67,6 +66,7 @@ class _OtpScreenState extends State<OtpScreen> {
         },
       );
     }
+
     _onFailure() {
       return showDialog(
         context: context,
@@ -118,15 +118,14 @@ class _OtpScreenState extends State<OtpScreen> {
       );
     }
 
-
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: darkBlue,
         actions: [
           Row(
             children: [
-
               DefaultText(
                 color: Colors.white,
                 text: 'رجوع',
@@ -137,7 +136,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   Navigator.pop(context);
                 },
                 padding: EdgeInsetsDirectional.zero,
-                icon:  SvgPicture.asset(
+                icon: SvgPicture.asset(
                   "assets/icons/back_arrow.svg",
                   color: Colors.white,
                 ),
@@ -151,7 +150,6 @@ class _OtpScreenState extends State<OtpScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               Image.asset("assets/image/msg_background.png"),
               const SizedBox(
                 height: 20,
@@ -164,37 +162,39 @@ class _OtpScreenState extends State<OtpScreen> {
                     DefaultText(
                       color: aboutGrey,
                       text: 'تحقق تسجيل الدخول',
-                      textStyle: Theme.of(context).textTheme.headline6,
+                      textStyle: Theme.of(context).textTheme.bodyText1,
                     ),
                     const SizedBox(
                       height: 5,
                     ),
                     DefaultText(
                       color: Colors.white38,
-                      text: 'برجاء إدخال كود التحقق الذى تم ارساله الى رقم هاتفك الذى قمت بادخاله',
-                      textStyle: Theme.of(context).textTheme.headline6,
+                      text:
+                          'برجاء إدخال كود التحقق الذى تم ارساله الى رقم هاتفك الذى قمت بادخاله',
+                      textStyle: Theme.of(context).textTheme.caption,
                       maxLines: 2,
                     ),
-
                     Column(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                          ),
-                          child: OTPTextField(
+                        OtpTextField(
+                          focusedBorderColor: defaultYellow,
+                          cursorColor: defaultYellow,
+                          textStyle: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(color: Colors.white),
 
-                            length: 4,
-                            width: MediaQuery.of(context).size.width,
-                            fieldWidth: 80,
-                            style: TextStyle(fontSize: 17),
-                            textFieldAlignment: MainAxisAlignment.spaceAround,
-                            fieldStyle: FieldStyle.underline,
-                            onCompleted: (pin) {
-                              print("Completed: " + pin);
-                            },
-                          ),
+                          fieldWidth: 50.0,
+                          fillColor: backGroundWhite,
+                          numberOfFields: 4,
+                          borderColor: backGroundWhite,
+                          //set to true to show as box or false to show as dash
+                          showFieldAsBox: true,
+                          //runs when a code is typed in
+                          onCodeChanged: (String code) {
+                            //handle validation or checks here
+                          },
+                          //runs when every textfield is filled
                         ),
                         const SizedBox(
                           height: 30,
@@ -202,7 +202,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         DefaultText(
                           text: 'إعادة إرسال الكود؟',
                           color: defaultYellow,
-                          textStyle: Theme.of(context).textTheme.headline6,
+                          textStyle: Theme.of(context).textTheme.bodyText1,
                         ),
                         const SizedBox(
                           height: 30,
@@ -211,7 +211,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 100),
                           child: DefaultMaterialButton(
                             onPressed: () {
-                              msgSuccess? _onSuccess():_onFailure();
+                              msgSuccess ? _onSuccess() : _onFailure();
                             },
                             text: 'تسجيل الدخول',
                           ),
@@ -222,7 +222,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         DefaultText(
                           text: 'تعديل رقم الهاتف',
                           color: defaultYellow,
-                          textStyle: Theme.of(context).textTheme.headline6,
+                          textStyle: Theme.of(context).textTheme.bodyText1,
                         ),
                       ],
                     ),

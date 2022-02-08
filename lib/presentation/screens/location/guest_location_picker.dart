@@ -11,6 +11,9 @@ class GuestLocationPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -19,62 +22,57 @@ class GuestLocationPicker extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/shop.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'المتاجر',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ],
+
+
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: (){},
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
+                  SvgPicture.asset(
+                    "assets/icons/shop.svg",
+                    color: Colors.black,
                   ),
-                ),
-              ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  const Text(
+                    'المتاجر',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),),
             ),
+
             const SizedBox(
-              width: 20,
+              width: 10,
             ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/patch-question-fll.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'استفسارات',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: (){},
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
+                    SvgPicture.asset(
+                      "assets/icons/patch-question-fll.svg",
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'استفسارات',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),),
+
+
             ),
           ],
         ),
@@ -84,7 +82,7 @@ class GuestLocationPicker extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              width: double.infinity,
+
               color: Colors.white30,
               // map location
               child: const  Image(
@@ -132,9 +130,10 @@ class GuestLocationPicker extends StatelessWidget {
                           const SizedBox(height: 15),
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
-                            onPressed: () {
 
-                            },
+                            onPressed: () {},
+                            height: size.height * 0.06,
+
                           )
                         ],
                       ),
