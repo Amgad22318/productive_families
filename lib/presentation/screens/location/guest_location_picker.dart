@@ -11,7 +11,9 @@ class GuestLocationPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -20,6 +22,7 @@ class GuestLocationPicker extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
 
             Flexible(
               child: DefaultMaterialButton(
@@ -68,6 +71,8 @@ class GuestLocationPicker extends StatelessWidget {
                     ),
                   ],
                 ),),
+
+
             ),
           ],
         ),
@@ -77,6 +82,7 @@ class GuestLocationPicker extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+
               color: Colors.white30,
               // map location
               child: const  Image(
@@ -124,8 +130,10 @@ class GuestLocationPicker extends StatelessWidget {
                           const SizedBox(height: 15),
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
+
                             onPressed: () {},
                             height: size.height * 0.06,
+
                           )
                         ],
                       ),

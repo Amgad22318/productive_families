@@ -5,6 +5,7 @@ import 'package:productive_families/presentation/screens/about_us/about_us.dart'
 import 'package:productive_families/presentation/screens/basket/basket_screen.dart';
 import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/chat/seller_chat_screen.dart';
+import 'package:productive_families/presentation/screens/choose_account/choose_account.dart';
 import 'package:productive_families/presentation/screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/Filtering_screen.dart';
@@ -36,13 +37,16 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    // startWidget = StartScreen();
-    startWidget = GuestLocationPicker();
+
+    startWidget = ChooseAccount();
+    // startWidget = FilteringScreen();
+    // startWidget = OrdersScreen();
+
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case endpoints.START_SCREEN:
+      case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
       case endpoints.LOGIN_SCREEN:
         return MaterialPageRoute(builder: (_) => LoginScreen());
@@ -165,6 +169,14 @@ class AppRouter {
             paypalRadioValue: 'shopPay',
             shopPayRadioValue: 'paypal',
           ),
+        );
+      case endpoints.START_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => StartScreen()
+        );
+      case endpoints.GUEST_LOCATION_PICKER:
+        return MaterialPageRoute(
+            builder: (_) => GuestLocationPicker()
         );
       default:
         return null;

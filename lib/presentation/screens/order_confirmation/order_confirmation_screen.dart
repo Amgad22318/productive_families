@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
@@ -88,16 +89,17 @@ class OrderConfirmationScreen extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.headline6,
                         ),
                         const SizedBox(
-                          width: 20,
+                          width: 8,
                         ),
-                        DefaultIconButton(
-                          background: backGroundWhite,
-                          onPressed: () {},
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, SPECIFY_LOCATION);
+                          },
                           icon: SvgPicture.asset(
                             "assets/icons/map-location.svg",
                             color: Colors.black,
-                            width: 25,
-                            height:25,
+                            width: 24,
+                            height:24,
                           ),
                         )
                       ],
@@ -125,7 +127,9 @@ class OrderConfirmationScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     DefaultMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+Navigator.pushNamed(context, ORDER_ADDRESS_CONFIRMATION_SCREEN);
+                      },
                       text: 'تأكيد الطلب',
                     )
                   ],

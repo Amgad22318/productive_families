@@ -14,7 +14,7 @@ const PRODUCT='products/';
 
 
 /////////// Screens PushNamed Names
-const START_SCREEN='/';
+const START_SCREEN='START_SCREEN';
 const LOGIN_SCREEN='/login';
 const REGISTER_SCREEN='/register';
 const TERMS_AND_CONDITIONS='/terms_and_conditions';
@@ -32,6 +32,7 @@ const DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN = '/delivery_representative_locator
 const SPECIFY_LOCATION = '/specify_location';
 const BASKET_SCREEN = '/basket_screen';
 const ORDER_LOCATION = '/order_location';
+const GUEST_LOCATION_PICKER = '/GUEST_LOCATION_PICKER';
 const ORDER_DETAILS_SCREEN = '/order_details_screen';
 const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
 const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
@@ -45,6 +46,7 @@ const CHOSEN_MARKET_ORDERING_SCREEN = '/CHOSEN_MARKET_ORDERING_SCREEN';
 const MARKETS_ORDERING_SCREEN = '/MARKETS_ORDERING_SCREEN';
 const SEARCH_SCREEN = '/SEARCH_SCREEN';
 const DISPLAY_REPRESENTATIVE_PRICE_ITEM = '/displayrepresentativepriceItem';
+const CHOOSE_ACCOUNT_SCREEN = '/CHOOSE_ACCOUNT_SCREEN';
 
 
 
