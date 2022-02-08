@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/views/basket_meal_item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
@@ -60,7 +60,10 @@ class BasketScreen extends StatelessWidget {
                         children: [
                           Flexible(
                               child: DefaultOutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+
+                            },
                             text: 'إضافة عناصر',
                           )),
                           const SizedBox(
@@ -68,7 +71,10 @@ class BasketScreen extends StatelessWidget {
                           ),
                           Flexible(
                               child: DefaultMaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context,ORDER_CONFIRMATION_SCREEN );
+
+                            },
                             text: 'تأكيد الطلب',
                           )),
                         ],

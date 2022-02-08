@@ -55,7 +55,7 @@ class StartScreen extends StatelessWidget {
                     DefaultOutlinedButton(
                       onPressed: () {
 
-                        Navigator.pushNamed(context,SHOP_LAYOUT );
+                        Navigator.pushNamed(context,GUEST_LOCATION_PICKER );
                       },
                       text: 'الدخول كزائر',
                       textColor: defaultYellow,

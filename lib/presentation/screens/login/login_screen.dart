@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -94,9 +95,7 @@ class LoginScreen extends StatelessWidget {
                             DefaultFormField(
                                 controller: nameOrPhoneController,
                                 validator: (text) {
-                                  if (text!.isEmpty) {
-                                    return 'ادخل الإسم او رقم الهاتف';
-                                  }
+
                                 },
                                 keyboardType: TextInputType.text),
                             DefaultText(
@@ -108,9 +107,7 @@ class LoginScreen extends StatelessWidget {
                             DefaultFormField(
                                 controller: passwordController,
                                 validator: (text) {
-                                  if (text!.isEmpty) {
-                                    return 'ادخل كلمة المرور';
-                                  }
+
                                 },
                                 keyboardType: TextInputType.text),
                             const SizedBox(
@@ -118,7 +115,8 @@ class LoginScreen extends StatelessWidget {
                             ),
                             DefaultMaterialButton(
                               onPressed: () {
-                                if (loginFormKey.currentState!.validate()) {}
+                                Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+
                               },
                               text: 'تسجيل الدخول',
                             ),
