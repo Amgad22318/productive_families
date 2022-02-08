@@ -31,7 +31,7 @@ const ChatBuble({
                     const EdgeInsets.only(left: 16, top: 15, bottom: 15, right: 32),
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: const BoxDecoration(
-                  borderRadius: const BorderRadius.only(
+                  borderRadius:  BorderRadius.only(
                     topRight: Radius.circular(18),
                     bottomRight: Radius.circular(18),
                     bottomLeft: Radius.circular(18),
@@ -41,7 +41,7 @@ const ChatBuble({
                 child: const Text(
                   "is simply dummy text of the printing and typesvettinga text of the printing and typesvettinga     text of the printing and typesvettinga     text of the printing and typesvettinga          s as a fsa fsa fas fs fsa fsf af sa fas fsa fsa fsa fas fsaf13 2f112124 saf fsa fsa fas21421421412 421412 42 14 21412  industry",
 
-                  style: const TextStyle(
+                  style:  TextStyle(
                     color: Colors.black,
                   ),
                 ),
@@ -49,8 +49,8 @@ const ChatBuble({
             ),
           ),
           Column(
-            children: [
-              const CircleAvatar(
+            children: const [
+              CircleAvatar(
                 radius: 20,
                 backgroundColor: Color(0xFFD8D8D8),
               )

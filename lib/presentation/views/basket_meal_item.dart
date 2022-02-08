@@ -30,7 +30,7 @@ class BasketMealItem extends StatelessWidget {
                       topRight: Radius.circular(20)),
                   image: DecorationImage(
                       image: AssetImage(
-                        'assets/image/meal.png',
+                        'assets/image/user_photo.png',
                       ),
                       fit: BoxFit.fill)),
             ),

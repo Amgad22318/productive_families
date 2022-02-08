@@ -109,7 +109,6 @@ class _OrderAddressConfirmationScreenState extends State<OrderAddressConfirmatio
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       DefaultText(
                         text: 'طريقة الدفع',
                         textStyle: Theme
@@ -139,8 +138,6 @@ class _OrderAddressConfirmationScreenState extends State<OrderAddressConfirmatio
                                     });
                                   },
                                 ),
-
-
                             ),
                           ),
                           Flexible(

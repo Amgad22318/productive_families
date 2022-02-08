@@ -13,11 +13,9 @@ import 'package:productive_families/presentation/screens/filter_screens/ordering
 import 'package:productive_families/presentation/screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/location/delivery_representative_locator_screen.dart';
-import 'package:productive_families/presentation/screens/location/guest_location_picker.dart';
-import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
+import 'package:productive_families/presentation/screens/location/order_location.dart';
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
-import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
 import 'package:productive_families/presentation/screens/notifications/notifications_screen.dart';
 import 'package:productive_families/presentation/screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/order_confirmation/order_confirmation_screen.dart';
@@ -28,7 +26,9 @@ import 'package:productive_families/presentation/screens/otp/otp_screen.dart';
 import 'package:productive_families/presentation/screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
 import 'package:productive_families/presentation/screens/search/search_screen.dart';
+import 'package:productive_families/presentation/screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/start/start_screen.dart';
 import 'package:productive_families/presentation/screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/display_representative_price_item.dart';
 
@@ -37,13 +37,17 @@ class AppRouter {
 
   AppRouter() {
     // startWidget = StartScreen();
-    startWidget = OrderAddressConfirmationScreen();
+    startWidget = QuotationsScreen();
+
   }
+
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case endpoints.START_SCREEN:
+      case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
+      case endpoints.START_SCREEN:
+        return MaterialPageRoute(builder: (_) => StartScreen());
       case endpoints.LOGIN_SCREEN:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case endpoints.REGISTER_SCREEN:
@@ -80,7 +84,7 @@ class AppRouter {
         );
       case endpoints.MEALS_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => MealsScreen(),
+          builder: (_) => SelectedFavoriteScreen(),
         );
       case endpoints.CHOSEN_MARKET_SCREEN:
         return MaterialPageRoute(

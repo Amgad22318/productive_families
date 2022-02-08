@@ -40,17 +40,12 @@ class OrderLocation extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                width: double.infinity,
-                color: Colors.white30,
-                child: const  Image(
-                  image: AssetImage('assets/image/map.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+          SizedBox(
+            height: size.height*0.9,
+            width: double.maxFinite,
+            // map location
+            child: const Image(image: AssetImage('assets/image/map.png'),
+              fit: BoxFit.fill,),
           ),
           Column(crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,mainAxisSize: MainAxisSize.max,

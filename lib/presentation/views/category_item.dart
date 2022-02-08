@@ -32,7 +32,7 @@ class CategoryItem extends StatelessWidget {
                     children: [
                       Expanded(
                           child: Image.asset(
-                            'assets/image/meal.png',
+                            'assets/image/selected_favorite.png',
                             fit: BoxFit.cover,
                           )),
                       Container(color: defaultYellow,height: 1.5,),
