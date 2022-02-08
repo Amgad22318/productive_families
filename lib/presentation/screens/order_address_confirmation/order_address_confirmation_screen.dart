@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/payment_summary_item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -7,10 +8,9 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrderAddressConfirmationScreen extends StatelessWidget {
-  OrderAddressConfirmationScreen(
-      {required this.paypalRadioValue,
-      required this.shopPayRadioValue,
-      Key? key})
+  OrderAddressConfirmationScreen({required this.paypalRadioValue,
+    required this.shopPayRadioValue,
+    Key? key})
       : super(key: key);
 
   String paypalRadioValue;
@@ -18,7 +18,9 @@ class OrderAddressConfirmationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -66,17 +68,23 @@ class OrderAddressConfirmationScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: DefaultText(
                     text: 'العنوان',
-                    textStyle: Theme.of(context).textTheme.headline6,
+                    textStyle: Theme
+                        .of(context)
+                        .textTheme
+                        .headline6,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: DefaultText(
                     text:
-                        'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.تطبيق للربط بين ال',
+                    'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.تطبيق للربط بين ال',
                     color: greyText,
                     maxLines: 4,
-                    textStyle: Theme.of(context).textTheme.caption,
+                    textStyle: Theme
+                        .of(context)
+                        .textTheme
+                        .caption,
                   ),
                 ),
                 const SizedBox(
@@ -95,7 +103,10 @@ class OrderAddressConfirmationScreen extends StatelessWidget {
                     children: [
                       DefaultText(
                         text: 'طريقة الدفع',
-                        textStyle: Theme.of(context).textTheme.headline6,
+                        textStyle: Theme
+                            .of(context)
+                            .textTheme
+                            .headline6,
                         color: Colors.black,
                       ),
                       const SizedBox(
@@ -140,7 +151,10 @@ class OrderAddressConfirmationScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       bottom: 20, right: 20, left: 20, top: 30),
                   child: DefaultMaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, ORDER_DETAILS_SCREEN, (route) => false);
+                    },
                     text: 'تأكيد الطلب',
                   ),
                 )
