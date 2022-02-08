@@ -30,13 +30,14 @@ import 'package:productive_families/presentation/screens/search/search_screen.da
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/screens/start/start_screen.dart';
 import 'package:productive_families/presentation/screens/terms_and_conditions/terms_and_conditions.dart';
+import 'package:productive_families/presentation/views/display_representative_price_item.dart';
 
 class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    startWidget = StartScreen();
-    // startWidget = FilteringScreen();
+    // startWidget = StartScreen();
+    startWidget = NotificationsScreen();
     // startWidget = OrdersScreen();
   }
 
@@ -49,6 +50,10 @@ class AppRouter {
       case endpoints.REGISTER_SCREEN:
         return MaterialPageRoute(
           builder: (_) => RegisterScreen(),
+        );
+        case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
+        return MaterialPageRoute(
+          builder: (_) => DisplayRepresentativePriceItem(),
         );
       case endpoints.OTP_SCREEN:
         return MaterialPageRoute(
