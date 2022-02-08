@@ -37,7 +37,7 @@ class AppRouter {
 
   AppRouter() {
     // startWidget = StartScreen();
-    startWidget = GuestLocationPicker();
+    startWidget = OrderAddressConfirmationScreen();
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
@@ -161,10 +161,7 @@ class AppRouter {
         );
       case endpoints.ORDER_ADDRESS_CONFIRMATION_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => OrderAddressConfirmationScreen(
-            paypalRadioValue: 'shopPay',
-            shopPayRadioValue: 'paypal',
-          ),
+          builder: (_) => OrderAddressConfirmationScreen(),
         );
       default:
         return null;
