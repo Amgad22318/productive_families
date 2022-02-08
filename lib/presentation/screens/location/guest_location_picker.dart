@@ -17,88 +17,59 @@ class GuestLocationPicker extends StatelessWidget {
         height: 80,
         centerTitle: true,
         title:
-        SizedBox(
-          width: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-             /* GestureDetector(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: (){},
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
+                  SvgPicture.asset(
+                    "assets/icons/shop.svg",
+                    color: Colors.black,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/shop.svg",
-                          color: Colors.black,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const Text(
-                          'المتاجر',
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
+                  const SizedBox(
+                    width: 5,
                   ),
-                ),
-              ),*/
-              Flexible(
-                child: DefaultMaterialButton(
-                  height: 50,
-                  background: backGroundWhite,
-                  onPressed: (){},
-                  child:Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:  [
+                  const Text(
+                    'المتاجر',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),),
+            ),
+
+            const SizedBox(
+              width: 10,
+            ),
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: (){},
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
                     SvgPicture.asset(
-                      "assets/icons/shop.svg",
+                      "assets/icons/patch-question-fll.svg",
                       color: Colors.black,
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     const Text(
-                      'المتاجر',
-                      style: const TextStyle(color: Colors.black),
+                      'استفسارات',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ],
                 ),),
-              ),
-
-              const SizedBox(
-                width: 10,
-              ),
-              Flexible(
-                child: DefaultMaterialButton(
-                  height: 50,
-                  background: backGroundWhite,
-                  onPressed: (){},
-                  child:Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:  [
-                      SvgPicture.asset(
-                        "assets/icons/patch-question-fll.svg",
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'استفسارات',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
 
@@ -106,7 +77,6 @@ class GuestLocationPicker extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              width: double.infinity,
               color: Colors.white30,
               // map location
               child: const  Image(
