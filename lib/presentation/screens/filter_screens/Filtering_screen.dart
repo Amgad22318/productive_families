@@ -6,6 +6,7 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/filtering_grid_view_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+import 'package:productive_families/presentation/widgets/favorite_button_with_number.dart';
 
 class FilteringScreen extends StatelessWidget {
   const FilteringScreen({Key? key}) : super(key: key);
@@ -36,35 +37,7 @@ class FilteringScreen extends StatelessWidget {
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
-        leading: Stack(
-          alignment: AlignmentDirectional.topEnd,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                )),
-            Positioned.directional(
-              textDirection: TextDirection.rtl,
-              top: 10,
-              end: 5,
-              child: Container(
-                height: 14,
-                width: 14,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24),
-                    color: Colors.white,
-                    border: Border.all(width: 2, color: lightDefaultYellow)),
-                child: Center(
-                    child: DefaultText(
-                  text: '5',
-                  textStyle: TextStyle(fontSize: 7),
-                )),
-              ),
-            )
-          ],
-        ),
+        leading: FavoriteButtonWithNumber(),
       ),
       body: Column(
         children: [
