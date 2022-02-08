@@ -64,11 +64,23 @@ class OrdersItem extends StatelessWidget {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  DefaultText(
-                                    text: 'قيد التحضير',color: color,
-                                    textStyle: const TextStyle(
-                                      fontSize: 10, ),
-                                  ),
+                                 if(color == backGroundRed)...[ DefaultText(
+                                   text: 'قيد الانتظار',color: color,
+                                   textStyle: const TextStyle(
+                                     fontSize: 10, ),
+                                 ),]else if(color == backGroundAccentYellow)...[
+                                   DefaultText(
+                                     text: 'قيد التحضير',color: color,
+                                     textStyle: const TextStyle(
+                                       fontSize: 10, ),
+                                   ),
+                                 ]else...[
+                                   DefaultText(
+                                     text: 'قيد التوصيل',color: color,
+                                     textStyle: const TextStyle(
+                                       fontSize: 10, ),
+                                   ),
+                                 ]
                                 ],
                               ),
                             ),

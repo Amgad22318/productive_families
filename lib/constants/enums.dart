@@ -4,3 +4,4 @@ enum  MarketOrderingScreenRadioValues {bestSeller,mostRated,newest,oldest}
 enum  FilteringScreenPriceFilterRadioValues { closeToHome,offers }
 enum OrderAdderssConfirmationRadioValues{paypal,shopPay}
 
+
