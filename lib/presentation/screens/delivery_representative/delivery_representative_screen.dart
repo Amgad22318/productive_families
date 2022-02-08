@@ -138,6 +138,7 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
 
                       },
                       text: 'تأكيد الطلب',
+                      textColor: darkBlue,
                     )
                   ],
                 ),

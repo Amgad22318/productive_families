@@ -40,78 +40,80 @@ class QuotationsItem extends StatelessWidget {
           ),
           Expanded(
             flex: 2,
-            child: SingleChildScrollView(
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DefaultText(
+                  text: "اسم المنتج",
+                  textStyle: Theme.of(context).textTheme.bodyText1,
+                  // textStyle: TextStyle(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        Column(
-                          children: [
-                            DefaultText(
-                              text: "اسم المنتج",
-                              textStyle: Theme.of(context).textTheme.headline6,
-                              // textStyle: TextStyle(),
-                            ),
-                            DefaultText(
-                              text: "عرض السعر",
-                              textStyle: Theme.of(context).textTheme.bodyText1,
-                              color: backGroundRed,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: size.width * 0.05,
-                        ),
-                        const DefaultText(
-                          text: '(تقييم 30)',
-                          textStyle: TextStyle(color: Colors.grey, fontSize: 8),
-                        ),
-                        RatingBarIndicator(
-                          rating: 2.6,
-                          itemBuilder: (context, index) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          itemCount: 5,
-                          itemSize: 15.0,
-                          direction: Axis.horizontal,
+
+                        DefaultText(
+                          text: "عرض السعر",
+                          textStyle: Theme.of(context).textTheme.caption,
+                          color: backGroundRed,
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: DefaultMaterialButton(
-                            onPressed: () {},
-                            text: 'قبول',
-                            background: darkBlue,
-                            textColor: backGroundWhite,
-
-
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20,top: 10,bottom: 10),
+                      child: Row(
+                        children: [
+                          const DefaultText(
+                            text: '(تقييم 30)',
+                            textStyle: TextStyle(color: Colors.grey, fontSize: 8),
                           ),
-                          height: size.height * 0.04,
-                          width: size.width * 0.28,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        SizedBox(
-                          child: DefaultOutlinedButton(
-                            onPressed: () {},
-                            text: 'رفض',
+                          RatingBarIndicator(
+                            rating: 2.6,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 15.0,
+                            direction: Axis.horizontal,
                           ),
-                          height: size.height * 0.04,
-                          width: size.width * 0.28,
-                        )
-                      ],
-                    )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      child: DefaultMaterialButton(
+                        onPressed: () {},
+                        text: 'قبول',
+                        background: darkBlue,
+                        textColor: backGroundWhite,
+
+
+                      ),
+                      height: size.height * 0.04,
+                      width: size.width * 0.28,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      child: DefaultOutlinedButton(
+                        onPressed: () {},
+                        text: 'رفض',
+                      ),
+                      height: size.height * 0.04,
+                      width: size.width * 0.28,
+                    )
+                  ],
+                )
+              ],
             ),
           )
         ],
