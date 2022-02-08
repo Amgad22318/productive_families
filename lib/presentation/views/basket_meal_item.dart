@@ -51,7 +51,7 @@ class BasketMealItem extends StatelessWidget {
                           flex: 2,
                           child: DefaultText(
                             text: "اسم المتجر",
-                            textStyle: Theme.of(context).textTheme.headline6,
+                            textStyle: Theme.of(context).textTheme.bodyText1,
                             // textStyle: TextStyle(),
                           ),
                         ),
@@ -61,8 +61,6 @@ class BasketMealItem extends StatelessWidget {
                               height: 15,
                             ),
                             Container(
-                              width: 65,
-                              height: 20,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: orderFormFieldBackGroundGrey),
@@ -71,10 +69,10 @@ class BasketMealItem extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
+                                    onTap: (){},
                                     child: Container(
                                       height: 24,
                                       width: 24,
-
                                       decoration: BoxDecoration(
                                           color: darkBlue,
                                           borderRadius: BorderRadius.circular(40)
@@ -85,6 +83,7 @@ class BasketMealItem extends StatelessWidget {
                                         size: 16,
                                       ),
                                     ),
+
                                   ),
                                   const SizedBox(
                                     width: 4,
@@ -98,6 +97,7 @@ class BasketMealItem extends StatelessWidget {
                                     width: 4,
                                   ),
                                   InkWell(
+                                    onTap: (){},
                                     child: Container(
                                       height: 24,
                                       width: 24,

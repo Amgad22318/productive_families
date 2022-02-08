@@ -128,6 +128,7 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
                     DefaultMaterialButton(
                       onPressed: () {},
                       text: 'تأكيد الطلب',
+                      textColor: darkBlue,
                     )
                   ],
                 ),

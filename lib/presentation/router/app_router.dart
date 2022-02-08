@@ -37,7 +37,7 @@ class AppRouter {
 
   AppRouter() {
     // startWidget = StartScreen();
-    startWidget = ChooseAccount();
+    startWidget = QuotationsScreen();
 
   }
 
