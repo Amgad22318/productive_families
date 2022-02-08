@@ -39,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+
+              },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
               )),

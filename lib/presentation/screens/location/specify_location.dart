@@ -12,7 +12,6 @@ class SpecifyLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -83,8 +82,10 @@ class SpecifyLocation extends StatelessWidget {
                           const SizedBox(height: 15),
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
-                            onPressed: () {},
-                            height: size.height * 0.06,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            height: 50,
                           )
                         ],
                       ),
