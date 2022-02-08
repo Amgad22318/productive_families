@@ -4,23 +4,25 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
 
-class MealsScreen extends StatelessWidget {
-  const MealsScreen({Key? key}) : super(key: key);
+class SelectedFavoriteScreen extends StatelessWidget {
+  const SelectedFavoriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
         centerTitle: true,
         actions: [
-          GestureDetector(
-              child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: SvgPicture.asset('assets/icons/back_arrow.svg')),
-              onTap: () {
+          IconButton(
+              icon: SvgPicture.asset(
+                "assets/icons/back_arrow.svg",
+                color: Colors.black,
+              ),
+              onPressed: () {
                 Navigator.pop(context);
+
               })
+
         ],
         title: const DefaultText(
           text: 'طعام',

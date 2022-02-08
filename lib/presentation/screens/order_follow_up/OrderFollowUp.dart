@@ -14,7 +14,6 @@ class OrderFollowUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -42,7 +41,7 @@ class OrderFollowUp extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                flex: 10,
+                flex: 1,
                 child: Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -58,9 +57,9 @@ class OrderFollowUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 15,
+                flex: 1,
                 child: Container(
-                  color: Colors.white30,
+                  color: Colors.white,
                   // child: const Center(child: Text('map')),
                 ),
               ),
@@ -68,40 +67,36 @@ class OrderFollowUp extends StatelessWidget {
           ),
 
 
-          Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: size.height * 0.02, horizontal: size.width * 0.04),
-            child:SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                      height: size.height*0.10,
-                      child:const Image(image: AssetImage('assets/image/clock.png'))
-                  ),
-                  const SizedBox(height: 5,),
-                  DefaultText(text: '45 min', textStyle: Theme.of(context).textTheme.bodyText1),
-                  const SizedBox(height: 5,),
-                  DefaultText(text: 'ميعاد التوصيل', textStyle: Theme.of(context).textTheme.bodyText1),
-                  const SizedBox(height: 15,),
-                  const Card(
-                    shadowColor: greyText,
-                    elevation: 8,
-                    child: OrderFollowUpItem(),
-                  ),
-                  SizedBox(height: size.height*0.06,),
-                  DefaultMaterialButton(
-                    onPressed: (){
-                      showModalBottomSheet(
-                          shape:const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
-                          ),
-                          isScrollControlled: true,
-                          context: context, builder: (context)=>OrderTrackingBottomSheet());
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                    height: 60,
+                    width: 60,
+                    child:Image(image: AssetImage('assets/image/clock.png'))
+                ),
+                const SizedBox(height: 5,),
+                DefaultText(text: '45 min', textStyle: Theme.of(context).textTheme.bodyText1),
+                const SizedBox(height: 5,),
+                DefaultText(text: 'ميعاد التوصيل', textStyle: Theme.of(context).textTheme.bodyText1),
+                const SizedBox(height: 15,),
+                const Card(
+                  shadowColor: greyText,
+                  elevation: 8,
+                  child: OrderFollowUpItem(),
+                ),
+                DefaultMaterialButton(
+                  onPressed: (){
+                    showModalBottomSheet(
+                        shape:const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
+                        ),
+                        isScrollControlled: true,
+                        context: context, builder: (context)=>OrderTrackingBottomSheet());
 
 
-                    },text: "متابعة الطلب على الخريطه",)
-                ],
-              ),
+                  },text: "متابعة الطلب على الخريطه",)
+              ],
             ),
           )
         ],
