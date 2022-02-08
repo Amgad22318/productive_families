@@ -75,7 +75,15 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                               hintText: '',
-                              prefixIcon:  const Icon(Icons.location_on_outlined),
+                              prefixIcon:  Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: SvgPicture.asset(
+                                  'assets/icons/map-location.svg',
+                                  color: Colors.white,
+                                  width: 24,
+                                  height: 24,
+                                ),
+                              ),
                               controller: deliveryRepresentativeLocationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),

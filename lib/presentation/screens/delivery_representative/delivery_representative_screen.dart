@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
@@ -60,7 +61,10 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
                         ),
                         DefaultIconButton(
                           background: backGroundWhite,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN);
+
+                          },
                           icon: SvgPicture.asset(
                             "assets/icons/map-location.svg",
                             color: Colors.black,
@@ -90,7 +94,10 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
                         ),
                         DefaultIconButton(
                           background: backGroundWhite,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN);
+
+                          },
                           icon: SvgPicture.asset(
                             "assets/icons/map-location.svg",
                             color: Colors.black,
@@ -126,7 +133,10 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 60),
                     DefaultMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, QUOTATIONS_SCREEN);
+
+                      },
                       text: 'تأكيد الطلب',
                       textColor: darkBlue,
                     )

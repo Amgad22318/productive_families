@@ -3,8 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
+  radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(darkBlue)),
+    colorScheme: const ColorScheme.light(
+        secondary: defaultYellow,
 
-  colorScheme:const ColorScheme.light(secondary:defaultYellow) ,
+    ),
     primaryColor: darkBlue,
     scaffoldBackgroundColor: backGroundWhite,
     appBarTheme: const AppBarTheme(
@@ -22,12 +25,10 @@ ThemeData lightTheme = ThemeData(
         indicator: UnderlineTabIndicator(
             borderSide: BorderSide(color: defaultYellow))),
     scrollbarTheme: ScrollbarThemeData(
-
       crossAxisMargin: 4,
       interactive: true,
       showTrackOnHover: true,
       thickness: MaterialStateProperty.all(8),
       radius: const Radius.circular(16),
       thumbColor: MaterialStateProperty.all(defaultYellow),
-    )
-);
+    ));
