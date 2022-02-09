@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/profile_bottom_sheet_item.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
@@ -140,7 +141,10 @@ class OrderTrackingBottomSheet extends StatelessWidget {
                   maxLines: 5,
                 ),
                 const SizedBox(height: 16,),
-                DefaultMaterialButton(onPressed: (){},text: 'تقييم',),
+                DefaultMaterialButton(onPressed: (){
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, ORDERES_SCREEN, (route) => false);
+                },text: 'تقييم',),
               ],
             ),
           ),

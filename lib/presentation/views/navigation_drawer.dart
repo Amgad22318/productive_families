@@ -63,7 +63,7 @@ class NavigationDrawer extends StatelessWidget {
             text: 'طلباتك',
             icon: 'assets/icons/shopping-bag (1).png',
             onTap: () {
-              Navigator.pushNamed(context, ORDERED_MEALS);
+              Navigator.pushNamed(context, ORDERES_SCREEN);
             },
           ),
           DrawerListTiles(

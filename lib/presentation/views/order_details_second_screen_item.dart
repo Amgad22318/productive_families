@@ -38,60 +38,60 @@ class OrderDetailsSecondScreenItem extends StatelessWidget {
                             topRight: Radius.circular(20)),
                         image: DecorationImage(
                             image: AssetImage(
-                              'assets/image/selected_favorite.png',
+                              'assets/image/meal.png',
                             ),
                             fit: BoxFit.cover)),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
             Expanded(
               flex: 2,
-              child: SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            DefaultText(
-                              text: "اسم المنتج",
-                              textStyle: Theme.of(context).textTheme.bodyText1,
-                              // textStyle: TextStyle(),
-                            ),
-                           DefaultTextButton(text: 'قيم المنتج', onPressed:  () {
-                             showModalBottomSheet(
-                                 shape:const RoundedRectangleBorder(
-                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
-                                 ),
-                                 isScrollControlled: true,
-                                 context: context, builder: (context)=>OrderDetailsBottomSheet());
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              DefaultText(
+                                text: "اسم المنتج",
+                                textStyle: Theme.of(context).textTheme.bodyText1,
+                                // textStyle: TextStyle(),
+                              ),
+                             DefaultTextButton(text: 'قيم المنتج', onPressed:  () {
+                               showModalBottomSheet(
+                                   shape:const RoundedRectangleBorder(
+                                       borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
+                                   ),
+                                   isScrollControlled: true,
+                                   context: context, builder: (context)=>OrderDetailsBottomSheet());
 
-                           },
-                           textColor: darkBlue,)
+                             },
+                             textColor: darkBlue,)
 
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const DefaultText(
-                        text: "\$2121",
-                        textStyle: TextStyle(),
-                        color: defaultYellow,
-                      ),
-                      const DefaultText(
-                        text:
-                            "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
-                        textStyle: TextStyle(fontSize: 12),
-                        maxLines: 2,
-                      ),
-                    ],
+                        const DefaultText(
+                          text: "\$2121",
+                          textStyle: TextStyle(),
+                          color: defaultYellow,
+                        ),
+                        const DefaultText(
+                          text:
+                              "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
+                          textStyle: TextStyle(fontSize: 12),
+                          maxLines: 2,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
