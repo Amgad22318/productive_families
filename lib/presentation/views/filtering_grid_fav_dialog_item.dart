@@ -44,7 +44,7 @@ class FilteringGridFavDialogItem extends StatelessWidget {
                               children: [
                                 Expanded(
                                     child: Image.asset(
-                                  'assets/image/selected_favorite.png',
+                                  'assets/image/meal.png',
                                   fit: BoxFit.cover,
                                 )),
                                 Container(

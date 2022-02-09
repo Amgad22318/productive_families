@@ -9,7 +9,7 @@ import 'package:productive_families/presentation/views/payment_summary_item.dart
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
-import 'package:productive_families/presentation/views/orders_and_meal_item.dart';
+import 'package:productive_families/presentation/views/selected_favorite_item.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   const OrderDetailsScreen({Key? key}) : super(key: key);
