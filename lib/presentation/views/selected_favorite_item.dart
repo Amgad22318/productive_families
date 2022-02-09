@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class OrdersAndMealItem extends StatelessWidget {
-  Widget iconButton = Container();
-   OrdersAndMealItem({required this.iconButton,Key? key}) : super(key: key);
+class SelectedFavoriteItem extends StatelessWidget {
+  SelectedFavoriteItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +26,13 @@ class OrdersAndMealItem extends StatelessWidget {
                       topRight: Radius.circular(20)),
                   image: DecorationImage(
                       image: AssetImage(
-                        'assets/image/selected_favorite.png',
+                        'assets/image/meal.png',
                       ),
                       fit: BoxFit.fill)),
             ),
-            const SizedBox(
-              width: 10,
-            ),
             Expanded(
-              child: Container(
-                height: size.height * 0.16,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,25 +41,39 @@ class OrdersAndMealItem extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DefaultText(
-                          text: "اسم المنتج",
-                          textStyle: Theme.of(context).textTheme.bodyText1,
-                          // textStyle: TextStyle(),
+                        Expanded(
+                          child: DefaultText(
+                            text: "اسم المنتج",
+                            textStyle: Theme.of(context).textTheme.bodyText1,
+                            // textStyle: TextStyle(),
+                          ),
                         ),
-                       iconButton,
+                        Flexible(
+                          flex: 0,
+                          child: DefaultIconButton(
+                              width: 36,
+                              height: 36,
+                              background: darkBlue,
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.favorite,
+                                color: lightDefaultYellow,
+                                size: 18,
+                              )),
+                        ),
                       ],
                     ),
-
                     const DefaultText(
                       text: "\$2121",
                       textStyle: TextStyle(),
                       color: defaultYellow,
                     ),
-                    const DefaultText(
+                    DefaultText(
+                      color: greyText,
                       text:
-                          "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
-                      // textStyle: Theme.of(context).textTheme.bodyText1
-                      textStyle: TextStyle(fontSize: 12), maxLines: 2,
+                          "تطبيق للربط بين الاسر المنتجه ومساعدتهم  على توفير على توفير بيئه",
+                      textStyle: Theme.of(context).textTheme.caption,
+                      maxLines: 2,
                     ),
                     Row(
                       children: [
@@ -77,12 +87,14 @@ class OrdersAndMealItem extends StatelessWidget {
                           itemSize: 15.0,
                           direction: Axis.horizontal,
                         ),
-                       const SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
-                       const DefaultText(
-                          text: '(تقييم 30)',
-                          textStyle: TextStyle(color: Colors.grey,fontSize: 12),
+                         DefaultText(
+                           color: greyText,
+                          text: '(تقييم 3550)',
+                          textStyle: Theme.of(context).textTheme.overline,
+
                         ),
                       ],
                     ),

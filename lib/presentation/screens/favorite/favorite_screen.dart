@@ -32,7 +32,7 @@ class FavoriteScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
-                      children: List.generate(11, (index) => StaggeredGridTile.fit(crossAxisCellCount: 1,
+                      children: List.generate(11, (index) => const StaggeredGridTile.fit(crossAxisCellCount: 1,
                       child: MarketFavoriteItem())),
                     ),
                   ],

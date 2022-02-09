@@ -6,7 +6,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class FilteringGridFavDialog extends StatelessWidget {
   FilteringGridFavDialog({Key? key}) : super(key: key);
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,10 @@ class FilteringGridFavDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             DefaultSearchBar(
+              border: Border.all(width: 1, color: Colors.grey),
                 textColor: darkBlue,
                 backgroundColor: Colors.transparent,
                 controller: _searchController,
-                validator: (text) {},
                 keyboardType: TextInputType.text),
             Expanded(
               child: Padding(

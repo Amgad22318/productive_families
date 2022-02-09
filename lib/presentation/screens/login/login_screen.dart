@@ -8,9 +8,9 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  TextEditingController nameOrPhoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+ final TextEditingController nameOrPhoneController = TextEditingController();
+ final TextEditingController passwordController = TextEditingController();
+ final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,8 @@ class LoginScreen extends StatelessWidget {
                             ),
                             DefaultMaterialButton(
                               onPressed: () {
-                                Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+
+                                Navigator.pushNamedAndRemoveUntil(context, GUEST_LOCATION_PICKER, (route) => false);
 
                               },
                               text: 'تسجيل الدخول',

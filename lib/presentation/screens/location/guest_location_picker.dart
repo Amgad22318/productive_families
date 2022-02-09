@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -11,7 +12,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class GuestLocationPicker extends StatelessWidget {
   GuestLocationPicker({Key? key}) : super(key: key);
-  TextEditingController locationController = TextEditingController();
+final  TextEditingController locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +136,10 @@ class GuestLocationPicker extends StatelessWidget {
                           const SizedBox(height: 15),
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+
+                            },
                             height: size.height * 0.06,
                           )
                         ],

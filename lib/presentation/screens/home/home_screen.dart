@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/home_first_section_item.dart';
 import 'package:productive_families/presentation/views/home_grid_view_item.dart';
 import 'package:productive_families/presentation/views/home_section_item.dart';
 import 'package:productive_families/presentation/views/navigation_drawer.dart';
+import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -29,7 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  final TextEditingController _searchController = TextEditingController();
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<FormState> searchFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
-
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
@@ -49,7 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, BASKET_SCREEN);
-
               },
               icon: SvgPicture.asset(
                 'assets/icons/shopping-cart-outline-badged.svg',
@@ -91,30 +95,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           text: 'مرحبا ( إسم المستخدم )',
                           textStyle: Theme.of(context).textTheme.headline6,
                         ),
-                        InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          onTap: () {
-                            Navigator.pushNamed(context, SEARCH_SCREEN);
-                          },
-                          child: Container(
-                            alignment: AlignmentDirectional.centerStart,
-                            decoration: BoxDecoration(
-                                color: formFieldBackGroundGrey,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(16))),
-                            width: double.infinity,
-                            height: 50,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(start: 8.0),
-                              child: DefaultText(
-                                textAlign: TextAlign.start,
-                                text: 'إبحث عن متجر / طبق..',
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyText1,
-                                color: Colors.grey,
-                              ),
+                        Form(
+                          key: searchFormKey,
+                          child: DefaultSearchBar(
+                            height: null,
+                            textColor: darkBlue,
+                            backgroundColor: orderFollowUpGreyCheck,
+                            controller: _searchController,
+                            keyboardType: TextInputType.text,
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              color: Colors.grey,
                             ),
+                            validator: (text) {
+                              if (text!.isEmpty) {
+                                return 'البحث فارغ';
+                              }
+                            },
+                            onFieldSubmitted: (text) {
+                              if (searchFormKey.currentState!.validate()) {
+                                navigateTo(context, SearchScreen(searchText: text));
+                              }
+                            },
                           ),
                         ),
                         Stack(
@@ -187,7 +189,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           children: [
                             HomeFirstSectionItem(),
-
                             Row(
                               children: List.generate(20, (index) {
                                 return HomeSectionItem();
@@ -233,12 +234,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ListView(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          children: [
-                            const HomeGridViewItem(),
-                            const HomeGridViewItem(),
-                            const HomeGridViewItem(),
-                            const HomeGridViewItem(),
-                            const HomeGridViewItem(),
+                          children: const [
+                            HomeGridViewItem(),
+                            HomeGridViewItem(),
+                            HomeGridViewItem(),
+                            HomeGridViewItem(),
+                            HomeGridViewItem(),
                           ],
                         )
                       ],

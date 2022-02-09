@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/views/app_notification_item.dart';
 import 'package:productive_families/presentation/views/display_representative_price_item.dart';
-
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class NotificationsScreen extends StatelessWidget {
-  NotificationsScreen({Key? key}) : super(key: key);
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class NotificationsScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                navigateToAndFinish(context,ShopLayout());
+                navigateToAndFinish(context,const ShopLayout());
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
             )

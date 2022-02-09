@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/profile_bottom_sheet.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
@@ -11,11 +12,11 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class UserProfileScreen extends StatelessWidget {
   UserProfileScreen({Key? key}) : super(key: key);
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
 
-  GlobalKey<FormState> profileFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> profileFormKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -146,7 +147,9 @@ class UserProfileScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 padding: EdgeInsets.zero,
                 iconSize: 51,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, SPECIFY_LOCATION);
+                },
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

@@ -8,7 +8,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
   DeliveryRepresentativeLocatorScreen({Key? key}) : super(key: key);
-  TextEditingController deliveryRepresentativeLocationController = TextEditingController();
+  final TextEditingController deliveryRepresentativeLocationController = TextEditingController();
 
 
   @override

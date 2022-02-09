@@ -7,7 +7,7 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -21,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: SafeArea(
         child: Form(
-          key: loginFormKey,
+          key: registerFormKey,
           child: SingleChildScrollView(
             child: Container(
               decoration: const BoxDecoration(

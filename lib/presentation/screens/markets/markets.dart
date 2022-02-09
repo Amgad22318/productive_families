@@ -97,7 +97,7 @@ class Markets extends StatelessWidget {
                     crossAxisCount: 2,
                     mainAxisSpacing: 4,
                     crossAxisSpacing: 2,
-                    children: List.generate(11, (index) => StaggeredGridTile.fit(crossAxisCellCount: 1,
+                    children: List.generate(11, (index) => const StaggeredGridTile.fit(crossAxisCellCount: 1,
                     child: MarketsGridViewItems())),
                   ) 
 

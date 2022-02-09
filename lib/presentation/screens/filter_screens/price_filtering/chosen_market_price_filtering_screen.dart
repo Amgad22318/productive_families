@@ -53,7 +53,7 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
-        leading: FavoriteButtonWithNumber(),
+        leading: const FavoriteButtonWithNumber(),
       ),
       body: Column(
         children: [

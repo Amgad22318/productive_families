@@ -39,7 +39,7 @@ class QuotationsScreen extends StatelessWidget {
             const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
             Expanded(
                 child: ListView(
-              children: [
+              children:const [
                 QuotationsItem(),
                 QuotationsItem(),
                 QuotationsItem(),
