@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
+import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -25,7 +28,10 @@ class GuestLocationPicker extends StatelessWidget {
               child: DefaultMaterialButton(
                 height: 50,
                 background: backGroundWhite,
-                onPressed: () {},
+                onPressed: () {
+                  navigateToAndFinish(context, const ShopLayout(index: 1,));
+
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -51,7 +57,10 @@ class GuestLocationPicker extends StatelessWidget {
               child: DefaultMaterialButton(
                 height: 50,
                 background: backGroundWhite,
-                onPressed: () {},
+                onPressed: () {
+                  navigateToAndFinish(context,  CustomerServicesChatScreen());
+
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

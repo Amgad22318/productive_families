@@ -5,6 +5,7 @@ import 'package:productive_families/presentation/screens/about_us/about_us.dart'
 import 'package:productive_families/presentation/screens/basket/basket_screen.dart';
 import 'package:productive_families/presentation/screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/chat/seller_chat_screen.dart';
+import 'package:productive_families/presentation/screens/choose_account/choose_account.dart';
 import 'package:productive_families/presentation/screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/filter_screens/Filtering_screen.dart';
@@ -14,20 +15,21 @@ import 'package:productive_families/presentation/screens/filter_screens/price_fi
 import 'package:productive_families/presentation/screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/location/guest_location_picker.dart';
-import 'package:productive_families/presentation/screens/location/order_locatoin.dart';
+import 'package:productive_families/presentation/screens/location/order_location.dart';
 import 'package:productive_families/presentation/screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/login/login_screen.dart';
-import 'package:productive_families/presentation/screens/meal/meals_screen.dart';
 import 'package:productive_families/presentation/screens/notifications/notifications_screen.dart';
 import 'package:productive_families/presentation/screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/order_details/order_details_screen.dart';
 import 'package:productive_families/presentation/screens/order_details/order_details_second_screen.dart';
+import 'package:productive_families/presentation/screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/otp/otp_screen.dart';
 import 'package:productive_families/presentation/screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/register/register_screen.dart';
 import 'package:productive_families/presentation/screens/search/search_screen.dart';
+import 'package:productive_families/presentation/screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/screens/start/start_screen.dart';
 import 'package:productive_families/presentation/screens/terms_and_conditions/terms_and_conditions.dart';
@@ -37,14 +39,15 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    // startWidget = StartScreen();
-    startWidget = OrderAddressConfirmationScreen();
+    startWidget = ChooseAccount();
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case endpoints.START_SCREEN:
+      case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
+      case endpoints.START_SCREEN:
+        return MaterialPageRoute(builder: (_) => StartScreen());
       case endpoints.LOGIN_SCREEN:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case endpoints.REGISTER_SCREEN:
@@ -79,9 +82,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => OrdersScreen(),
         );
-      case endpoints.MEALS_SCREEN:
+      case endpoints.SELECTED_FAVORITE_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => MealsScreen(),
+          builder: (_) => SelectedFavoriteScreen(),
         );
       case endpoints.CHOSEN_MARKET_SCREEN:
         return MaterialPageRoute(
@@ -163,6 +166,14 @@ class AppRouter {
       case endpoints.ORDER_ADDRESS_CONFIRMATION_SCREEN:
         return MaterialPageRoute(
           builder: (_) => OrderAddressConfirmationScreen(),
+        );
+        case endpoints.ORDER_FOLLOW_UP:
+        return MaterialPageRoute(
+          builder: (_) => OrderFollowUp(),
+        );
+      case endpoints.GUEST_LOCATION_PICKER:
+        return MaterialPageRoute(
+          builder: (_) => GuestLocationPicker(),
         );
       default:
         return null;

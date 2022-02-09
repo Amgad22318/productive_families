@@ -38,7 +38,7 @@ class OrderDetailsSecondScreenItem extends StatelessWidget {
                             topRight: Radius.circular(20)),
                         image: DecorationImage(
                             image: AssetImage(
-                              'assets/image/meal.png',
+                              'assets/image/selected_favorite.png',
                             ),
                             fit: BoxFit.cover)),
                   ),
