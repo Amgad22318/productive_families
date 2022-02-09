@@ -14,12 +14,12 @@ class OrderFollowUpItem extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.symmetric(vertical:  10.0),
       child: Row(
         children: [
           if (isDone) ...[
             const CircleAvatar(
-              backgroundColor: greyText,
+              backgroundColor: orderFollowUpGreyCheck,
               child: Icon(
                 Icons.check,
                 color: backGroundGreen,
@@ -28,7 +28,7 @@ class OrderFollowUpItem extends StatelessWidget {
             ),
           ]else if(isDone == false)...[
             const CircleAvatar(
-              backgroundColor: greyText,
+              backgroundColor: orderFollowUpGreyCheck,
 
             ),
           ],

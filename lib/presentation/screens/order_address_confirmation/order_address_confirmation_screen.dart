@@ -19,8 +19,8 @@ class OrderAddressConfirmationScreen extends StatefulWidget {
 class _OrderAddressConfirmationScreenState
     extends State<OrderAddressConfirmationScreen> {
 
-  OrderAdderssConfirmationRadioValues? _character =
-      OrderAdderssConfirmationRadioValues.paypal;
+  OrderAddressConfirmationRadioValues? _character =
+      OrderAddressConfirmationRadioValues.paypal;
 
   @override
   Widget build(BuildContext context) {
@@ -119,11 +119,11 @@ class _OrderAddressConfirmationScreenState
                               ),
                               leading:
 
-                                  Radio<OrderAdderssConfirmationRadioValues>(
+                                  Radio<OrderAddressConfirmationRadioValues>(
                                 value:
-                                    OrderAdderssConfirmationRadioValues.paypal,
+                                    OrderAddressConfirmationRadioValues.paypal,
                                 groupValue: _character,
-                                onChanged: (OrderAdderssConfirmationRadioValues?
+                                onChanged: (OrderAddressConfirmationRadioValues?
                                     value) {
                                   setState(() {
                                     _character = value;
@@ -140,11 +140,11 @@ class _OrderAddressConfirmationScreenState
                                 fit: BoxFit.fill,
                               ),
                               leading:
-                                  Radio<OrderAdderssConfirmationRadioValues>(
+                                  Radio<OrderAddressConfirmationRadioValues>(
                                 value:
-                                    OrderAdderssConfirmationRadioValues.shopPay,
+                                    OrderAddressConfirmationRadioValues.shopPay,
                                 groupValue: _character,
-                                onChanged: (OrderAdderssConfirmationRadioValues?
+                                onChanged: (OrderAddressConfirmationRadioValues?
                                     value) {
                                   setState(() {
                                     _character = value;

@@ -82,7 +82,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AboutProduct(),
         );
-      case endpoints.ORDERED_MEALS:
+      case endpoints.ORDERES_SCREEN:
         return MaterialPageRoute(
           builder: (_) => OrdersScreen(),
         );
