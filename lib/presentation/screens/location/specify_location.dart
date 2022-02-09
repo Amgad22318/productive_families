@@ -12,6 +12,7 @@ class SpecifyLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -36,11 +37,12 @@ class SpecifyLocation extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.white30,
-              child: const Center(child: Text('map')),
-            ),
+          SizedBox(
+            height: size.height*0.7,
+            width: double.maxFinite,
+            // map location
+            child: const Image(image: AssetImage('assets/image/map.png'),
+              fit: BoxFit.fill,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

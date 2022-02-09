@@ -9,10 +9,12 @@ class SelectedFavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         centerTitle: true,
         actions: [
+
           IconButton(
               icon: SvgPicture.asset(
                 "assets/icons/back_arrow.svg",

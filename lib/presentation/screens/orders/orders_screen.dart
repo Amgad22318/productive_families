@@ -46,9 +46,9 @@ class OrdersScreen extends StatelessWidget {
                     color: backGroundAccentYellow,
                   ),
                   OrdersItem(
-                    color: backGroundRed,
+                    color: backGroundGreen,
                   ), OrdersItem(
-                    color: backGroundAccentYellow,
+                    color: backGroundRed,
                   ),
                   OrdersItem(
                     color: backGroundGreen,

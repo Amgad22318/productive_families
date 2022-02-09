@@ -14,6 +14,7 @@ class OrderFollowUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -59,45 +60,67 @@ class OrderFollowUp extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
+
                   color: Colors.white,
+
                   // child: const Center(child: Text('map')),
                 ),
               ),
             ],
           ),
 
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                "assets/icons/clock.svg",
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              DefaultText(text: '45 min', textStyle: Theme.of(context).textTheme.bodyText1),
+              const SizedBox(
+                height: 5,
+              ),
+              DefaultText(text: 'ميعاد التوصيل', textStyle: Theme.of(context).textTheme.bodyText1),
+             Card(
+               elevation: 10,
+               shape: RoundedRectangleBorder(
+                 borderRadius: BorderRadius.circular(15)
+               ),
+               margin: const EdgeInsets.symmetric(vertical: 20,horizontal: 15),
+               child: Padding(
+                 padding: const EdgeInsets.only(right: 30.0,bottom: 20),
+                 child: Stack(
+                   children: [
+                     Positioned.directional(
+                       textDirection: TextDirection.rtl,
+                       start: 20,
+                       top: 35,
+                       child: SvgPicture.asset(
+                         "assets/icons/Line.svg",
+                         color: Colors.grey,
+                       ),
+                     ),
+                     Column(
+                       children: [
+                         OrderFollowUpItem(text: 'تم الموافقه على الطلب',date: '02:00 pm',isDone: true,),
+                         OrderFollowUpItem(text: 'الطلب قيد التحضير',date: '02:00 pm',isDone: true,),
+                         OrderFollowUpItem(text: 'الطلب قيد التوصيل',date: '02:00 pm',isDone: false,),
+                         OrderFollowUpItem(text: 'تم توصيل الطلب',date: '02:00 pm',isDone: false,),
+                       ],
+                     ),
+                   ],
+                 ),
+               ),
+             ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50.0,horizontal: 20),
+                child: DefaultMaterialButton(onPressed: (){},text: 'متابعة الطلب على الخريطه',),
+              )
+            ],
 
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                    height: 60,
-                    width: 60,
-                    child:Image(image: AssetImage('assets/image/clock.png'))
-                ),
-                const SizedBox(height: 5,),
-                DefaultText(text: '45 min', textStyle: Theme.of(context).textTheme.bodyText1),
-                const SizedBox(height: 5,),
-                DefaultText(text: 'ميعاد التوصيل', textStyle: Theme.of(context).textTheme.bodyText1),
-                const SizedBox(height: 15,),
-                const Card(
-                  shadowColor: greyText,
-                  elevation: 8,
-                  child: OrderFollowUpItem(),
-                ),
-                DefaultMaterialButton(
-                  onPressed: (){
-                    showModalBottomSheet(
-                        shape:const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
-                        ),
-                        isScrollControlled: true,
-                        context: context, builder: (context)=>OrderTrackingBottomSheet());
-
-
-                  },text: "متابعة الطلب على الخريطه",)
-              ],
-            ),
           )
         ],
       ),

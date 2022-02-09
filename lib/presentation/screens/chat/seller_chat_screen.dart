@@ -105,7 +105,7 @@ class _SellerChatScreenState extends State<SellerChatScreen> {
                       child: DefaultFormField(
                           containerAlignment: AlignmentDirectional.centerStart,
                           textColor: darkBlue,
-                          contentPadding: EdgeInsets.symmetric(vertical: 10),
+                          contentPadding:const EdgeInsets.symmetric(vertical: 10),
                           hintText: 'Type a Message',
                           backgroundColor: Colors.transparent,
                           onFieldSubmitted: (p0) {

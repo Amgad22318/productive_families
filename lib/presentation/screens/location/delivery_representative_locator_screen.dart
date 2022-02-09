@@ -10,6 +10,7 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
   DeliveryRepresentativeLocatorScreen({Key? key}) : super(key: key);
   TextEditingController deliveryRepresentativeLocationController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -18,17 +19,14 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
         height: 80,
         centerTitle: true,
         actions: [
-          GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: SvgPicture.asset(
-                  "assets/icons/back_arrow.svg",
-                  color: Colors.black,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              })
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              "assets/icons/back_arrow.svg",
+              color: Colors.black,
+            ),
+          )
+
         ],
         title: const DefaultText(
           text: 'مندوب التوصيل',
@@ -37,11 +35,13 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.white30,
-              child: const Center(child: Text('map')),
-            ),
+
+          SizedBox(
+            height: size.height*0.7,
+            width: double.maxFinite,
+            // map location
+            child: const Image(image: AssetImage('assets/image/map.png'),
+            fit: BoxFit.fill,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -50,7 +50,8 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
             children: [
               const Center(
                   child: Image(
-                      image: AssetImage('assets/image/appbar_half_circle.png'))),
+                      image:
+                          AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -75,7 +76,7 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                               hintText: '',
-                              prefixIcon:  Padding(
+                              prefixIcon: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: SvgPicture.asset(
                                   'assets/icons/map-location.svg',
@@ -84,7 +85,8 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
                                   height: 24,
                                 ),
                               ),
-                              controller: deliveryRepresentativeLocationController,
+                              controller:
+                                  deliveryRepresentativeLocationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),
                           const SizedBox(height: 15),
