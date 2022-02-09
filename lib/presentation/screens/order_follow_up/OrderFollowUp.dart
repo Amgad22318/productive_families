@@ -42,7 +42,7 @@ class OrderFollowUp extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                flex: 10,
+                flex: 1,
                 child: Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -58,14 +58,17 @@ class OrderFollowUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 15,
+                flex: 1,
                 child: Container(
-                  color: Colors.white10,
+
+                  color: Colors.white,
+
                   // child: const Center(child: Text('map')),
                 ),
               ),
             ],
           ),
+
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -117,6 +120,7 @@ class OrderFollowUp extends StatelessWidget {
                 child: DefaultMaterialButton(onPressed: (){},text: 'متابعة الطلب على الخريطه',),
               )
             ],
+
           )
         ],
       ),

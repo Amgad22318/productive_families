@@ -9,18 +9,22 @@ class SelectedFavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         centerTitle: true,
         actions: [
-          GestureDetector(
-              child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: SvgPicture.asset('assets/icons/back_arrow.svg')),
-              onTap: () {
+
+          IconButton(
+              icon: SvgPicture.asset(
+                "assets/icons/back_arrow.svg",
+                color: Colors.black,
+              ),
+              onPressed: () {
                 Navigator.pop(context);
+
               })
+
         ],
         title: const DefaultText(
           text: 'طعام',
