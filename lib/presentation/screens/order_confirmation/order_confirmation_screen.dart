@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -10,11 +9,11 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrderConfirmationScreen extends StatelessWidget {
   OrderConfirmationScreen({Key? key}) : super(key: key);
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController discountCodeController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
-  TextEditingController addNateController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController discountCodeController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController addNateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

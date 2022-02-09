@@ -2,14 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/filtering_grid_view_item.dart';
+import 'package:productive_families/presentation/views/search_list_item.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
-  TextEditingController _searchController = TextEditingController();
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key,  this.searchText}) : super(key: key);
+  final String? searchText;
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController _searchController = TextEditingController();
+  @override
+ void initState() {
+    _searchController.text=widget.searchText!;
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +48,13 @@ class SearchScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: DefaultSearchBar(
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.search,
                   color: Colors.grey,
                 ),
                 textColor: darkBlue,
-                backgroundColor: Colors.transparent,
+                backgroundColor: orderFollowUpGreyCheck,
                 controller: _searchController,
-                validator: (text) {},
                 keyboardType: TextInputType.text),
           ),
           Expanded(
@@ -56,9 +67,9 @@ class SearchScreen extends StatelessWidget {
                   mainAxisSpacing: 6,
                   children: List.generate(
                       13,
-                      (index) => const StaggeredGridTile.fit(
+                      (index) =>  const StaggeredGridTile.fit(
                           crossAxisCellCount: 1,
-                          child: FilteringGridViewItem())),
+                          child: SearchListItem())),
                 ),
               ),
             ),

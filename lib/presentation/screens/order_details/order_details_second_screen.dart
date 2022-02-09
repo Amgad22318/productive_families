@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -8,7 +7,7 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrderDetailsSecondScreen extends StatelessWidget {
-  OrderDetailsSecondScreen({Key? key}) : super(key: key);
+  const OrderDetailsSecondScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,7 @@ class OrderDetailsSecondScreen extends StatelessWidget {
               ],
             ),
           ),
-          PaymentSummaryItem(),
+          const PaymentSummaryItem(),
           Container(
             height: size.height * 0.05,
           )

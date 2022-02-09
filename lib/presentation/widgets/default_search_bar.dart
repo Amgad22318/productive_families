@@ -3,14 +3,12 @@ import 'package:productive_families/presentation/styles/colors.dart';
 
 class DefaultSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final String? Function(String?)? validator;
   final VoidCallback? onTap;
-  final String? labelText;
   final TextInputType keyboardType;
   final void Function(String)? onFieldSubmitted;
   final void Function()? onEditingComplete;
   final void Function(String)? onChanged;
-
+final String? Function(String?)? validator;
   final bool enabled;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -23,15 +21,13 @@ class DefaultSearchBar extends StatelessWidget {
   final int? maxLines;
   final double horizontalPadding;
   final InputBorder? inputBorder;
-
+  final BoxBorder? border;
   final EdgeInsetsGeometry? contentPadding;
 
   const DefaultSearchBar(
       {Key? key,
       required this.controller,
-      this.validator,
       this.onTap,
-      this.labelText,
       required this.keyboardType,
       this.onFieldSubmitted,
       this.onEditingComplete,
@@ -48,7 +44,8 @@ class DefaultSearchBar extends StatelessWidget {
       this.inputBorder = InputBorder.none,
       this.horizontalPadding = 16,
       this.textColor = Colors.white,
-      this.contentPadding})
+      this.contentPadding,
+      this.border, this.validator})
       : super(key: key);
 
   @override
@@ -59,8 +56,9 @@ class DefaultSearchBar extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius)),
-          border: Border.all(width: 1, color: Colors.grey)),
+          border: border),
       child: TextFormField(
+        validator:validator ,
         cursorColor: Colors.black,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
@@ -68,7 +66,6 @@ class DefaultSearchBar extends StatelessWidget {
         textDirection: TextDirection.rtl,
         initialValue: initialValue,
         controller: controller,
-        validator: validator,
         keyboardType: keyboardType,
         onFieldSubmitted: onFieldSubmitted,
         onEditingComplete: onEditingComplete,
@@ -78,6 +75,7 @@ class DefaultSearchBar extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
+
           contentPadding: contentPadding,
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -88,7 +86,6 @@ class DefaultSearchBar extends StatelessWidget {
               maxHeight: double.infinity),
           labelStyle:
               Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
-          labelText: labelText,
           border: inputBorder,
           hintText: hintText,
           hintStyle: const TextStyle(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/enums.dart';
-import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -35,7 +34,7 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
-        leading: FavoriteButtonWithNumber(),
+        leading: const FavoriteButtonWithNumber(),
       ),
       body: Column(
         children: [

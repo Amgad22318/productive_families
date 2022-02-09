@@ -9,7 +9,7 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrderAddressConfirmationScreen extends StatefulWidget {
-  OrderAddressConfirmationScreen({Key? key}) : super(key: key);
+  const OrderAddressConfirmationScreen({Key? key}) : super(key: key);
 
   @override
   State<OrderAddressConfirmationScreen> createState() =>

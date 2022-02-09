@@ -8,7 +8,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class SpecifyLocation extends StatelessWidget {
   SpecifyLocation({Key? key}) : super(key: key);
-  TextEditingController SpecifyLocationController = TextEditingController();
+  final TextEditingController SpecifyLocationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,6 @@ class SpecifyLocation extends StatelessWidget {
                             'ادخل موقعك الحالى',
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
-                          // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                               hintText: '',
                               prefixIcon:  const Icon(Icons.location_on_outlined),
