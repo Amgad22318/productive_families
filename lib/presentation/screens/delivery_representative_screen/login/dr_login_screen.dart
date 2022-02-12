@@ -5,8 +5,8 @@ import 'package:productive_families/presentation/widgets/default_form_field.dart
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class DeliveryRepresentativeLoginScreen extends StatelessWidget {
+  DeliveryRepresentativeLoginScreen({Key? key}) : super(key: key);
 
  final TextEditingController nameOrPhoneController = TextEditingController();
  final TextEditingController passwordController = TextEditingController();
@@ -107,7 +107,6 @@ class LoginScreen extends StatelessWidget {
                             DefaultFormField(
                                 controller: passwordController,
                                 validator: (text) {
-
 
                                 },
                                 keyboardType: TextInputType.text),

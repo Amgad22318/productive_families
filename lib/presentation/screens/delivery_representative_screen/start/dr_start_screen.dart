@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
-import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+class DeliveryRepresentativeStartScreen extends StatelessWidget {
+  const DeliveryRepresentativeStartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +45,7 @@ class StartScreen extends StatelessWidget {
                     width: double.maxFinite,
                     decoration: const BoxDecoration(
                         color: darkBlue,
+
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(175),
                             topRight: Radius.circular(175))),
@@ -54,40 +54,29 @@ class StartScreen extends StatelessWidget {
                         const SizedBox(
                           height: 90,
                         ),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 10.0,
+                            vertical: 20.0,
                           ),
                           child: DefaultMaterialButton(
                             width: 180,
                             text: 'تسجيل الدخول',
                             onPressed: () {
-                              Navigator.pushNamed(context, LOGIN_SCREEN);
+                              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOGIN_SCREEN);
                             },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10.0),
-                          child: DefaultOutlinedButton(
-                            width: 180,
-                            onPressed: () {
-                              Navigator.pushNamed(context, GUEST_LOCATION_PICKER);
-                            },
-                            text: 'الدخول كزائر',
-                            textColor: defaultYellow,
                           ),
                         ),
                         DefaultTextButton(
                           text: 'إنشاء حساب جديد',
                           onPressed: () {
-                            Navigator.pushNamed(context, REGISTER_SCREEN);
+                            Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_REGISTER_SCREEN);
+
                           },
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-
                       ],
                     ),
                   ),
