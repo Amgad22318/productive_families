@@ -36,7 +36,9 @@ class ChooseAccount extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                DefaultMaterialButton(onPressed: (){},text: 'مندوب',),
+                DefaultMaterialButton(onPressed: (){
+                  Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_START_SCREEN);
+                },text: 'مندوب',),
               ],
             ),
           )

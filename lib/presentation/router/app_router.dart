@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
+import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
@@ -178,6 +179,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => GuestLocationPicker(),
         );
+      case endpoints.DELIVERY_REPRESENTATIVE_START_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeStartScreen(),
+        );
+
       default:
         return null;
     }
