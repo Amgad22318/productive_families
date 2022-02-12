@@ -73,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             child: IconButton(
                               padding: const EdgeInsetsDirectional.all(20),
-                              icon: Image.asset('assets/icons/info.png'),
+                              icon: Image.asset('assets/icons/info.svg'),
                               onPressed: () {},
                             ),
                           ),

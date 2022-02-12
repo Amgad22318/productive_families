@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
+import 'package:productive_families/presentation/screens/delivery_representative_screen/login/dr_login_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/otp/dr_otp_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
@@ -40,11 +43,8 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-
     startWidget = ChooseAccount();
-
   }
-
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -58,7 +58,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => RegisterScreen(),
         );
-        case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
+      case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
         return MaterialPageRoute(
           builder: (_) => DisplayRepresentativePriceItem(),
         );
@@ -171,7 +171,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => OrderAddressConfirmationScreen(),
         );
-        case endpoints.ORDER_FOLLOW_UP:
+      case endpoints.ORDER_FOLLOW_UP:
         return MaterialPageRoute(
           builder: (_) => OrderFollowUp(),
         );
@@ -182,6 +182,18 @@ class AppRouter {
       case endpoints.DELIVERY_REPRESENTATIVE_START_SCREEN:
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeStartScreen(),
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_LOGIN_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeLoginScreen(),
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_REGISTER_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeRegisterScreen(),
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_OTP_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeOtpScreen(),
         );
 
       default:

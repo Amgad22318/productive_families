@@ -19,7 +19,7 @@ class StartScreen extends StatelessWidget {
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/image/start_back.png"),
+                      image: AssetImage("assets/image/start_background.png"),
                       fit: BoxFit.fill,
                       alignment: Alignment.center),
                 )),
