@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/presentation/screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
