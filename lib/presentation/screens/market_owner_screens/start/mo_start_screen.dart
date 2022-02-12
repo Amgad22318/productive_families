@@ -4,8 +4,8 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
 
-class DeliveryRepresentativeStartScreen extends StatelessWidget {
-  const DeliveryRepresentativeStartScreen({Key? key}) : super(key: key);
+class MarketOwnerStartScreen extends StatelessWidget {
+  const MarketOwnerStartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
