@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/constants/end_points.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/widgets/default_material_button.dart';
+import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class DeliveryRepresentativeHomeItem extends StatelessWidget {
-
-  const DeliveryRepresentativeHomeItem({ Key? key}) : super(key: key);
+  const DeliveryRepresentativeHomeItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0,),
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0,
+      ),
       child: SizedBox(
-        height: 190,
+        height: 210,
         child: Card(
           clipBehavior: Clip.antiAlias,
           elevation: 5,
@@ -25,68 +28,97 @@ class DeliveryRepresentativeHomeItem extends StatelessWidget {
             },
             child: Row(
               children: [
-                Expanded(
+                Flexible(
                   flex: 3,
-                  child: Image.asset(
-                    'assets/image/meal.png',
-                    fit: BoxFit.cover,
-                    height: 175,
-
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          'assets/image/meal.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(
                   flex: 5,
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 4,end: 10,top: 8,bottom: 8),
+                    padding: const EdgeInsetsDirectional.only(
+                        start: 6, end: 6, top: 8, bottom: 8),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Align(
-                           alignment: AlignmentDirectional.topEnd,
-                           child: DefaultText(
+                        Align(
+                          alignment: AlignmentDirectional.topEnd,
+                          child: DefaultText(
                             textAlign: TextAlign.end,
                             text: " منذ دقيقة منذ دقيقة",
-                            textStyle: Theme.of(context).textTheme.overline!.copyWith(fontSize: 8),
-                            // textStyle: TextStyle(),
-                        ),
-                         ),
-                        Expanded(
-                          child: DefaultText(
-                            text: "اسم العميل",
-                            textStyle: Theme.of(context).textTheme.bodyText2,
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .overline!
+                                .copyWith(fontSize: 8),
                             // textStyle: TextStyle(),
                           ),
                         ),
+                        DefaultText(
+                          text: "اسم العميل",
+                          textStyle: Theme.of(context).textTheme.bodyText2,
+                          // textStyle: TextStyle(),
+                        ),
+                        DefaultText(
+                          text:
+                              'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                          textStyle: Theme.of(context).textTheme.caption,
+                          maxLines: 2,
+                          color: greyText,
+                        ),
                         Row(
                           children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  DefaultText(
-                                    text: 'السعر الكلى',
-                                    textStyle:
-                                    Theme.of(context).textTheme.caption,
-                                  ),
-                                  DefaultText(
-                                    text: "\$2121",
-                                    textStyle:
-                                    Theme.of(context).textTheme.caption,
-                                    color: defaultYellow,
-                                  ),
-                                ],
-                              ),
+                            SvgPicture.asset(
+                              'assets/icons/location.svg',
+                              height: 20,
+                              width: 20,
+                            ),
+                            DefaultText(
+                              text: "العنوان بالتفصيل",
+                              textStyle: Theme.of(context).textTheme.caption,
+                              maxLines: 1,
                             ),
                           ],
                         ),
                         DefaultText(
                           text:
-                          "تطبيق للربط بين الاسر المنتجه   للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
-                          textStyle: Theme.of(context).textTheme.caption,
+                              'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                          textStyle: Theme.of(context).textTheme.overline,
+                          maxLines: 1,
                           color: greyText,
-                          maxLines: 3,
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 10,
+                                child: DefaultMaterialButton(
+                                  textColor: Colors.white,
+                                  background: darkBlue,
+                                  height: 40,
+                                  text: 'قبول',
+                                  onPressed: () {},
+                                )),
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            Expanded(
+                                flex: 10,
+                                child: DefaultOutlinedButton(
+                                  borderColor: darkBlue,
+                                  height: 40,
+                                  text: 'رفض',
+                                  onPressed: () {},
+                                ))
+                          ],
+                        )
                       ],
                     ),
                   ),
