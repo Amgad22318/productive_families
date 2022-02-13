@@ -4,8 +4,8 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class HomeGridViewItem extends StatelessWidget {
-  const HomeGridViewItem({Key? key}) : super(key: key);
+class HomeListItem extends StatelessWidget {
+  const HomeListItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

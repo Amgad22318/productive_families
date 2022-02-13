@@ -105,6 +105,8 @@ class _DeliveryRepresentativeOtpScreenState
                             text: 'إعادة إرسال الكود؟',
                             textColor: defaultYellow,
                             textDecoration: TextDecoration.none,
+                            textStyle:
+                            Theme.of(context).textTheme.button,
                             onPressed: () {},
                           ),
                         ),
@@ -124,6 +126,8 @@ class _DeliveryRepresentativeOtpScreenState
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: DefaultTextButton(
+                            textStyle:
+                            Theme.of(context).textTheme.button,
                             text: 'تعديل رقم الهاتف',
                             textColor: defaultYellow,
                             onPressed: () {},

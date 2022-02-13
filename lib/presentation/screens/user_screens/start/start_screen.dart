@@ -80,6 +80,8 @@ class StartScreen extends StatelessWidget {
                         ),
                         DefaultTextButton(
                           text: 'إنشاء حساب جديد',
+                          textStyle:
+                          Theme.of(context).textTheme.button,
                           onPressed: () {
                             Navigator.pushNamed(context, REGISTER_SCREEN);
                           },

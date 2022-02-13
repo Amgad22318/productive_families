@@ -68,6 +68,8 @@ class MarketOwnerStartScreen extends StatelessWidget {
                           ),
                         ),
                         DefaultTextButton(
+                          textStyle:
+                          Theme.of(context).textTheme.button,
                           text: 'إنشاء حساب جديد',
                           onPressed: () {
                             Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_REGISTER_SCREEN);

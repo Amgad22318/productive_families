@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/order_details_bottom_sheet.dart';
-
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
 
@@ -12,7 +10,6 @@ class OrderDetailsSecondScreenItem extends StatelessWidget {
 
   OrderDetailsSecondScreenItem({required this.color, Key? key})
       : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +58,27 @@ class OrderDetailsSecondScreenItem extends StatelessWidget {
                             children: [
                               DefaultText(
                                 text: "اسم المنتج",
-                                textStyle: Theme.of(context).textTheme.bodyText1,
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyText1,
                                 // textStyle: TextStyle(),
                               ),
-                             DefaultTextButton(text: 'قيم المنتج', onPressed:  () {
-                               showModalBottomSheet(
-                                   shape:const RoundedRectangleBorder(
-                                       borderRadius: BorderRadius.only(topLeft: Radius.circular(32),topRight: Radius.circular(32),)
-                                   ),
-                                   isScrollControlled: true,
-                                   context: context, builder: (context)=>OrderDetailsBottomSheet());
-
-                             },
-                             textColor: darkBlue,)
-
+                              DefaultTextButton(
+                                text: 'قيم المنتج',
+                                textStyle: Theme.of(context).textTheme.button,
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(32),
+                                        topRight: Radius.circular(32),
+                                      )),
+                                      isScrollControlled: true,
+                                      context: context,
+                                      builder: (context) =>
+                                          OrderDetailsBottomSheet());
+                                },
+                                textColor: darkBlue,
+                              )
                             ],
                           ),
                         ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DefaultTextButton extends StatelessWidget {
   final VoidCallback onPressed;
   final TextDecoration? textDecoration;
+  final TextStyle? textStyle;
 
   final String text;
   final Color textColor;
@@ -12,7 +13,7 @@ class DefaultTextButton extends StatelessWidget {
       required this.text,
       required this.onPressed,
       this.textColor = Colors.white,
-      this.textDecoration=TextDecoration.underline})
+      this.textDecoration=TextDecoration.underline,required this.textStyle})
       : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class DefaultTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text.toUpperCase(),
-        style: TextStyle(color: textColor, decoration: textDecoration),
+        style: textStyle!.copyWith(color: textColor, decoration: textDecoration,),
       ),
       style: const ButtonStyle(),
     );

@@ -235,11 +235,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           children: const [
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
+                            HomeListItem(),
+                            HomeListItem(),
+                            HomeListItem(),
+                            HomeListItem(),
+                            HomeListItem(),
                           ],
                         )
                       ],
