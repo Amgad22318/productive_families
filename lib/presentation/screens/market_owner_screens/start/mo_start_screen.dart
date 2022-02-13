@@ -63,7 +63,7 @@ class MarketOwnerStartScreen extends StatelessWidget {
                             width: 180,
                             text: 'تسجيل الدخول',
                             onPressed: () {
-                              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOGIN_SCREEN);
+                              Navigator.pushNamed(context, MARKET_OWNER_LOGIN_SCREEN);
                             },
                           ),
                         ),
@@ -72,8 +72,7 @@ class MarketOwnerStartScreen extends StatelessWidget {
                           Theme.of(context).textTheme.button,
                           text: 'إنشاء حساب جديد',
                           onPressed: () {
-                            Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_REGISTER_SCREEN);
-
+                            Navigator.pushNamed(context, MARKET_OWNER_REGISTER_SCREEN);
                           },
                         ),
                         const SizedBox(

@@ -6,6 +6,10 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/otp/mo_otp_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/register/mo_register_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/start/mo_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
@@ -204,6 +208,22 @@ class AppRouter {
       case endpoints.DELIVERY_REPRESENTATIVE_SHOP_LAYOUT:
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeShopLayout(),
+        );
+        case endpoints.MARKET_OWNER_START_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerStartScreen(),
+        );
+        case endpoints.MARKET_OWNER_LOGIN_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerLoginScreen(),
+        );
+        case endpoints.MARKET_OWNER_REGISTER_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerRegisterScreen(),
+        );
+        case endpoints.MARKET_OWNER_OTP_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerOtpScreen(),
         );
 
 
