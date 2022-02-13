@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_grid_view_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
+import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/home/dr_home_list_itme.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
-import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+import 'package:productive_families/presentation/widgets/default_text_button.dart';
 import 'package:video_player/video_player.dart';
 
 class DeliveryRepresentativeHomeScreen extends StatefulWidget {
   const DeliveryRepresentativeHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<DeliveryRepresentativeHomeScreen> createState() => _DeliveryRepresentativeHomeScreenState();
+  State<DeliveryRepresentativeHomeScreen> createState() =>
+      _DeliveryRepresentativeHomeScreenState();
 }
 
-class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativeHomeScreen> {
+class _DeliveryRepresentativeHomeScreenState
+    extends State<DeliveryRepresentativeHomeScreen> {
   TextEditingController searchController = TextEditingController();
 
   late VideoPlayerController videoPlayerController;
@@ -31,8 +28,6 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
         'https://dribbble.com/shots/2444148-A-B-Testing/attachments/9303579?mode=media');
     super.initState();
   }
-
-  final TextEditingController _searchController = TextEditingController();
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> searchFormKey = GlobalKey<FormState>();
@@ -46,17 +41,10 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+                // Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
-              )),
-          IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, BASKET_SCREEN);
-              },
-              icon: SvgPicture.asset(
-                'assets/icons/shopping-cart-outline-badged.svg',
               )),
         ],
         leading: IconButton(
@@ -66,14 +54,6 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
             icon: const Icon(
               Icons.menu,
             )),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: FloatingActionButton(
-        child: SvgPicture.asset('assets/icons/contact.svg'),
-        backgroundColor: Colors.white,
-        onPressed: () {
-          Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);
-        },
       ),
       body: Column(
         children: [
@@ -94,30 +74,6 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
                           color: greyText,
                           text: 'مرحبا ( إسم المستخدم )',
                           textStyle: Theme.of(context).textTheme.headline6,
-                        ),
-                        Form(
-                          key: searchFormKey,
-                          child: DefaultSearchBar(
-                            height: null,
-                            textColor: darkBlue,
-                            backgroundColor: orderFollowUpGreyCheck,
-                            controller: _searchController,
-                            keyboardType: TextInputType.text,
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ),
-                            validator: (text) {
-                              if (text!.isEmpty) {
-                                return 'البحث فارغ';
-                              }
-                            },
-                            onFieldSubmitted: (text) {
-                              if (searchFormKey.currentState!.validate()) {
-                                navigateTo(context, SearchScreen(searchText: text));
-                              }
-                            },
-                          ),
                         ),
                         Stack(
                           alignment: Alignment.bottomCenter,
@@ -169,39 +125,27 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.only(start: 8.0),
-                          child: DefaultText(
-                            maxLines: 2,
-                            text: 'الأقسام',
-                            textStyle: Theme.of(context).textTheme.headline6,
+                          child: Row(
+                            children: [
+                              DefaultText(
+                                maxLines: 2,
+                                text: 'الطلبات القريبة',
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
+                              ),
+                              const Spacer(),
+                              DefaultTextButton(
+                                text: 'مشاهدة الكل',
+                                textDecoration: TextDecoration.none,
+                                textStyle: Theme.of(context).textTheme.caption,
+                                textColor: greyText,
+                                onPressed: () {},
+                              )
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        color: Colors.grey,
-                        height: 0.5,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            HomeFirstSectionItem(),
-                            Row(
-                              children: List.generate(20, (index) {
-                                return HomeSectionItem();
-                              }),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        color: Colors.grey,
-                        height: 0.5,
-                      ),
-                    ],
                   ),
                   Padding(
                     padding:
@@ -209,39 +153,11 @@ class _DeliveryRepresentativeHomeScreenState extends State<DeliveryRepresentativ
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(start: 8.0),
-                              child: DefaultText(
-                                maxLines: 2,
-                                text: 'الاعلى تقييما',
-                                textStyle:
-                                    Theme.of(context).textTheme.headline6,
-                              ),
-                            ),
-                            const Spacer(),
-                            IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset(
-                                  'assets/icons/filter-line.svg',
-                                  width: 16,
-                                  height: 16,
-                                )),
-                          ],
-                        ),
                         ListView(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: const [
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                            HomeGridViewItem(),
-                          ],
-                        )
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            children: List.generate(10,
+                                (index) => DeliveryRepresentativeHomeItem()))
                       ],
                     ),
                   ),
