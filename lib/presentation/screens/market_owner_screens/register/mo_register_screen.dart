@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/category_selector_item/mo_category_selector_item.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -187,6 +188,14 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     }
                                   },
                                   keyboardType: TextInputType.text),
+                              // category
+                              DefaultText(
+                                text: 'القسم',
+                                color: Colors.white,
+                                textStyle:
+                                Theme.of(context).textTheme.headline6,
+                              ),
+                              MarketOwnerCategorySelectorItem(),
                               DefaultText(
                                 text: 'تاكيد كلمة المرور',
                                 color: Colors.white,

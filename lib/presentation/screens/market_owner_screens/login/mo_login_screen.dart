@@ -114,7 +114,7 @@ class MarketOwnerLoginScreen extends StatelessWidget {
                                   width: 180,
                                   onPressed: () {
                                     Navigator.pushNamedAndRemoveUntil(context,
-                                        GUEST_LOCATION_PICKER, (route) => false);
+                                        MARKET_OWNER_SHOP_LAYOUT, (route) => false);
                                   },
                                   text: 'تسجيل الدخول',
                                 ),
