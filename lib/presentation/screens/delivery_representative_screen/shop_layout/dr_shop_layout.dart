@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/home/dr_home_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/profile/dr_profile_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/favorite/favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/home/home_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/markets/markets.dart';
@@ -7,22 +9,22 @@ import 'package:productive_families/presentation/screens/user_screens/user_profi
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
 
-class ShopLayout extends StatefulWidget {
+class DeliveryRepresentativeShopLayout extends StatefulWidget {
   final int index;
 
-  const ShopLayout({Key? key,  this.index=0}) : super(key: key);
+  const DeliveryRepresentativeShopLayout({Key? key,  this.index=0}) : super(key: key);
 
   @override
-  State<ShopLayout> createState() => _ShopLayoutState();
+  State<DeliveryRepresentativeShopLayout> createState() => _DeliveryRepresentativeShopLayoutState();
 }
 
-class _ShopLayoutState extends State<ShopLayout>
+class _DeliveryRepresentativeShopLayoutState extends State<DeliveryRepresentativeShopLayout>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
 
   @override
   void initState() {
-    controller = TabController(length: 4, vsync: this)..addListener(() {});
+    controller = TabController(length: 3, vsync: this)..addListener(() {});
     controller.index = widget.index;
     super.initState();
   }
@@ -41,10 +43,9 @@ class _ShopLayoutState extends State<ShopLayout>
           Expanded(
             child: TabBarView(
               children: [
-                HomeScreen(),
+                DeliveryRepresentativeHomeScreen(),
                 Markets(),
-                FavoriteScreen(),
-                UserProfileScreen(),
+                DeliveryRepresentativeProfileScreen(),
               ],
               controller: controller,
             ),
@@ -62,12 +63,7 @@ class _ShopLayoutState extends State<ShopLayout>
           },
           tabs: const [
             Tab(icon: Icon(CustomIcons.home, size: 18)),
-            Tab(icon: Icon(CustomIcons.shop, size: 18)),
-            Tab(
-                icon: Icon(
-              CustomIcons.heart,
-              size: 18,
-            )),
+            Tab(icon: Icon(CustomIcons.hand, size: 18)),
             Tab(icon: Icon(Icons.person)),
           ],
         ),

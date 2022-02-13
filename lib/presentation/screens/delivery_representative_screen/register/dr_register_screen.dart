@@ -6,25 +6,26 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
-import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class DeliveryRepresentativeRegisterScreen extends StatefulWidget {
   const DeliveryRepresentativeRegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<DeliveryRepresentativeRegisterScreen> createState() => _DeliveryRepresentativeRegisterScreenState();
+  State<DeliveryRepresentativeRegisterScreen> createState() =>
+      _DeliveryRepresentativeRegisterScreenState();
 }
 
-class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresentativeRegisterScreen> {
+class _DeliveryRepresentativeRegisterScreenState
+    extends State<DeliveryRepresentativeRegisterScreen> {
   late bool isChecked;
 
-  TextEditingController nameController = TextEditingController();
+ final TextEditingController nameController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
-  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+ final  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -38,7 +39,8 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            SliverFillRemaining(hasScrollBody: false,
+            SliverFillRemaining(
+              hasScrollBody: false,
               child: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -57,7 +59,6 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                           textStyle: Theme.of(context).textTheme.headline6,
                         ),
                         IconButton(
-
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -87,12 +88,12 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                         ),
                       ),
                     ),
-                    SizedBox(height: 50,),
+                    const Spacer(),
                     Material(
                       color: darkBlue,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(180),
-                            topRight: Radius.circular(180)),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(180),
+                          topRight: Radius.circular(180)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Form(
@@ -102,14 +103,16 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              const SizedBox(height: 100,),
+                              const SizedBox(
+                                height: 100,
+                              ),
                               DefaultText(
                                 text: 'الاسم الاول',
                                 color: Colors.white,
-                                textStyle: Theme.of(context).textTheme.headline6,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-
                                   controller: nameController,
                                   validator: (text) {
                                     if (text!.isEmpty) {
@@ -120,10 +123,10 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                               DefaultText(
                                 text: 'رقم الهاتف',
                                 color: Colors.white,
-                                textStyle: Theme.of(context).textTheme.headline6,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-
                                   controller: phoneController,
                                   validator: (text) {
                                     if (text!.isEmpty) {
@@ -134,10 +137,10 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                               DefaultText(
                                 text: 'كلمة المرور',
                                 color: Colors.white,
-                                textStyle: Theme.of(context).textTheme.headline6,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-
                                   controller: passwordController,
                                   validator: (text) {
                                     if (text!.isEmpty) {
@@ -148,7 +151,8 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                               DefaultText(
                                 text: 'تاكيد كلمة المرور',
                                 color: Colors.white,
-                                textStyle: Theme.of(context).textTheme.headline6,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
                                   controller: passwordController,
@@ -159,15 +163,17 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                                   },
                                   keyboardType: TextInputType.text),
                               Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Align(
                                   alignment: AlignmentDirectional.center,
                                   child: DefaultText(
                                     maxLines: 2,
                                     text:
-                                    'سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك',
+                                        'سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك',
                                     color: Colors.grey,
-                                    textStyle: Theme.of(context).textTheme.overline,
+                                    textStyle:
+                                        Theme.of(context).textTheme.overline,
                                   ),
                                 ),
                               ),
@@ -176,8 +182,9 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                                 children: [
                                   Checkbox(
                                     checkColor: darkBlue,
-                                    fillColor: MaterialStateProperty.resolveWith(
-                                            (states) => getColor(states,defaultYellow)),
+                                    fillColor: MaterialStateProperty
+                                        .resolveWith((states) =>
+                                            getColor(states, defaultYellow)),
                                     shape: const CircleBorder(),
                                     onChanged: (bool? value) {
                                       setState(() {
@@ -189,7 +196,8 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                                   DefaultText(
                                     text: 'موافق على الشروط والأحكام',
                                     color: defaultYellow,
-                                    textStyle: Theme.of(context).textTheme.caption,
+                                    textStyle:
+                                        Theme.of(context).textTheme.caption,
                                   ),
                                 ],
                               ),
@@ -198,8 +206,8 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                                 child: DefaultMaterialButton(
                                   onPressed: () {
                                     if (true) {
-                                      Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_OTP_SCREEN);
-
+                                      Navigator.pushNamed(context,
+                                          DELIVERY_REPRESENTATIVE_OTP_SCREEN);
                                     }
                                   },
                                   text: 'تسجيل الدخول',
@@ -212,13 +220,11 @@ class _DeliveryRepresentativeRegisterScreenState extends State<DeliveryRepresent
                     ),
                   ],
                 ),
-              ),)
+              ),
+            )
           ],
-
         ),
       ),
     );
-
   }
-
 }

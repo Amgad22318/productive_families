@@ -70,16 +70,11 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        height: 175,
-                        decoration: const BoxDecoration(
-                            color: darkBlue,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(175),
-                                topRight: Radius.circular(175))),
-                      ),
                       Material(
                         color: darkBlue,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(180),
+                            topRight: Radius.circular(180)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Form(
@@ -89,6 +84,9 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
+                                const SizedBox(
+                                  height: 110,
+                                ),
                                 DefaultText(
                                   text: 'الإسم او رقم الهاتف',
                                   color: Colors.white,
@@ -115,8 +113,8 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                                   child: DefaultMaterialButton(
                                     width: 180,
                                     onPressed: () {
-                                      Navigator.pushNamedAndRemoveUntil(context,
-                                          GUEST_LOCATION_PICKER, (route) => false);
+                                      Navigator.pushNamed(context,
+                                          DELIVERY_REPRESENTATIVE_LOCATION_PICKER, );
                                     },
                                     text: 'تسجيل الدخول',
                                   ),

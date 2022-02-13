@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
+import 'package:productive_families/presentation/screens/delivery_representative_screen/location/dr_location_picker.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/login/dr_login_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/otp/dr_otp_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
@@ -195,6 +197,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeOtpScreen(),
         );
+        case endpoints.DELIVERY_REPRESENTATIVE_LOCATION_PICKER:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeLocationPicker(),
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_SHOP_LAYOUT:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeShopLayout(),
+        );
+
 
       default:
         return null;
