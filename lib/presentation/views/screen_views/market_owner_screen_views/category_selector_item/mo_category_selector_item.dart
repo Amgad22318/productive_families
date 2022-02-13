@@ -16,6 +16,7 @@ class MarketOwnerCategorySelectorItem extends StatefulWidget {
 class _MarketOwnerCategorySelectorItemState
     extends State<MarketOwnerCategorySelectorItem> {
   bool isPress = false;
+  ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -54,6 +55,7 @@ class _MarketOwnerCategorySelectorItemState
               isAlwaysShown: true,
               child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
+              controller: _scrollController,
               child: Row(
                 children: [
                   MarketOwnerHomeFirstSectionItem(),
