@@ -32,7 +32,9 @@ class ChooseAccount extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                DefaultMaterialButton(onPressed: (){},text: 'صاحب عمل',),
+                DefaultMaterialButton(onPressed: (){
+                  Navigator.pushNamed(context, MARKET_OWNER_START_SCREEN);
+                },text: 'صاحب عمل',),
                 const SizedBox(
                   height: 20,
                 ),
