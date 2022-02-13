@@ -10,6 +10,7 @@ class DefaultOutlinedButton extends StatelessWidget {
   final String? text;
   final Widget? child;
   final Color? textColor;
+  final Color borderColor;
   final double? fontSize;
 
   const DefaultOutlinedButton({Key? key,
@@ -19,7 +20,7 @@ class DefaultOutlinedButton extends StatelessWidget {
     this.isUpperCase = true,
     this.radius = 30,
     this.child,
-    this.height = 59, this.textColor = darkBlue, this.fontSize})
+    this.height = 59, this.textColor = darkBlue, this.fontSize, this.borderColor=defaultYellow})
       : super(key: key);
 
   @override
@@ -33,7 +34,7 @@ class DefaultOutlinedButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius),
           ),
-          side: const BorderSide(width: 2, color: defaultYellow),
+          side:  BorderSide(width: 2, color: borderColor),
         ),
         onPressed: onPressed,
         child: child ??
