@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/category_selector/mo_category_selector_item.dart';
+import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/image_picker/mo_edit_image_picker_item.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/image_picker/mo_image_picker_item.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/rounded_input_field/rounded_input_field.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
@@ -8,8 +10,8 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class MarketOwnerAddNewProductScreen extends StatelessWidget {
-  MarketOwnerAddNewProductScreen({Key? key}) : super(key: key);
+class MarketOwnerAddProductScreen extends StatelessWidget {
+  MarketOwnerAddProductScreen({Key? key}) : super(key: key);
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController productPriceController = TextEditingController();
 
@@ -20,8 +22,16 @@ class MarketOwnerAddNewProductScreen extends StatelessWidget {
         centerTitle: true,
         title: DefaultText(
           textStyle: Theme.of(context).textTheme.headline5,
-          text: 'إضافة منتج',
+          text: 'تعديل منتج',
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -36,13 +46,13 @@ class MarketOwnerAddNewProductScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const MarketOwnerImagePickerItem(),
+                  const MarketOwnerEditImagePickerItem(),
                   Padding(
                     padding: const EdgeInsetsDirectional.only(top: 7),
                     child: Align(
                         alignment: Alignment.center,
                         child: DefaultText(
-                          text: 'إضافة صور المنتج',
+                          text: 'تعديل صور المنتج',
                           textStyle: Theme.of(context).textTheme.caption,
                         )),
                   ),
