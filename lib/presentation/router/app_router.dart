@@ -6,12 +6,15 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/about_product/mo_about_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/otp/mo_otp_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/register/mo_register_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/shop_layout/mo_shop_layout.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/start/mo_start_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/terms_and_conditions/mo_terms_and_conditions.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
@@ -235,6 +238,19 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MarketOwnerCurrentOrdersScreen(),
         );
+        case endpoints.MARKET_OWNER_EDIT_PRODUCT_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerEditProductScreen(),
+        );
+        case endpoints.MARKET_OWNER_ABOUT_US_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerAboutProduct(),
+        );
+          case endpoints.MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerTermsAndConditionsScreen(),
+        );
+
 
 
       default:

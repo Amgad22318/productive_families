@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/home/dr_home_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/profile/dr_profile_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/home/mo_home_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/user_profile/mo_user_profile_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/favorite/favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/home/home_screen.dart';
@@ -47,7 +48,7 @@ class _MarketOwnerShopLayoutState extends State<MarketOwnerShopLayout>
               children: [
                 MarketOwnerHomeScreen(),
                 Markets(),
-                FavoriteScreen(),
+                MarketOwnerAddNewProductScreen(),
                 MarketOwnerUserProfileScreen(),
               ],
               controller: controller,
@@ -67,7 +68,7 @@ class _MarketOwnerShopLayoutState extends State<MarketOwnerShopLayout>
           tabs: const [
             Tab(icon: Icon(CustomIcons.home, size: 18)),
             Tab(icon: Icon(CustomIcons.shop, size: 18)),
-            Tab(icon: Icon(CustomIcons.heart, size: 18)),
+            Tab(icon: Icon(CustomIcons.add, size: 18)),
             Tab(icon: Icon(Icons.person)),
           ],
         ),

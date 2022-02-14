@@ -13,8 +13,10 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 class MarketOwnerUserProfileScreen extends StatelessWidget {
   MarketOwnerUserProfileScreen({Key? key}) : super(key: key);
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
+  final TextEditingController serviceNameController = TextEditingController();
 
   final GlobalKey<FormState> profileFormKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -167,7 +169,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                       ),
                     ),
                     SvgPicture.asset(
-                      'assets/icons/map-location.svg',
+                      'assets/icons/mo_location.svg',
                       color: darkBlue,
                       width: 24,
                       height: 24,
@@ -184,6 +186,62 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                 borderSide: BorderSide(color: darkBlue),
               ),
             ),
+            const SizedBox(
+              height: 8,
+            ),
+            DefaultFormField(
+              hintText: '',
+              textColor: darkBlue,
+              height: 60,
+              horizontalPadding: 32,
+              controller: serviceNameController,
+              validator: (text) {},
+              keyboardType: TextInputType.text,
+              backgroundColor: Colors.transparent,
+              labelText: 'اسم الخدمه',
+              inputEnabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: darkBlue,
+                ),
+              ),
+              inputFocusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: darkBlue),
+              ),
+              suffixIcon: SizedBox(
+                height: 24,
+                width: 24,
+                child: IconButton(
+                    onPressed: () {},
+                    padding: EdgeInsetsDirectional.zero,
+                    iconSize: 18,
+                    icon: const Icon(
+                      Icons.edit,
+                      color: darkBlue,
+                    )),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            DefaultFormField(
+              hintText: '',
+              textColor: darkBlue,
+              height: 60,
+              horizontalPadding: 32,
+              controller: categoryController,
+              validator: (text) {},
+              keyboardType: TextInputType.text,
+              backgroundColor: Colors.transparent,
+              labelText: 'القسم',
+              inputEnabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: darkBlue,
+                ),
+              ),
+              inputFocusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: darkBlue),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Row(
@@ -191,7 +249,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        Image.asset('assets/icons/bounce.png'),
+                        SvgPicture.asset('assets/icons/incentive.svg',color: backgroundBlack,),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: DefaultText(
@@ -233,9 +291,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(
-                          'assets/icons/money.png',
-                        ),
+                        SvgPicture.asset('assets/icons/coin.svg',color: backgroundBlack,),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           child: DefaultText(

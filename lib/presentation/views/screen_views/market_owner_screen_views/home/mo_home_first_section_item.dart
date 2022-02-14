@@ -18,23 +18,40 @@ class MarketOwnerHomeFirstSectionItem extends StatelessWidget {
         },
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: defaultYellow, width: 1),
-              ),
-              child: Image.asset(
-                'assets/image/delivery-truck.png',
-                height: 60,
-                width: 60,
-                fit: BoxFit.scaleDown,
+            Padding(
+              padding: const EdgeInsetsDirectional.only(top: 5),
+              child: Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: backGroundWhite,
+                      border: Border.all(color: defaultYellow, width: 1),
+                    ),
+                    child: Image.asset(
+                      'assets/image/delivery-truck.png',
+                      height: 60,
+                      width: 60,
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                  const CircleAvatar(
+                    radius: 10,
+                    backgroundColor: backGroundGreen,
+                    child: Icon(Icons.check,size: 15,color: backGroundWhite,),
+                  ),
+                ],
               ),
             ),
-            DefaultText(
-              text: ' ملابس',
-              textStyle: Theme.of(context).textTheme.caption,
-              color: backGroundWhite,
-            )
+            Padding(
+              padding: const EdgeInsetsDirectional.only(bottom: 10),
+              child: DefaultText(
+                text: ' ملابس',
+                textStyle: Theme.of(context).textTheme.caption,
+                color: backGroundWhite,
+              ),
+            ),
           ],
         ),
       ),
