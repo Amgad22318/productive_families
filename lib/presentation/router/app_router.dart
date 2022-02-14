@@ -11,7 +11,9 @@ import 'package:productive_families/presentation/screens/market_owner_screens/ad
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/notifications/mo_notifications_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/order_details/mo_order_details_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/order_follow_up/mo_order_follow_up_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/otp/mo_otp_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/register/mo_register_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/shop_layout/mo_shop_layout.dart';
@@ -259,6 +261,14 @@ class AppRouter {
         case endpoints.MARKET_OWNER_ORDER_DETAILS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerOrderDetailsScreen(),
+        );
+        case endpoints.MARKET_OWNER_NOTIFICATIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerNotificationsScreen(),
+        );
+        case endpoints.MARKET_OWNER_ORDER_FOLLOW_UP_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerOrderFollowUp(),
         );
 
 

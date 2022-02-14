@@ -105,7 +105,10 @@ class MarketOwnerCurrentOrdersAndHomeListItem extends StatelessWidget {
                                   background: darkBlue,
                                   height: 40,
                                   text: 'قبول',
-                                  onPressed: () {Navigator.pushNamed(context, MARKET_OWNER_ORDER_DETAILS_SCREEN);},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context,
+                                        MARKET_OWNER_ORDER_DETAILS_SCREEN);
+                                  },
                                 )),
                             const Spacer(
                               flex: 1,

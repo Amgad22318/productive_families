@@ -30,29 +30,9 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
         centerTitle: true,
         title: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 32,
-                ),
-                DefaultText(
-                  text: 'مستخدم',
-                  textStyle: Theme.of(context).textTheme.headline5,
-                ),
-                IconButton(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        backgroundColor: Colors.transparent,
-                        builder: (context) => const ProfileBottomSheet(),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.edit,
-                      size: 20,
-                    ))
-              ],
+            DefaultText(
+              text: 'متجر',
+              textStyle: Theme.of(context).textTheme.headline5,
             ),
             Stack(
               alignment: AlignmentDirectional.bottomStart,
@@ -249,7 +229,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        SvgPicture.asset('assets/icons/incentive.svg',color: backgroundBlack,),
+                        SvgPicture.asset('assets/icons/incentive-svgrepo.svg',color: backgroundBlack,),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: DefaultText(
@@ -311,15 +291,6 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                  start: 16, end: 16, bottom: 32),
-              child: DefaultMaterialButton(
-                height: 50,
-                onPressed: () {},
-                text: 'حفظ التغييرات',
-              ),
-            )
           ],
         ),
       ),

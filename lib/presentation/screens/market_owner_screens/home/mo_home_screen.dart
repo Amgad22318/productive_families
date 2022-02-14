@@ -43,7 +43,7 @@ class _DeliveryRepresentativeHomeScreenState
         actions: [
           IconButton(
               onPressed: () {
-                // Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+               Navigator.pushNamed(context, MARKET_OWNER_NOTIFICATIONS_SCREEN);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
