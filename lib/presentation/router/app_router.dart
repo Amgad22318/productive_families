@@ -7,6 +7,7 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/about_product/mo_about_product.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/add_offer/mo_add_offer.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
@@ -249,6 +250,10 @@ class AppRouter {
           case endpoints.MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerTermsAndConditionsScreen(),
+        );
+        case endpoints.MARKET_OWNER_ADD_OFFER_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerAddOfferScreen(),
         );
 
 

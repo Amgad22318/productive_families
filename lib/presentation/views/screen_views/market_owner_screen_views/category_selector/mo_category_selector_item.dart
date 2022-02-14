@@ -7,7 +7,6 @@ import 'package:productive_families/presentation/views/screen_views/market_owner
 class MarketOwnerCategorySelectorItem extends StatefulWidget {
   MarketOwnerCategorySelectorItem({Key? key}) : super(key: key);
 
-
   @override
   _MarketOwnerCategorySelectorItemState createState() =>
       _MarketOwnerCategorySelectorItemState();
@@ -17,12 +16,13 @@ class _MarketOwnerCategorySelectorItemState
     extends State<MarketOwnerCategorySelectorItem> {
   bool isPress = false;
   ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         setState(() {
-          isPress =! isPress ;
+          isPress = !isPress;
         });
       },
       child: Column(
@@ -40,13 +40,27 @@ class _MarketOwnerCategorySelectorItemState
                 children: [
                   Expanded(child: Container(color: backGroundWhite, height: 1)),
                   const SizedBox(width: 10),
-                  SvgPicture.asset('assets/icons/mic.svg'),
+                  if (isPress) ...[
+                   const Icon(
+                      Icons.arrow_drop_up,
+                      color: backGroundWhite,
+                     size: 35,
+                    )
+                  ] else ...[
+                   const Icon(
+                      Icons.arrow_drop_down,
+                      color: backGroundWhite,
+                     size: 35,
+                    )
+                  ]
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 5,),
-          if(isPress)...[
+          const SizedBox(
+            height: 5,
+          ),
+          if (isPress) ...[
             Scrollbar(
               scrollbarOrientation: ScrollbarOrientation.bottom,
               hoverThickness: 25.0,
@@ -54,20 +68,21 @@ class _MarketOwnerCategorySelectorItemState
               showTrackOnHover: true,
               isAlwaysShown: true,
               child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollController,
-              child: Row(
-                children: [
-                  MarketOwnerHomeFirstSectionItem(),
-                  Row(
-                    children: List.generate(20, (index) {
-                      return MarketOwnerHomeSectionItem();
-                    }),
-                  ),
-                ],
+                scrollDirection: Axis.horizontal,
+                controller: _scrollController,
+                child: Row(
+                  children: [
+                    MarketOwnerHomeFirstSectionItem(),
+                    Row(
+                      children: List.generate(20, (index) {
+                        return MarketOwnerHomeSectionItem();
+                      }),
+                    ),
+                  ],
+                ),
               ),
-          ),
-            ),]
+            ),
+          ]
         ],
       ),
     );
