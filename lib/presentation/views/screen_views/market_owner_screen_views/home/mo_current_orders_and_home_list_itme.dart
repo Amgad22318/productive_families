@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
@@ -104,7 +105,7 @@ class MarketOwnerCurrentOrdersAndHomeListItem extends StatelessWidget {
                                   background: darkBlue,
                                   height: 40,
                                   text: 'قبول',
-                                  onPressed: () {},
+                                  onPressed: () {Navigator.pushNamed(context, MARKET_OWNER_ORDER_DETAILS_SCREEN);},
                                 )),
                             const Spacer(
                               flex: 1,

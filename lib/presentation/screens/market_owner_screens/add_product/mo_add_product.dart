@@ -115,7 +115,7 @@ class MarketOwnerAddProductScreen extends StatelessWidget {
                   ),
                   DefaultMaterialButton(
                     onPressed: () {},
-                    text: 'أضافة منتج',
+                    text: 'إضافة منتج',
                   ),
                   const SizedBox(
                     height: 40,

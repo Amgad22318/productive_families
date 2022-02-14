@@ -17,10 +17,18 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: CircleAvatar(radius: 50,backgroundImage:AssetImage('assets/image/user_photo.png') ,),
+                child: Container(
+                  height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: defaultYellow),
+                      shape: BoxShape.circle
+                    ),
+                    child:const CircleAvatar(radius: 50,backgroundImage:AssetImage('assets/image/user_photo.png') ,)),
               ),
+
               Column(
                 children: [
                   DefaultText(color: Colors.white,
@@ -28,7 +36,10 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.bodyText2,
                   ),
                   Row(children: [
-                    SvgPicture.asset('assets/icons/map-location.svg',width: 18,height: 18,),
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 5.0),
+                      child: SvgPicture.asset('assets/icons/location.svg',color: backGroundWhite,width: 18,height: 18,),
+                    ),
 
                     DefaultText(color: Colors.white,
                       text: 'العنوان',
@@ -45,18 +56,22 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
 
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Container(color: defaultYellow,height: 1,),
+          ),
           MarketOwnerDrawerListTiles(
             text: 'البنود و الشروط',
             icon: 'assets/icons/notepad-svgrepo.svg',
             onTap: () {
-              Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
+              Navigator.pushNamed(context, MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN);
             },
           ),
           MarketOwnerDrawerListTiles(
             text: 'إضافة عروض',
             icon: 'assets/icons/offer-svgrepo-com.svg',
             onTap: () {
-              Navigator.pushNamed(context, ABOUT_US);
+              Navigator.pushNamed(context, MARKET_OWNER_ADD_OFFER_SCREEN);
 
             },
           ),
@@ -64,14 +79,14 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
             text: 'معلومات عنا',
             icon: 'assets/icons/about-information.svg',
             onTap: () {
-              Navigator.pushNamed(context, ORDERES_SCREEN);
+              Navigator.pushNamed(context, MARKET_OWNER_ABOUT_US_SCREEN);
             },
           ),
           MarketOwnerDrawerListTiles(
             text: 'تسجيل خروج',
-            icon: 'assets/icons/log-out.png',
+            icon: 'assets/icons/logout-svgrepo-com.svg',
             onTap: () {
-              Navigator.pushNamedAndRemoveUntil(context, START_SCREEN, (route) => false);
+              Navigator.pushNamedAndRemoveUntil(context, MARKET_OWNER_START_SCREEN, (route) => false);
 
 
             },

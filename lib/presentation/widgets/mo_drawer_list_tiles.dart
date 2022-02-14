@@ -23,7 +23,7 @@ class MarketOwnerDrawerListTiles extends StatelessWidget {
             text: text,
             textStyle: Theme.of(context).textTheme.bodyText2,
           ),
-          leading: SvgPicture.asset(icon)
+          leading: SvgPicture.asset(icon,height: 30,width: 30,color: backGroundWhite,)
         ),
       ),
     );
