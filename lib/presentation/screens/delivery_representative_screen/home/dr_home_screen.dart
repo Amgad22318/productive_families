@@ -66,7 +66,7 @@ class _DeliveryRepresentativeHomeScreenState
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -149,15 +149,15 @@ class _DeliveryRepresentativeHomeScreenState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListView(
+                        ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            children: List.generate(10,
-                                (index) => DeliveryRepresentativeHomeItem()))
+                            itemCount: 10,
+                            itemBuilder: (BuildContext context, int index) =>DeliveryRepresentativeHomeListItem(),
+                            )
                       ],
                     ),
                   ),

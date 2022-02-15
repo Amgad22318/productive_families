@@ -17,6 +17,8 @@ class DefaultFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? initialValue;
   final String? hintText;
+  final String? suffixText;
+  final TextStyle? suffixTextStyle;
   final Color? backgroundColor;
   final Color? textColor;
   final double radius;
@@ -56,7 +58,7 @@ class DefaultFormField extends StatelessWidget {
       this.inputFocusedBorder,
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
-      this.textColor = Colors.white, this.contentPadding, this.containerAlignment})
+      this.textColor = Colors.white, this.contentPadding, this.containerAlignment, this.suffixText, this.suffixTextStyle})
 
       : super(key: key);
 
@@ -70,6 +72,7 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
+
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
         maxLines: maxLines,
@@ -87,6 +90,9 @@ class DefaultFormField extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
+
+          suffixStyle: suffixTextStyle,
+          suffixText: suffixText,
           contentPadding:contentPadding,
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
