@@ -5,8 +5,8 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class DeliveryRepresentativeHomeListItem extends StatelessWidget {
-  const DeliveryRepresentativeHomeListItem({Key? key}) : super(key: key);
+class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
+  const DeliveryRepresentativeQuotationsListItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class DeliveryRepresentativeHomeListItem extends StatelessWidget {
         vertical: 8.0,
       ),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 200),
+        constraints: const BoxConstraints(maxHeight: 220),
         child: Card(
           clipBehavior: Clip.antiAlias,
           elevation: 5,
@@ -75,18 +75,45 @@ class DeliveryRepresentativeHomeListItem extends StatelessWidget {
                               width: 20,
                             ),
                             DefaultText(
-                              text: "العنوان بالتفصيل",
+                              text: "من",
                               textStyle: Theme.of(context).textTheme.caption,
                               maxLines: 1,
                             ),
                           ],
                         ),
-                        DefaultText(
-                          text:
-                              'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
-                          textStyle: Theme.of(context).textTheme.overline,
-                          maxLines: 1,
-                          color: greyText,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 20.0),
+                          child: DefaultText(
+                            text:
+                                'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                            textStyle: Theme.of(context).textTheme.overline,
+                            maxLines: 1,
+                            color: greyText,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/location.svg',
+                              height: 20,
+                              width: 20,
+                            ),
+                            DefaultText(
+                              text: "من",
+                              textStyle: Theme.of(context).textTheme.caption,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 20.0),
+                          child: DefaultText(
+                            text:
+                            'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                            textStyle: Theme.of(context).textTheme.overline,
+                            maxLines: 1,
+                            color: greyText,
+                          ),
                         ),
                         Row(
                           children: [
@@ -96,9 +123,9 @@ class DeliveryRepresentativeHomeListItem extends StatelessWidget {
                                   textColor: Colors.white,
                                   background: darkBlue,
                                   height: 40,
-                                  text: 'قبول',
-                                  onPressed: () {},
+                                  text: 'عرض سعر',
                                   fontSize: 12,
+                                  onPressed: () {},
                                 )),
                             const Spacer(
                               flex: 1,
@@ -106,10 +133,9 @@ class DeliveryRepresentativeHomeListItem extends StatelessWidget {
                             Expanded(
                                 flex: 10,
                                 child: DefaultOutlinedButton(
+                                  fontSize: 12,
                                   borderColor: darkBlue,
                                   height: 40,
-                                  fontSize: 12,
-
                                   text: 'رفض',
                                   onPressed: () {},
                                 ))

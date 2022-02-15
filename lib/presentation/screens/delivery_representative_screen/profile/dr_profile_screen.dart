@@ -35,7 +35,7 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                   width: 32,
                 ),
                 DefaultText(
-                  text: 'مستخدم',
+                  text: 'مندوب',
                   textStyle: Theme.of(context).textTheme.headline5,
                 ),
                 IconButton(
@@ -43,7 +43,9 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.transparent,
-                        builder: (context) => const ProfileBottomSheet(),
+                        builder: (context) => ProfileBottomSheet(
+                          accountType: 'مندوب',
+                        ),
                       );
                     },
                     icon: const Icon(
@@ -144,35 +146,26 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               validator: (text) {},
               keyboardType: TextInputType.text,
               backgroundColor: Colors.transparent,
-              suffixIcon: IconButton(
-                padding: EdgeInsets.zero,
-                iconSize: 51,
-                onPressed: () {
-                  Navigator.pushNamed(context, SPECIFY_LOCATION);
-                },
-                icon: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: DefaultText(
-                        textScaleFactor: 1,
-                        text: 'تغيير',
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .caption!
-                            .copyWith(
-                                decoration: TextDecoration.underline,
-                                fontWeight: FontWeight.bold),
+              suffixIcon: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 75,minWidth: 53),
+                child: IconButton(
+                  padding: EdgeInsetsDirectional.zero,
+                  onPressed: () {
+                    Navigator.pushNamed(context, SPECIFY_LOCATION);
+                  },
+                  icon: Row(
+                    children: [
+                      DefaultText(text: 'تغيير', textStyle:  Theme.of(context).textTheme.caption!.copyWith(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,)),
+                      SvgPicture.asset(
+                        'assets/icons/location.svg',
+                        color: darkBlue,
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                    SvgPicture.asset(
-                      'assets/icons/map-location.svg',
-                      color: darkBlue,
-                      width: 24,
-                      height: 24,
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
               inputEnabledBorder: const UnderlineInputBorder(
@@ -191,7 +184,11 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        Image.asset('assets/icons/bounce.png'),
+                        SvgPicture.asset(
+                          'assets/icons/points.svg',
+                          width: 24,
+                          height: 24,
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: DefaultText(
@@ -233,8 +230,10 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(
-                          'assets/icons/money.png',
+                        SvgPicture.asset(
+                          'assets/icons/coin.svg',
+                          width: 24,
+                          height: 24,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),

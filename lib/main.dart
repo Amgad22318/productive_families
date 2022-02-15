@@ -1,30 +1,36 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:productive_families/presentation/router/app_router.dart';
 import 'package:productive_families/presentation/styles/themes.dart';
 
 void main() {
-  runApp( MyApp(appRouter: AppRouter(),));
+  runApp(DevicePreview(
+      enabled: false,
+      isToolbarVisible: true,
+      builder: (context) => MyApp(
+            appRouter: AppRouter(),
+          )));
 }
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
 
-  const MyApp({Key? key, required this.appRouter,}) : super(key: key);
+  const MyApp({
+    Key? key,
+    required this.appRouter,
+  }) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(localizationsDelegates: const [
-      GlobalCupertinoLocalizations.delegate,
-      GlobalMaterialLocalizations.delegate,
-      GlobalWidgetsLocalizations.delegate,
-    ],
-
-      supportedLocales: const [
-        Locale("en", ""),
-        Locale("ar", "")
+    return MaterialApp(
+      localizationsDelegates: const [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
+      supportedLocales: const [Locale("en", ""), Locale("ar", "")],
       locale: const Locale("ar", ""),
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
@@ -33,4 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

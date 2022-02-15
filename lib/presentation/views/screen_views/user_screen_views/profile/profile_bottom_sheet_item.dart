@@ -4,10 +4,10 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class ProfileBottomSheetItem extends StatelessWidget {
   final String userType;
-  final bool isActive;
+   bool isActive;
 
-  const ProfileBottomSheetItem(
-      {Key? key, required this.userType, this.isActive = false})
+   ProfileBottomSheetItem(
+      {Key? key, required this.userType, required this.isActive})
       : super(key: key);
 
   @override
