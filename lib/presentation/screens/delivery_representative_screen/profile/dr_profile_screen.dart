@@ -147,7 +147,7 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               keyboardType: TextInputType.text,
               backgroundColor: Colors.transparent,
               suffixIcon: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 75,minWidth: 53),
+                constraints: const BoxConstraints(maxWidth: 75,minWidth: 53),
                 child: IconButton(
                   padding: EdgeInsetsDirectional.zero,
                   onPressed: () {
