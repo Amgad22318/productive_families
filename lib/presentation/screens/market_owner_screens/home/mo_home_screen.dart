@@ -43,12 +43,18 @@ class _DeliveryRepresentativeHomeScreenState
         actions: [
           IconButton(
               onPressed: () {
-               Navigator.pushNamed(context, MARKET_OWNER_NOTIFICATIONS_SCREEN);
+                Navigator.pushNamed(context, MARKET_OWNER_NOTIFICATIONS_SCREEN);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
               )),
         ],
+        title: const CircleAvatar(
+          radius: 30,
+          backgroundColor: backGroundWhite,
+        child: Text('Logo'),
+        ),
+        centerTitle: true,
         leading: IconButton(
             onPressed: () {
               _scaffoldKey.currentState!.openDrawer();
@@ -141,7 +147,10 @@ class _DeliveryRepresentativeHomeScreenState
                                 textDecoration: TextDecoration.none,
                                 textStyle: Theme.of(context).textTheme.caption,
                                 textColor: greyText,
-                                onPressed: () { Navigator.pushNamed(context, MARKET_OWNER_CURRENT_ORDERS_SCREEN);},
+                                onPressed: () {
+                                  Navigator.pushNamed(context,
+                                      MARKET_OWNER_CURRENT_ORDERS_SCREEN);
+                                },
                               )
                             ],
                           ),
@@ -158,8 +167,10 @@ class _DeliveryRepresentativeHomeScreenState
                         ListView(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            children: List.generate(10,
-                                (index) =>const MarketOwnerCurrentOrdersAndHomeListItem()))
+                            children: List.generate(
+                                10,
+                                (index) =>
+                                    const MarketOwnerCurrentOrdersAndHomeListItem()))
                       ],
                     ),
                   ),

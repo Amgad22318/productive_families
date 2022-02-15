@@ -24,12 +24,13 @@ class MarketOwnerFilteringScreen extends StatelessWidget {
           textStyle: Theme.of(context).textTheme.headline5,
           text: 'منتجاتى',
         ),
-        leading: IconButton(
-            onPressed: () {
-              navigateToAndFinish(context,MarketOwnerAddNewProductScreen());
-            },
-            icon: SvgPicture.asset('assets/icons/add-svgrepo-com.svg',height: 25,width: 25,),
-        ),
+        //TODO: go to index 2
+        // leading: IconButton(
+        //     onPressed: () {
+        //       navigateToAndFinish(context,MarketOwnerAddNewProductScreen());
+        //     },
+        //     icon: SvgPicture.asset('assets/icons/add-svgrepo-com.svg',height: 25,width: 25,),
+        // ),
       ),
       body: Column(
         children: [

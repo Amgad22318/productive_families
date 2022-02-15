@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/category_selector/mo_category_selector_item.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/image_picker/mo_image_picker_item.dart';
@@ -18,10 +20,19 @@ class MarketOwnerAddNewProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: DefaultShopAppbar(
         centerTitle: true,
+
         title: DefaultText(
           textStyle: Theme.of(context).textTheme.headline5,
           text: 'إضافة منتج',
         ),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.pushReplacementNamed(context, MARKET_OWNER_FILTERING_SCREEN_SCREEN);
+        //     },
+        //     icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
+        //   )
+        // ],
       ),
       body: Column(
         children: [
@@ -105,7 +116,7 @@ class MarketOwnerAddNewProductScreen extends StatelessWidget {
                   ),
                   DefaultMaterialButton(
                     onPressed: () {},
-                    text: 'أضافة منتج',
+                    text: 'إضافة منتج',
                   ),
                   const SizedBox(
                     height: 40,

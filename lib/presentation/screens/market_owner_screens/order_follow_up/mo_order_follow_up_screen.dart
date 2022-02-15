@@ -31,7 +31,7 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, ORDERES_SCREEN, (route) => false);
+                      context, MARKET_OWNER_SHOP_LAYOUT, (route) => false);
                 })
           ],
           title: const DefaultText(
@@ -134,6 +134,7 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                                 date: '02:00 pm',
                                 isDone: false,
                               ),
+
                             ],
                           ),
                         ],
@@ -157,7 +158,7 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                               return MarketOwnerOrderTrackingBottomSheet();
                             });
                       },
-                      text: 'متابعة الطلب على الخريطه',
+                      text: 'التالى',
                     ),
                   )
                 ],
