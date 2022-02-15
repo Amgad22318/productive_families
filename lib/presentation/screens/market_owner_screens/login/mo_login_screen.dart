@@ -88,7 +88,7 @@ class MarketOwnerLoginScreen extends StatelessWidget {
                                 height: 110,
                               ),
                               DefaultText(
-                                text: 'الإسم او رقم الهاتف',
+                                text: 'رقم الهاتف',
                                 color: Colors.white,
                                 textStyle: Theme.of(context).textTheme.headline6,
                               ),

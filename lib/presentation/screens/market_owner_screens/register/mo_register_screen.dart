@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                     Align(
                       alignment: AlignmentDirectional.topEnd,
                       child: DefaultText(
-                        text: 'تسجيل الدخول',
+                        text: 'تسجيل حساب جديد',
                         textStyle: Theme.of(context).textTheme.headline6,
                       ),
                     ),
@@ -218,7 +218,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                   child: DefaultText(
                                     maxLines: 2,
                                     text:
-                                        'سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك',
+                                        'سوف يتم ارسال رسالة نصية لك لتأكيد رقمك',
                                     color: Colors.grey,
                                     textStyle:
                                         Theme.of(context).textTheme.overline,
@@ -242,11 +242,21 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     value: isChecked,
                                   ),
                                   DefaultText(
-                                    text: 'موافق على الشروط والأحكام',
+                                    text: 'موافق على',
                                     color: defaultYellow,
                                     textStyle:
-                                        Theme.of(context).textTheme.caption,
+                                    Theme.of(context).textTheme.caption,
                                   ),
+                                  const Padding(
+                                    padding:  EdgeInsetsDirectional.only(start: 5),
+                                    child:  Text('الشروط والأحكام',
+                                      style: TextStyle(
+                                          color: defaultYellow,
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 15
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                               Padding(

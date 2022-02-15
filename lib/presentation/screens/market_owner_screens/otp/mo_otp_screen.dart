@@ -224,20 +224,7 @@ class _MarketOwnerOtpScreenState extends State<MarketOwnerOtpScreen> {
                         const SizedBox(
                           height: 30,
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text(
-                            'تعديل رقم الهاتف',
-                            style: TextStyle(
-                                color: defaultYellow,
-                                decoration: TextDecoration.underline,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                            textDirection: TextDirection.rtl,
-                          ),
-                        ),
+
                       ],
                     ),
                   ],

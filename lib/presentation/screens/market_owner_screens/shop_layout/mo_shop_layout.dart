@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/presentation/screens/delivery_representative_screen/home/dr_home_screen.dart';
-import 'package:productive_families/presentation/screens/delivery_representative_screen/profile/dr_profile_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/filter_screen/mo_Filtering_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/home/mo_home_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/user_profile/mo_user_profile_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/favorite/favorite_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/home/home_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/markets/markets.dart';
-import 'package:productive_families/presentation/screens/user_screens/user_profile/user_profile_screen.dart';
 
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
@@ -47,8 +41,8 @@ class _MarketOwnerShopLayoutState extends State<MarketOwnerShopLayout>
           Expanded(
             child: TabBarView(
               children: [
-                MarketOwnerHomeScreen(),
-                MarketOwnerFilteringScreen(),
+                const MarketOwnerHomeScreen(),
+                const MarketOwnerFilteringScreen(),
                 MarketOwnerAddNewProductScreen(),
                 MarketOwnerUserProfileScreen(),
               ],

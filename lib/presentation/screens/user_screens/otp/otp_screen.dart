@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -56,7 +57,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 child: DefaultMaterialButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, SHOP_LAYOUT);
                   },
                   text: 'إبدأ',
                 ),
@@ -106,8 +107,8 @@ class _OtpScreenState extends State<OtpScreen> {
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 child: DefaultMaterialButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.pushNamed(context, '/shop_layout');
+
+                    Navigator.pushNamed(context, SHOP_LAYOUT);
                   },
                   text: 'إبدأ',
                 ),
@@ -216,14 +217,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             text: 'تسجيل الدخول',
                           ),
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        DefaultText(
-                          text: 'تعديل رقم الهاتف',
-                          color: defaultYellow,
-                          textStyle: Theme.of(context).textTheme.bodyText1,
-                        ),
+
                       ],
                     ),
                   ],
