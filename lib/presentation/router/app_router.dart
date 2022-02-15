@@ -21,6 +21,7 @@ import 'package:productive_families/presentation/screens/market_owner_screens/re
 import 'package:productive_families/presentation/screens/market_owner_screens/shop_layout/mo_shop_layout.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/start/mo_start_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/terms_and_conditions/mo_terms_and_conditions.dart';
+import 'package:productive_families/presentation/screens/user_screens/about_ordered_product/about_ordered_product_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
@@ -279,6 +280,10 @@ class AppRouter {
         case endpoints.MARKET_OWNER_ADD_NEW_PRODUCT_SCREEN_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerAddNewProductScreen(),
+        );
+        case endpoints.ABOUT_ORDERED_PRODUCT_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => AboutOrderedProductScreen(),
         );
 
 
