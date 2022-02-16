@@ -70,7 +70,7 @@ class NavigationDrawer extends StatelessWidget {
             text: 'تسجيل خروج',
             icon: 'assets/icons/logout.svg',
             onTap: () {
-              Navigator.pushNamedAndRemoveUntil(context, START_SCREEN, (route) => false);
+              Navigator.pushNamedAndRemoveUntil(context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
             },
           ),
 

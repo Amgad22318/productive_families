@@ -18,14 +18,19 @@ class DefaultMaterialButton extends StatelessWidget {
 
   const DefaultMaterialButton(
       {Key? key,
-        this.textColor = darkBlue,
-        required this.onPressed, this.text,
-        this.width = double.infinity,
-        this.isUpperCase = true,
-        this.background = defaultYellow,
-        this.radius = 30,
-        this.child,
-        this.splashColor, this.padding, this.height=59, this.fontSize, this.textScaleFactor })
+      this.textColor = darkBlue,
+      required this.onPressed,
+      this.text,
+      this.width = double.infinity,
+      this.isUpperCase = true,
+      this.background = defaultYellow,
+      this.radius = 30,
+      this.child,
+      this.splashColor,
+      this.padding,
+      this.height = 50,
+      this.fontSize,
+      this.textScaleFactor})
       : super(key: key);
 
   @override
@@ -33,8 +38,8 @@ class DefaultMaterialButton extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: MaterialButton(padding:padding ,
-
+      child: MaterialButton(
+        padding: padding,
         elevation: 0,
         splashColor: splashColor,
         color: background,
@@ -43,13 +48,14 @@ class DefaultMaterialButton extends StatelessWidget {
         onPressed: onPressed,
         child: child ??
             Text(
-
               isUpperCase ? text!.toUpperCase() : text!,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              textScaleFactor:textScaleFactor ,
-              style: Theme.of(context).textTheme.button!.copyWith(color: textColor,fontSize:fontSize, ),
-
+              textScaleFactor: textScaleFactor,
+              style: Theme.of(context).textTheme.button!.copyWith(
+                    color: textColor,
+                    fontSize: fontSize,
+                  ),
             ),
       ),
     );

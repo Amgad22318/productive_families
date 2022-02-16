@@ -31,6 +31,7 @@ class DefaultFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final AlignmentGeometry? containerAlignment;
   final BoxConstraints? suffixIconConstraints;
+  final bool readOnly;
 
   const DefaultFormField(
       {Key? key,
@@ -61,7 +62,9 @@ class DefaultFormField extends StatelessWidget {
       this.contentPadding,
       this.containerAlignment,
       this.suffixText,
-      this.suffixTextStyle, this.suffixIconConstraints})
+      this.suffixTextStyle,
+      this.suffixIconConstraints,
+      this.readOnly = false})
       : super(key: key);
 
   @override
@@ -74,7 +77,8 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
-
+        readOnly: readOnly,
+        cursorColor: Colors.white,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
         maxLines: maxLines,
@@ -92,14 +96,12 @@ class DefaultFormField extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
-
           suffixStyle: suffixTextStyle,
           suffixText: suffixText,
           contentPadding: contentPadding,
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           suffixIconConstraints: suffixIconConstraints,
-
           labelStyle:
               Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
           labelText: labelText,

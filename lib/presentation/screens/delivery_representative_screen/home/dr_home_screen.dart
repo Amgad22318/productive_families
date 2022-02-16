@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/home/dr_home_list_itme.dart';
 import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/home/dr_navigation_drawer.dart';
@@ -139,7 +140,9 @@ class _DeliveryRepresentativeHomeScreenState
                                 textDecoration: TextDecoration.none,
                                 textStyle: Theme.of(context).textTheme.caption,
                                 textColor: greyText,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_NEAR_BY_ORDERS);
+                                },
                               )
                             ],
                           ),
@@ -150,16 +153,12 @@ class _DeliveryRepresentativeHomeScreenState
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                    child: Column(
-                      children: [
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (BuildContext context, int index) =>DeliveryRepresentativeHomeListItem(),
-                            )
-                      ],
-                    ),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) =>DeliveryRepresentativeHomeAndNearByOrdersListItem(),
+                        ),
                   ),
                 ],
               ),

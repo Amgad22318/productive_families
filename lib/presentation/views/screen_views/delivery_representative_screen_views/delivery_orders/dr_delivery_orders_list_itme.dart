@@ -5,18 +5,22 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget {
-  const DeliveryRepresentativeHomeAndNearByOrdersListItem({Key? key}) : super(key: key);
+class DeliveryRepresentativeDeliveryOrdersListItem extends StatelessWidget {
+  final bool orderAccepted;
+
+  const DeliveryRepresentativeDeliveryOrdersListItem(
+      {Key? key, this.orderAccepted = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double textScale=MediaQuery.textScaleFactorOf(context);
+    double textScale = MediaQuery.textScaleFactorOf(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 8.0,
       ),
       child: LimitedBox(
-        maxHeight: 160*textScale,
+        maxHeight: 240 * textScale,
         child: Card(
           clipBehavior: Clip.antiAlias,
           elevation: 5,
@@ -54,7 +58,8 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
                           alignment: AlignmentDirectional.topEnd,
                           child: DefaultText(
                             textAlign: TextAlign.end,
-                            text: " منذ دقيقة منذ دقيقة",
+                            color: orderAccepted?Colors.green:darkBlue,
+                            text: orderAccepted?'تم قبول الطلب':'منذ دقيقة منذ دقيقة',
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .overline!
@@ -67,6 +72,13 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
                           textStyle: Theme.of(context).textTheme.bodyText2,
                           // textStyle: TextStyle(),
                         ),
+                        DefaultText(
+                          text:
+                          'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                          textStyle: Theme.of(context).textTheme.overline,
+                          maxLines: 2,
+                          color: greyText,
+                        ),
                         Row(
                           children: [
                             SvgPicture.asset(
@@ -75,53 +87,57 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
                               width: 20,
                             ),
                             DefaultText(
-                              text: "العنوان بالتفصيل",
+                              text: "من",
                               textStyle: Theme.of(context).textTheme.caption,
                               maxLines: 1,
                             ),
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.only(start: 20.0),
+                          padding:
+                              const EdgeInsetsDirectional.only(start: 20.0),
                           child: DefaultText(
                             text:
-                            'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                                'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
                             textStyle: Theme.of(context).textTheme.overline,
-
                             maxLines: 1,
                             color: greyText,
                           ),
                         ),
                         Row(
                           children: [
-                            Expanded(
-                                flex: 10,
-                                child: DefaultMaterialButton(
-                                  textScaleFactor: 1,
-                                  textColor: Colors.white,
-                                  background: darkBlue,
-                                  height: 40*textScale,
-                                  text: 'قبول',
-                                  fontSize: 12,
-                                  onPressed: () {},
-                                )),
-                            const Spacer(
-                              flex: 1,
+                            SvgPicture.asset(
+                              'assets/icons/location.svg',
+                              height: 20,
+                              width: 20,
                             ),
-                            Expanded(
-                                flex: 10,
-                                child: DefaultOutlinedButton(
-
-                                  textScaleFactor: 1,
-
-                                  fontSize: 12,
-                                  borderColor: darkBlue,
-                                  height: 40*textScale,
-                                  text: 'إلغاء',
-                                  onPressed: () {},
-                                ))
+                            DefaultText(
+                              text: "إلى",
+                              textStyle: Theme.of(context).textTheme.caption,
+                              maxLines: 1,
+                            ),
                           ],
-                        )
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsetsDirectional.only(start: 20.0),
+                          child: DefaultText(
+                            text:
+                                'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
+                            textStyle: Theme.of(context).textTheme.overline,
+                            maxLines: 1,
+                            color: greyText,
+                          ),
+                        ),
+                      DefaultMaterialButton(
+                        textScaleFactor: 1,
+                        textColor: Colors.white,
+                        background: darkBlue,
+                        height: 40 * textScale,
+                        text: orderAccepted?'إكمال الطلب':'14050.00',
+                        fontSize: 12,
+                        onPressed: () {},
+                      ),
                       ],
                     ),
                   ),

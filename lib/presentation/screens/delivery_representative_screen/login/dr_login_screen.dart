@@ -114,7 +114,7 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                                     width: 180,
                                     onPressed: () {
                                       Navigator.pushNamed(context,
-                                          DELIVERY_REPRESENTATIVE_LOCATION_PICKER, );
+                                          DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN, );
                                     },
                                     text: 'تسجيل الدخول',
                                   ),
