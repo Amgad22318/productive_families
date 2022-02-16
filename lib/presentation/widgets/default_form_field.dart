@@ -46,7 +46,7 @@ class DefaultFormField extends StatelessWidget {
       this.suffixIcon,
       this.initialValue,
       this.hintText = 'أكتب هنا..',
-      this.backgroundColor = formFieldBackGroundLightBlue,
+      this.backgroundColor = lightBlue,
       this.height ,
       this.radius = 30.0,
       this.maxLines,

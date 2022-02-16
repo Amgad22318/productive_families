@@ -31,7 +31,7 @@ class _MarketOwnerCategorySelectorItemState
             height: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50.0),
-              color: formFieldBackGroundLightBlue,
+              color: lightBlue,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),

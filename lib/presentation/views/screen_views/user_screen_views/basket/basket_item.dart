@@ -153,7 +153,7 @@ class BasketMealItem extends StatelessWidget {
                           "تطبيق للربط بين الاسر المنتجه ومساعدتهم على توفير بيئه",
                       textStyle: TextStyle(fontSize: 12),
                       maxLines: 2,
-                      color: formFieldBackGroundLightBlue,
+                      color: lightBlue,
                     ),
                   ],
                 ),
