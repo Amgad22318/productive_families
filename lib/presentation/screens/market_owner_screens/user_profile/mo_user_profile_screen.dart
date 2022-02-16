@@ -291,6 +291,9 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Padding(padding:const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+            child: DefaultMaterialButton(text: 'حفظ التغييرات', onPressed: (){},),
+            )
           ],
         ),
       ),
