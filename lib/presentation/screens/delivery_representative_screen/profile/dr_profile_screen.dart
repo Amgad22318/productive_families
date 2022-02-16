@@ -146,7 +146,7 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 padding: EdgeInsetsDirectional.zero,
                 onPressed: () {
-                  Navigator.pushNamed(context, SPECIFY_LOCATION);
+                  Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN);
                 },
                 icon: Row(
                   children: [

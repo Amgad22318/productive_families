@@ -62,10 +62,10 @@ class DeliveryRepresentativeNavigationDrawer extends StatelessWidget {
             },
           ),
           DefaultDrawerListTile(
-            text: 'عروض التوصيل',
+            text: 'طلبات  التوصيل',
             icon: 'assets/icons/offer.svg',
             onTap: () {
-              Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
+              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_DELIVERY_ORDERS_SCREEN);
             },
           ),
           DefaultDrawerListTile(
@@ -79,7 +79,7 @@ class DeliveryRepresentativeNavigationDrawer extends StatelessWidget {
             text: 'تسجيل الخروج',
             icon: 'assets/icons/logout.svg',
             onTap: () {
-              Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
+              Navigator.pushNamedAndRemoveUntil(context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
             },
           ),
         ],

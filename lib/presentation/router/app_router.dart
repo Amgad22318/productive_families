@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
+import 'package:productive_families/presentation/screens/delivery_representative_screen/delivery_orders/dr_delivery_orders.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/location/choose_order_location.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/location/dr_location_picker.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/login/dr_login_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/near_by_orders/dr_near_by_orders.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screen/offer_price/dr_offer_price.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/otp/dr_otp_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
@@ -213,7 +217,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeOtpScreen(),
         );
-        case endpoints.DELIVERY_REPRESENTATIVE_LOCATION_PICKER:
+      case endpoints.DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN:
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeLocationPicker(),
         );
@@ -221,72 +225,86 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeShopLayout(),
         );
-        case endpoints.MARKET_OWNER_START_SCREEN:
+      case endpoints.MARKET_OWNER_START_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerStartScreen(),
         );
-        case endpoints.MARKET_OWNER_LOGIN_SCREEN:
+      case endpoints.MARKET_OWNER_LOGIN_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerLoginScreen(),
         );
-        case endpoints.MARKET_OWNER_REGISTER_SCREEN:
+      case endpoints.MARKET_OWNER_REGISTER_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerRegisterScreen(),
         );
-        case endpoints.MARKET_OWNER_OTP_SCREEN:
+      case endpoints.MARKET_OWNER_OTP_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerOtpScreen(),
         );
-        case endpoints.MARKET_OWNER_SHOP_LAYOUT:
+      case endpoints.MARKET_OWNER_SHOP_LAYOUT:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerShopLayout(),
         );
-        case endpoints.MARKET_OWNER_CURRENT_ORDERS_SCREEN:
+      case endpoints.MARKET_OWNER_CURRENT_ORDERS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerCurrentOrdersScreen(),
         );
-        case endpoints.MARKET_OWNER_EDIT_PRODUCT_SCREEN:
+      case endpoints.MARKET_OWNER_EDIT_PRODUCT_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerEditProductScreen(),
         );
-        case endpoints.MARKET_OWNER_ABOUT_US_SCREEN:
+      case endpoints.MARKET_OWNER_ABOUT_US_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerAboutUsScreen(),
         );
-          case endpoints.MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN:
+      case endpoints.MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerTermsAndConditionsScreen(),
         );
-        case endpoints.MARKET_OWNER_ADD_OFFER_SCREEN:
+      case endpoints.MARKET_OWNER_ADD_OFFER_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerAddOfferScreen(),
         );
-        case endpoints.MARKET_OWNER_ORDER_DETAILS_SCREEN:
+      case endpoints.MARKET_OWNER_ORDER_DETAILS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerOrderDetailsScreen(),
         );
-        case endpoints.MARKET_OWNER_NOTIFICATIONS_SCREEN:
+      case endpoints.MARKET_OWNER_NOTIFICATIONS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerNotificationsScreen(),
         );
-        case endpoints.MARKET_OWNER_ORDER_FOLLOW_UP_SCREEN:
+      case endpoints.MARKET_OWNER_ORDER_FOLLOW_UP_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerOrderFollowUp(),
         );
-        case endpoints.MARKET_OWNER_FILTERING_SCREEN_SCREEN:
+      case endpoints.MARKET_OWNER_FILTERING_SCREEN_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerFilteringScreen(),
         );
-        case endpoints.MARKET_OWNER_ADD_NEW_PRODUCT_SCREEN_SCREEN:
+      case endpoints.MARKET_OWNER_ADD_NEW_PRODUCT_SCREEN_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerAddNewProductScreen(),
         );
-        case endpoints.ABOUT_ORDERED_PRODUCT_SCREEN:
+      case endpoints.ABOUT_ORDERED_PRODUCT_SCREEN:
         return MaterialPageRoute(
           builder: (_) => AboutOrderedProductScreen(),
         );
-
-
+        case endpoints.DELIVERY_REPRESENTATIVE_DELIVERY_ORDERS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryRepresentativeDeliveryOrders(),
+        );
+        case endpoints.DELIVERY_REPRESENTATIVE_NEAR_BY_ORDERS:
+        return MaterialPageRoute(
+          builder: (_) =>DeliveryRepresentativeNearByOrders(),
+        );
+        case endpoints.DELIVERY_REPRESENTATIVE_OFFER_PRICE:
+        return MaterialPageRoute(
+          builder: (_) =>DeliveryRepresentativeOfferPrice(),
+        );
+        case endpoints.DELIVERY_REPRESENTATIVE_CHOOSE_ORDER_LOCATION:
+        return MaterialPageRoute(
+          builder: (_) =>DeliveryRepresentativeChooseOrderLocation(),
+        );
 
       default:
         return null;

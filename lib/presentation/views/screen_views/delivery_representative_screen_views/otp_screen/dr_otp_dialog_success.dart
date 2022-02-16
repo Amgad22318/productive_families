@@ -42,7 +42,7 @@ class DROTPDialogSuccess extends  StatelessWidget {
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: DefaultMaterialButton(
             onPressed: () {
-              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATION_PICKER);
+              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN);
             },
             text: 'إبدأ',
           ),
