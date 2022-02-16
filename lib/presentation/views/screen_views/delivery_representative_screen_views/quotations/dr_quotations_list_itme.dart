@@ -10,12 +10,13 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double textScale=MediaQuery.textScaleFactorOf(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 8.0,
       ),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 220),
+      child: LimitedBox(
+        maxHeight: 220*textScale,
         child: Card(
           clipBehavior: Clip.antiAlias,
           elevation: 5,
@@ -30,18 +31,17 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 3,
-                  child: Column(
+                  child: Stack(
+                    fit: StackFit.expand,
                     children: [
-                      Expanded(
-                        child: Image.asset(
-                          'assets/image/make_up.png',
-                          fit: BoxFit.cover,
-                        ),
+                      Image.asset(
+                        'assets/image/make_up.png',
+                        fit: BoxFit.cover,
                       ),
                     ],
                   ),
                 ),
-                Expanded(
+                Flexible(
                   flex: 5,
                   child: Padding(
                     padding: const EdgeInsetsDirectional.only(
@@ -87,6 +87,7 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                             text:
                                 'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.',
                             textStyle: Theme.of(context).textTheme.overline,
+
                             maxLines: 1,
                             color: greyText,
                           ),
@@ -99,7 +100,7 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                               width: 20,
                             ),
                             DefaultText(
-                              text: "من",
+                              text: "إلى",
                               textStyle: Theme.of(context).textTheme.caption,
                               maxLines: 1,
                             ),
@@ -120,9 +121,10 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                             Expanded(
                                 flex: 10,
                                 child: DefaultMaterialButton(
+                                  textScaleFactor: 1,
                                   textColor: Colors.white,
                                   background: darkBlue,
-                                  height: 40,
+                                  height: 40*textScale,
                                   text: 'عرض سعر',
                                   fontSize: 12,
                                   onPressed: () {},
@@ -133,9 +135,12 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                             Expanded(
                                 flex: 10,
                                 child: DefaultOutlinedButton(
+
+                                  textScaleFactor: 1,
+
                                   fontSize: 12,
                                   borderColor: darkBlue,
-                                  height: 40,
+                                  height: 40*textScale,
                                   text: 'رفض',
                                   onPressed: () {},
                                 ))

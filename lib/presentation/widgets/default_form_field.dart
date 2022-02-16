@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -31,7 +30,7 @@ class DefaultFormField extends StatelessWidget {
   final InputBorder? inputDisabledBorder;
   final EdgeInsetsGeometry? contentPadding;
   final AlignmentGeometry? containerAlignment;
-
+  final BoxConstraints? suffixIconConstraints;
 
   const DefaultFormField(
       {Key? key,
@@ -48,8 +47,8 @@ class DefaultFormField extends StatelessWidget {
       this.suffixIcon,
       this.initialValue,
       this.hintText = 'أكتب هنا..',
-      this.backgroundColor = formFieldBackGroundLightBlue,
-      this.height ,
+      this.backgroundColor = lightBlue,
+      this.height,
       this.radius = 30.0,
       this.maxLines,
       this.enabled = true,
@@ -58,14 +57,17 @@ class DefaultFormField extends StatelessWidget {
       this.inputFocusedBorder,
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
-      this.textColor = Colors.white, this.contentPadding, this.containerAlignment, this.suffixText, this.suffixTextStyle})
-
+      this.textColor = Colors.white,
+      this.contentPadding,
+      this.containerAlignment,
+      this.suffixText,
+      this.suffixTextStyle, this.suffixIconConstraints})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: containerAlignment ,
+      alignment: containerAlignment,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(
@@ -93,14 +95,11 @@ class DefaultFormField extends StatelessWidget {
 
           suffixStyle: suffixTextStyle,
           suffixText: suffixText,
-          contentPadding:contentPadding,
+          contentPadding: contentPadding,
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          suffixIconConstraints: const BoxConstraints(
-              minHeight: 0,
-              minWidth: 0,
-              maxWidth: double.infinity,
-              maxHeight: double.infinity),
+          suffixIconConstraints: suffixIconConstraints,
+
           labelStyle:
               Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
           labelText: labelText,
