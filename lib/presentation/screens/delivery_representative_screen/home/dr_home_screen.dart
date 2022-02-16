@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/home/dr_home_list_itme.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
+import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/home/dr_navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
@@ -36,7 +36,7 @@ class _DeliveryRepresentativeHomeScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const NavigationDrawer(),
+      drawer: const DeliveryRepresentativeNavigationDrawer(),
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(
@@ -66,7 +66,7 @@ class _DeliveryRepresentativeHomeScreenState
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -149,15 +149,15 @@ class _DeliveryRepresentativeHomeScreenState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListView(
+                        ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            children: List.generate(10,
-                                (index) => DeliveryRepresentativeHomeItem()))
+                            itemCount: 10,
+                            itemBuilder: (BuildContext context, int index) =>DeliveryRepresentativeHomeListItem(),
+                            )
                       ],
                     ),
                   ),

@@ -13,6 +13,8 @@ class DefaultMaterialButton extends StatelessWidget {
   final String? text;
   final Widget? child;
   final EdgeInsetsGeometry? padding;
+  final double? fontSize;
+  final double? textScaleFactor;
 
   const DefaultMaterialButton(
       {Key? key,
@@ -23,7 +25,7 @@ class DefaultMaterialButton extends StatelessWidget {
         this.background = defaultYellow,
         this.radius = 30,
         this.child,
-        this.splashColor, this.padding, this.height=59 })
+        this.splashColor, this.padding, this.height=59, this.fontSize, this.textScaleFactor })
       : super(key: key);
 
   @override
@@ -41,8 +43,12 @@ class DefaultMaterialButton extends StatelessWidget {
         onPressed: onPressed,
         child: child ??
             Text(
+
               isUpperCase ? text!.toUpperCase() : text!,
-              style: Theme.of(context).textTheme.button!.copyWith(color: textColor),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              textScaleFactor:textScaleFactor ,
+              style: Theme.of(context).textTheme.button!.copyWith(color: textColor,fontSize:fontSize, ),
 
             ),
       ),

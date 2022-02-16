@@ -43,7 +43,7 @@ class UserProfileScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.transparent,
-                        builder: (context) => const ProfileBottomSheet(),
+                        builder: (context) =>  ProfileBottomSheet(accountType: 'مستخدم',),
                       );
                     },
                     icon: const Icon(

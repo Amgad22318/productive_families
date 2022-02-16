@@ -35,7 +35,7 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                   width: 32,
                 ),
                 DefaultText(
-                  text: 'مستخدم',
+                  text: 'مندوب',
                   textStyle: Theme.of(context).textTheme.headline5,
                 ),
                 IconButton(
@@ -43,7 +43,9 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.transparent,
-                        builder: (context) => const ProfileBottomSheet(),
+                        builder: (context) => ProfileBottomSheet(
+                          accountType: 'مندوب',
+                        ),
                       );
                     },
                     icon: const Icon(
@@ -118,18 +120,14 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               inputFocusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: darkBlue),
               ),
-              suffixIcon: SizedBox(
-                height: 24,
-                width: 24,
-                child: IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsetsDirectional.zero,
-                    iconSize: 18,
-                    icon: const Icon(
-                      Icons.edit,
-                      color: darkBlue,
-                    )),
-              ),
+              suffixIcon: IconButton(
+                  onPressed: () {},
+                  padding: EdgeInsetsDirectional.zero,
+                  iconSize: 18,
+                  icon: const Icon(
+                    Icons.edit,
+                    color: darkBlue,
+                  )),
             ),
             const SizedBox(
               height: 8,
@@ -144,34 +142,28 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               validator: (text) {},
               keyboardType: TextInputType.text,
               backgroundColor: Colors.transparent,
+              suffixIconConstraints: const BoxConstraints(maxWidth: 75, minWidth: 50) ,
               suffixIcon: IconButton(
-                padding: EdgeInsets.zero,
-                iconSize: 51,
+                padding: EdgeInsetsDirectional.zero,
                 onPressed: () {
                   Navigator.pushNamed(context, SPECIFY_LOCATION);
                 },
                 icon: Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: DefaultText(
-                        textScaleFactor: 1,
+                    DefaultText(
                         text: 'تغيير',
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .caption!
-                            .copyWith(
-                                decoration: TextDecoration.underline,
-                                fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                        textScaleFactor: 1,
+                        textStyle:
+                            Theme.of(context).textTheme.caption!.copyWith(
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold,
+                                )),
                     SvgPicture.asset(
-                      'assets/icons/map-location.svg',
+                      'assets/icons/location.svg',
                       color: darkBlue,
                       width: 24,
                       height: 24,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -191,7 +183,11 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        Image.asset('assets/icons/bounce.png'),
+                        SvgPicture.asset(
+                          'assets/icons/points.svg',
+                          width: 24,
+                          height: 24,
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: DefaultText(
@@ -233,8 +229,10 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(
-                          'assets/icons/money.png',
+                        SvgPicture.asset(
+                          'assets/icons/coin.svg',
+                          width: 24,
+                          height: 24,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),

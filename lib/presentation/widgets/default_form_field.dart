@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -17,6 +16,8 @@ class DefaultFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? initialValue;
   final String? hintText;
+  final String? suffixText;
+  final TextStyle? suffixTextStyle;
   final Color? backgroundColor;
   final Color? textColor;
   final double radius;
@@ -29,7 +30,7 @@ class DefaultFormField extends StatelessWidget {
   final InputBorder? inputDisabledBorder;
   final EdgeInsetsGeometry? contentPadding;
   final AlignmentGeometry? containerAlignment;
-
+  final BoxConstraints? suffixIconConstraints;
 
   const DefaultFormField(
       {Key? key,
@@ -47,7 +48,7 @@ class DefaultFormField extends StatelessWidget {
       this.initialValue,
       this.hintText = 'أكتب هنا..',
       this.backgroundColor = lightBlue,
-      this.height ,
+      this.height,
       this.radius = 30.0,
       this.maxLines,
       this.enabled = true,
@@ -56,20 +57,24 @@ class DefaultFormField extends StatelessWidget {
       this.inputFocusedBorder,
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
-      this.textColor = Colors.white, this.contentPadding, this.containerAlignment})
-
+      this.textColor = Colors.white,
+      this.contentPadding,
+      this.containerAlignment,
+      this.suffixText,
+      this.suffixTextStyle, this.suffixIconConstraints})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: containerAlignment ,
+      alignment: containerAlignment,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
+
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
         maxLines: maxLines,
@@ -87,14 +92,14 @@ class DefaultFormField extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
-          contentPadding:contentPadding,
+
+          suffixStyle: suffixTextStyle,
+          suffixText: suffixText,
+          contentPadding: contentPadding,
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          suffixIconConstraints: const BoxConstraints(
-              minHeight: 0,
-              minWidth: 0,
-              maxWidth: double.infinity,
-              maxHeight: double.infinity),
+          suffixIconConstraints: suffixIconConstraints,
+
           labelStyle:
               Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
           labelText: labelText,

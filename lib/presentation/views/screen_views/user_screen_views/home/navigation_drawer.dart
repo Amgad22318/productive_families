@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/shared/home/default_drawer_list_tile.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/drawer_list_tiles.dart';
 
@@ -44,37 +45,37 @@ class NavigationDrawer extends StatelessWidget {
 
             ],
           ),
-          DrawerListTiles(
+          DefaultDrawerListTile(
             text: 'البنود و الشروط',
-            icon: 'assets/icons/contract.png',
+            icon: 'assets/icons/notepad.svg',
             onTap: () {
               Navigator.pushNamed(context, TERMS_AND_CONDITIONS);
             },
           ),
-          DrawerListTiles(
+          DefaultDrawerListTile(
             text: 'معلومات عنا',
-            icon: 'assets/icons/info.png',
+            icon: 'assets/icons/info.svg',
             onTap: () {
               Navigator.pushNamed(context, ABOUT_US);
-
             },
           ),
-          DrawerListTiles(
+          DefaultDrawerListTile(
             text: 'طلباتك',
-            icon: 'assets/icons/shopping-bag (1).png',
+            icon: 'assets/icons/bag.svg',
             onTap: () {
               Navigator.pushNamed(context, ORDERES_SCREEN);
             },
           ),
-          DrawerListTiles(
+          DefaultDrawerListTile(
             text: 'تسجيل خروج',
-            icon: 'assets/icons/log-out.png',
+            icon: 'assets/icons/logout.svg',
             onTap: () {
               Navigator.pushNamedAndRemoveUntil(context, START_SCREEN, (route) => false);
-
-
             },
           ),
+
+
+
         ],
       ),
     );
