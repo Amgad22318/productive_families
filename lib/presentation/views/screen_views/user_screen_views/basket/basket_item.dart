@@ -52,7 +52,7 @@ class BasketMealItem extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: DefaultText(
-                            text: "اسم المتجر",
+                            text: "اسم المنتج",
                             textStyle: Theme.of(context).textTheme.bodyText1,
                             // textStyle: TextStyle(),
                           ),

@@ -74,8 +74,7 @@ class OrderLocation extends StatelessWidget {
                             children: [
                               DefaultMaterialButton(
                                 text: 'استملت الطلب',
-                                onPressed: () {
-                                },
+                                onPressed: () {},
                                 height: size.height * 0.06,
                               )
                             ],

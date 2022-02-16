@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/category_selector/mo_category_selector_item.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -70,7 +71,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                     Align(
                       alignment: AlignmentDirectional.topEnd,
                       child: DefaultText(
-                        text: 'تسجيل الدخول',
+                        text: 'تسجيل حساب جديد',
                         textStyle: Theme.of(context).textTheme.headline6,
                       ),
                     ),
@@ -187,6 +188,14 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     }
                                   },
                                   keyboardType: TextInputType.text),
+                              // category
+                              DefaultText(
+                                text: 'القسم',
+                                color: Colors.white,
+                                textStyle:
+                                Theme.of(context).textTheme.headline6,
+                              ),
+                              MarketOwnerCategorySelectorItem(),
                               DefaultText(
                                 text: 'تاكيد كلمة المرور',
                                 color: Colors.white,
@@ -209,7 +218,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                   child: DefaultText(
                                     maxLines: 2,
                                     text:
-                                        'سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك',
+                                        'سوف يتم ارسال رسالة نصية لك لتأكيد رقمك',
                                     color: Colors.grey,
                                     textStyle:
                                         Theme.of(context).textTheme.overline,
@@ -233,11 +242,21 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     value: isChecked,
                                   ),
                                   DefaultText(
-                                    text: 'موافق على الشروط والأحكام',
+                                    text: 'موافق على',
                                     color: defaultYellow,
                                     textStyle:
-                                        Theme.of(context).textTheme.caption,
+                                    Theme.of(context).textTheme.caption,
                                   ),
+                                  const Padding(
+                                    padding:  EdgeInsetsDirectional.only(start: 5),
+                                    child:  Text('الشروط والأحكام',
+                                      style: TextStyle(
+                                          color: defaultYellow,
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 15
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                               Padding(

@@ -6,10 +6,22 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screen/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screen/start/dr_start_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/about_product/mo_about_us.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/add_offer/mo_add_offer.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/filter_screen/mo_Filtering_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/notifications/mo_notifications_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/order_details/mo_order_details_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/order_follow_up/mo_order_follow_up_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/otp/mo_otp_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/register/mo_register_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/shop_layout/mo_shop_layout.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/start/mo_start_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/terms_and_conditions/mo_terms_and_conditions.dart';
+import 'package:productive_families/presentation/screens/user_screens/about_ordered_product/about_ordered_product_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
@@ -225,6 +237,55 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MarketOwnerOtpScreen(),
         );
+        case endpoints.MARKET_OWNER_SHOP_LAYOUT:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerShopLayout(),
+        );
+        case endpoints.MARKET_OWNER_CURRENT_ORDERS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerCurrentOrdersScreen(),
+        );
+        case endpoints.MARKET_OWNER_EDIT_PRODUCT_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerEditProductScreen(),
+        );
+        case endpoints.MARKET_OWNER_ABOUT_US_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerAboutUsScreen(),
+        );
+          case endpoints.MARKET_OWNER_TERMS_AND_CONDITIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerTermsAndConditionsScreen(),
+        );
+        case endpoints.MARKET_OWNER_ADD_OFFER_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerAddOfferScreen(),
+        );
+        case endpoints.MARKET_OWNER_ORDER_DETAILS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerOrderDetailsScreen(),
+        );
+        case endpoints.MARKET_OWNER_NOTIFICATIONS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerNotificationsScreen(),
+        );
+        case endpoints.MARKET_OWNER_ORDER_FOLLOW_UP_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerOrderFollowUp(),
+        );
+        case endpoints.MARKET_OWNER_FILTERING_SCREEN_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerFilteringScreen(),
+        );
+        case endpoints.MARKET_OWNER_ADD_NEW_PRODUCT_SCREEN_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerAddNewProductScreen(),
+        );
+        case endpoints.ABOUT_ORDERED_PRODUCT_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => AboutOrderedProductScreen(),
+        );
+
 
 
       default:
