@@ -120,18 +120,14 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               inputFocusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: darkBlue),
               ),
-              suffixIcon: SizedBox(
-                height: 24,
-                width: 24,
-                child: IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsetsDirectional.zero,
-                    iconSize: 18,
-                    icon: const Icon(
-                      Icons.edit,
-                      color: darkBlue,
-                    )),
-              ),
+              suffixIcon: IconButton(
+                  onPressed: () {},
+                  padding: EdgeInsetsDirectional.zero,
+                  iconSize: 18,
+                  icon: const Icon(
+                    Icons.edit,
+                    color: darkBlue,
+                  )),
             ),
             const SizedBox(
               height: 8,
@@ -146,26 +142,29 @@ class DeliveryRepresentativeProfileScreen extends StatelessWidget {
               validator: (text) {},
               keyboardType: TextInputType.text,
               backgroundColor: Colors.transparent,
-              suffixIcon: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 75,minWidth: 53),
-                child: IconButton(
-                  padding: EdgeInsetsDirectional.zero,
-                  onPressed: () {
-                    Navigator.pushNamed(context, SPECIFY_LOCATION);
-                  },
-                  icon: Row(
-                    children: [
-                      DefaultText(text: 'تغيير', textStyle:  Theme.of(context).textTheme.caption!.copyWith(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,)),
-                      SvgPicture.asset(
-                        'assets/icons/location.svg',
-                        color: darkBlue,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ],
-                  ),
+              suffixIconConstraints: const BoxConstraints(maxWidth: 75, minWidth: 50) ,
+              suffixIcon: IconButton(
+                padding: EdgeInsetsDirectional.zero,
+                onPressed: () {
+                  Navigator.pushNamed(context, SPECIFY_LOCATION);
+                },
+                icon: Row(
+                  children: [
+                    DefaultText(
+                        text: 'تغيير',
+                        textScaleFactor: 1,
+                        textStyle:
+                            Theme.of(context).textTheme.caption!.copyWith(
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                    SvgPicture.asset(
+                      'assets/icons/location.svg',
+                      color: darkBlue,
+                      width: 24,
+                      height: 24,
+                    ),
+                  ],
                 ),
               ),
               inputEnabledBorder: const UnderlineInputBorder(
