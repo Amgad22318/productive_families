@@ -271,7 +271,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SvgPicture.asset('assets/icons/coin.svg',color: backgroundBlack,),
+                        SvgPicture.asset('assets/icons/coin.svg',color: backgroundBlack,height: 24,width: 24,),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           child: DefaultText(
