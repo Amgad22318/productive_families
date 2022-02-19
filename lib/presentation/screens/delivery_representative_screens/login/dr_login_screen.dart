@@ -72,7 +72,7 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                       const Spacer(),
                       Material(
                         color: darkBlue,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(180),
                             topRight: Radius.circular(180)),
                         child: Padding(
@@ -88,7 +88,7 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                                   height: 110,
                                 ),
                                 DefaultText(
-                                  text: 'الإسم او رقم الهاتف',
+                                  text: 'رقم الهاتف',
                                   color: Colors.white,
                                   textStyle: Theme.of(context).textTheme.headline6,
                                 ),

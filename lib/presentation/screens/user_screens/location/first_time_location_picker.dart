@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
+
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class DeliveryRepresentativeLocationPicker extends StatelessWidget {
-  DeliveryRepresentativeLocationPicker({Key? key}) : super(key: key);
-  final TextEditingController locationController = TextEditingController();
+class FirstTimeLocationPicker extends StatelessWidget {
+  FirstTimeLocationPicker({Key? key}) : super(key: key);
+final  TextEditingController locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +23,66 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
       appBar: DefaultShopAppbar(
         height: 80,
         centerTitle: true,
-        title: DefaultText(
-          text: 'تحديد العنوان',
-          textStyle: Theme.of(context).textTheme.headline6,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: () {
+                  navigateToAndFinish(context, const ShopLayout(index: 1,));
+
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/shop.svg",
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'المتاجر',
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Flexible(
+              child: DefaultMaterialButton(
+                height: 50,
+                background: backGroundWhite,
+                onPressed: () {
+                  navigateToAndFinish(context,  CustomerServicesChatScreen());
+
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/patch-question-fll.svg",
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'استفسارات',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
-        ],
       ),
       body: Stack(
         children: [
@@ -76,15 +129,8 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
                           // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                               hintText: '',
-                              prefixIcon:  Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(
-
-                                  'assets/icons/location.svg',
-                                  height: 24.0, width: 24.0,
-                                  color: Colors.white,
-                                ),
-                              ),
+                              prefixIcon:
+                                  const Icon(Icons.location_on_outlined),
                               controller: locationController,
                               validator: (p0) {},
                               keyboardType: TextInputType.text),
@@ -92,8 +138,8 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
                           DefaultMaterialButton(
                             text: 'تأكيد العنوان',
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, DELIVERY_REPRESENTATIVE_SHOP_LAYOUT, (route) => false);
+                              Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+
                             },
                             height: size.height * 0.06,
                           )
