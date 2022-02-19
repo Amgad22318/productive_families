@@ -114,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                                   width: 180,
                                   onPressed: () {
                                     Navigator.pushNamedAndRemoveUntil(context,
-                                        GUEST_LOCATION_PICKER, (route) => false);
+                                        FIRST_TIME_LOCATION_PICKER, (route) => false);
                                   },
                                   text: 'تسجيل الدخول',
                                 ),

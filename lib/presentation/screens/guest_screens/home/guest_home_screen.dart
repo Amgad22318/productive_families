@@ -4,6 +4,7 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/shared/guest_you_need_to_login_dialog.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_grid_view_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
@@ -13,14 +14,14 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class GuestHomeScreen extends StatefulWidget {
+  const GuestHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GuestHomeScreen> createState() => _GuestHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GuestHomeScreenState extends State<GuestHomeScreen> {
   TextEditingController searchController = TextEditingController();
 
   late VideoPlayerController videoPlayerController;
@@ -46,14 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+                showDialog(context: context, builder: (context) => GuestYouNeedToLoginDialog(),);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
               )),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, BASKET_SCREEN);
+                showDialog(context: context, builder: (context) => GuestYouNeedToLoginDialog(),);
               },
               icon: SvgPicture.asset(
                 'assets/icons/shopping-cart-outline-badged.svg',
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Container(
-
+                                  padding: const EdgeInsetsDirectional.all(8),
                                   height: 220,
                                   width: double.infinity,
                                   foregroundDecoration: BoxDecoration(
