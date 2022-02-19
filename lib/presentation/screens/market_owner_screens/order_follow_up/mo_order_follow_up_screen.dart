@@ -138,7 +138,8 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                                 text: 'تم توصيل الطلب',
                                 date: '02:00 pm',
                                 isDone: false,
-                              ),OrderFollowUpItem(
+                              ),
+                              OrderFollowUpItem(
                                 text: 'تم توصيل الطلب',
                                 date: '02:00 pm',
                                 isDone: false,
@@ -146,6 +147,7 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                             ],
                           ),
                         ],
+                        //
                       ),
                     ),
                   ),
