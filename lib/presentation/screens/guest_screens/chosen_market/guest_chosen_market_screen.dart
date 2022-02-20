@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/favorite/favorite_grid_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/chosen_market/guest_market_category_item.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/chosen_market/market_category_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class GuestFavoriteScreen extends StatelessWidget {
-  const GuestFavoriteScreen({Key? key}) : super(key: key);
+class GuestChosenMarketScreen extends StatelessWidget {
+  const GuestChosenMarketScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class GuestFavoriteScreen extends StatelessWidget {
         centerTitle: true,
         title: DefaultText(
           textStyle: Theme.of(context).textTheme.headline5,
-          text: 'المفضلة',
+          text: 'إسم الأسرة',
         ),
       ),
       body: Column(
@@ -29,11 +30,12 @@ class GuestFavoriteScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     StaggeredGrid.count(
+                  
                       crossAxisCount: 2,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
                       children: List.generate(11, (index) => const StaggeredGridTile.fit(crossAxisCellCount: 1,
-                      child: MarketFavoriteItem())),
+                      child: GuestMarketCategoryItem())),
                     ),
                   ],
                 ),

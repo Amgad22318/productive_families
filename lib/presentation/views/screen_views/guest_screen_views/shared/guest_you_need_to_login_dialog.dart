@@ -20,7 +20,7 @@ class GuestYouNeedToLoginDialog extends StatelessWidget {
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
           child: DefaultMaterialButton(
-            onPressed: () {Navigator.pushNamed(context, LOGIN_SCREEN);},
+            onPressed: () {Navigator.pushNamedAndRemoveUntil(context, LOGIN_SCREEN, (route) => false);},
             text: 'تسجيل الدخول',
           ),
         ));

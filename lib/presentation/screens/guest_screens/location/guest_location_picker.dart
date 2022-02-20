@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/guest_screens/shop_layout/guest_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
 
@@ -30,7 +31,7 @@ final  TextEditingController locationController = TextEditingController();
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(context, const ShopLayout(index: 1,));
+                  navigateToAndFinish(context, const GuestShopLayout(index: 1,));
 
                 },
                 child: Row(

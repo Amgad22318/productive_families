@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/markets/market_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/markets/markets_grid_view_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/market/guest_market_section_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/market/guest_markets_grid_view_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
@@ -34,7 +34,7 @@ class GuestMarkets extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 24.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, MARKETS_PRICE_FILTERING_SCREEN);
+                                Navigator.pushNamed(context, GUEST_MARKETS_PRICE_FILTERING_SCREEN);
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,7 @@ class GuestMarkets extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 24.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, MARKETS_ORDERING_SCREEN);
+                                Navigator.pushNamed(context, GUEST_MARKETS_ORDERING_SCREEN);
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +88,7 @@ class GuestMarkets extends StatelessWidget {
                     child: Row(
                       children:
                       List.generate(20, (index) {
-                        return MarketSectionItem(index: index,isMarket: true,);
+                        return GuestMarketSectionItem(index: index,);
                       })
                       ,
                     ),
@@ -98,7 +98,7 @@ class GuestMarkets extends StatelessWidget {
                     mainAxisSpacing: 4,
                     crossAxisSpacing: 2,
                     children: List.generate(11, (index) => const StaggeredGridTile.fit(crossAxisCellCount: 1,
-                    child: MarketsGridViewItems())),
+                    child: GuestMarketsGridViewItems())),
                   ) 
 
                 ],
