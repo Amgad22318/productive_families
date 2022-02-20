@@ -5,7 +5,7 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_grid_view_item.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_list_view_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';

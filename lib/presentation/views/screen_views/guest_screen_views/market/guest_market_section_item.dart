@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class MarketSectionItem extends StatefulWidget {
+class GuestMarketSectionItem extends StatefulWidget {
   final int? index;
   bool itemHidden;
 
-  MarketSectionItem({
+  GuestMarketSectionItem({
     Key? key,
     required this.index,
     this.itemHidden = true,
   }) : super(key: key);
 
   @override
-  State<MarketSectionItem> createState() => _MarketSectionItemState();
+  State<GuestMarketSectionItem> createState() => _GuestMarketSectionItemState();
 }
 
-class _MarketSectionItemState extends State<MarketSectionItem> {
+class _GuestMarketSectionItemState extends State<GuestMarketSectionItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4),
       child: InkWell(
-        borderRadius: BorderRadius.circular(36),
+        borderRadius: BorderRadius.circular(12),
         onTap: () {
           setState(() {
             widget.itemHidden = !widget.itemHidden;
           });
         },
-        child: Opacity(
+        child: Opacity( 
           opacity: widget.itemHidden?0.5:1,
           child: Column(
             children: [

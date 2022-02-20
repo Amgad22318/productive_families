@@ -14,16 +14,7 @@ class FilteringScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Image.asset('assets/icons/chat.png'),
-        backgroundColor: Colors.white,
-        onPressed: () {
 
-          Navigator.pushNamed(context, SELLER_CHAT_SCREEN);
-
-        },
-      ),
       appBar: DefaultShopAppbar(
         centerTitle: true,
         title: DefaultText(

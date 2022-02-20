@@ -13,6 +13,13 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screens/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/shop_layout/dr_shop_layout.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/start/dr_start_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/about_product/guest_about_product.dart';
+import 'package:productive_families/presentation/screens/guest_screens/chosen_market/guest_chosen_market_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/filter_screens/guest_filtering_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/filter_screens/ordering/guest_chosen_market_ordering_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/filter_screens/ordering/guest_markets_ordering_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/filter_screens/price_filtering/guest_chosen_market_price_filtering_screen.dart';
+import 'package:productive_families/presentation/screens/guest_screens/filter_screens/price_filtering/guest_markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/guest_screens/location/guest_location_picker.dart';
 import 'package:productive_families/presentation/screens/guest_screens/shop_layout/guest_shop_layout.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/about_product/mo_about_us.dart';
@@ -39,7 +46,7 @@ import 'package:productive_families/presentation/screens/user_screens/chat/selle
 import 'package:productive_families/presentation/screens/user_screens/choose_account/choose_account.dart';
 import 'package:productive_families/presentation/screens/user_screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/delivery_representative/delivery_representative_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/filter_screens/Filtering_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/filter_screens/filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/chosen_market_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/markets_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
@@ -109,7 +116,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const AboutProduct(),
         );
-      case endpoints.ORDERES_SCREEN:
+      case endpoints.ORDERS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const OrdersScreen(),
         );
@@ -321,14 +328,43 @@ class AppRouter {
       case endpoints.DELIVERY_REPRESENTATIVE_NOTIFICATION:
         return MaterialPageRoute(
           builder: (_) => const DeliveryRepresentativeNotificationsScreen(),
-        );case endpoints.GUEST_LOCATION_PICKER:
-        return MaterialPageRoute(
-          builder: (_) =>  GuestLocationPicker(),
-        );case endpoints.GUEST_SHOP_LAYOUT:
-        return MaterialPageRoute(
-          builder: (_) =>  GuestShopLayout(),
         );
-
+      case endpoints.GUEST_LOCATION_PICKER:
+        return MaterialPageRoute(
+          builder: (_) => GuestLocationPicker(),
+        );
+      case endpoints.GUEST_SHOP_LAYOUT:
+        return MaterialPageRoute(
+          builder: (_) => const GuestShopLayout(),
+        );
+      case endpoints.GUEST_ABOUT_PRODUCT:
+        return MaterialPageRoute(
+          builder: (_) => const GuestAboutProduct(),
+        );
+      case endpoints.GUEST_FILTERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestFilteringScreen(),
+        );
+      case endpoints.GUEST_CHOSEN_MARKET_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestChosenMarketScreen(),
+        );
+      case endpoints.GUEST_MARKETS_PRICE_FILTERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestMarketsPriceFilteringScreen(),
+        );
+      case endpoints.GUEST_MARKETS_ORDERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestMarketsOrderingScreen(),
+        );
+      case endpoints.GUEST_CHOSEN_MARKET_ORDERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestChosenMarketOrderingScreen(),
+        );
+      case endpoints.GUEST_CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const GuestChosenMarketPriceFilteringScreen(),
+        );
       default:
         return null;
     }

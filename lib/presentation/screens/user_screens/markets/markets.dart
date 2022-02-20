@@ -88,7 +88,7 @@ class Markets extends StatelessWidget {
                     child: Row(
                       children:
                       List.generate(20, (index) {
-                        return MarketSectionItem(index: index,isMarket: true,);
+                        return MarketSectionItem(index: index,);
                       })
                       ,
                     ),

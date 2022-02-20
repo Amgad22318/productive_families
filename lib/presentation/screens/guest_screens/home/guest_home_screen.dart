@@ -4,11 +4,10 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_list_view_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_section_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_navigation_drawer.dart';
 import 'package:productive_families/presentation/views/screen_views/guest_screen_views/shared/guest_you_need_to_login_dialog.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_grid_view_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -42,7 +41,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const NavigationDrawer(),
+      drawer: const GuestNavigationDrawer(),
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(
@@ -190,14 +189,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: [
-                            HomeFirstSectionItem(),
-                            Row(
-                              children: List.generate(20, (index) {
-                                return HomeSectionItem();
-                              }),
-                            ),
-                          ],
+                          children: List.generate(20, (index) => GuestHomeSectionItem()),
                         ),
                       ),
                       Container(
@@ -238,11 +230,11 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           children: const [
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
                           ],
                         )
                       ],
