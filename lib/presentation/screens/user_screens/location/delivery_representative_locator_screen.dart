@@ -35,7 +35,6 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-
           SizedBox(
             height: size.height*0.7,
             width: double.maxFinite,
@@ -53,13 +52,7 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
                       image:
                           AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  ),
-                  color: darkBlue,
-                ),
+                color: darkBlue,
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
