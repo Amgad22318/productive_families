@@ -4,23 +4,23 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_list_view_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_list_view_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_section_item.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_navigation_drawer.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/shared/guest_you_need_to_login_dialog.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class GuestHomeScreen extends StatefulWidget {
+  const GuestHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GuestHomeScreen> createState() => _GuestHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GuestHomeScreenState extends State<GuestHomeScreen> {
   TextEditingController searchController = TextEditingController();
 
   late VideoPlayerController videoPlayerController;
@@ -41,19 +41,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const NavigationDrawer(),
+      drawer: const GuestNavigationDrawer(),
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+                showDialog(context: context, builder: (context) => GuestYouNeedToLoginDialog(),);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
               )),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, BASKET_SCREEN);
+                showDialog(context: context, builder: (context) => GuestYouNeedToLoginDialog(),);
               },
               icon: SvgPicture.asset(
                 'assets/icons/shopping-cart-outline-badged.svg',
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Container(
-
+                                  padding: const EdgeInsetsDirectional.all(8),
                                   height: 220,
                                   width: double.infinity,
                                   foregroundDecoration: BoxDecoration(
@@ -189,14 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: [
-                            HomeFirstSectionItem(),
-                            Row(
-                              children: List.generate(20, (index) {
-                                return HomeSectionItem();
-                              }),
-                            ),
-                          ],
+                          children: List.generate(20, (index) => GuestHomeSectionItem()),
                         ),
                       ),
                       Container(
@@ -237,11 +230,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           children: const [
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
+                            GuestHomeListItem(),
                           ],
                         )
                       ],

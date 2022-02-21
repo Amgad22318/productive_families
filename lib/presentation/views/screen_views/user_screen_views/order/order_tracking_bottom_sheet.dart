@@ -142,7 +142,7 @@ class OrderTrackingBottomSheet extends StatelessWidget {
                 const SizedBox(height: 16,),
                 DefaultMaterialButton(onPressed: (){
                   Navigator.pushNamedAndRemoveUntil(
-                      context, ORDERES_SCREEN, (route) => false);
+                      context, ORDERS_SCREEN, (route) => false);
                 },text: 'تقييم',),
               ],
             ),

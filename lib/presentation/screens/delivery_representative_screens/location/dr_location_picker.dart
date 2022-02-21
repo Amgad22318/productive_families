@@ -13,7 +13,7 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
 
     return Scaffold(
       appBar: DefaultShopAppbar(
@@ -34,7 +34,6 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox(
-            height: size.height * 0.7,
             width: double.maxFinite,
             // map location
             child: const Image(
@@ -73,16 +72,19 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
                             textStyle: Theme.of(context).textTheme.subtitle1,
                             color: Colors.white,
                           ),
-                          // DefaultMaterialButton(text: 'text', onPressed: () {}),
                           DefaultFormField(
                               hintText: '',
                               prefixIcon:  Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
 
-                                  'assets/icons/location.svg',
-                                  height: 24.0, width: 24.0,
-                                  color: Colors.white,
+                                      'assets/icons/location.svg',
+                                      height: 24.0, width: 24.0,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
                               ),
                               controller: locationController,
@@ -95,7 +97,7 @@ class DeliveryRepresentativeLocationPicker extends StatelessWidget {
                               Navigator.pushNamedAndRemoveUntil(
                                   context, DELIVERY_REPRESENTATIVE_SHOP_LAYOUT, (route) => false);
                             },
-                            height: size.height * 0.06,
+
                           )
                         ],
                       ),

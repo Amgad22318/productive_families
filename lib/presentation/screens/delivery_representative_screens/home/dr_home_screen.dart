@@ -42,7 +42,7 @@ class _DeliveryRepresentativeHomeScreenState
         actions: [
           IconButton(
               onPressed: () {
-                // Navigator.pushNamed(context, NOTIFICATIONS_SCREEN);
+                 Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_NOTIFICATION);
               },
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
@@ -102,6 +102,7 @@ class _DeliveryRepresentativeHomeScreenState
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20.0, vertical: 10),
                               child: Container(
+                                padding: const EdgeInsetsDirectional.all(8),
                                 color: Colors.white,
                                 child: Column(
                                   children: [

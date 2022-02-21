@@ -4,15 +4,15 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
-
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class GuestLocationPicker extends StatelessWidget {
-  GuestLocationPicker({Key? key}) : super(key: key);
+
+class FirstTimeLocationPicker extends StatelessWidget {
+  FirstTimeLocationPicker({Key? key}) : super(key: key);
 final  TextEditingController locationController = TextEditingController();
 
   @override
@@ -106,7 +106,14 @@ final  TextEditingController locationController = TextEditingController();
                           AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
                 width: double.maxFinite,
-                color: darkBlue,
+
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(32),
+                    topRight: Radius.circular(32),
+                  ),
+                  color: darkBlue,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

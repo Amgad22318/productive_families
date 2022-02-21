@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/shared/guest_you_need_to_login_dialog.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/filtering/filtering_grid_fav_dialog.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class FilteringGridViewItem extends StatelessWidget {
-  const FilteringGridViewItem({Key? key}) : super(key: key);
+class GuestFilteringGridViewItem extends StatelessWidget {
+  const GuestFilteringGridViewItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class FilteringGridViewItem extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: DefaultIconButton(
                   onPressed: () {
-                    showDialog(context: context, builder: (context) => FilteringGridFavDialog(),);
+                    showDialog(context: context, builder: (context) => GuestYouNeedToLoginDialog(),);
                   },
                   icon: const Icon(
                     Icons.favorite_border_outlined,
