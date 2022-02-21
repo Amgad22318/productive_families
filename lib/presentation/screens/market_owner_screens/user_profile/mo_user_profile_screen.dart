@@ -30,9 +30,29 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
         centerTitle: true,
         title: Column(
           children: [
-            DefaultText(
-              text: 'متجر',
-              textStyle: Theme.of(context).textTheme.headline5,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 32,
+                ),
+                DefaultText(
+                  text: 'متجر',
+                  textStyle: Theme.of(context).textTheme.headline5,
+                ),
+                IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) =>  ProfileBottomSheet(accountType: 'متجر',),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.edit,
+                      size: 20,
+                    ))
+              ],
             ),
             Stack(
               alignment: AlignmentDirectional.bottomStart,

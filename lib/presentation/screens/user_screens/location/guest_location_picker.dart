@@ -86,11 +86,11 @@ final  TextEditingController locationController = TextEditingController();
       ),
       body: Stack(
         children: [
-          SizedBox(
-            height: size.height * 0.7,
+          const SizedBox(
+            // height: size.height * 0.7,
             width: double.maxFinite,
             // map location
-            child: const Image(
+            child: Image(
               image: AssetImage('assets/image/map.png'),
               fit: BoxFit.fill,
             ),
@@ -106,13 +106,7 @@ final  TextEditingController locationController = TextEditingController();
                           AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
                 width: double.maxFinite,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  ),
-                  color: darkBlue,
-                ),
+                color: darkBlue,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

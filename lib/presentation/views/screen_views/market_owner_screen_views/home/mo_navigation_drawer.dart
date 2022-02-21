@@ -86,7 +86,7 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
             text: 'تسجيل خروج',
             icon: 'assets/icons/logout-svgrepo-com.svg',
             onTap: () {
-              Navigator.pushNamedAndRemoveUntil(context, MARKET_OWNER_START_SCREEN, (route) => false);
+              Navigator.pushNamedAndRemoveUntil(context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
 
 
             },

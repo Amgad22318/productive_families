@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/widgets/default_material_button.dart';
-import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class DisplayRepresentativePriceItem extends StatelessWidget {

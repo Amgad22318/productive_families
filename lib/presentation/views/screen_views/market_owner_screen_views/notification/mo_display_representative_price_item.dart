@@ -77,7 +77,7 @@ class MarketOwnerDisplayRepresentativePriceItem extends StatelessWidget {
                                             MARKET_OWNER_ORDER_DETAILS_SCREEN);
                                       },
                                     ),
-                                    SizedBox(width: 15,),
+                                    const SizedBox(width: 15,),
                                     DefaultOutlinedButton(
                                       borderColor: darkBlue,
                                       width: 80,

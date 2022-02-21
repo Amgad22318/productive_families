@@ -37,11 +37,10 @@ class SpecifyLocation extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          SizedBox(
-            height: size.height*0.7,
+          const SizedBox(
             width: double.maxFinite,
             // map location
-            child: const Image(image: AssetImage('assets/image/map.png'),
+            child:  Image(image: AssetImage('assets/image/map.png'),
               fit: BoxFit.fill,),
           ),
           Column(
@@ -54,13 +53,7 @@ class SpecifyLocation extends StatelessWidget {
                   child: Image(
                       image: AssetImage('assets/image/appbar_half_circle.png'))),
               Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  ),
-                  color: darkBlue,
-                ),
+                color: darkBlue,
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

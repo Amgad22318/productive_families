@@ -14,7 +14,6 @@ class MarketOwnerHomeFirstSectionItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_SCREEN);
         },
         child: Column(
           children: [
