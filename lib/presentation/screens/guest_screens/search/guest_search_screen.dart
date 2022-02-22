@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/guest_screen_views/search/guest_search_grid_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/search/search_grid_item.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key,  this.searchText}) : super(key: key);
+class GuestSearchScreen extends StatefulWidget {
+  const GuestSearchScreen({Key? key,  this.searchText}) : super(key: key);
   final String? searchText;
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<GuestSearchScreen> createState() => _GuestSearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _GuestSearchScreenState extends State<GuestSearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   @override
  void initState() {
@@ -69,7 +70,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       13,
                       (index) =>  const StaggeredGridTile.fit(
                           crossAxisCellCount: 1,
-                          child: SearchGridItem())),
+                          child: GuestSearchGridItem())),
                 ),
               ),
             ),

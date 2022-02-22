@@ -3,8 +3,8 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class FilteringGridFavDialogItem extends StatelessWidget {
-  FilteringGridFavDialogItem({Key? key}) : super(key: key);
+class FilteringFavBottomSheetGroupItem extends StatelessWidget {
+  FilteringFavBottomSheetGroupItem({Key? key}) : super(key: key);
   TextEditingController searchController = TextEditingController();
 
   @override

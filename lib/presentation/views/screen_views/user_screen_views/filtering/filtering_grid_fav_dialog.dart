@@ -48,7 +48,7 @@ class FilteringGridFavDialog extends StatelessWidget {
                         shrinkWrap: true,
                         children: List.generate(
                           13,
-                          (index) => FilteringGridFavDialogItem(),
+                          (index) => FilteringFavBottomSheetGroupItem(),
                         ),
                       )
                     ],
