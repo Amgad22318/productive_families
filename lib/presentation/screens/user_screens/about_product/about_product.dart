@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/shared/fav_bottom_sheet.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
@@ -45,15 +46,13 @@ class _AboutProductState extends State<AboutProduct> {
             icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
           )
         ],
-        leading:           IconButton(
+        leading: IconButton(
             onPressed: () {
               Navigator.pushNamed(context, BASKET_SCREEN);
-
             },
             icon: SvgPicture.asset(
               'assets/icons/shopping-cart-outline-badged.svg',
             )),
-
       ),
       body: Column(
         children: [
@@ -117,8 +116,18 @@ class _AboutProductState extends State<AboutProduct> {
                           padding: const EdgeInsetsDirectional.only(
                               top: 8.0, start: 16),
                           child: DefaultIconButton(
-                            onPressed: () {},
-                            icon: Icon(
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: const FavBottomSheet(),
+                                ),
+                                backgroundColor: Colors.transparent,
+                                isScrollControlled: true,
+                              );
+                            },
+                            icon: const Icon(
                               Icons.favorite_border_outlined,
                               color: Colors.red,
                             ),
@@ -193,7 +202,9 @@ class _AboutProductState extends State<AboutProduct> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 50,),
+                        const SizedBox(
+                          height: 50,
+                        ),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -216,7 +227,8 @@ class _AboutProductState extends State<AboutProduct> {
                                   IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          fullProductDescription=!fullProductDescription;
+                                          fullProductDescription =
+                                              !fullProductDescription;
                                         });
                                       },
                                       icon: SvgPicture.asset(
@@ -227,19 +239,25 @@ class _AboutProductState extends State<AboutProduct> {
                               ),
                               Text(
                                 '  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة   لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة  لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة ',
-                              maxLines: fullProductDescription?null:1,
-                                overflow: fullProductDescription?null:TextOverflow.ellipsis,
+                                maxLines: fullProductDescription ? null : 1,
+                                overflow: fullProductDescription
+                                    ? null
+                                    : TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.caption,
                               )
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 50),
-                          child: DefaultMaterialButton(onPressed: () {
-                            Navigator.pushNamed(context, BASKET_SCREEN);
-
-                          },height: 50,text: 'اضافة للسلة',),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 50),
+                          child: DefaultMaterialButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, BASKET_SCREEN);
+                            },
+                            height: 50,
+                            text: 'اضافة للسلة',
+                          ),
                         )
                       ],
                     ),
