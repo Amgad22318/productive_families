@@ -4,8 +4,6 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/guest_screens/shop_layout/guest_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
-
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -14,11 +12,10 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class GuestLocationPicker extends StatelessWidget {
   GuestLocationPicker({Key? key}) : super(key: key);
-final  TextEditingController locationController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -31,8 +28,11 @@ final  TextEditingController locationController = TextEditingController();
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(context, const GuestShopLayout(index: 1,));
-
+                  navigateToAndFinish(
+                      context,
+                      const GuestShopLayout(
+                        index: 1,
+                      ));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +60,7 @@ final  TextEditingController locationController = TextEditingController();
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(context,  CustomerServicesChatScreen());
-
+                  navigateToAndFinish(context, CustomerServicesChatScreen());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -84,21 +83,17 @@ final  TextEditingController locationController = TextEditingController();
           ],
         ),
       ),
-      body:Column(
+      body: Column(
         children: [
           Expanded(
             child: Stack(
-              children: const [
+              children: [
                 Positioned.fill(
-                  child: Image(
-                    image: AssetImage('assets/image/map.png'),
-                  ),
+                  child: Image.asset('assets/image/map.png'),
                 ),
                 Align(
                   alignment: Alignment.topCenter,
-                  child: Image(
-                      image:
-                      AssetImage('assets/image/appbar_half_circle.png')),
+                  child: Image.asset('assets/image/appbar_half_circle.png'),
                 ),
               ],
             ),
@@ -108,62 +103,47 @@ final  TextEditingController locationController = TextEditingController();
             child: Container(
               width: double.maxFinite,
               color: darkBlue,
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DefaultText(
+                      text: 'أدخل موقعك الحالى',
+                      textStyle: Theme.of(context).textTheme.subtitle1,
+                      color: Colors.white,
+                    ),
+                    DefaultFormField(
+                        hintText: '',
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
                             children: [
-                              DefaultText(
-                                text: 'أدخل موقعك الحالى',
-                                textStyle: Theme.of(context).textTheme.subtitle1,
+                              SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                height: 24.0,
+                                width: 24.0,
                                 color: Colors.white,
                               ),
-                              DefaultFormField(
-                                  hintText: '',
-                                  prefixIcon:  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row (
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/icons/location.svg',
-                                          height: 24.0, width: 24.0,
-                                          color: Colors.white,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  controller: locationController,
-                                  validator: (p0) {},
-                                  keyboardType: TextInputType.text),
-                              const SizedBox(height: 15),
-                              DefaultMaterialButton(
-                                text: 'تأكيد العنوان',
-                                onPressed: () {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, GUEST_SHOP_LAYOUT, (route) => false);
-                                },
-
-                              )
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ],
+                        controller: locationController,
+                        validator: (p0) {},
+                        keyboardType: TextInputType.text),
+                    const SizedBox(height: 15),
+                    DefaultMaterialButton(
+                      text: 'تأكيد العنوان',
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, GUEST_SHOP_LAYOUT, (route) => false);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-
         ],
       ),
     );

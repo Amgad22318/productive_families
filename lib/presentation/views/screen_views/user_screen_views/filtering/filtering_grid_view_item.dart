@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/filtering/filtering_grid_fav_dialog.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+
+import '../shared/fav_bottom_sheet.dart';
 
 class FilteringGridViewItem extends StatelessWidget {
   const FilteringGridViewItem({Key? key}) : super(key: key);
@@ -42,7 +43,17 @@ class FilteringGridViewItem extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: DefaultIconButton(
                   onPressed: () {
-                    showDialog(context: context, builder: (context) => FilteringGridFavDialog(),);
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                          child: FavBottomSheet(),
+                        ),
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+
+
+                    );
                   },
                   icon: const Icon(
                     Icons.favorite_border_outlined,
@@ -54,13 +65,14 @@ class FilteringGridViewItem extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 4),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   children: [
-                    Expanded(flex: 7,
+                    Expanded(
+                      flex: 7,
                       child: DefaultText(
                         text: 'اسم المنتج ',
                         textStyle: Theme.of(context).textTheme.overline,
@@ -77,22 +89,24 @@ class FilteringGridViewItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 4,),
+                const SizedBox(
+                  height: 4,
+                ),
                 Row(
                   children: [
                     Expanded(
-                flex: 1,
+                      flex: 1,
                       child: DefaultText(
                         color: Colors.grey,
                         text: '(30000 تقييم)',
                         textStyle: Theme.of(context).textTheme.overline,
                       ),
                     ),
-                     Flexible(
-                       flex: 0,
-                       child: Align(
-                         alignment: AlignmentDirectional.centerEnd,
-                         child: RatingBarIndicator(
+                    Flexible(
+                      flex: 0,
+                      child: Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: RatingBarIndicator(
                           rating: 2.6,
                           itemBuilder: (context, index) => const Icon(
                             Icons.star,
@@ -101,9 +115,9 @@ class FilteringGridViewItem extends StatelessWidget {
                           itemCount: 5,
                           itemSize: 9.0,
                           direction: Axis.horizontal,
+                        ),
+                      ),
                     ),
-                       ),
-                     ),
                   ],
                 ),
               ],

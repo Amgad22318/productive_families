@@ -9,6 +9,8 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screens/near_by_orders/dr_near_by_orders.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/notifications/dr_notifications_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/offer_price/dr_offer_price.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screens/order_details/dr_order_details_screen1.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screens/order_details/dr_order_details_screen2.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/otp/dr_otp_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/shop_layout/dr_shop_layout.dart';
@@ -364,6 +366,12 @@ class AppRouter {
       case endpoints.GUEST_CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const GuestChosenMarketPriceFilteringScreen(),
+        );      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_DETAILS_1:
+        return MaterialPageRoute(
+          builder: (_) => const DeliveryRepresentativeOrderDetailsScreen1(),
+        );      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_DETAILS_2:
+        return MaterialPageRoute(
+          builder: (_) => const DeliveryRepresentativeOrderDetailsScreen2(),
         );
       default:
         return null;

@@ -20,6 +20,7 @@ class DefaultFormField extends StatelessWidget {
   final TextStyle? suffixTextStyle;
   final Color? backgroundColor;
   final Color? textColor;
+  final Color? cursorColor;
   final double radius;
   final double? height;
   final int? maxLines;
@@ -32,6 +33,8 @@ class DefaultFormField extends StatelessWidget {
   final AlignmentGeometry? containerAlignment;
   final BoxConstraints? suffixIconConstraints;
   final bool readOnly;
+  final int? maxLength;
+
 
   const DefaultFormField(
       {Key? key,
@@ -64,7 +67,7 @@ class DefaultFormField extends StatelessWidget {
       this.suffixText,
       this.suffixTextStyle,
       this.suffixIconConstraints,
-      this.readOnly = false})
+      this.readOnly = false, this.cursorColor=Colors.white, this.maxLength})
       : super(key: key);
 
   @override
@@ -77,9 +80,10 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
+        maxLength: maxLength,
 
         readOnly: readOnly,
-        cursorColor: Colors.white,
+        cursorColor: cursorColor,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
         maxLines: maxLines,
@@ -97,7 +101,7 @@ class DefaultFormField extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
-
+counterText: '',
           suffixStyle: suffixTextStyle,
           suffixText: suffixText,
           contentPadding: contentPadding,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/screens/guest_screens/search/guest_search_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_list_view_item.dart';
@@ -67,14 +68,6 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               Icons.menu,
             )),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: FloatingActionButton(
-        child: SvgPicture.asset('assets/icons/contact.svg'),
-        backgroundColor: Colors.white,
-        onPressed: () {
-          Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);
-        },
-      ),
       body: Column(
         children: [
           Image.asset(
@@ -114,7 +107,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                             },
                             onFieldSubmitted: (text) {
                               if (searchFormKey.currentState!.validate()) {
-                                navigateTo(context, SearchScreen(searchText: text));
+                                navigateTo(context, GuestSearchScreen(searchText: text));
                               }
                             },
                           ),
