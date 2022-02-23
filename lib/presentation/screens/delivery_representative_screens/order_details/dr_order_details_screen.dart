@@ -9,8 +9,8 @@ import 'package:productive_families/presentation/views/screen_views/user_screen_
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class DeliveryRepresentativeOrderDetailsScreen1 extends StatelessWidget {
-  const DeliveryRepresentativeOrderDetailsScreen1({Key? key}) : super(key: key);
+class DeliveryRepresentativeOrderDetailsScreen extends StatelessWidget {
+  const DeliveryRepresentativeOrderDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
