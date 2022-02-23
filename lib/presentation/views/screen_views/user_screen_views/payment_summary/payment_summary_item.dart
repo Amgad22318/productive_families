@@ -14,10 +14,10 @@ class PaymentSummaryInnerItem extends StatelessWidget {
       children: [
         DefaultText(
             text: text,
-            textStyle: Theme.of(context).textTheme.bodyText1),
+            textStyle: Theme.of(context).textTheme.caption),
         DefaultText(
           text: price,
-          textStyle: Theme.of(context).textTheme.bodyText1,
+          textStyle: Theme.of(context).textTheme.caption!.copyWith(fontWeight: FontWeight.bold),
         )
       ],
     );

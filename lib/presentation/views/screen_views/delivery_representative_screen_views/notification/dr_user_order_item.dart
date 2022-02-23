@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
@@ -15,7 +16,7 @@ class DisplayRepresentativeUserOrderItem extends StatelessWidget {
         color: lightDefaultYellow,
         child: InkWell(
           onTap: () {
-            //Navigator.pushNamedAndRemoveUntil(context, QUOTATIONS_SCREEN, (route) => false);
+            Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_ORDER_NOTIFICATION_DETAILS);
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -72,7 +73,10 @@ class DisplayRepresentativeUserOrderItem extends StatelessWidget {
                                 height: 26,
                                 text: 'قبول',
                                 fontSize: 12,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_ORDER_NOTIFICATION_DETAILS);
+
+                                },
                               )),
                           const Spacer(
                             flex: 1,

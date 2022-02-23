@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
@@ -25,7 +26,8 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
               side: const BorderSide(color: defaultYellow, width: 1.0)),
           child: InkWell(
             onTap: () {
-              //Navigator.pushNamed(context, ORDER_DETAILS_SECOND_SCREEN);
+              Navigator.pushNamed(context,
+                  DELIVERY_REPRESENTATIVE_ORDER_DETAILS);
             },
             child: Row(
               children: [
@@ -69,10 +71,19 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(
-                              'assets/icons/location.svg',
-                              height: 20,
-                              width: 20,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context,
+                                   DELIVERY_REPRESENTATIVE_ORDER_DETAILS);
+                              },
+                              iconSize: 20,
+                              padding: const EdgeInsets.all(4),
+                              constraints: const BoxConstraints(),
+                              icon: SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                height: 20,
+                                width: 20,
+                              ),
                             ),
                             DefaultText(
                               text: "العنوان بالتفصيل",
@@ -103,7 +114,9 @@ class DeliveryRepresentativeHomeAndNearByOrdersListItem extends StatelessWidget 
                                   height: 40*textScale,
                                   text: 'قبول',
                                   fontSize: 12,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_ORDER_DETAILS);
+                                  },
                                 )),
                             const Spacer(
                               flex: 1,
