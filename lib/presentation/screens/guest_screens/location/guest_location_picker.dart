@@ -131,10 +131,9 @@ final  TextEditingController locationController = TextEditingController();
                                   hintText: '',
                                   prefixIcon:  Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Row(
+                                    child: Row (
                                       children: [
                                         SvgPicture.asset(
-
                                           'assets/icons/location.svg',
                                           height: 24.0, width: 24.0,
                                           color: Colors.white,

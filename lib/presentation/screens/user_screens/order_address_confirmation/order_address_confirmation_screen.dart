@@ -24,9 +24,7 @@ class _OrderAddressConfirmationScreenState
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -85,10 +83,7 @@ class _OrderAddressConfirmationScreenState
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -113,12 +108,8 @@ class _OrderAddressConfirmationScreenState
                         children: [
                           Flexible(
                             child: ListTile(
-                              title: const Image(
-                                image: AssetImage('assets/image/paypal.png'),
-                                fit: BoxFit.fill,
-                              ),
+                             title: SvgPicture.asset('assets/icons/PayPal-Logo.wine.svg',),
                               leading:
-
                                   Radio<OrderAddressConfirmationRadioValues>(
                                 value:
                                     OrderAddressConfirmationRadioValues.paypal,
@@ -135,10 +126,7 @@ class _OrderAddressConfirmationScreenState
                           ),
                           Flexible(
                             child: ListTile(
-                              title: const Image(
-                                image: AssetImage('assets/image/shop_pay.png'),
-                                fit: BoxFit.fill,
-                              ),
+                              title: SvgPicture.asset('assets/icons/ShopPay - Color.svg',width: 55,height: 55,),
                               leading:
                                   Radio<OrderAddressConfirmationRadioValues>(
                                 value:

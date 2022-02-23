@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/payment_summary/payment_summary_item.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
@@ -13,7 +14,7 @@ class PaymentSummaryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: defaultYellow.withOpacity(0.3),
       ),
-      padding: EdgeInsets.only(bottom: 25,left: 30,right: 30,top: 10),
+      padding:const EdgeInsets.only(bottom: 25,left: 30,right: 30,top: 10),
       width: double.infinity,
       child: Column(
 
@@ -22,76 +23,25 @@ class PaymentSummaryItem extends StatelessWidget {
           DefaultText(
             text: 'ملخص الدفع',
             textStyle: Theme.of(context).textTheme.headline6,
-            color: Color(0xFF9FBBEB),
+            color:const Color(0xFF9FBBEB),
           ),
          const SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DefaultText(
-                  text: 'تكلفة الدفع',
-                  textStyle: Theme.of(context).textTheme.bodyText1),
-              DefaultText(
-                text: '279.00\$',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DefaultText(
-                  text: 'الضريبه المضافه:',
-                  textStyle: Theme.of(context).textTheme.bodyText1),
-              DefaultText(
-                text: '10.00\$',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DefaultText(
-                  text: 'رسوم الشحن:',
-                  textStyle: Theme.of(context).textTheme.bodyText1),
-              DefaultText(
-                text: '10.00\$',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DefaultText(
-                  text: 'كود الخصم:',
-                  textStyle: Theme.of(context).textTheme.bodyText1),
-              DefaultText(
-                text: '10.00\$',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              )
-            ],
-          ),
+          const PaymentSummaryInnerItem(text: 'تكلفة الدفع', price: '279.00\$'),
+          const PaymentSummaryInnerItem(text: 'الضريبه المضافه:', price: '10.00\$'),
+          const PaymentSummaryInnerItem(text: 'رسوم الشحن:', price: '10.00\$'),
+          const PaymentSummaryInnerItem(text: 'كود الخصم:', price: '10.00\$'),
+
+
+
+
 
           const  Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             child: DottedLineSeparator(),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DefaultText(
-                  text: 'السعر الكلى:',
-                  textStyle: Theme.of(context).textTheme.bodyText1),
-              DefaultText(
-                text: '299.00\$',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              )
-            ],
-          ),
+          PaymentSummaryInnerItem(text:  'السعر الكلى:', price: '299.00\$'),
         ],
       ),
     );
