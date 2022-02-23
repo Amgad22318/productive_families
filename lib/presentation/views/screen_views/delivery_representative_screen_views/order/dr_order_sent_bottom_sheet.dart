@@ -22,18 +22,21 @@ class DeliveryRepresentativeOrderSentBottomSheet extends StatelessWidget {
           color: Colors.white,
             borderRadius: BorderRadiusDirectional.only(
                 topEnd: Radius.circular(36), topStart: Radius.circular(36))),
-        child: Wrap(
-          alignment: WrapAlignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset(
-              'assets/icons/order_sent_green_check.svg',
-              height: 100,
-              width: 100,
-            ),
-            const SizedBox(height: 24,),
             DefaultText(
                 text: 'تهانينا',
-                textStyle: Theme.of(context).textTheme.bodyText1)
+                textStyle: Theme.of(context).textTheme.bodyText1),
+
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: SvgPicture.asset(
+                'assets/icons/order_sent_green_check.svg',
+                height: 100,
+                width: 100,
+              ),
+            ),
           ],
         ),
       ),

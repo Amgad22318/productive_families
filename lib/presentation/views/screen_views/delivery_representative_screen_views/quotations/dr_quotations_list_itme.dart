@@ -26,7 +26,8 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
               side: const BorderSide(color: defaultYellow, width: 1.0)),
           child: InkWell(
             onTap: () {
-              //Navigator.pushNamed(context, ORDER_DETAILS_SECOND_SCREEN);
+              Navigator.pushNamed(context,
+                  DELIVERY_REPRESENTATIVE_ORDER_DETAILS);
             },
             child: Row(
               children: [
@@ -70,10 +71,19 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(
-                              'assets/icons/location.svg',
-                              height: 20,
-                              width: 20,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context,
+                                    DELIVERY_REPRESENTATIVE_CHOOSE_ORDER_LOCATION);
+                              },
+                              iconSize: 20,
+                              padding: const EdgeInsets.all(4),
+                              constraints: const BoxConstraints(),
+                              icon: SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                height: 20,
+                                width: 20,
+                              ),
                             ),
                             DefaultText(
                               text: "من",
@@ -95,10 +105,19 @@ class DeliveryRepresentativeQuotationsListItem extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(
-                              'assets/icons/location.svg',
-                              height: 20,
-                              width: 20,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context,
+                                    DELIVERY_REPRESENTATIVE_CHOOSE_ORDER_LOCATION);
+                              },
+                              iconSize: 20,
+                              padding: const EdgeInsets.all(4),
+                              constraints: const BoxConstraints(),
+                              icon: SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                height: 20,
+                                width: 20,
+                              ),
                             ),
                             DefaultText(
                               text: "إلى",

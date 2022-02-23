@@ -4,9 +4,11 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/order_details_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/payment_summary_item.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/payment_summary/payment_summary_item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   const OrderDetailsScreen({Key? key}) : super(key: key);
@@ -52,7 +54,27 @@ class OrderDetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const PaymentSummaryItem(),
+             PaymentSummaryItem(children: [
+               DefaultText(
+                 text: 'ملخص الدفع',
+                 textStyle: Theme.of(context).textTheme.bodyText1,
+                 color:const Color(0xFF9FBBEB),
+               ),
+               const PaymentSummaryInnerItem(text: 'تكلفة الدفع:', price: '279.00\$'),
+               const PaymentSummaryInnerItem(text: 'الضريبه المضافه:', price: '10.00\$'),
+               const PaymentSummaryInnerItem(text: 'رسوم الشحن:', price: '10.00\$'),
+               const PaymentSummaryInnerItem(text: 'كود الخصم:', price: '10.00\$'),
+
+
+
+
+
+               const  Padding(
+                 padding: EdgeInsets.symmetric(vertical: 8.0),
+                 child: DottedLineSeparator(),
+               ),
+               PaymentSummaryInnerItem(text:  'السعر الكلى:', price: '299.00\$'),
+             ],),
             Padding(
               padding: const EdgeInsets.only(bottom: 20,right: 20,left: 20,top: 30),
               child: DefaultMaterialButton(onPressed: (){
