@@ -65,7 +65,7 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
 
                           },
                           icon: SvgPicture.asset(
-                            "assets/icons/map-location.svg",
+                            "assets/icons/location.svg",
                             color: Colors.black,
                             width: 25,
                             height:25,
@@ -98,7 +98,7 @@ class DeliveryRepresentativeScreen extends StatelessWidget {
 
                           },
                           icon: SvgPicture.asset(
-                            "assets/icons/map-location.svg",
+                            "assets/icons/location.svg",
                             color: Colors.black,
                             width: 25,
                             height:25,

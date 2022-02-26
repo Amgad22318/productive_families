@@ -32,7 +32,7 @@ class DeliveryRepresentativeNavigationDrawer extends StatelessWidget {
                     Row(
                       children: [
                         SvgPicture.asset(
-                          'assets/icons/map-location.svg',
+                          'assets/icons/location.svg',
                           width: 18,
                           height: 18,
                         ),

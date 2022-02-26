@@ -29,7 +29,7 @@ class NavigationDrawer extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.bodyText2,
                   ),
                   Row(children: [
-                    SvgPicture.asset('assets/icons/map-location.svg',width: 18,height: 18,),
+                    SvgPicture.asset('assets/icons/location.svg',width: 18,height: 18,),
 
                     DefaultText(color: Colors.white,
                       text: 'العنوان',

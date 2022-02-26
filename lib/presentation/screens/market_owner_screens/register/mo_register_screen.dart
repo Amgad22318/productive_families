@@ -162,7 +162,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     height: 23,
                                     width: 23,
                                     child: SvgPicture.asset(
-                                        'assets/icons/map-location.svg'),
+                                        'assets/icons/location.svg'),
                                   )
                                 ],
                               ),

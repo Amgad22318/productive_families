@@ -77,7 +77,7 @@ class MarketOwnerNavigationDrawer extends StatelessWidget {
           ),
           MarketOwnerDrawerListTiles(
             text: 'معلومات عنا',
-            icon: 'assets/icons/about-information.svg',
+            icon: 'assets/icons/info.svg',
             onTap: () {
               Navigator.pushNamed(context, MARKET_OWNER_ABOUT_US_SCREEN);
             },
