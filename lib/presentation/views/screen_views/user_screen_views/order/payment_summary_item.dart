@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/payment_summary/payment_summary_inner_item.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/payment_summary/payment_summary_item.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
