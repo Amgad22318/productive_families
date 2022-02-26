@@ -13,9 +13,9 @@ class GuestHomeSectionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
-          navigateToAndFinish(context,GuestShopLayout(index: 1,));
+          navigateToAndFinish(context,const GuestShopLayout(index: 1,));
         },
         child: Column(
           children: [

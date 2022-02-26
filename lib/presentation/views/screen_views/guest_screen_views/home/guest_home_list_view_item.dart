@@ -9,7 +9,7 @@ class GuestHomeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         Navigator.pushNamed(context, GUEST_ABOUT_PRODUCT);
       },

@@ -7,16 +7,17 @@ import 'package:productive_families/presentation/widgets/default_icon_button.dar
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class SellerChatScreen extends StatefulWidget {
-  SellerChatScreen({Key? key}) : super(key: key);
+class MarketOwnerChatScreen extends StatefulWidget {
+MarketOwnerChatScreen({Key? key}) : super(key: key);
 
   @override
-  State<SellerChatScreen> createState() => _SellerChatScreenState();
+  State<MarketOwnerChatScreen> createState() =>
+      _CustomerServicesChatScreenState();
 }
 
-class _SellerChatScreenState extends State<SellerChatScreen> {
+class _CustomerServicesChatScreenState
+    extends State<MarketOwnerChatScreen> {
   bool iconButtonShown = true;
-
   TextEditingController chatController = TextEditingController();
 
   @override
@@ -33,7 +34,7 @@ class _SellerChatScreenState extends State<SellerChatScreen> {
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
         title: DefaultText(
-          text: 'تواصل مع المتجر',
+          text: 'حسام سعيد',
           textStyle: Theme.of(context).textTheme.headline6,
         ),
       ),
@@ -45,7 +46,7 @@ class _SellerChatScreenState extends State<SellerChatScreen> {
                 children: [
                   const ChatBuble(),
                   const ChatBubleForFriend(
-                    color: Color(0xFF30B893),
+                    color: Color(0xFF3698D9),
                   ),
                   DefaultText(
                     text: 'الأن',
@@ -53,15 +54,15 @@ class _SellerChatScreenState extends State<SellerChatScreen> {
                   ),
                   const ChatBuble(),
                   const ChatBubleForFriend(
-                    color: Color(0xFF30B893),
+                    color: Color(0xFF3698D9),
                   ),
                   const ChatBuble(),
                   const ChatBubleForFriend(
-                    color: Color(0xFF30B893),
+                    color: Color(0xFF3698D9),
                   ),
                   const ChatBuble(),
                   const ChatBubleForFriend(
-                    color: Color(0xFF30B893),
+                    color: Color(0xFF3698D9),
                   ),
                 ],
               ),
@@ -103,9 +104,8 @@ class _SellerChatScreenState extends State<SellerChatScreen> {
                   Expanded(
                     child: Center(
                       child: DefaultFormField(
-                          containerAlignment: AlignmentDirectional.centerStart,
+                        containerAlignment: AlignmentDirectional.centerStart,
                           textColor: darkBlue,
-                          contentPadding:const EdgeInsets.symmetric(vertical: 10),
                           hintText: 'Type a Message',
                           backgroundColor: Colors.transparent,
                           onFieldSubmitted: (p0) {

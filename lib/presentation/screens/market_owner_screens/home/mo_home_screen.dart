@@ -56,13 +56,27 @@ class _DeliveryRepresentativeHomeScreenState
         child: Text('Logo'),
         ),
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {
-              _scaffoldKey.currentState!.openDrawer();
-            },
-            icon: const Icon(
-              Icons.menu,
-            )),
+        leading: Row(
+          children: [
+             Container(
+              height: 30,
+              width: 30,
+              child: IconButton(
+                onPressed: () {
+                  _scaffoldKey.currentState!.openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                )),
+            ),
+
+            InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, MARKET_OWENR_CONVERSATION_SCREEN);
+                },
+                child: SvgPicture.asset('assets/icons/message.svg')),
+          ],
+        ),
       ),
       body: Column(
         children: [

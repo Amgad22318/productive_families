@@ -33,9 +33,9 @@ class _CustomerServicesChatScreenState
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
         ],
-        title: const DefaultText(
+        title: DefaultText(
           text: 'تواصل مع خدمة العملاء',
-          textStyle: TextStyle(),
+          textStyle: Theme.of(context).textTheme.headline6,
         ),
       ),
       body: Column(
