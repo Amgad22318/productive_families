@@ -142,6 +142,7 @@ class _OrderAddressConfirmationScreenState
                                     value) {
                                   setState(() {
                                     _character = value;
+
                                   });
                                 },
                               ),
