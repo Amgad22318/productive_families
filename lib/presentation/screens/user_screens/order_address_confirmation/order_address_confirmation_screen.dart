@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/end_points.dart';
@@ -108,9 +109,10 @@ class _OrderAddressConfirmationScreenState
                       ),
                       Row(
                         children: [
-                          Flexible(
+                          Expanded(
+                            flex: 10,
                             child: ListTile(
-                             title: SvgPicture.asset('assets/icons/PayPal-Logo.wine.svg',),
+                             title: SvgPicture.asset('assets/icons/paypal.svg',),
                               leading:
                                   Radio<OrderAddressConfirmationRadioValues>(
                                 value:
@@ -126,9 +128,13 @@ class _OrderAddressConfirmationScreenState
 
                             ),
                           ),
-                          Flexible(
+                          const Spacer(
+                            flex: 1
+                          ),
+                          Expanded(
+                            flex: 10,
                             child: ListTile(
-                              title: SvgPicture.asset('assets/icons/ShopPay - Color.svg',width: 55,height: 55,),
+                              title: SvgPicture.asset('assets/icons/shop_pay.svg',width: 55,height: 55,),
                               leading:
                                   Radio<OrderAddressConfirmationRadioValues>(
                                 value:
@@ -138,6 +144,7 @@ class _OrderAddressConfirmationScreenState
                                     value) {
                                   setState(() {
                                     _character = value;
+
                                   });
                                 },
                               ),
