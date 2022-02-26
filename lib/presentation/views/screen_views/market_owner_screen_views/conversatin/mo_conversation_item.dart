@@ -9,7 +9,7 @@ class MarketOwnerConversationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.pushNamed(context, MARKET_OWNER_CHAT_SCREEN);
       },
       child: Row(
@@ -32,29 +32,33 @@ class MarketOwnerConversationItem extends StatelessWidget {
               flex: 8,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              DefaultText(
-                text: 'حسام سعيد',
-                textStyle: Theme.of(context).textTheme.bodyText1,
-              ),
-              DefaultText(
-                text: 'اريد توصيل الطلب الى',
-                textStyle: Theme.of(context).textTheme.caption,
-              ),
-
-            ],
-          )),
+                children: [
+                  DefaultText(
+                    text: 'حسام سعيد',
+                    textStyle: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  DefaultText(
+                    text: 'اريد توصيل الطلب الى',
+                    textStyle: Theme.of(context).textTheme.caption,
+                  ),
+                ],
+              )),
           Expanded(
               flex: 4,
               child: Column(
-            children: [
-              DefaultText(text: '22/2/2022', textStyle: Theme.of(context).textTheme.caption),
-              const CircleAvatar(
-                radius: 15,
-                backgroundColor: defaultYellow,
-              )
-            ],
-          ))
+                children: [
+                  DefaultText(
+                      text: '22/2/2022',
+                      textStyle: Theme.of(context).textTheme.overline),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const CircleAvatar(
+                    radius: 15,
+                    backgroundColor: defaultYellow,
+                  )
+                ],
+              ))
         ],
       ),
     );
