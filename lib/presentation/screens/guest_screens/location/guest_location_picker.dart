@@ -28,11 +28,7 @@ class GuestLocationPicker extends StatelessWidget {
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(
-                      context,
-                      const GuestShopLayout(
-                        index: 1,
-                      ));
+                  Navigator.pushNamedAndRemoveUntil(context, GUEST_SHOP_LAYOUT, (route) => false);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +56,7 @@ class GuestLocationPicker extends StatelessWidget {
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(context, CustomerServicesChatScreen());
+                  Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

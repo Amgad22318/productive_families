@@ -169,7 +169,7 @@ class MarketOwnerUserProfileScreen extends StatelessWidget {
                       ),
                     ),
                     SvgPicture.asset(
-                      'assets/icons/mo_location.svg',
+                      'assets/icons/location.svg',
                       color: darkBlue,
                       width: 24,
                       height: 24,

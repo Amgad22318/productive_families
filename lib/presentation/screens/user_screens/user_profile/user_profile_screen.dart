@@ -167,7 +167,7 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                     ),
                     SvgPicture.asset(
-                      'assets/icons/map-location.svg',
+                      'assets/icons/location.svg',
                       color: darkBlue,
                       width: 24,
                       height: 24,
@@ -191,7 +191,7 @@ class UserProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        Image.asset('assets/icons/bounce.png'),
+                        SvgPicture.asset('assets/icons/points.svg',height: 24,width: 24,),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: DefaultText(
@@ -233,8 +233,10 @@ class UserProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(
-                          'assets/icons/money.png',
+                        SvgPicture.asset(
+                          'assets/icons/coin.svg',
+                          width: 24,
+                          height: 24,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),

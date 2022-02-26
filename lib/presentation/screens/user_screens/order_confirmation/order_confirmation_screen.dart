@@ -94,7 +94,7 @@ class OrderConfirmationScreen extends StatelessWidget {
                             Navigator.pushNamed(context, SPECIFY_LOCATION);
                           },
                           icon: SvgPicture.asset(
-                            "assets/icons/map-location.svg",
+                            "assets/icons/location.svg",
                             color: Colors.black,
                             width: 24,
                             height:24,

@@ -5,7 +5,7 @@ class PaymentSummaryInnerItem extends StatelessWidget {
   final String text;
   final String price;
 
-  const PaymentSummaryInnerItem({required this.text,required this.price});
+   const PaymentSummaryInnerItem({required this.text,required this.price});
 
   @override
   Widget build(BuildContext context) {

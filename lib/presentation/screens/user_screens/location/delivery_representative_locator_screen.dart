@@ -84,7 +84,7 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.all(12.0),
                                   child: SvgPicture.asset(
-                                    'assets/icons/map-location.svg',
+                                    'assets/icons/location.svg',
                                     color: Colors.white,
                                     width: 24,
                                     height: 24,
