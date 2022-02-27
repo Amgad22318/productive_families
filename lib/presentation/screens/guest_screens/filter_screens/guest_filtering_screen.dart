@@ -48,7 +48,7 @@ class GuestFilteringScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('assets/icons/filter.png'),
+                          SvgPicture.asset('assets/icons/message.svg'),
                           DefaultText(
                             text: 'تصفية',
                             textStyle: Theme.of(context).textTheme.button,
@@ -70,7 +70,7 @@ class GuestFilteringScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('assets/icons/sort.png'),
+                          SvgPicture.asset('assets/icons/sort.svg'),
                           DefaultText(
                             text: 'ترتيب',
                             textStyle: Theme.of(context).textTheme.button,

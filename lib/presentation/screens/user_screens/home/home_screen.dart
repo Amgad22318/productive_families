@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
-        child: SvgPicture.asset('assets/icons/contact.svg'),
+        child: SvgPicture.asset('assets/icons/customer_services.svg',height: 30,),
         backgroundColor: Colors.white,
         onPressed: () {
           Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);

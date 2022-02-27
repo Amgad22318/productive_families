@@ -68,7 +68,7 @@ class _MarketsPriceFilteringScreenState extends State<MarketsPriceFilteringScree
                 IconButton(
                     onPressed: () {                      Navigator.pop(context);
                     },
-                    icon: Image.asset('assets/icons/filter.png')),
+                    icon: SvgPicture.asset('assets/icons/message.svg')),
                 DefaultText(
                   textStyle: Theme.of(context).textTheme.headline6,
                   text: 'نطاق السعر',
