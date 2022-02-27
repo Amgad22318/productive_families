@@ -19,13 +19,12 @@ class DeliveryRepresentativeLocatorScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.pop(context);},
             icon: SvgPicture.asset(
               "assets/icons/back_arrow.svg",
               color: Colors.black,
             ),
           )
-
         ],
         title: const DefaultText(
           text: 'مندوب التوصيل',

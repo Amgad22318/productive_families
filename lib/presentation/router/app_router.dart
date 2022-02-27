@@ -26,6 +26,8 @@ import 'package:productive_families/presentation/screens/guest_screens/location/
 import 'package:productive_families/presentation/screens/guest_screens/shop_layout/guest_shop_layout.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/about_product/mo_about_us.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/add_offer/mo_add_offer.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/chat/mo_chat_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/conversation/mo_conversation.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/filter_screen/mo_Filtering_screen.dart';
@@ -372,6 +374,14 @@ class AppRouter {
         );      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_DETAILS:
         return MaterialPageRoute(
           builder: (_) => const DeliveryRepresentativeOrderDetailsScreen(),
+        );
+        case endpoints.MARKET_OWNER_CHAT_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => MarketOwnerChatScreen(),
+        );
+        case endpoints.MARKET_OWENR_CONVERSATION_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) =>const MarketOwenrConversationScreen(),
         );
       default:
         return null;

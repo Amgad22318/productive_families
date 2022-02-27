@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/guest_screen_views/market/guest_market_section_item.dart';
@@ -39,7 +40,7 @@ class GuestMarkets extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset('assets/icons/filter.png'),
+                                  SvgPicture.asset('assets/icons/message.svg'),
                                   DefaultText(
                                     text: 'تصفية',
                                     textStyle: Theme.of(context).textTheme.button,
@@ -60,7 +61,7 @@ class GuestMarkets extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset('assets/icons/sort.png'),
+                                  SvgPicture.asset('assets/icons/sort.svg'),
                                   DefaultText(
                                     text: 'ترتيب',
                                     textStyle: Theme.of(context).textTheme.button,

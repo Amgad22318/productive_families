@@ -48,7 +48,7 @@ class _GuestMarketsOrderingScreenState extends State<GuestMarketsOrderingScreen>
                 IconButton(
                     onPressed: () {                      Navigator.pop(context);
                     },
-                    icon: Image.asset('assets/icons/sort.png')),
+                    icon: SvgPicture.asset('assets/icons/sort.svg')),
 
                 ListTile(
                   title: const Text('الأكثر مبيعا'),

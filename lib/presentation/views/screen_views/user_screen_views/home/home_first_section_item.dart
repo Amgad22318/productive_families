@@ -12,7 +12,7 @@ class HomeFirstSectionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_SCREEN);
         },

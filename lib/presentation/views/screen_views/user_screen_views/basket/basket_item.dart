@@ -126,7 +126,7 @@ class BasketMealItem extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            GestureDetector(
+                            InkWell(
                               child: SvgPicture.asset(
                                 "assets/icons/delete.svg",
                                 color: const Color(0xFFFF0000),

@@ -13,7 +13,7 @@ class HomeSectionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           navigateToAndFinish(context,ShopLayout(index: 1,));
         },

@@ -18,17 +18,13 @@ class SpecifyLocation extends StatelessWidget {
         height: 80,
         centerTitle: true,
         actions: [
-          GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: SvgPicture.asset(
-                  "assets/icons/back_arrow.svg",
-                  color: Colors.black,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              })
+          IconButton(
+            onPressed: () {Navigator.pop(context);},
+            icon: SvgPicture.asset(
+              "assets/icons/back_arrow.svg",
+              color: Colors.black,
+            ),
+          )
         ],
         title: const DefaultText(
           text: 'تحديد العنوان',

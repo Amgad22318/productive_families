@@ -11,6 +11,6 @@ class MarketCategoryItem extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(context, FILTERING_SCREEN);
         },
-        child: CategoryItem());
+        child:const CategoryItem());
   }
 }

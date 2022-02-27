@@ -31,7 +31,6 @@ class _DeliveryRepresentativeHomeScreenState
     super.initState();
   }
 
-
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> searchFormKey = GlobalKey<FormState>();
 
@@ -42,6 +41,9 @@ class _DeliveryRepresentativeHomeScreenState
       drawer: const MarketOwnerNavigationDrawer(),
       appBar: DefaultShopAppbar(
         actions: [
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context, MARKET_OWENR_CONVERSATION_SCREEN);
+          }, icon: SvgPicture.asset('assets/icons/message.svg'),),
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, MARKET_OWNER_NOTIFICATIONS_SCREEN);
@@ -53,7 +55,7 @@ class _DeliveryRepresentativeHomeScreenState
         title: const CircleAvatar(
           radius: 30,
           backgroundColor: backGroundWhite,
-        child: Text('Logo'),
+          child: Text('Logo'),
         ),
         centerTitle: true,
         leading: IconButton(
