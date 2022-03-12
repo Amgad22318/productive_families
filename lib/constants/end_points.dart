@@ -1,19 +1,10 @@
-/////////// API ENDPOINTS Names
+
 // ignore_for_file: constant_identifier_names
 
-const LOGIN ='login';
-const HOME ='home';
-const GET_CATEGORIES ='categories';
-const FAVORITES ='favorites';
-const CART ='carts';
-const PROFILE ='profile';
-const REGISTER ='register';
-const UPDATE_PROFILE ='update-profile';
-const SEARCH='products/search';
-const PRODUCT='products/';
-
-
-
+/////////// API ENDPOINTS Names
+const EP_TERMS='terms';
+const EP_ABOUT_US='about_us';
+const EP_APP_SETTING='app_settings';
 
 /////////// Screens PushNamed Names
 
