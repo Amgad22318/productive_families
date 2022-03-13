@@ -7,16 +7,11 @@ class AboutUsModel {
   int? status;
   AppSettings? appSettings;
 
-
 }
-
 class AppSettings {
-
   AppSettings.fromJson(dynamic json) {
     aboutUs = json['about_us'];
   }
   String? aboutUs;
-
-
 
 }

@@ -17,32 +17,31 @@ class AllAppSettingCubit extends Cubit<AllAppSettingStates> {
 
   void getTerms() {
     emit(GetTermsLoadingState());
-     TermsRequest.getTermsRequest().then((value) {
-      terms=value;
+    TermsRequest.getTermsRequest().then((value) {
+      terms = value;
       if (terms!.status.toString() == '200') {
         emit(GetTermsSuccessState());
       } else {
         emit(GetTermsErrorState());
       }
-    }).catchError((error){
-      printResponse('getTerms'+error.toString());
-
+    }).catchError((error) {
+      printResponse('getTerms' + error.toString());
     });
   }
+
   AboutUsModel? aboutUs;
 
   void getAboutUs() {
     emit(GetAboutUsLoadingState());
     AboutUsRequest.getAboutUsRequest().then((value) {
-       aboutUs=value;
+      aboutUs = value;
       if (aboutUs!.status.toString() == '200') {
         emit(GetAboutUsSuccessState());
       } else {
         emit(GetAboutUsErrorState());
       }
-    }).catchError((error){
-      printResponse('getAboutUs'+error.toString());
-
+    }).catchError((error) {
+      printResponse('getAboutUs' + error.toString());
     });
   }
 }
