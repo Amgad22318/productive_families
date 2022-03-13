@@ -6,7 +6,7 @@ class DioHelper {
 
   static init() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://504-test.magdsofteg.xyz/api/',
+      baseUrl: 'https://504-dev.magdsofteg.xyz/api/',
       receiveDataWhenStatusError: true,
     ));
   }
@@ -34,10 +34,11 @@ class DioHelper {
      Map<String, dynamic>? data,
   }) {
     dio.options.headers = {
-      'Content-Type': 'application/json',
+
     };
 
     data={'language':'ar'};
+    printResponse('base:    '+dio.options.baseUrl.toString());
     printResponse('body:    '+data.toString());
     printResponse('header:    '+dio.options.headers.toString());
     printResponse('url:    '+url.toString());

@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +7,8 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class TermsAndConditionsScreen extends StatelessWidget {
-  const TermsAndConditionsScreen({Key? key}) : super(key: key);
+  TermsAndConditionsScreen({Key? key}) : super(key: key);
+  AllAppSettingCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -33,28 +35,32 @@ class TermsAndConditionsScreen extends StatelessWidget {
             Image.asset(
               'assets/image/appbar_half_circle.png',
             ),
-            Expanded(
-              child: Scrollbar(
-                scrollbarOrientation: ScrollbarOrientation.right,
-                showTrackOnHover: true,
-                isAlwaysShown: true,
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
-                  child: SingleChildScrollView(
-                    child: BlocBuilder<AllAppSettingCubit, AllAppSettingStates>(
-                      builder: (context, state) {
-                        AllAppSettingCubit cubit =
-                            AllAppSettingCubit.get(context);
-                        return Text(
-                          cubit.terms!.appSettings!.terms.toString(),
-                          style: Theme.of(context).textTheme.caption,
-                        );
-                      },
+            BlocBuilder<AllAppSettingCubit, AllAppSettingStates>(
+              builder: (context, state) {
+                cubit = AllAppSettingCubit.get(context);
+                return ConditionalBuilder(
+                  condition: cubit!.terms != null,
+                  fallback: (context) =>
+                  const Expanded(child: Center(child: CircularProgressIndicator())),
+                  builder: (context) => Expanded(
+                    child: Scrollbar(
+                      scrollbarOrientation: ScrollbarOrientation.right,
+                      showTrackOnHover: true,
+                      isAlwaysShown: true,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                            start: 16, end: 16),
+                        child: SingleChildScrollView(
+                            child: Text(
+                              cubit!.terms!.appSettings!.terms.toString(),
+                              style: Theme.of(context).textTheme.caption,
+                            )),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
+                );
+              },
+            )
           ],
         ),
       ),

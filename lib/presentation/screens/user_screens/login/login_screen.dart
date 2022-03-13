@@ -61,7 +61,9 @@ class LoginScreen extends StatelessWidget {
                         height: 50,
                         width: 50,
                         background: aboutGrey,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, ABOUT_US_SCREEN);
+                        },
                         icon: SvgPicture.asset(
                           'assets/icons/info.svg',
                           height: 25,

@@ -110,11 +110,11 @@ class AppRouter {
         );
       case endpoints.TERMS_AND_CONDITIONS:
         return MaterialPageRoute(
-          builder: (_) => const TermsAndConditionsScreen(),
+          builder: (_) =>  TermsAndConditionsScreen(),
         );
-      case endpoints.ABOUT_US:
+      case endpoints.ABOUT_US_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const AboutUsScreen(),
+          builder: (_) =>  AboutUsScreen(),
         );
       case endpoints.ABOUT_PRODUCT:
         return MaterialPageRoute(
