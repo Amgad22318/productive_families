@@ -2,9 +2,14 @@
 // ignore_for_file: constant_identifier_names
 
 /////////// API ENDPOINTS Names
+///// Shared API
 const EP_TERMS='terms';
 const EP_ABOUT_US='about_us';
 const EP_APP_SETTING='app_settings';
+
+////// User Api
+const EP_USER_LOGIN='login';
+const EP_USER_REGISTER='register';
 
 /////////// Screens PushNamed Names
 

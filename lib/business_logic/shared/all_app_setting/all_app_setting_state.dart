@@ -6,7 +6,8 @@ abstract class AllAppSettingStates {}
 class AllAppSettingInitial extends AllAppSettingStates {}
 
 class GetTermsLoadingState extends AllAppSettingStates{}
-class GetTermsSuccessState extends AllAppSettingStates{}
+class GetTermsSuccessState extends AllAppSettingStates{
+}
 class GetTermsErrorState extends AllAppSettingStates{}
 
 

@@ -54,5 +54,4 @@ class User {
   int? totalOrders;
   String? deviceToken;
 
-
 }
