@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+
+import 'enums.dart';
 
 Color getColor(Set<MaterialState> states,Color color) {
   const Set<MaterialState> interactiveStates = <MaterialState>{
@@ -38,5 +41,35 @@ void navigateToAndFinish(BuildContext context, Widget widget) {
       return false;
     },
   );
+}
+
+
+
+void showToastMsg({required String msg, required ToastStates toastState}) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseToastColor(state: toastState),
+      textColor: Colors.black,
+      fontSize: 16.0);
+}
+
+
+Color chooseToastColor({required ToastStates state}) {
+  Color color;
+  switch (state) {
+    case ToastStates.SUCCESS:
+      color = Colors.green;
+      break;
+    case ToastStates.WARNING:
+      color = Colors.amber;
+      break;
+    case ToastStates.ERROR:
+      color = Colors.red;
+      break;
+  }
+  return color;
 }
 

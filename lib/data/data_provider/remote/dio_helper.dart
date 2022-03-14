@@ -25,31 +25,30 @@ class DioHelper {
     return await dio.get(url, queryParameters: query);
   }
 
-
-
-
   static Future<Response> postData({
     required String url,
     Map<String, dynamic>? query,
     Map<String, dynamic>? data,
   }) {
-    dio.options.headers = {
+    dio.options.headers = {};
+    if (data == null) {
+      data={'language':'ar'};
+    }
+    else{
+      data['language'] = 'ar';
 
+    }
 
-    };
-
-    data={'language':'ar'};
-    printResponse('base:    '+dio.options.baseUrl.toString());
-    printResponse('body:    '+data.toString());
-    printResponse('header:    '+dio.options.headers.toString());
-    printResponse('url:    '+url.toString());
-    return dio.post(url, queryParameters: query, data: data,);
+    printResponse('base:    ' + dio.options.baseUrl.toString());
+    printResponse('body:    ' + data.toString());
+    printResponse('header:    ' + dio.options.headers.toString());
+    printResponse('url:    ' + url.toString());
+    return dio.post(
+      url,
+      queryParameters: query,
+      data: data,
+    );
   }
-
-
-
-
-
 
   static Future<Response> putData({
     required String url,
@@ -65,5 +64,4 @@ class DioHelper {
     };
     return dio.put(url, queryParameters: query, data: data);
   }
-
 }

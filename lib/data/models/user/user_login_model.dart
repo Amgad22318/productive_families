@@ -1,26 +1,20 @@
-
-class LoginModel {
-
-
-  LoginModel.fromJson(dynamic json) {
+class UserLoginModel {
+  UserLoginModel.fromJson(dynamic json) {
     status = json['status'];
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     accessToken = json['access_token'];
     tokenType = json['token_type'];
+    message = json['message'];
   }
+
   int? status;
   User? user;
   String? accessToken;
+  late String message;
   String? tokenType;
-
-
-
 }
 
-
 class User {
-
-
   User.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
@@ -38,6 +32,7 @@ class User {
     totalOrders = json['total_orders'];
     deviceToken = json['device_token'];
   }
+
   int? id;
   String? name;
   String? phone;
@@ -53,5 +48,4 @@ class User {
   dynamic balance;
   int? totalOrders;
   String? deviceToken;
-
 }
