@@ -3,11 +3,14 @@ class ApplicationSetting {
 
 
   ApplicationSetting.fromJson(dynamic json) {
+    message = json['message'];
     status = json['status'];
     appSettings = json['app_settings'] != null ? AppSettings.fromJson(json['app_settings']) : null;
   }
   int? status;
   AppSettings? appSettings;
+  late String message;
+
 
 
 

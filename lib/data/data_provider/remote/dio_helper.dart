@@ -31,13 +31,8 @@ class DioHelper {
     Map<String, dynamic>? data,
   }) {
     dio.options.headers = {};
-    if (data == null) {
-      data={'language':'ar'};
-    }
-    else{
-      data['language'] = 'ar';
+    data == null? data={'language':'ar'}:  data['language'] = 'ar';
 
-    }
 
     printResponse('base:    ' + dio.options.baseUrl.toString());
     printResponse('body:    ' + data.toString());
