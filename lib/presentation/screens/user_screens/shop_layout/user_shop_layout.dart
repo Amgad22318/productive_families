@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/screens/user_screens/favorite/favorite_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/home/home_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/home/user_home_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/markets/markets.dart';
 import 'package:productive_families/presentation/screens/user_screens/user_profile/user_profile_screen.dart';
 
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
 
-class ShopLayout extends StatefulWidget {
+class UserShopLayout extends StatefulWidget {
   final int index;
 
-  const ShopLayout({Key? key,  this.index=0}) : super(key: key);
+  const UserShopLayout({Key? key,  this.index=0}) : super(key: key);
 
   @override
-  State<ShopLayout> createState() => _ShopLayoutState();
+  State<UserShopLayout> createState() => _UserShopLayoutState();
 }
 
-class _ShopLayoutState extends State<ShopLayout>
+class _UserShopLayoutState extends State<UserShopLayout>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
 
@@ -41,7 +41,7 @@ class _ShopLayoutState extends State<ShopLayout>
           Expanded(
             child: TabBarView(
               children: [
-                HomeScreen(),
+                UserHomeScreen(),
                 Markets(),
                 FavoriteScreen(),
                 UserProfileScreen(),

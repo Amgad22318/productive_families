@@ -4,7 +4,8 @@ const AppLang='ar';
 
 ///////////////////////////////// sharedPreferences constant /////////////////////////////////////////////
 
-String? userToken;
+String? accessToken;
+String? accountType;
 
 
 

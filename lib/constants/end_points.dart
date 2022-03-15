@@ -15,7 +15,15 @@ const EP_USER_REGISTER = 'register';
 ////// DR Api
 
 ///////////////////////////////// sharedPreferences Keys /////////////////////////////////////////////
-const String SP_USER_TOKEN='SP_USER_TOKEN';
+const String SP_ACCESS_TOKEN_KEY='SP_ACCESS_TOKEN';
+const String SP_ACCOUNT_TYPE_KEY='SP_ACCOUNT_TYPE_KEY';
+const String SP_ACCOUNT_NAME_KEY='SP_ACCOUNT_Name_KEY';
+const String SP_ACCOUNT_PHONE_KEY='SP_ACCOUNT_PHONE_KEY';
+const String SP_ACCOUNT_BALANCE_KEY='SP_ACCOUNT_BALANCE_KEY';
+
+const String SP_ACCOUNT_POINTS_KEY='SP_ACCOUNT_POINTS_KEY';
+const String SP_ACCOUNT_IMAGE_KEY='SP_ACCOUNT_IMAGE_KEY';
+const String SP_ACCOUNT_TOTAL_ORDERS_KEY='SP_ACCOUNT_TOTAL_ORDERS_KEY';
 
 
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/shared/home/default_drawer_list_tile.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -71,6 +73,7 @@ class NavigationDrawer extends StatelessWidget {
             text: 'تسجيل خروج',
             icon: 'assets/icons/logout.svg',
             onTap: () {
+              logout();
               Navigator.pushNamedAndRemoveUntil(context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
             },
           ),

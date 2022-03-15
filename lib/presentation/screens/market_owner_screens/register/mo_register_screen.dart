@@ -20,9 +20,11 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
   late bool isChecked;
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController ServiceNameController = TextEditingController();
+  TextEditingController serviceNameController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
@@ -128,7 +130,7 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-                                  controller: ServiceNameController,
+                                  controller: serviceNameController,
                                   validator: (text) {
                                     if (text!.isEmpty) {
                                       return 'ادخل اسم الخدمه';
@@ -182,6 +184,8 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                               ),
                               DefaultFormField(
                                   controller: passwordController,
+                                  maxLines: 1,
+                                  obscureText: true,
                                   validator: (text) {
                                     if (text!.isEmpty) {
                                       return 'ادخل كلمة المرور';
@@ -203,7 +207,9 @@ class _RegisterScreenState extends State<MarketOwnerRegisterScreen> {
                                     Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-                                  controller: passwordController,
+                                  controller: confirmPasswordController,
+                                  maxLines: 1,
+                                  obscureText: true,
                                   validator: (text) {
                                     if (text!.isEmpty) {
                                       return 'ادخل كلمة المرور';

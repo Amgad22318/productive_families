@@ -23,6 +23,7 @@ class _DeliveryRepresentativeRegisterScreenState
  final TextEditingController nameController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
  final  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
@@ -142,6 +143,8 @@ class _DeliveryRepresentativeRegisterScreenState
                               ),
                               DefaultFormField(
                                   controller: passwordController,
+                                  maxLines: 1,
+                                  obscureText: true,
                                   validator: (text) {
                                     if (text!.isEmpty) {
                                       return 'ادخل كلمة المرور';
@@ -155,7 +158,9 @@ class _DeliveryRepresentativeRegisterScreenState
                                     Theme.of(context).textTheme.headline6,
                               ),
                               DefaultFormField(
-                                  controller: passwordController,
+                                  controller: confirmPasswordController,
+                                  maxLines: 1,
+                                  obscureText: true,
                                   validator: (text) {
                                     if (text!.isEmpty) {
                                       return 'ادخل كلمة المرور';

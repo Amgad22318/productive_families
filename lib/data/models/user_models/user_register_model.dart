@@ -1,12 +1,15 @@
-class RegisterModel {
-  RegisterModel.fromJson(dynamic json) {
+class UserRegisterModel {
+  UserRegisterModel.fromJson(dynamic json) {
     status = json['status'];
     account =
         json['account'] != null ? Account.fromJson(json['account']) : null;
+    message = json['message'];
   }
 
   int? status;
   Account? account;
+  late String message;
+
 }
 
 class Account {

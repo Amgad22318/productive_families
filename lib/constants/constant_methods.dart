@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 import 'enums.dart';
@@ -16,11 +17,19 @@ Color getColor(Set<MaterialState> states,Color color) {
 }
 
 
+void logout(){
+CacheHelper.sharedPreferences.clear();
+}
+
+
 void printResponse(String text) {
   print('\x1B[33m$text\x1B[0m');
 }
 void printError(String text) {
   print('\x1B[31m$text\x1B[0m');
+}
+void printTest(String text) {
+  print('\x1B[32m$text\x1B[0m');
 }
 
 void navigateTo(BuildContext context, Widget widget) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/shop_layout/mo_shop_layout.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/notification/mo_app_notification_item.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/notification/mo_display_representative_price_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/app_notification_item.dart';

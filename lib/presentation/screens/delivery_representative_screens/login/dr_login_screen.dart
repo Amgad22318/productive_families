@@ -10,7 +10,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 class DeliveryRepresentativeLoginScreen extends StatelessWidget {
   DeliveryRepresentativeLoginScreen({Key? key}) : super(key: key);
 
-  final TextEditingController nameOrPhoneController = TextEditingController();
+  final TextEditingController PhoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
@@ -93,9 +93,9 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                                   textStyle: Theme.of(context).textTheme.headline6,
                                 ),
                                 DefaultFormField(
-                                    controller: nameOrPhoneController,
+                                    controller: PhoneController,
                                     validator: (text) {},
-                                    keyboardType: TextInputType.text),
+                                    keyboardType: TextInputType.phone),
                                 DefaultText(
                                   text: 'كلمة المرور',
                                   color: Colors.white,
@@ -103,6 +103,8 @@ class DeliveryRepresentativeLoginScreen extends StatelessWidget {
                                 ),
                                 DefaultFormField(
                                     controller: passwordController,
+                                    obscureText: true,
+                                    maxLines: 1,
                                     validator: (text) {},
                                     keyboardType: TextInputType.text),
                                 const SizedBox(

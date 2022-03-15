@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/app_notification_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
@@ -19,7 +19,7 @@ class NotificationsScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                navigateToAndFinish(context,const ShopLayout());
+                navigateToAndFinish(context,const UserShopLayout());
               },
               icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
             )

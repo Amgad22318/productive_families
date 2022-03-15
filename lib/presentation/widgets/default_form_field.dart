@@ -75,6 +75,7 @@ class DefaultFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       alignment: containerAlignment,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -82,12 +83,12 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
-
         maxLength: maxLength,
         readOnly: readOnly,
         cursorColor: cursorColor,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
+        textAlign: TextAlign.start,
         maxLines: maxLines,
         textDirection: TextDirection.rtl,
         initialValue: initialValue,

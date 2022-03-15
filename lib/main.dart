@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:productive_families/presentation/router/app_router.dart';
+import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/themes.dart';
 
 import 'data/data_provider/local/cache_helper.dart';
@@ -11,6 +13,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: defaultYellow, //or set color with: Color(0xFF0000FF)
+  ));
 
 
   runApp(DevicePreview(
