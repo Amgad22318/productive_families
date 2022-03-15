@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
-import 'package:productive_families/data/models/shared/about_us_model.dart';
-import 'package:productive_families/data/models/shared/terms_model.dart';
+import 'package:productive_families/data/models/shared_models/about_us_model.dart';
 
 class AboutUsRequest {
 

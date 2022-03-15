@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/data/models/shared/about_us_model.dart';
-import 'package:productive_families/data/models/shared/terms_model.dart';
+import 'package:productive_families/data/models/shared_models/about_us_model.dart';
+import 'package:productive_families/data/models/shared_models/terms_model.dart';
+
 import 'package:productive_families/data/requests/shared/about_us_request.dart';
 import 'package:productive_families/data/requests/shared/terms_request.dart';
 

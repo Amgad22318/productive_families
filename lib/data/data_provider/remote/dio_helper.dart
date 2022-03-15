@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/constants/constants.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -31,7 +32,7 @@ class DioHelper {
     Map<String, dynamic>? data,
   }) {
     dio.options.headers = {};
-    data == null? data={'language':'ar'}:  data['language'] = 'ar';
+    data == null? data={'language':AppLang}:  data['language'] = AppLang;
 
 
     printResponse('base:    ' + dio.options.baseUrl.toString());

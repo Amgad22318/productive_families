@@ -97,7 +97,6 @@ class LoginScreen extends StatelessWidget {
                                   showToastMsg(msg: state.message, toastState: ToastStates.ERROR);
                                 }
                                 if(state is UserLoginSuccessState){
-
                                   Navigator.pushNamedAndRemoveUntil(
                                       context,
                                       FIRST_TIME_LOCATION_PICKER,

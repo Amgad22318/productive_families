@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
-import 'package:productive_families/data/models/shared/about_us_model.dart';
-import 'package:productive_families/data/models/user/user_login_model.dart';
+import 'package:productive_families/data/models/user_models/user_login_model.dart';
 
 class UserLoginRequest {
   static Future userLoginRequest({

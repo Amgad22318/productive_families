@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/data/models/user/user_login_model.dart';
+import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/data/data_provider/local/cache_helper.dart';
+import 'package:productive_families/data/models/user_models/user_login_model.dart';
 import 'package:productive_families/data/requests/user/user_login_request.dart';
 
 part 'user_login_state.dart';
@@ -22,6 +24,7 @@ class UserLoginCubit extends Cubit<UserLoginStates> {
         .then((value) {
       userLoginModel = value;
       if (userLoginModel!.status.toString() == '200') {
+        CacheHelper.saveDataSharedPreference(key: SP_USER_TOKEN, value: userLoginModel?.accessToken);
         emit(UserLoginSuccessState());
       } else {
         emit(UserLoginErrorState(userLoginModel!.message));
