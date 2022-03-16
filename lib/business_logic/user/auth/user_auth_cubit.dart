@@ -3,10 +3,15 @@ import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
-import 'package:productive_families/data/models/user_models/user_login_model.dart';
-import 'package:productive_families/data/models/user_models/user_register_model.dart';
-import 'package:productive_families/data/requests/user/user_login_request.dart';
-import 'package:productive_families/data/requests/user/user_register_request.dart';
+import 'package:productive_families/data/models/user_models/auth/user_login_model.dart';
+import 'package:productive_families/data/models/user_models/auth/user_register_confirm_phone_model.dart';
+import 'package:productive_families/data/models/user_models/auth/user_register_model.dart';
+import 'package:productive_families/data/models/user_models/auth/user_register_resend_confirmation_code_model.dart';
+import 'package:productive_families/data/requests/user/auth/user_login_request.dart';
+import 'package:productive_families/data/requests/user/auth/user_register_confirm_phone_request.dart';
+import 'package:productive_families/data/requests/user/auth/user_register_request.dart';
+
+import '../../../data/requests/user/auth/user_register_resend_confirmation_code_request.dart';
 
 part 'user_auth_state.dart';
 
@@ -74,6 +79,51 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
       }
     }).catchError((error) {
       printResponse('userRegister' + error.toString());
+    });
+  }
+
+  UserRegisterConfirmPhoneModel? userRegisterConfirmPhoneModel;
+
+  void userRegisterConfirmPhone({
+    required String phone,
+    required String code,
+  }) {
+    emit(UserRegisterConfirmPhoneLoadingState());
+    UserRegisterConfirmPhoneRequest.userRegisterConfirmPhoneRequest(
+            phone: phone, code: code)
+        .then((value) {
+      userRegisterConfirmPhoneModel = value;
+      if (userRegisterConfirmPhoneModel!.status.toString() == '200') {
+        emit(UserRegisterConfirmPhoneSuccessState(
+            userRegisterConfirmPhoneModel!.message
+        ));
+      } else {
+        emit(UserRegisterConfirmPhoneErrorState(
+            userRegisterConfirmPhoneModel!.message));
+      }
+    }).catchError((error) {
+      printResponse('userRegisterConfirmPhone' + error.toString());
+    });
+  }
+
+  UserRegisterResendConfirmationCodeModel?
+      userRegisterResendConfirmationCodeModel;
+
+  void userRegisterResendConfirmationCode({
+    required String phone,
+  }) {
+    emit(UserRegisterResendConfirmationCodeLoadingState());
+    UserRegisterResendConfirmationCode.userRegisterResendConfirmationCode(phone: phone)
+        .then((value) {
+      userRegisterResendConfirmationCodeModel = value;
+      if (userRegisterResendConfirmationCodeModel!.status.toString() == '200') {
+        emit(UserRegisterResendConfirmationCodeSuccessState());
+      } else {
+        emit(UserRegisterResendConfirmationCodeErrorState(
+            userRegisterResendConfirmationCodeModel!.message));
+      }
+    }).catchError((error) {
+      printResponse('userRegisterResendConfirmationCode' + error.toString());
     });
   }
 }

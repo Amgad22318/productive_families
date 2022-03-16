@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
-class DROTPDialogFailure extends StatelessWidget {
-  const DROTPDialogFailure({Key? key}) : super(key: key);
+
+class OTPDialogSuccess extends  StatelessWidget {
+  final String route;
+  final String message;
+  const OTPDialogSuccess({Key? key, required this.route,required this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +18,23 @@ class DROTPDialogFailure extends StatelessWidget {
       title: const Center(
           child: CircleAvatar(
             radius: 30,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.blue,
             child: Icon(
-              Icons.clear,
+              Icons.check,
               color: backGroundWhite,
               size: 40,
             ),
           )),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
-          Text(
+        children:  <Widget>[
+          const Text(
             '! التحقق',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            'لم يتم التحقق بنجاح',
+            message,
             textAlign: TextAlign.center,
           ),
         ],
@@ -40,7 +44,7 @@ class DROTPDialogFailure extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: DefaultMaterialButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
             },
             text: 'إبدأ',
           ),

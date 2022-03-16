@@ -5,6 +5,7 @@ import 'package:productive_families/business_logic/user/auth/user_auth_cubit.dar
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/enums.dart';
+import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
@@ -110,11 +111,11 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                 listener: (context, state) {
                                   if (state is UserRegisterErrorState) {
                                     showToastMsg(
-                                        msg: state.message,
+                                        msg: state.message??'برجاء المحاولة مرة اخرى',
                                         toastState: ToastStates.ERROR);
                                   }
                                   if (state is UserRegisterSuccessState) {
-                                    Navigator.pushNamed(context, OTP_SCREEN);
+                                    navigateToAndFinish(context, UserOtpScreen(phone: phoneController.text));
                                   }
                                 },
                                 builder: (context, state) {
@@ -135,11 +136,13 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                             .headline6,
                                       ),
                                       DefaultFormField(
+                                        maxLength: 50,
                                           controller: nameController,
                                           validator: (text) {
                                             if (text!.isEmpty) {
                                               return 'ادخل الاسم الاول';
                                             }
+
                                           },
                                           keyboardType: TextInputType.text),
                                       DefaultText(
@@ -150,6 +153,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                             .headline6,
                                       ),
                                       DefaultFormField(
+                                          maxLength: 11,
                                           controller: phoneController,
                                           validator: (text) {
                                             if (text!.isEmpty) {
@@ -165,12 +169,16 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                             .headline6,
                                       ),
                                       DefaultFormField(
+                                          maxLength: 9,
                                           controller: passwordController,
                                           maxLines: 1,
                                           obscureText: true,
                                           validator: (text) {
                                             if (text!.isEmpty) {
                                               return 'ادخل كلمة المرور';
+                                            }
+                                            else if (text!=confirmPasswordController.text) {
+                                              return 'كلمة المرور غير متطابقة';
                                             }
                                           },
                                           keyboardType: TextInputType.text),
@@ -182,12 +190,16 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                             .headline6,
                                       ),
                                       DefaultFormField(
+                                          maxLength: 9,
                                           controller: confirmPasswordController,
                                           maxLines: 1,
                                           obscureText: true,
                                           validator: (text) {
                                             if (text!.isEmpty) {
                                               return 'ادخل كلمة المرور';
+                                            }
+                                            else if (text!=passwordController.text) {
+                                              return 'كلمة المرور غير متطابقة';
                                             }
                                           },
                                           keyboardType: TextInputType.text),

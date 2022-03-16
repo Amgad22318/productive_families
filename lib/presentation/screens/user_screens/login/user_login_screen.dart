@@ -97,7 +97,7 @@ class UserLoginScreen extends StatelessWidget {
                                 listener: (context, state) {
                                   if (state is UserLoginErrorState) {
                                     showToastMsg(
-                                        msg: state.message,
+                                        msg: state.message??'برجاء المحاولة مرة اخرى',
                                         toastState: ToastStates.ERROR);
                                   }
                                   if (state is UserLoginSuccessState) {

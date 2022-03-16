@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/otp_screen/dr_otp_dialog_failure.dart';
-import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/otp_screen/dr_otp_dialog_success.dart';
+import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_failure.dart';
+import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_success.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
+
+import '../../../../constants/end_points.dart';
 
 class DeliveryRepresentativeOtpScreen extends StatefulWidget {
   const DeliveryRepresentativeOtpScreen({Key? key}) : super(key: key);
@@ -117,22 +119,13 @@ class _DeliveryRepresentativeOtpScreenState
                               showDialog(
                                   context: context,
                                   builder: (context) => msgSuccess
-                                      ? DROTPDialogSuccess()
-                                      : DROTPDialogFailure());
+                                      ? const OTPDialogSuccess(route: DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN,message: 'sss',)
+                                      : const OTPDialogFailure(message: 'ssss',));
                             },
                             text: 'تسجيل الدخول',
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: DefaultTextButton(
-                            textStyle:
-                            Theme.of(context).textTheme.button,
-                            text: 'تعديل رقم الهاتف',
-                            textColor: defaultYellow,
-                            onPressed: () {},
-                          ),
-                        ),
+
                       ],
                     ),
                   ],

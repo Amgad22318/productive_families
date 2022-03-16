@@ -73,7 +73,7 @@ import 'package:productive_families/presentation/screens/user_screens/order_deta
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_second_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/orders/orders_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/otp/otp_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/register/user_register_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
@@ -110,7 +110,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => startWidget);
       case endpoints.START_SCREEN:
         return MaterialPageRoute(builder: (_) => const StartScreen());
-      case endpoints.LOGIN_SCREEN:
+      case endpoints.USER_LOGIN_SCREEN:
         return MaterialPageRoute(builder: (_) => UserLoginScreen());
       case endpoints.REGISTER_SCREEN:
         return MaterialPageRoute(
@@ -122,7 +122,7 @@ class AppRouter {
         );
       case endpoints.OTP_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const OtpScreen(),
+          builder: (_) =>  UserOtpScreen(),
         );
       case endpoints.SHOP_LAYOUT:
         return MaterialPageRoute(

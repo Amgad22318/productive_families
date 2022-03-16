@@ -9,6 +9,9 @@ const EP_APP_SETTING = 'app_settings';
 ////// User Api
 const EP_USER_LOGIN = 'login';
 const EP_USER_REGISTER = 'register';
+const EP_USER_REGISTER_CONFIRM_PHONE = 'account/verification';
+const EP_USER_REGISTER_RESEND_CONFIRMATION_CODE = 'resend/code';
+const EP_USER_LOGOUT = 'logout';
 
 ////// MO Api
 
@@ -31,7 +34,7 @@ const String SP_ACCOUNT_TOTAL_ORDERS_KEY='SP_ACCOUNT_TOTAL_ORDERS_KEY';
 
 //USER
 const START_SCREEN = 'START_SCREEN';
-const LOGIN_SCREEN = '/login';
+const USER_LOGIN_SCREEN = '/USER_LOGIN_SCREEN';
 const REGISTER_SCREEN = '/register';
 const TERMS_AND_CONDITIONS = '/terms_and_conditions';
 const ABOUT_US_SCREEN = '/ABOUT_US_SCREEN';

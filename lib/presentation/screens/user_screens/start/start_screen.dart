@@ -62,7 +62,7 @@ class StartScreen extends StatelessWidget {
                             width: 180,
                             text: 'تسجيل الدخول',
                             onPressed: () {
-                              Navigator.pushNamed(context, LOGIN_SCREEN);
+                              Navigator.pushNamed(context, USER_LOGIN_SCREEN);
                             },
                           ),
                         ),
