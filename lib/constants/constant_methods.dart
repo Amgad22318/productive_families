@@ -51,6 +51,14 @@ void navigateToAndFinish(BuildContext context, Widget widget) {
     },
   );
 }
+void navigatePushReplacement(BuildContext context, Widget widget) {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => widget,
+    ),
+  );
+}
 
 
 

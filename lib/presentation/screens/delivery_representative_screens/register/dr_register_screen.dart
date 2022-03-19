@@ -70,9 +70,11 @@ class _DeliveryRepresentativeRegisterScreenState
                     ),
                     Align(
                       alignment: AlignmentDirectional.topEnd,
-                      child: DefaultText(
-                        text: 'تسجيل الدخول',
-                        textStyle: Theme.of(context).textTheme.headline6,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),                        child: DefaultText(
+                          text: 'تسجيل الدخول',
+                          textStyle: Theme.of(context).textTheme.headline6,
+                        ),
                       ),
                     ),
                     Padding(

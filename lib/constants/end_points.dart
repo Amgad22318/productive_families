@@ -33,7 +33,7 @@ const String SP_ACCOUNT_TOTAL_ORDERS_KEY='SP_ACCOUNT_TOTAL_ORDERS_KEY';
 ///////////////////////////////// Screens PushNamed Names/////////////////////////////////////////////
 
 //USER
-const START_SCREEN = 'START_SCREEN';
+const USER_START_SCREEN = 'USER_START_SCREEN';
 const USER_LOGIN_SCREEN = '/USER_LOGIN_SCREEN';
 const REGISTER_SCREEN = '/register';
 const TERMS_AND_CONDITIONS = '/terms_and_conditions';

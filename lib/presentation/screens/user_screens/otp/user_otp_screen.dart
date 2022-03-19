@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pinput/pinput.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_failure.dart';
 import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_success.dart';
@@ -12,6 +12,7 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 import '../../../../business_logic/user/auth/user_auth_cubit.dart';
+import '../../../../constants/enums.dart';
 import '../../../widgets/default_text_button.dart';
 
 class UserOtpScreen extends StatefulWidget {
@@ -24,9 +25,28 @@ class UserOtpScreen extends StatefulWidget {
 }
 
 class _UserOtpScreenState extends State<UserOtpScreen> {
-  bool msgSuccess = true;
-  String code = '';
   UserAuthCubit? cubit;
+  final codeController = TextEditingController();
+  final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    focusNode.requestFocus();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    codeController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  final defaultPinTheme = const PinTheme(
+    width: 60,
+    height: 60,
+    decoration: BoxDecoration(color: Colors.white),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +54,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
       create: (context) => UserAuthCubit(),
       child: Scaffold(
         appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
           automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: darkBlue,
@@ -62,6 +83,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
         backgroundColor: darkBlue,
         body: SafeArea(
           child: SingleChildScrollView(
+            reverse: true,
             child: Column(
               children: [
                 Image.asset("assets/image/msg_background.png"),
@@ -96,44 +118,57 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                               showDialog(
                                   context: context,
                                   builder: (context) => OTPDialogSuccess(
-                                        route: USER_LOGIN_SCREEN,
                                         message: state.message!,
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pushReplacementNamed(
+                                              context, USER_LOGIN_SCREEN);
+                                        },
                                       ));
                             } else if (state
                                 is UserRegisterConfirmPhoneErrorState) {
                               showDialog(
                                   context: context,
-                                  builder: (context) =>  OTPDialogFailure(message: state.message??'برجاء المحاولة مرة اخرى',));
+                                  builder: (context) => OTPDialogFailure(
+                                        message: state.message ??
+                                            'برجاء المحاولة مرة اخرى',
+                                      ));
                             }
                           },
                           builder: (context, state) {
                             return Column(
                               children: [
-                                OtpTextField(
-                                  keyboardType: TextInputType.number,
-                                  focusedBorderColor: defaultYellow,
-                                  cursorColor: defaultYellow,
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .copyWith(color: Colors.white),
-
-                                  fieldWidth: 50.0,
-                                  fillColor: backGroundWhite,
-                                  numberOfFields: 4,
-                                  borderColor: backGroundWhite,
-                                  //set to true to show as box or false to show as dash
-                                  showFieldAsBox: true,
-                                  onSubmit:(String code) {
-                                    setState(() {
-                                      this.code = code;
-                                    });
-                                  } ,
-                                  //runs when a code is typed in
-
+                                Container(
+                                  margin: const EdgeInsetsDirectional.all(16),
+                                  width: 240,
+                                  height: 60,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: Pinput(
+                                      androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
+                                      length: 4,
+                                      controller: codeController,
+                                      focusNode: focusNode,
+                                      separator: Container(
+                                        height: 60,
+                                        width: 1,
+                                        color: darkBlue,
+                                      ),
+                                      defaultPinTheme: defaultPinTheme,
+                                      focusedPinTheme: defaultPinTheme.copyWith(
+                                        decoration: const BoxDecoration(
+                                            color: defaultYellow),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 const SizedBox(
-                                  height: 30,
+                                  height: 10,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -150,23 +185,23 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 30,
+                                  height: 15,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 50),
                                   child: DefaultMaterialButton(
                                     onPressed: () {
-                                      if (code.length == 4) {
-                                        printTest(code);
-
-                                        cubit?.userRegisterConfirmPhone(
-                                            phone: widget.phone!, code: code);
-                                      } else {
-                                        printTest(code);
+                                      String value = codeController.text;
+                                      if (value.isEmpty || value.length != 4) {
                                         showToastMsg(
-                                            msg: 'ادخل كود التاكيد',
+                                            msg: 'برجاء ادخال الكود',
                                             toastState: ToastStates.WARNING);
+                                      } else if (value.length == 4) {
+                                        printTest(codeController.text);
+                                        cubit?.userRegisterConfirmPhone(
+                                            phone: widget.phone!,
+                                            code: codeController.text);
                                       }
                                     },
                                     text: 'تسجيل الدخول',
@@ -179,7 +214,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                       }),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

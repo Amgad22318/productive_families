@@ -4,9 +4,9 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 
 class OTPDialogSuccess extends  StatelessWidget {
-  final String route;
+  final void Function() onPressed;
   final String message;
-  const OTPDialogSuccess({Key? key, required this.route,required this.message}) : super(key: key);
+  const OTPDialogSuccess({Key? key,required this.message, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +43,7 @@ class OTPDialogSuccess extends  StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: DefaultMaterialButton(
-            onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
-            },
+            onPressed: onPressed,
             text: 'إبدأ',
           ),
         ),

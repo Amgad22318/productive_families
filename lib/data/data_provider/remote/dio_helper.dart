@@ -30,8 +30,11 @@ class DioHelper {
     required String url,
     Map<String, dynamic>? query,
     Map<String, dynamic>? data,
+    String? token,
   }) {
-    dio.options.headers = {};
+    dio.options.headers = {
+      'Authorization': token ?? ''
+    };
     data == null? data={'language':AppLang}:  data['language'] = AppLang;
 
 

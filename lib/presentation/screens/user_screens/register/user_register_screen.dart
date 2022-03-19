@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/business_logic/user/auth/user_auth_cubit.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -75,9 +74,11 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                       ),
                       Align(
                         alignment: AlignmentDirectional.topEnd,
-                        child: DefaultText(
-                          text: 'تسجيل حساب جديد',
-                          textStyle: Theme.of(context).textTheme.headline6,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),                          child: DefaultText(
+                            text: 'تسجيل حساب جديد',
+                            textStyle: Theme.of(context).textTheme.headline6,
+                          ),
                         ),
                       ),
                       Padding(
@@ -115,7 +116,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                         toastState: ToastStates.ERROR);
                                   }
                                   if (state is UserRegisterSuccessState) {
-                                    navigateToAndFinish(context, UserOtpScreen(phone: phoneController.text));
+                                    navigatePushReplacement(context, UserOtpScreen(phone: phoneController.text));
                                   }
                                 },
                                 builder: (context, state) {

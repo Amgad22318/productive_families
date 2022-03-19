@@ -30,7 +30,7 @@ class ChooseAccount extends StatelessWidget {
                     children: [
                       DefaultMaterialButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, START_SCREEN);
+                          Navigator.pushNamed(context, USER_START_SCREEN);
                         },
                         text: 'عميل',
                       ),

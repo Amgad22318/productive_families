@@ -5,8 +5,8 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+class UserStartScreen extends StatelessWidget {
+  const UserStartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

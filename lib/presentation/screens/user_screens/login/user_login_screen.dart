@@ -59,9 +59,12 @@ class UserLoginScreen extends StatelessWidget {
                       ),
                       Align(
                         alignment: AlignmentDirectional.topEnd,
-                        child: DefaultText(
-                          text: 'تسجيل الدخول',
-                          textStyle: Theme.of(context).textTheme.headline6,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: DefaultText(
+                            text: 'تسجيل الدخول',
+                            textStyle: Theme.of(context).textTheme.headline6,
+                          ),
                         ),
                       ),
                       Padding(
@@ -97,7 +100,8 @@ class UserLoginScreen extends StatelessWidget {
                                 listener: (context, state) {
                                   if (state is UserLoginErrorState) {
                                     showToastMsg(
-                                        msg: state.message??'برجاء المحاولة مرة اخرى',
+                                        msg: state.message ??
+                                            'برجاء المحاولة مرة اخرى',
                                         toastState: ToastStates.ERROR);
                                   }
                                   if (state is UserLoginSuccessState) {

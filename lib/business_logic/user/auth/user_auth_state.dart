@@ -57,3 +57,15 @@ class UserRegisterResendConfirmationCodeErrorState extends UserAuthStates {
 
   UserRegisterResendConfirmationCodeErrorState(this.message);
 }
+
+
+
+class UserLogoutLoadingState extends UserAuthStates {}
+
+class UserLogoutSuccessState extends UserAuthStates {}
+
+class UserLogoutErrorState extends UserAuthStates {
+
+  UserLogoutErrorState();
+}
+

@@ -1,13 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/data/models/user_models/auth/user_login_model.dart';
+import 'package:productive_families/data/models/user_models/auth/user_logout_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_confirm_phone_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_resend_confirmation_code_model.dart';
 import 'package:productive_families/data/requests/user/auth/user_login_request.dart';
+import 'package:productive_families/data/requests/user/auth/user_logout_request.dart';
 import 'package:productive_families/data/requests/user/auth/user_register_confirm_phone_request.dart';
 import 'package:productive_families/data/requests/user/auth/user_register_request.dart';
 
@@ -32,6 +35,7 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
       if (userLoginModel!.status.toString() == '200') {
         CacheHelper.saveDataToSP(
             key: SP_ACCESS_TOKEN_KEY, value: userLoginModel?.accessToken);
+        accessToken=userLoginModel?.accessToken;
         CacheHelper.saveDataToSP(
             key: SP_ACCOUNT_TYPE_KEY, value: userLoginModel?.user?.type);
         CacheHelper.saveDataToSP(
@@ -126,4 +130,30 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
       printResponse('userRegisterResendConfirmationCode' + error.toString());
     });
   }
+
+
+UserLogoutModel? userLogoutModel;
+  void userLogout(
+  ) {
+    emit(UserLogoutLoadingState());
+    UserLogOutRequest.userLogOutRequest()
+        .then((value) {
+      userLogoutModel = value;
+      if (userLogoutModel!.status.toString() == '200') {
+        emit(UserLogoutSuccessState());
+      } else {
+        emit(UserLogoutErrorState());
+      }
+    }).catchError((error) {
+      printResponse('userRegisterResendConfirmationCode' + error.toString());
+    });
+  }
+
+
+
+
+
+
+
+
 }

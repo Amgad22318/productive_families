@@ -79,7 +79,7 @@ import 'package:productive_families/presentation/screens/user_screens/register/u
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
-import 'package:productive_families/presentation/screens/user_screens/start/start_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
@@ -108,8 +108,8 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
-      case endpoints.START_SCREEN:
-        return MaterialPageRoute(builder: (_) => const StartScreen());
+      case endpoints.USER_START_SCREEN:
+        return MaterialPageRoute(builder: (_) => const UserStartScreen());
       case endpoints.USER_LOGIN_SCREEN:
         return MaterialPageRoute(builder: (_) => UserLoginScreen());
       case endpoints.REGISTER_SCREEN:
