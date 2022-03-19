@@ -13,14 +13,14 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class UserHomeScreen extends StatefulWidget {
+  const UserHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<UserHomeScreen> createState() => _UserHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserHomeScreenState extends State<UserHomeScreen> {
   TextEditingController searchController = TextEditingController();
 
   late VideoPlayerController videoPlayerController;

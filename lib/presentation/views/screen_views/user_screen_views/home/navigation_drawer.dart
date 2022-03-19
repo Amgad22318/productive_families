@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/business_logic/user/auth/user_auth_cubit.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/shared/home/default_drawer_list_tile.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
-import 'package:productive_families/presentation/widgets/drawer_list_tiles.dart';
+
+import '../../../../../data/data_provider/local/cache_helper.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -20,30 +24,40 @@ class NavigationDrawer extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.all(16.0),
-                child: CircleAvatar(radius: 50,backgroundImage:AssetImage('assets/image/user_photo.png') ,),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('assets/image/user_photo.png'),
+                ),
               ),
               Column(
                 children: [
-                  DefaultText(color: Colors.white,
+                  DefaultText(
+                    color: Colors.white,
                     text: 'الاسم',
                     textStyle: Theme.of(context).textTheme.bodyText2,
                   ),
-                  Row(children: [
-                    SvgPicture.asset('assets/icons/location.svg',width: 18,height: 18,),
-
-                    DefaultText(color: Colors.white,
-                      text: 'العنوان',
-                      textStyle: Theme.of(context).textTheme.bodyText2,
-                    ),
-
-                  ],)
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/location.svg',
+                        width: 18,
+                        height: 18,
+                      ),
+                      DefaultText(
+                        color: Colors.white,
+                        text: 'العنوان',
+                        textStyle: Theme.of(context).textTheme.bodyText2,
+                      ),
+                    ],
+                  )
                 ],
               ),
               const Spacer(),
               IconButton(
-                  onPressed: () {Navigator.of(context).pop();},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   icon: SvgPicture.asset('assets/icons/menu_vertical.svg')),
-
             ],
           ),
           DefaultDrawerListTile(
@@ -57,7 +71,7 @@ class NavigationDrawer extends StatelessWidget {
             text: 'معلومات عنا',
             icon: 'assets/icons/info.svg',
             onTap: () {
-              Navigator.pushNamed(context, ABOUT_US);
+              Navigator.pushNamed(context, ABOUT_US_SCREEN);
             },
           ),
           DefaultDrawerListTile(
@@ -67,16 +81,30 @@ class NavigationDrawer extends StatelessWidget {
               Navigator.pushNamed(context, ORDERS_SCREEN);
             },
           ),
-          DefaultDrawerListTile(
-            text: 'تسجيل خروج',
-            icon: 'assets/icons/logout.svg',
-            onTap: () {
-              Navigator.pushNamedAndRemoveUntil(context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
-            },
+          BlocProvider(
+            create: (context) => UserAuthCubit(),
+            child: BlocConsumer<UserAuthCubit, UserAuthStates>(
+              listener: (context, state) {
+                if (state is UserLogoutSuccessState) {
+                  CacheHelper.sharedPreferences.clear();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
+                }
+                else if (state is UserLogoutErrorState) {
+                 showToastMsg(msg: 'برجاء المحاولة مرة أخرى', toastState: ToastStates.ERROR);
+                }
+              },
+              builder: (context, state) {
+                return DefaultDrawerListTile(
+                  text: 'تسجيل خروج',
+                  icon: 'assets/icons/logout.svg',
+                  onTap: () {
+                    UserAuthCubit.get(context).userLogout();
+                  },
+                );
+              },
+            ),
           ),
-
-
-
         ],
       ),
     );

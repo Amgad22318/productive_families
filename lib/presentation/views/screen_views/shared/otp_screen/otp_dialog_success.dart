@@ -3,8 +3,10 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 
-class DROTPDialogSuccess extends  StatelessWidget {
-  const DROTPDialogSuccess({Key? key}) : super(key: key);
+class OTPDialogSuccess extends  StatelessWidget {
+  final void Function() onPressed;
+  final String message;
+  const OTPDialogSuccess({Key? key,required this.message, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,14 @@ class DROTPDialogSuccess extends  StatelessWidget {
           )),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
-          Text(
+        children:  <Widget>[
+          const Text(
             '! التحقق',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            'تم التحقق بنجاح وتم تفعيل الحساب الخاص بك',
+            message,
             textAlign: TextAlign.center,
           ),
         ],
@@ -41,9 +43,7 @@ class DROTPDialogSuccess extends  StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: DefaultMaterialButton(
-            onPressed: () {
-              Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_LOCATION_PICKER_SCREEN);
-            },
+            onPressed: onPressed,
             text: 'إبدأ',
           ),
         ),

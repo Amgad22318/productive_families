@@ -4,7 +4,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:productive_families/presentation/router/app_router.dart';
 import 'package:productive_families/presentation/styles/themes.dart';
 
-void main() {
+import 'data/data_provider/local/cache_helper.dart';
+import 'data/data_provider/remote/dio_helper.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
+  await CacheHelper.init();
+
+
+
   runApp(DevicePreview(
       enabled: false,
       isToolbarVisible: true,

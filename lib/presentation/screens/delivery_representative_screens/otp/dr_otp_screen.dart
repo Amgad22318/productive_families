@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pinput/pinput.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/otp_screen/dr_otp_dialog_failure.dart';
-import 'package:productive_families/presentation/views/screen_views/delivery_representative_screen_views/otp_screen/dr_otp_dialog_success.dart';
+import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_failure.dart';
+import 'package:productive_families/presentation/views/screen_views/shared/otp_screen/otp_dialog_success.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/default_text_button.dart';
+
+import '../../../../constants/end_points.dart';
 
 class DeliveryRepresentativeOtpScreen extends StatefulWidget {
   const DeliveryRepresentativeOtpScreen({Key? key}) : super(key: key);
@@ -18,12 +21,37 @@ class DeliveryRepresentativeOtpScreen extends StatefulWidget {
 
 class _DeliveryRepresentativeOtpScreenState
     extends State<DeliveryRepresentativeOtpScreen> {
+
+  final codeController = TextEditingController();
+  final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    focusNode.requestFocus();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    codeController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  final defaultPinTheme = const PinTheme(
+    width: 60,
+    height: 60,
+    decoration: BoxDecoration(color: Colors.white),
+  );
+
   bool msgSuccess = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: darkBlue,
@@ -52,6 +80,7 @@ class _DeliveryRepresentativeOtpScreenState
       backgroundColor: darkBlue,
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: true,
           child: Column(
             children: [
               Image.asset("assets/image/msg_background.png"),
@@ -77,27 +106,36 @@ class _DeliveryRepresentativeOtpScreenState
                     ),
                     Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        Container(
+                          margin: const EdgeInsetsDirectional.all(16),
+                          width: 240,
+                          height: 60,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                           child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: OtpTextField(
-                              focusedBorderColor: defaultYellow,
-                              cursorColor: defaultYellow,
-                              textStyle: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
-                              fieldWidth: 50.0,
-                              fillColor: backGroundWhite,
-                              numberOfFields: 4,
-                              borderColor: backGroundWhite,
-                              showFieldAsBox: true,
-                              onCodeChanged: (String code) {},
+                            textDirection: TextDirection.ltr,
+                            child: Pinput(
+                              length: 4,
+                              controller: codeController,
+                              focusNode: focusNode,
+                              separator: Container(
+                                height: 60,
+                                width: 1,
+                                color: darkBlue,
+                              ),
+                              defaultPinTheme: defaultPinTheme,
+                              focusedPinTheme: defaultPinTheme.copyWith(
+                                decoration: const BoxDecoration(
+                                    color: defaultYellow),
+                              ),
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -105,10 +143,12 @@ class _DeliveryRepresentativeOtpScreenState
                             text: 'إعادة إرسال الكود؟',
                             textColor: defaultYellow,
                             textDecoration: TextDecoration.none,
-                            textStyle:
-                            Theme.of(context).textTheme.button,
+                            textStyle: Theme.of(context).textTheme.button,
                             onPressed: () {},
                           ),
+                        ),
+                        const SizedBox(
+                          height: 15,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -117,20 +157,19 @@ class _DeliveryRepresentativeOtpScreenState
                               showDialog(
                                   context: context,
                                   builder: (context) => msgSuccess
-                                      ? DROTPDialogSuccess()
-                                      : DROTPDialogFailure());
+                                      ? OTPDialogSuccess(
+                                          onPressed: () {
+                                            Navigator.pushReplacementNamed(
+                                                context,
+                                                DELIVERY_REPRESENTATIVE_LOGIN_SCREEN);
+                                          },
+                                          message: 'sss',
+                                        )
+                                      : const OTPDialogFailure(
+                                          message: 'ssss',
+                                        ));
                             },
                             text: 'تسجيل الدخول',
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: DefaultTextButton(
-                            textStyle:
-                            Theme.of(context).textTheme.button,
-                            text: 'تعديل رقم الهاتف',
-                            textColor: defaultYellow,
-                            onPressed: () {},
                           ),
                         ),
                       ],

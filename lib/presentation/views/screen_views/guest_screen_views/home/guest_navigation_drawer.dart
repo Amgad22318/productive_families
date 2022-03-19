@@ -38,7 +38,7 @@ class GuestNavigationDrawer extends StatelessWidget {
             text: 'معلومات عنا',
             icon: 'assets/icons/info.svg',
             onTap: () {
-              Navigator.pushNamed(context, ABOUT_US);
+              Navigator.pushNamed(context, ABOUT_US_SCREEN);
             },
           ),
           DefaultDrawerListTile(

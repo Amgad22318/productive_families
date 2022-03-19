@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
+import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/delivery_orders/dr_delivery_orders.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screens/home/dr_home_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_choose_order_location.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_location_picker.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_order_delivering.dart';
@@ -9,8 +13,8 @@ import 'package:productive_families/presentation/screens/delivery_representative
 import 'package:productive_families/presentation/screens/delivery_representative_screens/near_by_orders/dr_near_by_orders.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/notifications/dr_notifications_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/offer_price/dr_offer_price.dart';
-import 'package:productive_families/presentation/screens/delivery_representative_screens/order_details/dr_order_notification_details_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/order_details/dr_order_details_screen.dart';
+import 'package:productive_families/presentation/screens/delivery_representative_screens/order_details/dr_order_notification_details_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/otp/dr_otp_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/register/dr_register_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/shop_layout/dr_shop_layout.dart';
@@ -31,6 +35,7 @@ import 'package:productive_families/presentation/screens/market_owner_screens/co
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/filter_screen/mo_Filtering_screen.dart';
+import 'package:productive_families/presentation/screens/market_owner_screens/home/mo_home_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/notifications/mo_notifications_screen.dart';
@@ -55,11 +60,12 @@ import 'package:productive_families/presentation/screens/user_screens/filter_scr
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/markets_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/home/user_home_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/first_time_location_picker.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/order_location.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/specify_location.dart';
-import 'package:productive_families/presentation/screens/user_screens/login/login_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/login/user_login_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/notifications/notifications_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_confirmation/order_confirmation_screen.dart';
@@ -67,13 +73,13 @@ import 'package:productive_families/presentation/screens/user_screens/order_deta
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_second_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/orders/orders_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/otp/otp_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/register/register_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/register/user_register_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
-import 'package:productive_families/presentation/screens/user_screens/start/start_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
@@ -81,20 +87,34 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    startWidget = const ChooseAccount();
+    accessToken = CacheHelper.getDataFromSP(
+        key: endpoints.SP_ACCESS_TOKEN_KEY);
+    accountType = CacheHelper.getDataFromSP(
+        key: endpoints.SP_ACCOUNT_TYPE_KEY);
+    if (accessToken != null) {
+      if (accountType == 'users') {
+        startWidget = const UserShopLayout();
+      } else if (accountType == 'drivers') {
+        startWidget = const DeliveryRepresentativeShopLayout();
+      } else if (accountType == 'providers') {
+        startWidget = const MarketOwnerShopLayout();
+      }
+    } else {
+      startWidget = const ChooseAccount();
+    }
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
-      case endpoints.START_SCREEN:
-        return MaterialPageRoute(builder: (_) => const StartScreen());
-      case endpoints.LOGIN_SCREEN:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+      case endpoints.USER_START_SCREEN:
+        return MaterialPageRoute(builder: (_) => const UserStartScreen());
+      case endpoints.USER_LOGIN_SCREEN:
+        return MaterialPageRoute(builder: (_) => UserLoginScreen());
       case endpoints.REGISTER_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const RegisterScreen(),
+          builder: (_) => const UserRegisterScreen(),
         );
       case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
         return MaterialPageRoute(
@@ -102,19 +122,19 @@ class AppRouter {
         );
       case endpoints.OTP_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const OtpScreen(),
+          builder: (_) =>  UserOtpScreen(),
         );
       case endpoints.SHOP_LAYOUT:
         return MaterialPageRoute(
-          builder: (_) => const ShopLayout(),
+          builder: (_) => const UserShopLayout(),
         );
       case endpoints.TERMS_AND_CONDITIONS:
         return MaterialPageRoute(
-          builder: (_) => const TermsAndConditionsScreen(),
+          builder: (_) => TermsAndConditionsScreen(),
         );
-      case endpoints.ABOUT_US:
+      case endpoints.ABOUT_US_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const AboutUsScreen(),
+          builder: (_) => AboutUsScreen(),
         );
       case endpoints.ABOUT_PRODUCT:
         return MaterialPageRoute(
@@ -368,20 +388,23 @@ class AppRouter {
       case endpoints.GUEST_CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const GuestChosenMarketPriceFilteringScreen(),
-        );      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_NOTIFICATION_DETAILS:
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_NOTIFICATION_DETAILS:
         return MaterialPageRoute(
-          builder: (_) => const DeliveryRepresentativeOrderNotificationDetailsScreen(),
-        );      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_DETAILS:
+          builder: (_) =>
+              const DeliveryRepresentativeOrderNotificationDetailsScreen(),
+        );
+      case endpoints.DELIVERY_REPRESENTATIVE_ORDER_DETAILS:
         return MaterialPageRoute(
           builder: (_) => const DeliveryRepresentativeOrderDetailsScreen(),
         );
-        case endpoints.MARKET_OWNER_CHAT_SCREEN:
+      case endpoints.MARKET_OWNER_CHAT_SCREEN:
         return MaterialPageRoute(
           builder: (_) => MarketOwnerChatScreen(),
         );
-        case endpoints.MARKET_OWENR_CONVERSATION_SCREEN:
+      case endpoints.MARKET_OWENR_CONVERSATION_SCREEN:
         return MaterialPageRoute(
-          builder: (_) =>const MarketOwenrConversationScreen(),
+          builder: (_) => const MarketOwenrConversationScreen(),
         );
       default:
         return null;

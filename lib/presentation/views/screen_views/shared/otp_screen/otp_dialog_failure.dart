@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
-class DROTPDialogFailure extends StatelessWidget {
-  const DROTPDialogFailure({Key? key}) : super(key: key);
+class OTPDialogFailure extends StatelessWidget {
+
+  final String message;
+
+  const OTPDialogFailure({Key? key, required this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +26,14 @@ class DROTPDialogFailure extends StatelessWidget {
           )),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
-          Text(
+        children:  <Widget>[
+          const Text(
             '! التحقق',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            'لم يتم التحقق بنجاح',
+            message,
             textAlign: TextAlign.center,
           ),
         ],

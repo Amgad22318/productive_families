@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
@@ -30,7 +30,7 @@ final  TextEditingController locationController = TextEditingController();
                 height: 50,
                 background: backGroundWhite,
                 onPressed: () {
-                  navigateToAndFinish(context, const ShopLayout(index: 1,));
+                  navigateToAndFinish(context, const UserShopLayout(index: 1,));
 
                 },
                 child: Row(

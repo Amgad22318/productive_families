@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/constant_methods.dart';
-import 'package:productive_families/presentation/screens/user_screens/shop_layout/shop_layout.dart';
+import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
@@ -15,7 +15,7 @@ class HomeSectionItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
       child: InkWell(
         onTap: () {
-          navigateToAndFinish(context,ShopLayout(index: 1,));
+          navigateToAndFinish(context,UserShopLayout(index: 1,));
         },
         child: Column(
           children: [

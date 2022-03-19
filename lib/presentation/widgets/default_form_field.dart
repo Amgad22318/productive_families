@@ -67,12 +67,15 @@ class DefaultFormField extends StatelessWidget {
       this.suffixText,
       this.suffixTextStyle,
       this.suffixIconConstraints,
-      this.readOnly = false, this.cursorColor=Colors.white, this.maxLength})
+      this.readOnly = false,
+      this.cursorColor = Colors.white,
+      this.maxLength})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+
       alignment: containerAlignment,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -81,11 +84,11 @@ class DefaultFormField extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
         maxLength: maxLength,
-
         readOnly: readOnly,
         cursorColor: cursorColor,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
+        textAlign: TextAlign.start,
         maxLines: maxLines,
         textDirection: TextDirection.rtl,
         initialValue: initialValue,
@@ -101,7 +104,7 @@ class DefaultFormField extends StatelessWidget {
           color: textColor,
         ),
         decoration: InputDecoration(
-counterText: '',
+          counterText: '',
           suffixStyle: suffixTextStyle,
           suffixText: suffixText,
           contentPadding: contentPadding,
