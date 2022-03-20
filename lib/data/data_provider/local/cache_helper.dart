@@ -15,19 +15,19 @@ class CacheHelper {
   static Future<bool> saveDataToSP(
       {required String key, required dynamic value}) async {
     if (value is bool) {
-      printTest(value.toString());
+     // printTest(value.toString());
       return await sharedPreferences.setBool(key, value);
     } else if (value is String) {
-      printTest(value.toString());
+     // printTest(value.toString());
 
       return await sharedPreferences.setString(key, value);
     } else if (value is int) {
-      printTest(value.toString());
+     // printTest(value.toString());
 
       return await sharedPreferences.setInt(key, value);
     } else {
-      value ??= 0;
-      printTest(value.toString());
+      value ??= 0.0;
+     // printTest(value.toString());
       return await sharedPreferences.setDouble(key, value);
     }
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 
 class ChooseAccount extends StatelessWidget {
@@ -22,6 +23,7 @@ class ChooseAccount extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CircleAvatar(
+                  backgroundColor: defaultYellow,
                   radius: 90,
                 ),
                 Padding(
