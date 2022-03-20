@@ -4,6 +4,7 @@ import 'package:productive_families/presentation/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
     //textTheme: TextTheme(button: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
+  primarySwatch: Colors.yellow,
     radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(darkBlue)),
     colorScheme: const ColorScheme.light(
       secondary: defaultYellow,

@@ -37,7 +37,6 @@ class DioHelper {
     };
     data == null? data={'language':AppLang}:  data['language'] = AppLang;
 
-
     printResponse('base:    ' + dio.options.baseUrl.toString());
     printResponse('body:    ' + data.toString());
     printResponse('header:    ' + dio.options.headers.toString());

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -20,6 +21,7 @@ class DefaultFormField extends StatelessWidget {
   final TextStyle? suffixTextStyle;
   final Color? backgroundColor;
   final Color? textColor;
+  final Color? labelColor;
   final Color? cursorColor;
   final double radius;
   final double? height;
@@ -62,6 +64,7 @@ class DefaultFormField extends StatelessWidget {
       this.inputDisabledBorder,
       this.horizontalPadding = 16,
       this.textColor = Colors.white,
+      this.labelColor = darkBlue,
       this.contentPadding,
       this.containerAlignment,
       this.suffixText,
@@ -112,7 +115,7 @@ class DefaultFormField extends StatelessWidget {
           floatingLabelBehavior: FloatingLabelBehavior.never,
           suffixIconConstraints: suffixIconConstraints,
           labelStyle:
-              Theme.of(context).textTheme.bodyText1!.copyWith(color: darkBlue),
+              Theme.of(context).textTheme.caption!.copyWith(color: labelColor, ),
           labelText: labelText,
           border: inputBorder,
           enabledBorder: inputEnabledBorder,

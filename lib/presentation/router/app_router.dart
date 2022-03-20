@@ -108,6 +108,8 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
+      case endpoints.CHOOSE_ACCOUNT_SCREEN:
+        return MaterialPageRoute(builder: (_) =>  ChooseAccount());
       case endpoints.USER_START_SCREEN:
         return MaterialPageRoute(builder: (_) => const UserStartScreen());
       case endpoints.USER_LOGIN_SCREEN:
