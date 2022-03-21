@@ -86,6 +86,7 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
+
         maxLength: maxLength,
         readOnly: readOnly,
         cursorColor: cursorColor,

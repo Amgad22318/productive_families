@@ -12,6 +12,7 @@ const EP_USER_REGISTER = 'register';
 const EP_USER_REGISTER_CONFIRM_PHONE = 'account/verification';
 const EP_USER_REGISTER_RESEND_CONFIRMATION_CODE = 'resend/code';
 const EP_USER_LOGOUT = 'logout';
+const EP_USER_PROFILE_UPDATE_ADDRESS= 'profile/update/address';
 
 ////// MO Api
 
