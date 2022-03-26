@@ -145,7 +145,7 @@ UserLogoutModel? userLogoutModel;
         emit(UserLogoutErrorState());
       }
     }).catchError((error) {
-      printResponse('userRegisterResendConfirmationCode' + error.toString());
+      printResponse('userLogout ' + error.toString());
     });
   }
 

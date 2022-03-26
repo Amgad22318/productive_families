@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
@@ -40,8 +39,7 @@ class DefaultFormField extends StatelessWidget {
 
   const DefaultFormField(
       {Key? key,
-      required this.controller,
-      required this.validator,
+      required this.controller, this.validator,
       this.onTap,
       this.labelText,
       required this.keyboardType,

@@ -18,3 +18,19 @@ class UserUpdateAddressErrorState extends UserLocalStates {
 
   UserUpdateAddressErrorState(this.message);
 }
+
+
+
+class UserGetProfileLoadingState extends UserLocalStates {}
+
+class UserGetProfileSuccessState extends UserLocalStates {}
+
+class UserGetProfileErrorState extends UserLocalStates {}
+
+
+
+class UserUpdateProfileLoadingState extends UserLocalStates {}
+
+class UserUpdateProfileSuccessState extends UserLocalStates {}
+
+class UserUpdateProfileErrorState extends UserLocalStates {}

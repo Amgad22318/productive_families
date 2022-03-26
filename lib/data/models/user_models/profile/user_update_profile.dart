@@ -1,62 +1,54 @@
 import 'dart:convert';
-UserLoginModel userLoginModelFromJson(String str) => UserLoginModel.fromJson(json.decode(str));
-String userLoginModelToJson(UserLoginModel data) => json.encode(data.toJson());
-class UserLoginModel {
-  UserLoginModel({
-      this.status,
-      this.message,
-      this.user,
-      this.accessToken,
-      this.tokenType,});
+UserUpdateProfile userUpdateProfileFromJson(String str) => UserUpdateProfile.fromJson(json.decode(str));
+String userUpdateProfileToJson(UserUpdateProfile data) => json.encode(data.toJson());
+class UserUpdateProfile {
+  UserUpdateProfile({
+      this.status, 
+      this.message, 
+      this.account,});
 
-  UserLoginModel.fromJson(dynamic json) {
+  UserUpdateProfile.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    user = json['user'] != null ? User.fromJson(json['user']) : null;
-    accessToken = json['access_token'];
-    tokenType = json['token_type'];
+    account = json['account'] != null ? Account.fromJson(json['account']) : null;
   }
   int? status;
   String? message;
-  User? user;
-  String? accessToken;
-  String? tokenType;
+  Account? account;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-    if (user != null) {
-      map['user'] = user?.toJson();
+    if (account != null) {
+      map['account'] = account?.toJson();
     }
-    map['access_token'] = accessToken;
-    map['token_type'] = tokenType;
     return map;
   }
 
 }
 
-User userFromJson(String str) => User.fromJson(json.decode(str));
-String userToJson(User data) => json.encode(data.toJson());
-class User {
-  User({
-      this.id,
-      this.name,
-      this.phone,
-      this.type,
-      this.isVerified,
-      this.isActive,
-      this.image,
-      this.address,
-      this.providerAccount,
-      this.driverAccount,
-      this.userAccount,
-      this.points,
-      this.balance,
-      this.totalOrders,
+Account accountFromJson(String str) => Account.fromJson(json.decode(str));
+String accountToJson(Account data) => json.encode(data.toJson());
+class Account {
+  Account({
+      this.id, 
+      this.name, 
+      this.phone, 
+      this.type, 
+      this.isVerified, 
+      this.isActive, 
+      this.image, 
+      this.address, 
+      this.providerAccount, 
+      this.driverAccount, 
+      this.userAccount, 
+      this.points, 
+      this.balance, 
+      this.totalOrders, 
       this.deviceToken,});
 
-  User.fromJson(dynamic json) {
+  Account.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
     phone = json['phone'];
@@ -119,9 +111,9 @@ Address addressFromJson(String str) => Address.fromJson(json.decode(str));
 String addressToJson(Address data) => json.encode(data.toJson());
 class Address {
   Address({
-      this.id,
-      this.address,
-      this.lon,
+      this.id, 
+      this.address, 
+      this.lon, 
       this.lat,});
 
   Address.fromJson(dynamic json) {
@@ -132,8 +124,8 @@ class Address {
   }
   int? id;
   String? address;
-  dynamic lon;
-  dynamic lat;
+  double? lon;
+  double? lat;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -150,8 +142,8 @@ Image imageFromJson(String str) => Image.fromJson(json.decode(str));
 String imageToJson(Image data) => json.encode(data.toJson());
 class Image {
   Image({
-      this.id,
-      this.path,
+      this.id, 
+      this.path, 
       this.type,});
 
   Image.fromJson(dynamic json) {

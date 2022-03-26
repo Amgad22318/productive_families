@@ -9,6 +9,7 @@ import 'package:productive_families/business_logic/user/local/user_local_cubit.d
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/enums.dart';
+import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -137,8 +138,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   initialCameraPosition: CameraPosition(
                                     target: LatLng(
                                         globalCubit.currentPosition!.latitude,
-                                        globalCubit
-                                            .currentPosition!.longitude),
+                                        globalCubit.currentPosition!.longitude),
                                     zoom: 14.4746,
                                   ),
                                   markers: {
@@ -224,6 +224,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                             msg: state.message,
                                             toastState: ToastStates.SUCCESS);
                                         locationController.text = '';
+                                        CacheHelper.saveDataToSP(key: SP_FIRST_TIME_LOCATION_PICKED, value: true);
                                         Navigator.pushNamedAndRemoveUntil(
                                             context,
                                             SHOP_LAYOUT,
@@ -238,12 +239,19 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                     child: DefaultMaterialButton(
                                       text: 'تأكيد العنوان',
                                       onPressed: () {
-                                        UserLocalCubit.get(context)
-                                            .updateUserLocation(
-                                                lat: clickedMarkerLat,
-                                                lon: clickedMarkerLng,
-                                                address:
-                                                    locationController.text);
+                                        if (clickedMarkerLat != 0 &&
+                                            clickedMarkerLng != 0) {
+                                          UserLocalCubit.get(context)
+                                              .updateUserLocation(
+                                                  lat: clickedMarkerLat,
+                                                  lon: clickedMarkerLng,
+                                                  address:
+                                                      locationController.text);
+                                        } else {
+                                          showToastMsg(
+                                              msg: 'اختر العنوان',
+                                              toastState: ToastStates.WARNING);
+                                        }
                                       },
                                     ),
                                   )

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/delivery_orders/dr_delivery_orders.dart';
-import 'package:productive_families/presentation/screens/delivery_representative_screens/home/dr_home_screen.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_choose_order_location.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_location_picker.dart';
 import 'package:productive_families/presentation/screens/delivery_representative_screens/location/dr_order_delivering.dart';
@@ -35,7 +33,6 @@ import 'package:productive_families/presentation/screens/market_owner_screens/co
 import 'package:productive_families/presentation/screens/market_owner_screens/current_orders/mo_current_orders.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/edit_product/mo_edit_product.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/filter_screen/mo_Filtering_screen.dart';
-import 'package:productive_families/presentation/screens/market_owner_screens/home/mo_home_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/login/mo_login_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/notifications/mo_notifications_screen.dart';
@@ -60,7 +57,6 @@ import 'package:productive_families/presentation/screens/user_screens/filter_scr
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/markets_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/home/user_home_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/first_time_location_picker.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/order_location.dart';
@@ -87,13 +83,19 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    accessToken = CacheHelper.getDataFromSP(
-        key: endpoints.SP_ACCESS_TOKEN_KEY);
-    accountType = CacheHelper.getDataFromSP(
-        key: endpoints.SP_ACCOUNT_TYPE_KEY);
+    accessToken = CacheHelper.getDataFromSP(key: endpoints.SP_ACCESS_TOKEN_KEY);
+    accountType = CacheHelper.getDataFromSP(key: endpoints.SP_ACCOUNT_TYPE_KEY);
+    bool locationPicked = CacheHelper.getDataFromSP(
+            key: endpoints.SP_FIRST_TIME_LOCATION_PICKED) ??
+        false;
+
     if (accessToken != null) {
       if (accountType == 'users') {
-        startWidget = const UserShopLayout();
+        if (locationPicked) {
+          startWidget = const UserShopLayout();
+        } else {
+          startWidget = const FirstTimeLocationPicker();
+        }
       } else if (accountType == 'drivers') {
         startWidget = const DeliveryRepresentativeShopLayout();
       } else if (accountType == 'providers') {
@@ -109,7 +111,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(builder: (_) => startWidget);
       case endpoints.CHOOSE_ACCOUNT_SCREEN:
-        return MaterialPageRoute(builder: (_) =>  ChooseAccount());
+        return MaterialPageRoute(builder: (_) => ChooseAccount());
       case endpoints.USER_START_SCREEN:
         return MaterialPageRoute(builder: (_) => const UserStartScreen());
       case endpoints.USER_LOGIN_SCREEN:
@@ -124,7 +126,7 @@ class AppRouter {
         );
       case endpoints.OTP_SCREEN:
         return MaterialPageRoute(
-          builder: (_) =>  UserOtpScreen(),
+          builder: (_) => UserOtpScreen(),
         );
       case endpoints.SHOP_LAYOUT:
         return MaterialPageRoute(

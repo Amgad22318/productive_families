@@ -1,12 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:meta/meta.dart';
-
+import 'package:productive_families/data/models/user_models/profile/user_get_profile_model.dart';
+import 'package:productive_families/data/requests/user/profile/user_get_profile_request.dart';
 import '../../../constants/constant_methods.dart';
 import '../../../data/models/user_models/profile/user_update_address_model.dart';
 import '../../../data/requests/user/profile/user_update_address_request.dart';
-
 part 'user_local_state.dart';
 
 class UserLocalCubit extends Cubit<UserLocalStates> {
@@ -16,8 +14,7 @@ class UserLocalCubit extends Cubit<UserLocalStates> {
 
   UserUpdateAddressModel? updateAddressModel;
 
-
-  Future<void> updateUserLocation({
+  void updateUserLocation({
     required double lat,
     required double lon,
     required String address,
@@ -36,6 +33,26 @@ class UserLocalCubit extends Cubit<UserLocalStates> {
       printError(error.toString());
     });
   }
+
+
+  UserGetProfileModel? userGetProfileModel;
+
+  void getUserProfileData(
+  ) async {
+    emit(UserGetProfileLoadingState());
+    UserGetProfileRequest.userGetProfileRequest()
+        .then((value) {
+      userGetProfileModel = value;
+
+      if (userGetProfileModel!.status.toString() == '200') {
+        emit(UserGetProfileSuccessState());
+      }
+    }).catchError((error) {
+      emit(UserGetProfileErrorState());
+      printError(error.toString());
+    });
+  }
+
 
 
 
