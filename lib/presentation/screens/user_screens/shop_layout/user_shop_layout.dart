@@ -38,7 +38,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(lazy:false ,
+    return BlocProvider(
       create: (context) => UserLocalCubit()..getUserProfileData(),
       child: Scaffold(
         body: Column(
