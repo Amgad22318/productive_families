@@ -98,7 +98,6 @@ class UserLoginScreen extends StatelessWidget {
                               return BlocConsumer<UserAuthCubit,
                                   UserAuthStates>(
                                 listener: (context, state) {
-
                                   if (state is UserLoginErrorState) {
                                     showToastMsg(
                                         msg: state.message ??

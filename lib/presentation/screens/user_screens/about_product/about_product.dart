@@ -172,7 +172,7 @@ class _AboutProductState extends State<AboutProduct> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         DefaultText(
-                          textStyle: Theme.of(context).textTheme.subtitle1,
+                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold),
                           text: 'اسم المنتج',
                         ),
                         DefaultText(
@@ -248,17 +248,34 @@ class _AboutProductState extends State<AboutProduct> {
                             ],
                           ),
                         ),
+                        DefaultText(
+                          textStyle: Theme.of(context).textTheme.subtitle1,
+                          text: 'تقييمات المنتج',
+                        ),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 50),
+                              horizontal: 100.0, vertical: 16),
                           child: DefaultMaterialButton(
                             onPressed: () {
                               Navigator.pushNamed(context, BASKET_SCREEN);
                             },
                             height: 50,
+                            text: 'كل التقييمات',
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 8),
+                          child: DefaultMaterialButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, BASKET_SCREEN);
+                            },
+                            fontSize: 20,
+                            height: 50,
                             text: 'اضافة للسلة',
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

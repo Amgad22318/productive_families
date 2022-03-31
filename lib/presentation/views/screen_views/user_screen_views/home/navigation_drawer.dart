@@ -89,7 +89,6 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.pushNamedAndRemoveUntil(
                       context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
                   CacheHelper.sharedPreferences.clear().then((value) {});
-
                 }
                 else if (state is UserLogoutErrorState) {
                  showToastMsg(msg: 'برجاء المحاولة مرة أخرى', toastState: ToastStates.ERROR);

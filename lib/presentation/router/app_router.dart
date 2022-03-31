@@ -406,7 +406,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MarketOwnerChatScreen(),
         );
-      case endpoints.MARKET_OWENR_CONVERSATION_SCREEN:
+      case endpoints.MARKET_OWNER_CONVERSATION_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const MarketOwenrConversationScreen(),
         );

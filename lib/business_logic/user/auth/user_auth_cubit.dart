@@ -51,8 +51,10 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
         CacheHelper.saveDataToSP(
             key: SP_ACCOUNT_TOTAL_ORDERS_KEY,
             value: userLoginModel?.user?.totalOrders);
+
         emit(UserLoginSuccessState());
       } else {
+
         emit(UserLoginErrorState(userLoginModel!.message));
       }
     }).catchError((error) {
@@ -148,11 +150,6 @@ UserLogoutModel? userLogoutModel;
       printResponse('userLogout ' + error.toString());
     });
   }
-
-
-
-
-
 
 
 

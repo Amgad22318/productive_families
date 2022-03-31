@@ -7,7 +7,7 @@ const AppLang='ar';
 ///////////////////////////////// sharedPreferences constant /////////////////////////////////////////////
 
 String? accessToken;
- Position? userPosition;
+Position? userPosition;
 String? accountType;
 
 

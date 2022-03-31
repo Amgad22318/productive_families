@@ -24,7 +24,6 @@ class UserProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserLocalCubit userLocalCubit = UserLocalCubit.get(context);
-
     return BlocConsumer<UserLocalCubit, UserLocalStates>(
       listener: (context, state) {},
       builder: (context, state) {

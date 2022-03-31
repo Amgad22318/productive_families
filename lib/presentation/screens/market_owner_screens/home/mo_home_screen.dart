@@ -42,7 +42,7 @@ class _DeliveryRepresentativeHomeScreenState
       appBar: DefaultShopAppbar(
         actions: [
           IconButton(onPressed: (){
-            Navigator.pushNamed(context, MARKET_OWENR_CONVERSATION_SCREEN);
+            Navigator.pushNamed(context, MARKET_OWNER_CONVERSATION_SCREEN);
           }, icon: SvgPicture.asset('assets/icons/message.svg'),),
           IconButton(
               onPressed: () {
