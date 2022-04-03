@@ -14,22 +14,27 @@ class FilteringScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: DefaultShopAppbar(
-        centerTitle: true,
-        title: DefaultText(
-          textStyle: Theme.of(context).textTheme.headline5,
-          text: 'إسم المتجر',
-        ),
-        actions: [
-          IconButton(
+
+          centerTitle: true,
+          title: DefaultText(
+            textStyle: Theme.of(context).textTheme.headline5,
+            text: 'إسم المتجر',
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                 Navigator.pushNamed(context, USER_REVIEWS_SEARCH_SCREEN);
+                },
+                icon: Icon(Icons.search)),
+            const FavoriteButtonWithNumber(),
+
+          ],
+          leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
-        ],
-        leading: const FavoriteButtonWithNumber(),
-      ),
+              icon: Icon(Icons.arrow_back_ios))),
       body: Column(
         children: [
           Image.asset(
@@ -44,7 +49,8 @@ class FilteringScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, CHOSEN_MARKET_PRICE_FILTERING_SCREEN);
+                        Navigator.pushNamed(
+                            context, CHOSEN_MARKET_PRICE_FILTERING_SCREEN);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +71,8 @@ class FilteringScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, CHOSEN_MARKET_ORDERING_SCREEN);
+                        Navigator.pushNamed(
+                            context, CHOSEN_MARKET_ORDERING_SCREEN);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +93,7 @@ class FilteringScreen extends StatelessWidget {
           ),
           Expanded(
             child: Scrollbar(
-              scrollbarOrientation:ScrollbarOrientation.right,
+              scrollbarOrientation: ScrollbarOrientation.right,
               showTrackOnHover: true,
               isAlwaysShown: true,
               child: Padding(
@@ -100,7 +107,8 @@ class FilteringScreen extends StatelessWidget {
                     children: List.generate(
                         13,
                         (index) => const StaggeredGridTile.fit(
-                            crossAxisCellCount: 1, child: FilteringGridViewItem())),
+                            crossAxisCellCount: 1,
+                            child: FilteringGridViewItem())),
                   ),
                 ),
               ),

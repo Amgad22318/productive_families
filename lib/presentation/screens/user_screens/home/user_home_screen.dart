@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_list_view_item.dart';
@@ -114,7 +114,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             },
                             onFieldSubmitted: (text) {
                               if (searchFormKey.currentState!.validate()) {
-                                navigateTo(context, SearchScreen(searchText: text));
+                                navigateTo(context, UserProductSearchScreen(searchText: text));
                               }
                             },
                           ),

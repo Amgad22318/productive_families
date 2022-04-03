@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color defaultYellow = Color(0xFFFFE97B);
+const Color lightDefaultYellow2 = Color(0xFFFFF8D2);
 const Color backGroundWhite = Color(0xffffffff);
 const Color backGroundRed = Color(0xFFFF0000);
 const Color backGroundAccentYellow = Color(0xFFC8AE08);

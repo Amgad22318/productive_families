@@ -2,26 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/guest_screen_views/search/guest_search_grid_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/search/product_search_grid_item.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class GuestSearchScreen extends StatefulWidget {
-  const GuestSearchScreen({Key? key,  this.searchText}) : super(key: key);
-  final String? searchText;
+import '../../../views/screen_views/user_screen_views/search/review_search_grid_item.dart';
+
+class UserReviewsSearchScreen extends StatefulWidget {
+  const UserReviewsSearchScreen({Key? key,  }) : super(key: key);
   @override
-  State<GuestSearchScreen> createState() => _GuestSearchScreenState();
+  State<UserReviewsSearchScreen> createState() => _UserReviewsSearchScreenState();
 }
 
-class _GuestSearchScreenState extends State<GuestSearchScreen> {
+class _UserReviewsSearchScreenState extends State<UserReviewsSearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   @override
- void initState() {
-    _searchController.text=widget.searchText!;
-    super.initState();
-  }
 
 
   @override
@@ -31,7 +27,7 @@ class _GuestSearchScreenState extends State<GuestSearchScreen> {
         centerTitle: true,
         title: DefaultText(
           textStyle: Theme.of(context).textTheme.headline5,
-          text: 'بحث',
+          text: 'بحث التقييمات',
         ),
         actions: [
           IconButton(
@@ -49,6 +45,7 @@ class _GuestSearchScreenState extends State<GuestSearchScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: DefaultSearchBar(
+              hintText: 'إبحث عن تقييم معين..',
                 prefixIcon: const Icon(
                   Icons.search,
                   color: Colors.grey,
@@ -70,7 +67,7 @@ class _GuestSearchScreenState extends State<GuestSearchScreen> {
                       13,
                       (index) =>  const StaggeredGridTile.fit(
                           crossAxisCellCount: 1,
-                          child: GuestSearchGridItem())),
+                          child: ReviewSearchGridItem())),
                 ),
               ),
             ),

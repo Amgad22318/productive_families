@@ -70,9 +70,11 @@ import 'package:productive_families/presentation/screens/user_screens/order_deta
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/register/user_register_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/search/user_reviews_search_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
@@ -119,6 +121,10 @@ class AppRouter {
       case endpoints.REGISTER_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const UserRegisterScreen(),
+        );
+      case endpoints.USER_PRODUCT_ALL_REVIEWS_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const UserProductAllReviewsScreen(),
         );
       case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
         return MaterialPageRoute(
@@ -220,9 +226,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const QuotationsScreen(),
         );
-      case endpoints.SEARCH_SCREEN:
+      case endpoints.USER_PRODUCT_SEARCH_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const SearchScreen(),
+          builder: (_) => const UserProductSearchScreen(),
+        );
+      case endpoints.USER_REVIEWS_SEARCH_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => const UserReviewsSearchScreen(),
         );
 
       case endpoints.NOTIFICATIONS_SCREEN:

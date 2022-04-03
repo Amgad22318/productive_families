@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/guest_screens/search/guest_search_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/search/search_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_list_view_item.dart';
 import 'package:productive_families/presentation/views/screen_views/guest_screen_views/home/guest_home_section_item.dart';
