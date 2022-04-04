@@ -141,9 +141,11 @@ UserLogoutModel? userLogoutModel;
     UserLogOutRequest.userLogOutRequest()
         .then((value) {
       userLogoutModel = value;
-      if (userLogoutModel!.status.toString() == '200') {
+      if (userLogoutModel!=null&&userLogoutModel?.status.toString() == '200') {
         emit(UserLogoutSuccessState());
       } else {
+        printTest('userLogout not 200');
+
         emit(UserLogoutErrorState());
       }
     }).catchError((error) {
