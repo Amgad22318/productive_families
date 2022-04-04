@@ -22,7 +22,7 @@ const EP_USER_PROFILE_CHANGE_ACCOUNT= 'profile/change_account';
 ////// DR Api
 
 ///////////////////////////////// sharedPreferences Keys /////////////////////////////////////////////
-const String SP_ACCESS_TOKEN_KEY='SP_ACCESS_TOKEN';
+const String SP_ACCESS_TOKEN_KEY='SP_ACCESS_TOKEN_KEY';
 const String SP_ACCOUNT_TYPE_KEY='SP_ACCOUNT_TYPE_KEY';
 const String SP_ACCOUNT_NAME_KEY='SP_ACCOUNT_Name_KEY';
 const String SP_ACCOUNT_PHONE_KEY='SP_ACCOUNT_PHONE_KEY';

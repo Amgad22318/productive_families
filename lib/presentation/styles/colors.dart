@@ -12,6 +12,7 @@ const Color goldTextAndStars = Color(0xffffd138);
 const Color lightBlue = Color(0xff2A3B5E);
 const Color productDescriptionBackGround = Color(0xffECF3FF);
 const Color greyText = Color(0xff707070);
+const Color grey2 = Color(0xffE8E8E8);
 const Color lightDefaultYellow = Color(0xffFFEFA1);
 const Color filterYellow =  Color(0xffffdd2e);
 const Color filterInActiveYellow =  Color(0xffBEAD54);

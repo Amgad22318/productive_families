@@ -70,11 +70,11 @@ import 'package:productive_families/presentation/screens/user_screens/order_deta
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews.dart';
+import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/register/user_register_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/search/user_reviews_search_screen.dart';
+import 'package:productive_families/presentation/screens/shared_screens/search/user_reviews_search_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';

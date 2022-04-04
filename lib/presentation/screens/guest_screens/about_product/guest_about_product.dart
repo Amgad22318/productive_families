@@ -10,6 +10,9 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../constants/end_points.dart';
+import '../../../views/screen_views/user_screen_views/about_product/about_product_review_item.dart';
+
 class GuestAboutProduct extends StatefulWidget {
   const GuestAboutProduct({Key? key}) : super(key: key);
 
@@ -246,9 +249,38 @@ class _GuestAboutProductState extends State<GuestAboutProduct> {
                             ],
                           ),
                         ),
+                        DefaultText(
+                          textStyle: Theme.of(context).textTheme.subtitle1,
+                          text: 'تقييمات المنتج',
+                        ),
+                        AboutProductReviewItem(),
+                        AboutProductReviewItem(),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 50),
+                              horizontal: 100.0, vertical: 16),
+                          child: DefaultMaterialButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, USER_PRODUCT_ALL_REVIEWS_SCREEN);
+                            },
+                            height: 50,
+                            text: 'كل التقييمات',
+                          ),
+                        ),
+
+
+
+
+
+
+
+
+
+
+
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 8),
                           child: DefaultMaterialButton(
                             onPressed: () {
                               showDialog(

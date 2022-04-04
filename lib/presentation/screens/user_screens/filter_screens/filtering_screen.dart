@@ -26,7 +26,7 @@ class FilteringScreen extends StatelessWidget {
                 onPressed: () {
                  Navigator.pushNamed(context, USER_REVIEWS_SEARCH_SCREEN);
                 },
-                icon: Icon(Icons.search)),
+                icon: const Icon(Icons.search)),
             const FavoriteButtonWithNumber(),
 
           ],

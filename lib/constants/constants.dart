@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 import 'package:geolocator/geolocator.dart';
 
-const AppLang='ar';
+String AppLang='ar';
 
 
 ///////////////////////////////// sharedPreferences constant /////////////////////////////////////////////
