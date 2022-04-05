@@ -34,3 +34,12 @@ class UserUpdateProfileLoadingState extends UserLocalStates {}
 class UserUpdateProfileSuccessState extends UserLocalStates {}
 
 class UserUpdateProfileErrorState extends UserLocalStates {}
+
+
+
+class UserGetTopRatedProductsLoadingState extends UserLocalStates {}
+
+class UserGetTopRatedProductsSuccessState extends UserLocalStates {}
+
+class UserGetTopRatedProductsErrorState extends UserLocalStates {}
+

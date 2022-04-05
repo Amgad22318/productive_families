@@ -4,7 +4,7 @@ import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
 import 'package:productive_families/data/models/user_models/profile/user_get_profile_model.dart';
-import 'package:productive_families/data/models/user_models/profile/user_update_profile.dart';
+import 'package:productive_families/data/models/user_models/profile/user_update_profile_model.dart';
 
 class UserUpdateProfileRequest {
   static Future userUpdateProfileRequest(
@@ -22,7 +22,7 @@ class UserUpdateProfileRequest {
         'name': name,
       });
       printResponse(response.data.toString());
-      return UserUpdateProfile.fromJson(response.data);
+      return UserUpdateProfileModel.fromJson(response.data);
     } catch (error) {
       printError(error.toString());
       return null;

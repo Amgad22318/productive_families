@@ -85,14 +85,9 @@ class NavigationDrawer extends StatelessWidget {
             create: (context) => UserAuthCubit(),
             child: BlocConsumer<UserAuthCubit, UserAuthStates>(
               listener: (context, state) {
-                if (state is UserLogoutSuccessState) {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
-                  CacheHelper.sharedPreferences.clear().then((value) {});
-                }
-                else if (state is UserLogoutErrorState) {
-                 showToastMsg(msg: 'برجاء المحاولة مرة أخرى', toastState: ToastStates.ERROR);
-                }
+                Navigator.pushNamedAndRemoveUntil(
+                    context, CHOOSE_ACCOUNT_SCREEN, (route) => false);
+                CacheHelper.sharedPreferences.clear();
               },
               builder: (context, state) {
                 return DefaultDrawerListTile(

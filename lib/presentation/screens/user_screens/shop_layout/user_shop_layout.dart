@@ -39,7 +39,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserLocalCubit()..getUserProfileData(),
+      create: (context) => UserLocalCubit()..getUserProfileData()..getUserTopRatedProducts(),
       child: Scaffold(
         body: Column(
           children: [

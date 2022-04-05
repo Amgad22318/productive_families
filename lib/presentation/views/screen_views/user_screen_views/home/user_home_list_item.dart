@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/data/models/user_models/products/user_top_rated_products_model.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class HomeListItem extends StatelessWidget {
-  const HomeListItem({Key? key}) : super(key: key);
+class UserHomeListItem extends StatelessWidget {
+  final Products productModel;
+  const UserHomeListItem({Key? key, required this.productModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +38,8 @@ class HomeListItem extends StatelessWidget {
                   ],
                 ),
               ),
-              child: Image.asset(
-                'assets/image/make_up.png',
+              child: DefaultCachedNetworkImage(imageUrl:
+                productModel.image!.path!,
                 fit: BoxFit.cover,
               ),
             ),
@@ -47,7 +51,7 @@ class HomeListItem extends StatelessWidget {
                     children: [
                       Expanded(flex: 3,
                         child: DefaultText(
-                          text: 'اسم المنتج اسم المنتج اسم المنتج اسم المنتج اسم المنتج',
+                          text: productModel.name,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -56,7 +60,7 @@ class HomeListItem extends StatelessWidget {
                         child: DefaultText(
                           textAlign: TextAlign.end,
                           color: goldTextAndStars,
-                          text: '\$250000.96',
+                          text: productModel.price.toString()+' $AppCurrencyShortcut',
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -67,35 +71,27 @@ class HomeListItem extends StatelessWidget {
                       Expanded(
                         flex: 6,
                         child: DefaultText(
-                          text: 'اسم المتجر',
+                          text: productModel.serviceName,
                           textStyle: Theme.of(context).textTheme.overline,
                           textAlign: TextAlign.start,
                         ),
                       ),
-                      Expanded(
-                        flex: 3,
-                        child: DefaultText(
-                          color: Colors.grey,
-                          text: '(30502 تقييم)',
-                          textStyle: Theme.of(context).textTheme.overline,
-                          textAlign: TextAlign.end,
+                      RatingBarIndicator(
+                        rating: productModel.rate.toDouble(),
+                        itemBuilder: (context, index) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
                         ),
+                        itemCount: 5,
+                        itemSize: 9.0,
+                        direction: Axis.horizontal,
                       ),
-                      Flexible(
-                        flex: 0,
-                        child: Align(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: RatingBarIndicator(
-                            rating: 2.6,
-                            itemBuilder: (context, index) => const Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            itemCount: 5,
-                            itemSize: 9.0,
-                            direction: Axis.horizontal,
-                          ),
-                        ),
+
+                      DefaultText(
+                        color: Colors.grey,
+                        text: '(${productModel.rateTimes} تقييم)',
+                        textStyle: Theme.of(context).textTheme.overline,
+                        textAlign: TextAlign.end,
                       ),
                     ],
                   ),

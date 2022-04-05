@@ -1,13 +1,13 @@
 import 'dart:convert';
-UserUpdateProfile userUpdateProfileFromJson(String str) => UserUpdateProfile.fromJson(json.decode(str));
-String userUpdateProfileToJson(UserUpdateProfile data) => json.encode(data.toJson());
-class UserUpdateProfile {
-  UserUpdateProfile({
+UserUpdateProfileModel userUpdateProfileFromJson(String str) => UserUpdateProfileModel.fromJson(json.decode(str));
+String userUpdateProfileToJson(UserUpdateProfileModel data) => json.encode(data.toJson());
+class UserUpdateProfileModel {
+  UserUpdateProfileModel({
       this.status, 
       this.message, 
       this.account,});
 
-  UserUpdateProfile.fromJson(dynamic json) {
+  UserUpdateProfileModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
     account = json['account'] != null ? Account.fromJson(json['account']) : null;

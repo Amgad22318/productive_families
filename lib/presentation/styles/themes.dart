@@ -7,6 +7,7 @@ ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.yellow,
     radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(darkBlue)),
     colorScheme: const ColorScheme.light(
+      primary: defaultYellow,
       secondary: defaultYellow,
     ),
     primaryColor: darkBlue,

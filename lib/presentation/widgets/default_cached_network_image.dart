@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:productive_families/presentation/widgets/DefaultSvg.dart';
 
 class DefaultCachedNetworkImage extends StatelessWidget {
   final double? height;
@@ -23,17 +24,11 @@ class DefaultCachedNetworkImage extends StatelessWidget {
       height: height,
       imageUrl: imageUrl,
       progressIndicatorBuilder: (context, url, downloadProgress) {
-        return Image.asset(
-
-          "assets/image/loading.gif",
-          width: width,
-          height: height,
-          fit:fit,
-        );
+        return Center(child: CircularProgressIndicator(value:downloadProgress.downloaded.toDouble() ,));
       },
-      errorWidget: (context, url, error) => Padding(
-        padding: const EdgeInsets.all(16),
-        child: Image.asset('assets/image/laundry.png'),
+      errorWidget: (context, url, error) => const Padding(
+        padding: EdgeInsets.all(16),
+        child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
       ),
     );
   }

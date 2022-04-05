@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_first_section_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_list_view_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/user_home_list_item.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
+
+import '../../../../business_logic/user/local/user_local_cubit.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({Key? key}) : super(key: key);
@@ -39,6 +42,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserLocalCubit userLocalCubit = UserLocalCubit.get(context);
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: const NavigationDrawer(),
@@ -69,7 +74,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
-        child: SvgPicture.asset('assets/icons/customer_services.svg',height: 30,),
+        child: SvgPicture.asset(
+          'assets/icons/customer_services.svg',
+          height: 30,
+        ),
         backgroundColor: Colors.white,
         onPressed: () {
           Navigator.pushNamed(context, CUSTOMER_SERVICES_CHAT_SCREEN);
@@ -114,7 +122,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             },
                             onFieldSubmitted: (text) {
                               if (searchFormKey.currentState!.validate()) {
-                                navigateTo(context, UserProductSearchScreen(searchText: text));
+                                navigateTo(context,
+                                    UserProductSearchScreen(searchText: text));
                               }
                             },
                           ),
@@ -125,7 +134,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Container(
-
                                   height: 220,
                                   width: double.infinity,
                                   foregroundDecoration: BoxDecoration(
@@ -223,26 +231,22 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                                     Theme.of(context).textTheme.headline6,
                               ),
                             ),
-                            const Spacer(),
-                            IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset(
-                                  'assets/icons/filter-line.svg',
-                                  width: 16,
-                                  height: 16,
-                                )),
                           ],
                         ),
-                        ListView(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: const [
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                            HomeListItem(),
-                          ],
+                        BlocBuilder<UserLocalCubit, UserLocalStates>(
+
+                          builder: (context, state) {
+                            if (userLocalCubit.userTopRatedProductsModel!=null) {
+                              return ListView.builder(
+                                itemCount: userLocalCubit.userTopRatedProductsModel?.products?.length,
+                                itemBuilder: (context, index) =>
+                                    UserHomeListItem(productModel: userLocalCubit.userTopRatedProductsModel!.products![index]),
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                              );
+                            }
+                            else{return const Center(child: CircularProgressIndicator());}
+                          },
                         )
                       ],
                     ),
