@@ -17,6 +17,7 @@ const EP_USER_PROFILE_SHOW= 'profile/show';
 const EP_USER_PROFILE_UPDATE= 'profile/update';
 const EP_USER_PROFILE_CHANGE_ACCOUNT= 'profile/change_account';
 const EP_USER_TOP_RATED_PRODUCT= 'products/top_rated';
+const EP_USER_SEARCH_HOME= 'search/home';
 
 ////// MO Api
 

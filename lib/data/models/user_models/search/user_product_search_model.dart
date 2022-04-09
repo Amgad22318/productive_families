@@ -1,30 +1,38 @@
 import 'dart:convert';
 
-UserTopRatedProductsModel userTopRatedProductsModelFromJson(String str) =>
-    UserTopRatedProductsModel.fromJson(json.decode(str));
+UserProductSearchModel homeSearchFromJson(String str) =>
+    UserProductSearchModel.fromJson(json.decode(str));
 
-String userTopRatedProductsModelToJson(UserTopRatedProductsModel data) =>
+String homeSearchToJson(UserProductSearchModel data) =>
     json.encode(data.toJson());
 
-class UserTopRatedProductsModel {
-  UserTopRatedProductsModel.fromJson(dynamic json) {
+class UserProductSearchModel {
+  UserProductSearchModel.fromJson(dynamic json) {
     status = json['status'];
-    message = json['message'];
+    message = json['message']??'';
+    keyWord = json['key_word']??'';
+
     products = [];
-    json['products'].forEach((v) {
-      products.add(Products.fromJson(v));
-    });
+    if (json['products']!=null) {
+      json['products'].forEach((v) {
+        products?.add(Products.fromJson(v));
+      });
+    }
   }
 
-  int? status;
-  late String message;
-  late List<Products> products;
+  late int status;
+  late String? message;
+  late String? keyWord;
+  late List<Products>? products;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-    map['products'] = products.map((v) => v.toJson()).toList();
+    map['key_word'] = keyWord;
+    if (products != null) {
+      map['products'] = products?.map((v) => v.toJson()).toList();
+    }
     return map;
   }
 }
@@ -42,21 +50,19 @@ class Products {
     providerId = json['provider_id'];
     name = json['name'];
     price = json['price'];
-    image = json['image'] != null ? ProductImage.fromJson(json['image']) : null;
-    favorite = json['favorite'];
+    productImage = json['image'];
     rate = json['rate'];
     rateTimes = json['rate_times'];
   }
 
-  int? id;
+  late int id;
   late String subCategoryName;
-  int? subCategoryId;
+  late int subCategoryId;
   late String serviceName;
-  int? providerId;
+  late int providerId;
   late String name;
   late num price;
-  ProductImage? image;
-  late int favorite;
+  ProductImage? productImage;
   late num rate;
   late int rateTimes;
 
@@ -69,20 +75,12 @@ class Products {
     map['provider_id'] = providerId;
     map['name'] = name;
     map['price'] = price;
-    if (image != null) {
-      map['image'] = image?.toJson();
-    }
-    map['favorite'] = favorite;
+    map['image'] = productImage;
     map['rate'] = rate;
     map['rate_times'] = rateTimes;
     return map;
   }
 }
-
-ProductImage imageFromJson(String str) =>
-    ProductImage.fromJson(json.decode(str));
-
-String imageToJson(ProductImage data) => json.encode(data.toJson());
 
 class ProductImage {
   ProductImage.fromJson(dynamic json) {
@@ -94,12 +92,4 @@ class ProductImage {
   int? id;
   String? path;
   String? type;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['path'] = path;
-    map['type'] = type;
-    return map;
-  }
 }

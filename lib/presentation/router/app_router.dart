@@ -228,7 +228,7 @@ class AppRouter {
         );
       case endpoints.USER_PRODUCT_SEARCH_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const UserProductSearchScreen(),
+          builder: (_) =>  UserProductSearchScreen(),
         );
       case endpoints.USER_REVIEWS_SEARCH_SCREEN:
         return MaterialPageRoute(

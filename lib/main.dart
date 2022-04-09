@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:productive_families/business_logic/global_cubit/global_cubit.dart';
 import 'package:productive_families/presentation/router/app_router.dart';
 import 'package:productive_families/presentation/styles/themes.dart';
+import 'package:sizer/sizer.dart';
 
 import 'data/data_provider/local/cache_helper.dart';
 import 'data/data_provider/remote/dio_helper.dart';
@@ -13,8 +14,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-
-
 
   runApp(DevicePreview(
       enabled: false,
@@ -35,23 +34,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => GlobalCubit(),)
-    ],
-      child: MaterialApp(
-        useInheritedMediaQuery: true,
-        localizationsDelegates: const [
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => GlobalCubit(),
+          )
         ],
-        supportedLocales: const [Locale("en", ""), Locale("ar", "")],
-        locale: const Locale("ar", ""),
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme,
-        themeMode: ThemeMode.light,
-        onGenerateRoute: appRouter.onGenerateRoute,
-      ),
-    );
+        child: Sizer(
+          builder: (context, orientation, deviceType) {
+            return MaterialApp(
+              useInheritedMediaQuery: true,
+              localizationsDelegates: const [
+                GlobalCupertinoLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              supportedLocales: const [Locale("en", ""), Locale("ar", "")],
+              locale: const Locale("ar", ""),
+              debugShowCheckedModeBanner: false,
+              theme: lightTheme,
+              themeMode: ThemeMode.light,
+              onGenerateRoute: appRouter.onGenerateRoute,
+            );
+          },
+        ));
   }
 }

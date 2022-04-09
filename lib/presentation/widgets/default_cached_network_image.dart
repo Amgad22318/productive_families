@@ -18,7 +18,7 @@ class DefaultCachedNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
+    return imageUrl!=''? CachedNetworkImage(
       fit:fit,
       width: width,
       height: height,
@@ -30,6 +30,9 @@ class DefaultCachedNetworkImage extends StatelessWidget {
         padding: EdgeInsets.all(16),
         child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
       ),
+    ):const Padding(
+      padding: EdgeInsets.all(16),
+      child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
     );
   }
 }

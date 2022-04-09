@@ -39,7 +39,7 @@ class UserHomeListItem extends StatelessWidget {
                 ),
               ),
               child: DefaultCachedNetworkImage(imageUrl:
-                productModel.image!.path!,
+              productModel.image?.path??'',
                 fit: BoxFit.cover,
               ),
             ),

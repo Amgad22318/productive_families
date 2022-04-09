@@ -234,18 +234,28 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                           ],
                         ),
                         BlocBuilder<UserLocalCubit, UserLocalStates>(
-
                           builder: (context, state) {
-                            if (userLocalCubit.userTopRatedProductsModel!=null) {
+                            if (userLocalCubit.userTopRatedProductsModel !=
+                                    null &&
+                                userLocalCubit.userTopRatedProductsModel!
+                                    .products.isNotEmpty) {
                               return ListView.builder(
-                                itemCount: userLocalCubit.userTopRatedProductsModel?.products?.length,
+                                itemCount: userLocalCubit
+                                    .userTopRatedProductsModel
+                                    ?.products
+                                    .length,
                                 itemBuilder: (context, index) =>
-                                    UserHomeListItem(productModel: userLocalCubit.userTopRatedProductsModel!.products![index]),
+                                    UserHomeListItem(
+                                        productModel: userLocalCubit
+                                            .userTopRatedProductsModel!
+                                            .products[index]),
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                               );
+                            } else {
+                              return const Center(
+                                  child: CircularProgressIndicator());
                             }
-                            else{return const Center(child: CircularProgressIndicator());}
                           },
                         )
                       ],
