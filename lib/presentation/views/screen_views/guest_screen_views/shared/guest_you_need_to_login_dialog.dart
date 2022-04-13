@@ -5,7 +5,6 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class GuestYouNeedToLoginDialog extends StatelessWidget {
   GuestYouNeedToLoginDialog({Key? key}) : super(key: key);
-  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

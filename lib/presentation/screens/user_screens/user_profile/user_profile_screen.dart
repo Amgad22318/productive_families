@@ -68,7 +68,7 @@ class UserProfileScreen extends StatelessWidget {
                           ClipOval(
                             clipBehavior: Clip.antiAlias,
                             child: DefaultCachedNetworkImage(
-                              imageUrl: userGetProfileModel!.account!.image
+                              imageUrl: userGetProfileModel!.account.image.path??''
                                   .toString(),
                               fit: BoxFit.cover,
                               width: 140,
@@ -92,9 +92,9 @@ class UserProfileScreen extends StatelessWidget {
                 body: Builder(
 
                   builder: (context) {
-                    nameController.text=userGetProfileModel.account!.name!;
-                    phoneController.text=userGetProfileModel.account!.phone!;
-                    locationController.text=userGetProfileModel.account!.address!.address!;
+                    nameController.text=userGetProfileModel.account.name!;
+                    phoneController.text=userGetProfileModel.account.phone!;
+                    locationController.text=userGetProfileModel.account.address!.address!;
                     return SingleChildScrollView(
                       child: Column(
                         children: [
@@ -220,7 +220,7 @@ class UserProfileScreen extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 12.0),
                                         child: DefaultText(
-                                          text: '${userGetProfileModel.account?.points??'0'}',
+                                          text: '${userGetProfileModel.account.points}',
                                           textStyle:
                                               Theme.of(context).textTheme.bodyText1,
                                         ),
@@ -243,13 +243,13 @@ class UserProfileScreen extends StatelessWidget {
                                         lineWidth: 13.0,
                                         animation: true,
                                         progressColor: defaultYellow,
-                                        percent: userGetProfileModel.account?.totalOrders==0?0:userGetProfileModel.account!.totalOrders!/100,
+                                        percent: userGetProfileModel.account.totalOrders==0?0:userGetProfileModel.account.totalOrders!/100,
                                         backgroundColor: Colors.grey,
                                         radius: 60,
                                         center: DefaultText(
                                           textStyle:
                                               Theme.of(context).textTheme.bodyText1,
-                                          text: '${userGetProfileModel.account?.totalOrders??'0'}\nطلب',
+                                          text: '${userGetProfileModel.account.totalOrders}\nطلب',
                                           textAlign: TextAlign.center,
                                           maxLines: 2,
                                         ),
@@ -271,7 +271,7 @@ class UserProfileScreen extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 12),
                                         child: DefaultText(
-                                          text: '${userGetProfileModel.account?.balance??'0'}',
+                                          text: '${userGetProfileModel.account.balance}',
                                           textStyle:
                                               Theme.of(context).textTheme.bodyText1,
                                           textScaleFactor: 0.9,

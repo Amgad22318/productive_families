@@ -3,11 +3,11 @@ class UserGetProfileModel {
   UserGetProfileModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    account = json['account'] != null ? Account.fromJson(json['account']) : null;
+    account = json['account'] =   Account.fromJson(json['account']);
   }
   int? status;
   String? message;
-  Account? account;
+  late final Account account;
 
 }
 
@@ -21,14 +21,14 @@ class Account {
     type = json['type'];
     isVerified = json['is_verified'];
     isActive = json['is_active'];
-    image = json['image'] != null ? Image.fromJson(json['image']) : null;
-    address = json['address'] != null ? Address.fromJson(json['address']) : null;
+    image = json['image'] = Image.fromJson(json['image']);
+    address = json['address'] = Address.fromJson(json['address']);
     providerAccount = json['provider_account'];
     driverAccount = json['driver_account'];
     userAccount = json['user_account'];
-    points = json['points'];
-    balance = json['balance'];
-    totalOrders = json['total_orders'];
+    points = json['points']??0;
+    balance = json['balance']??0;
+    totalOrders = json['total_orders']??0;
     deviceToken = json['device_token'];
   }
   int? id;
@@ -37,13 +37,13 @@ class Account {
   String? type;
   int? isVerified;
   int? isActive;
-  Image? image;
+  late Image image;
   Address? address;
   int? providerAccount;
   int? driverAccount;
   int? userAccount;
-  dynamic points;
-  dynamic balance;
+  num? points;
+  num? balance;
   int? totalOrders;
   String? deviceToken;
 
@@ -56,14 +56,14 @@ class Address {
 
   Address.fromJson(dynamic json) {
     id = json['id'];
-    address = json['address'];
+    address = json['address']??'';
     lon = json['lon'];
     lat = json['lat'];
   }
   int? id;
   String? address;
-  dynamic lon;
-  dynamic lat;
+  late num lon;
+  late num lat;
 
 }
 

@@ -68,11 +68,9 @@ class _UserProductSearchScreenState extends State<UserProductSearchScreen> {
             return Builder(builder: (context) {
               searchCubit = UserProductSearchCubit.get(context);
               productGridController.addListener(() {
-                printTest(searchCubit.isLoadingMoreData.toString() );
                 if (productGridController.position.pixels >=
                         productGridController.position.maxScrollExtent &&
                     !searchCubit.isLoadingMoreData) {
-                  printTest('ssssssssssssssssssssssssssss');
 
                   searchCubit.userProductSearch(
                       keyWord: _searchController.text, page: searchCubit.nextPage);

@@ -45,9 +45,7 @@ class ProductSearchGridItem extends StatelessWidget {
                     ),
                   ),
                   child: DefaultCachedNetworkImage(
-                      imageUrl: productModel.productImage == null
-                          ? ''
-                          : productModel.productImage!.path.toString(),
+                      imageUrl: productModel.image!.path.toString(),
                       fit: BoxFit.cover),
                 ),
                 Padding(
@@ -83,7 +81,7 @@ class ProductSearchGridItem extends StatelessWidget {
                       Expanded(
                         flex: 7,
                         child: DefaultText(
-                          text: productModel.name,
+                          text: productModel.name!,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -107,7 +105,7 @@ class ProductSearchGridItem extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: DefaultText(
-                          text: productModel.serviceName,
+                          text: productModel.serviceName!,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -116,7 +114,7 @@ class ProductSearchGridItem extends StatelessWidget {
                         child: Align(
                           alignment: AlignmentDirectional.centerEnd,
                           child: RatingBarIndicator(
-                            rating: productModel.rate.toDouble(),
+                            rating: productModel.rate!.toDouble(),
                             itemBuilder: (context, index) => const Icon(
                               Icons.star,
                               color: Colors.amber,

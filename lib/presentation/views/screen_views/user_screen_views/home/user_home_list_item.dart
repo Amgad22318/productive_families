@@ -26,7 +26,7 @@ class UserHomeListItem extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 120,
+              height: 180,
               width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
