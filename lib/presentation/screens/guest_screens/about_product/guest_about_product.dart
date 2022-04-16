@@ -253,8 +253,8 @@ class _GuestAboutProductState extends State<GuestAboutProduct> {
                           textStyle: Theme.of(context).textTheme.subtitle1,
                           text: 'تقييمات المنتج',
                         ),
-                        AboutProductReviewItem(),
-                        AboutProductReviewItem(),
+                        // AboutProductReviewItem(),
+                        // AboutProductReviewItem(),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 100.0, vertical: 16),

@@ -31,15 +31,15 @@ class UserProductAllReviewsScreen extends StatelessWidget {
           Image.asset(
             'assets/image/appbar_half_circle.png',
           ),
-          Expanded(
-            child: Padding(
-              padding:  const EdgeInsets.symmetric(horizontal: 8),
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) => const AboutProductReviewItem(),
-              ),
-            ),
-          )
+          // Expanded(
+          //   child: Padding(
+          //     padding:  const EdgeInsets.symmetric(horizontal: 8),
+          //     child: ListView.builder(
+          //       itemCount: 10,
+          //       itemBuilder: (context, index) => const AboutProductReviewItem(),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

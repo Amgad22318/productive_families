@@ -7,7 +7,7 @@ class DioHelper {
 
   static init() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://504-dev.magdsofteg.xyz/api/',
+      baseUrl: 'https://504-merge.magdsofteg.xyz/api/',
       receiveDataWhenStatusError: true,
     ));
   }

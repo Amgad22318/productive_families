@@ -155,9 +155,9 @@ class Image {
       this.type,});
 
   Image.fromJson(dynamic json) {
-    id = json['id'];
-    path = json['path'];
-    type = json['type'];
+    id = json['id']??0;
+    path = json['path']??'';
+    type = json['type']??'';
   }
   int? id;
   String? path;

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/weights.dart';
+import 'package:productive_families/data/models/user_models/products/user_show_product_model.dart';
+import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_rating_bar_indicator.dart';
 
 import '../../../../styles/colors.dart';
 import '../../../../widgets/default_text.dart';
 
 class AboutProductReviewItem extends StatelessWidget {
-  const AboutProductReviewItem({Key? key}) : super(key: key);
+ final Rates rateModel;
+  const AboutProductReviewItem( {Key? key,required this.rateModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +34,7 @@ class AboutProductReviewItem extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.asset(
-                      'assets/image/make_up.png',
-                      fit: BoxFit.cover,
-                    ),
+                  DefaultCachedNetworkImage(imageUrl: rateModel.reviewImage.path!, fit: BoxFit.cover)
                   ],
                 ),
               ),
@@ -48,21 +48,21 @@ class AboutProductReviewItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: "حسام سعيد",
+                        text: rateModel.userName,
                         fontWeight: FontWeights.bold ,
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyText1,
                         // textStyle: TextStyle(),
                       ),
-                       const DefaultRatingBarIndicator(
-                        rating: 3.7,
+                        DefaultRatingBarIndicator(
+                        rating: rateModel.rate.toDouble(),
                         itemCount: 4,
                         itemSize: 20,
                       ),
                       DefaultText(
                         maxLines: 2,
-                        text: " منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا منتج جيد جدا",
+                        text: rateModel.comment,
                         textStyle: Theme.of(context).textTheme.bodyText2,
                         // textStyle: TextStyle(),
                       ),

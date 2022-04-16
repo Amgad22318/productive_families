@@ -59,7 +59,7 @@ dependencies:
   badges: ^2.0.2
   shared_preferences: ^2.0.13
   sizer: ^2.0.15
-
+  flutter_html: ^3.0.0-alpha.3
 
 
 dev_dependencies:
@@ -106,9 +106,9 @@ flutter:
 
 
   fonts:
-   - family: CustomIcons
-     fonts:
-       - asset: assets/fonts/CustomIcons.ttf
+    - family: CustomIcons
+      fonts:
+        - asset: assets/fonts/CustomIcons.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

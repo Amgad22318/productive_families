@@ -15,7 +15,7 @@ class UserHomeListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, ABOUT_PRODUCT);
+        Navigator.pushNamed(context, ABOUT_PRODUCT,arguments: productModel.id);
       },
       child: Card(
         clipBehavior: Clip.antiAlias,
