@@ -203,14 +203,16 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                       BlocBuilder<UserCategoryCubit, UserCategoryStates>(
                         builder: (context, state) {
                           if (state is UserGetAllCategoriesSuccessState) {
+                            List<Categories> categoriesList =
+                                userCategoryCubit.userAllCategoriesModel!.categories;
                             return SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: [
                                   HomeFirstSectionItem(),
                                   Row(
-                                    children: List.generate(userCategoryCubit.userAllCategoriesModel!.categories.length, (index) {
-                                      return HomeSectionItem(category: userCategoryCubit.userAllCategoriesModel!.categories[index]);
+                                    children: List.generate(categoriesList.length, (index) {
+                                      return HomeSectionItem(category: categoriesList[index],index: index,);
                                     }),
                                   ),
                                 ],

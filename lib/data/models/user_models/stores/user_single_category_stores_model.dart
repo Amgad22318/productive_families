@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../shared_models/shared_classes/image.dart';
+import '../shared_classes/user_store.dart';
 UserSingleCategoryStoresModel userSingleCategoryStoresModelFromJson(String str) => UserSingleCategoryStoresModel.fromJson(json.decode(str));
 String userSingleCategoryStoresModelToJson(UserSingleCategoryStoresModel data) => json.encode(data.toJson());
 class UserSingleCategoryStoresModel {
@@ -11,11 +11,13 @@ class UserSingleCategoryStoresModel {
 
   UserSingleCategoryStoresModel.fromJson(dynamic json) {
     status = json['status'];
-    message = json['message'];
+    message = json['message']??'';
       stores = [];
-      json['stores'].forEach((v) {
-        stores.add(Stores.fromJson(v));
-      });
+      if (json['stores']!=null) {
+        json['stores'].forEach((v) {
+          stores.add(Stores.fromJson(v));
+        });
+      }
   }
   late int status;
   late  String message;
@@ -37,36 +39,5 @@ class UserSingleCategoryStoresModel {
 
 }
 
-Stores storesFromJson(String str) => Stores.fromJson(json.decode(str));
-String storesToJson(Stores data) => json.encode(data.toJson());
-class Stores {
-  // Stores({
-  //     this.providerId,
-  //     this.serviceName,
-  //     this.providerImage,});
 
-  Stores.fromJson(dynamic json) {
-    providerId = json['provider_id'];
-    serviceName = json['service_name'];
-    providerImage = ApiImage.fromJson(json['provider_image']);
-  }
-  late int providerId;
-  late  String serviceName;
-  late  ApiImage providerImage;
-// Stores copyWith({  int? providerId,
-//   String? serviceName,
-//   Image? providerImage,
-// }) => Stores(  providerId: providerId ?? this.providerId,
-//   serviceName: serviceName ?? this.serviceName,
-//   providerImage: providerImage ?? this.providerImage,
-// );
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['provider_id'] = providerId;
-    map['service_name'] = serviceName;
-      map['provider_image'] = providerImage.toJson();
-    return map;
-  }
-
-}
 

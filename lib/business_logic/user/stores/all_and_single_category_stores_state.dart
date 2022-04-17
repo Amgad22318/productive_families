@@ -6,13 +6,17 @@ abstract class AllAndSingleCategoryStoresStates {}
 class AllAndSingleCategoryStoresInitial
     extends AllAndSingleCategoryStoresStates {}
 
-class UserGetAllCategoriesStoresLoadingState
+class UserGetStoresLoadingState
     extends AllAndSingleCategoryStoresStates {}
 
 class UserGetAllCategoriesStoresSuccessState
     extends AllAndSingleCategoryStoresStates {}
+class UserGetSingleCategoriesStoresSuccessState
+    extends AllAndSingleCategoryStoresStates {}
 
 class UserGetAllCategoriesStoresErrorState
+    extends AllAndSingleCategoryStoresStates {}
+class UserGetSingleCategoriesStoresErrorState
     extends AllAndSingleCategoryStoresStates {}
 class UserChangeSelectedCategoryIndexState
     extends AllAndSingleCategoryStoresStates {

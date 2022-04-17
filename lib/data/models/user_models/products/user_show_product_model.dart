@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../shared_models/shared_classes/image.dart';
+import '../shared_classes/api_image.dart';
 
 UserShowProductModel userShowProductModelFromJson(String str) =>
     UserShowProductModel.fromJson(json.decode(str));

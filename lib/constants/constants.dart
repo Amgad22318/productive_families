@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 String AppLang='ar';
 String AppCurrencyShortcut='ر.س';
 String AppCurrencyFull='ريال سعودي';
+int SelectedCategoryFromHome=0;
 
 
 ///////////////////////////////// sharedPreferences constant /////////////////////////////////////////////
