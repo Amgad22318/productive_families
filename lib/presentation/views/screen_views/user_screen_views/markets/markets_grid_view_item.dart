@@ -15,9 +15,9 @@ class MarketsGridViewItems extends StatelessWidget {
         },
         child: Column(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
                 radius: 50,
-                backgroundImage: const AssetImage('assets/image/user_photo.png')),
+                backgroundImage: AssetImage('assets/image/user_photo.png')),
             DefaultText(
               maxLines: 2,
               text: 'الاسم',

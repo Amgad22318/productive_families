@@ -19,6 +19,9 @@ const EP_USER_PROFILE_CHANGE_ACCOUNT= 'profile/change_account';
 const EP_USER_TOP_RATED_PRODUCT= 'products/top_rated';
 const EP_USER_SHOW_PRODUCT= 'product/show';
 const EP_USER_SEARCH_HOME= 'search/home';
+const EP_USER_ALL_CATEGORIES= 'categories/all';
+const EP_USER_ALL_CATEGORY_STORES= 'stores/all';
+const EP_USER_SINGLE_CATEGORY_STORES= 'category/stores';
 
 ////// MO Api
 

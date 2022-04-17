@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/data/models/user_models/category/user_all_categories_model.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
+import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class HomeSectionItem extends StatelessWidget {
-  HomeSectionItem({
-    Key? key,
+  final Categories category;
+  HomeSectionItem( {
+    Key? key, required this.category,
   }) : super(key: key);
 
   @override
@@ -15,7 +18,8 @@ class HomeSectionItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
       child: InkWell(
         onTap: () {
-          navigateToAndFinish(context,UserShopLayout(index: 1,));
+
+          navigateToAndFinish(context,const UserShopLayout(index: 1,));
         },
         child: Column(
           children: [
@@ -24,15 +28,16 @@ class HomeSectionItem extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: defaultYellow, width: 1),
               ),
-              child: Image.asset(
-                'assets/image/laundry.png',
-                height: 60,
-                width: 60,
-                fit: BoxFit.scaleDown,
+              child: ClipOval(clipBehavior:Clip.antiAlias ,
+                child: DefaultCachedNetworkImage(imageUrl: category.categoryImage.path.toString(),
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             DefaultText(
-              text: ' ملابس',
+              text: category.name,
               textStyle: Theme.of(context).textTheme.caption,
             )
           ],

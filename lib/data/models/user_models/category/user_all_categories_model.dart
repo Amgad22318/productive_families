@@ -1,8 +1,13 @@
 import 'dart:convert';
 
 import '../../shared_models/shared_classes/image.dart';
-UserAllCategoriesModel userAllCategoriesModelFromJson(String str) => UserAllCategoriesModel.fromJson(json.decode(str));
-String userAllCategoriesModelToJson(UserAllCategoriesModel data) => json.encode(data.toJson());
+
+UserAllCategoriesModel userAllCategoriesModelFromJson(String str) =>
+    UserAllCategoriesModel.fromJson(json.decode(str));
+
+String userAllCategoriesModelToJson(UserAllCategoriesModel data) =>
+    json.encode(data.toJson());
+
 class UserAllCategoriesModel {
   // UserAllCategoriesModel({
   //     this.status,
@@ -12,16 +17,17 @@ class UserAllCategoriesModel {
   UserAllCategoriesModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    if (json['categories'] != null) {
+
       categories = [];
       json['categories'].forEach((v) {
-        categories?.add(Categories.fromJson(v));
+        categories.add(Categories.fromJson(v));
       });
-    }
+
   }
-  int? status;
-  String? message;
-  List<Categories>? categories;
+
+  late int status;
+  late String message;
+  late List<Categories> categories;
 
 // UserAllCategoriesModel copyWith({  int? status,
 //   String? message,
@@ -34,30 +40,34 @@ class UserAllCategoriesModel {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-    if (categories != null) {
-      map['categories'] = categories?.map((v) => v.toJson()).toList();
-    }
+      map['categories'] = categories.map((v) => v.toJson()).toList();
+
     return map;
   }
-
 }
 
-Categories categoriesFromJson(String str) => Categories.fromJson(json.decode(str));
+Categories categoriesFromJson(String str) =>
+    Categories.fromJson(json.decode(str));
+
 String categoriesToJson(Categories data) => json.encode(data.toJson());
+
 class Categories {
-  // Categories({
-  //     this.id,
-  //     this.name,
-  //     this.image,});
+
+  Categories({
+    required this.id,
+   required this.name,
+    required this.categoryImage,});
 
   Categories.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
-    categoryImage = json['image'] != null ? Image.fromJson(json['image']) : null;
+    categoryImage = ApiImage.fromJson(json['image']);
   }
-  int? id;
-  String? name;
-  Image? categoryImage;
+
+  late int id;
+  late String name;
+  late ApiImage categoryImage;
+
 // Categories copyWith({  int? id,
 //   String? name,
 //   Image? image,
@@ -69,11 +79,8 @@ class Categories {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['name'] = name;
-    if (categoryImage != null) {
-      map['image'] = categoryImage?.toJson();
-    }
+    map['image'] = categoryImage.toJson();
+
     return map;
   }
-
 }
-

@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-Image imageFromJson(String str) => Image.fromJson(json.decode(str));
+ApiImage imageFromJson(String str) => ApiImage.fromJson(json.decode(str));
 
-String imageToJson(Image data) => json.encode(data.toJson());
+String imageToJson(ApiImage data) => json.encode(data.toJson());
 
-class Image {
-  // Image({
-  //   this.id,
-  //   this.path,
-  //   this.type,
-  // });
+class ApiImage {
+  ApiImage({
+    this.id,
+    this.path,
+    this.type,
+  });
 
-  Image.fromJson(dynamic json) {
+  ApiImage.fromJson(dynamic json) {
     id = json['id'] ?? 0;
     path = json['path'] ?? '';
     type = json['type'] ?? '';

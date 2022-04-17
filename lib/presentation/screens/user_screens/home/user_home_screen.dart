@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/business_logic/user/category/user_category_cubit.dart';
+import 'package:productive_families/business_logic/user/category/user_category_state.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
@@ -9,12 +11,15 @@ import 'package:productive_families/presentation/views/screen_views/user_screen_
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/home_section_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/navigation_drawer.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/home/user_home_list_item.dart';
+import 'package:productive_families/presentation/widgets/default_error_widget.dart';
+import 'package:productive_families/presentation/widgets/default_loading_indicator.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../../business_logic/user/local/user_local_cubit.dart';
+import '../../../../data/models/user_models/category/user_all_categories_model.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({Key? key}) : super(key: key);
@@ -43,6 +48,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
     UserLocalCubit userLocalCubit = UserLocalCubit.get(context);
+    UserCategoryCubit userCategoryCubit = UserCategoryCubit.get(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -190,26 +196,39 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   ),
                   Column(
                     children: [
-                      Container(
+                      const Divider(
                         color: Colors.grey,
-                        height: 0.5,
+                        height: 0.7,
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            HomeFirstSectionItem(),
-                            Row(
-                              children: List.generate(20, (index) {
-                                return HomeSectionItem();
-                              }),
-                            ),
-                          ],
-                        ),
+                      BlocBuilder<UserCategoryCubit, UserCategoryStates>(
+                        builder: (context, state) {
+                          if (state is UserGetAllCategoriesSuccessState) {
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  HomeFirstSectionItem(),
+                                  Row(
+                                    children: List.generate(userCategoryCubit.userAllCategoriesModel!.categories.length, (index) {
+                                      return HomeSectionItem(category: userCategoryCubit.userAllCategoriesModel!.categories[index]);
+                                    }),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                          else   if (state is UserGetAllCategoriesLoadingState){
+                            return const Padding(
+                              padding: EdgeInsets.symmetric(vertical:20),
+                              child: DefaultLoadingIndicator(),
+                            );
+                          }
+                          else{return const Center(child: DefaultErrorWidget());}
+                        },
                       ),
-                      Container(
+                      const Divider(
                         color: Colors.grey,
-                        height: 0.5,
+                        height: 0.7,
                       ),
                     ],
                   ),
@@ -241,9 +260,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                                     .products.isNotEmpty) {
                               return ListView.builder(
                                 itemCount: userLocalCubit
-                                    .userTopRatedProductsModel
-                                    ?.products
-                                    .length,
+                                    .userTopRatedProductsModel?.products.length,
                                 itemBuilder: (context, index) =>
                                     UserHomeListItem(
                                         productModel: userLocalCubit

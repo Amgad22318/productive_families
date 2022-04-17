@@ -9,11 +9,11 @@ String userShowProductModelToJson(UserShowProductModel data) =>
     json.encode(data.toJson());
 
 class UserShowProductModel {
-  UserShowProductModel({
-    this.status,
-    this.message,
-    this.product,
-  });
+  // UserShowProductModel({
+  //   this.status,
+  //   this.message,
+  //   this.product,
+  // });
 
   UserShowProductModel.fromJson(dynamic json) {
     status = json['status'];
@@ -22,8 +22,8 @@ class UserShowProductModel {
         json['product'] != null ? Product.fromJson(json['product']) : null;
   }
 
-  int? status;
-  String? message;
+  late int status;
+  late String message;
   Product? product;
 
   Map<String, dynamic> toJson() {
@@ -62,7 +62,7 @@ class Product {
     if (json['images'] != null) {
       productImages = [];
       json['images'].forEach((v) {
-        productImages.add(Image.fromJson(v));
+        productImages.add(ApiImage.fromJson(v));
       });
     }
     favorite = json['favorite'];
@@ -79,7 +79,7 @@ class Product {
   late String name;
   late String description;
   late num price;
-  late List<Image> productImages;
+  late List<ApiImage> productImages;
   late int favorite;
   late num rate;
   late int rateTimes;
@@ -121,19 +121,19 @@ class Rates {
     id = json['id'];
     userName = json['user_name'];
     userImage = json['user_image'] != null
-        ? Image.fromJson(json['user_image'])
+        ? ApiImage.fromJson(json['user_image'])
         : null;
     rate = json['rate'];
     comment = json['comment'];
-    reviewImage =Image.fromJson(json['image']);
+    reviewImage =ApiImage.fromJson(json['image']);
   }
 
   late int id;
   late String userName;
-  Image? userImage;
+  ApiImage? userImage;
   late int rate;
   late String comment;
- late Image reviewImage;
+ late ApiImage reviewImage;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
