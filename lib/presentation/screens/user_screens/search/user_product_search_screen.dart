@@ -5,6 +5,8 @@ import 'package:productive_families/business_logic/user/home_product_search/home
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/search/product_search_grid_item.dart';
 import 'package:productive_families/presentation/widgets/DefaultSvg.dart';
+import 'package:productive_families/presentation/widgets/default_error_widget.dart';
+import 'package:productive_families/presentation/widgets/default_loading_indicator.dart';
 import 'package:productive_families/presentation/widgets/default_search_bar.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -134,8 +136,7 @@ class _UserProductSearchScreenState extends State<UserProductSearchScreen> {
                                           .products![index])),
                             );
                           } else if (state is UserProductSearchLoadingState) {
-                            return const Center(
-                                child: CircularProgressIndicator());
+                            return const DefaultLoadingIndicator();
                           } else if (state is UserProductSearchEmptyState) {
                             return Center(
                               child: Column(
@@ -157,7 +158,7 @@ class _UserProductSearchScreenState extends State<UserProductSearchScreen> {
                               ),
                             );
                           } else {
-                            return const SizedBox.shrink();
+                            return const DefaultErrorWidget();
                           }
                         },
                       ),

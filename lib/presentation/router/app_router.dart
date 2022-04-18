@@ -51,7 +51,6 @@ import 'package:productive_families/presentation/screens/user_screens/basket/bas
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/seller_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/choose_account/choose_account.dart';
-import 'package:productive_families/presentation/screens/user_screens/chosen_market/chosen_market_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/delivery_representative/delivery_representative_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/chosen_market_ordering_screen.dart';
@@ -80,6 +79,8 @@ import 'package:productive_families/presentation/screens/user_screens/shop_layou
 import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
+
+import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 
 class AppRouter {
   late Widget startWidget;
@@ -159,9 +160,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SelectedFavoriteScreen(),
         );
-      case endpoints.CHOSEN_MARKET_SCREEN:
+      case endpoints.STORE_SUB_CATEGORY_SCREEN:
+        final int providerId = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (_) => const ChosenMarketScreen(),
+          builder: (_) =>  StoreSubCategoryScreen(providerId: providerId,),
         );
       case endpoints.FILTERING_SCREEN:
         return MaterialPageRoute(

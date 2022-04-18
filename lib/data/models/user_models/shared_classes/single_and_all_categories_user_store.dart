@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-import 'api_image.dart';
+import '../../shared_models/shared_classes/api_image.dart';
 
-Stores storesFromJson(String str) => Stores.fromJson(json.decode(str));
-String storesToJson(Stores data) => json.encode(data.toJson());
-class Stores {
+SingleAndAllCategoriesUserStore storesFromJson(String str) => SingleAndAllCategoriesUserStore.fromJson(json.decode(str));
+String storesToJson(SingleAndAllCategoriesUserStore data) => json.encode(data.toJson());
+class SingleAndAllCategoriesUserStore {
   // Stores({
   //     this.providerId,
   //     this.serviceName,
   //     this.providerImage,});
 
-  Stores.fromJson(dynamic json) {
+  SingleAndAllCategoriesUserStore.fromJson(dynamic json) {
     providerId = json['provider_id'];
     serviceName = json['service_name'];
     providerImage = ApiImage.fromJson(json['provider_image']);

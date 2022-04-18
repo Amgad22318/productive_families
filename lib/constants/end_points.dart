@@ -22,6 +22,7 @@ const EP_USER_SEARCH_HOME= 'search/home';
 const EP_USER_ALL_CATEGORIES= 'categories/all';
 const EP_USER_ALL_CATEGORY_STORES= 'stores/all';
 const EP_USER_SINGLE_CATEGORY_STORES= 'category/stores';
+const EP_USER_STORE_SUBCATEGORY= 'store/show';
 
 ////// MO Api
 
@@ -68,7 +69,7 @@ const ORDER_DETAILS_SCREEN = '/order_details_screen';
 const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
 const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
 const QUOTATIONS_SCREEN = '/quotations_screen';
-const CHOSEN_MARKET_SCREEN = '/chosen_market_screen';
+const STORE_SUB_CATEGORY_SCREEN = '/STORE_SUB_CATEGORY_SCREEN';
 const NOTIFICATIONS_SCREEN = '/notifications_screen';
 const FILTERING_SCREEN = '/FILTERING_SCREEN';
 const CHOSEN_MARKET_PRICE_FILTERING_SCREEN =

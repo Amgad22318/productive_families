@@ -94,7 +94,7 @@ class UserProfileScreen extends StatelessWidget {
                   builder: (context) {
                     nameController.text=userGetProfileModel.account.name!;
                     phoneController.text=userGetProfileModel.account.phone!;
-                    locationController.text=userGetProfileModel.account.address!.address!;
+                    locationController.text=userGetProfileModel.account.address.address;
                     return SingleChildScrollView(
                       child: Column(
                         children: [

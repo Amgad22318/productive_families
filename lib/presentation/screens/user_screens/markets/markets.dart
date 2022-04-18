@@ -10,10 +10,10 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../business_logic/user/category/user_category_cubit.dart';
 import '../../../../business_logic/user/category/user_category_state.dart';
-import '../../../../business_logic/user/stores/all_and_single_category_stores_cubit.dart';
+import '../../../../business_logic/user/stores/user_all_and_single_category_stores_cubit.dart';
 import '../../../../constants/constants.dart';
 import '../../../../data/models/user_models/category/user_all_categories_model.dart';
-import '../../../../data/models/user_models/shared_classes/user_store.dart';
+import '../../../../data/models/user_models/shared_classes/single_and_all_categories_user_store.dart';
 import '../../../../data/models/user_models/stores/user_all_category_stores_model.dart';
 import '../../../views/screen_views/user_screen_views/markets/markets_grid_view_item.dart';
 import '../../../widgets/default_error_widget.dart';
@@ -28,12 +28,12 @@ class Markets extends StatefulWidget {
 
 class _MarketsState extends State<Markets> {
   late UserCategoryCubit userCategoryCubit;
-  late AllAndSingleCategoryStoresCubit categoryStoresCubit;
+  late UserAllAndSingleCategoryStoresCubit categoryStoresCubit;
 
   @override
   Widget build(BuildContext context) {
     userCategoryCubit = UserCategoryCubit.get(context);
-    categoryStoresCubit = AllAndSingleCategoryStoresCubit.get(context);
+    categoryStoresCubit = UserAllAndSingleCategoryStoresCubit.get(context);
     categoryStoresCubit.changeSelectedCategoryIndex(
         index: SelectedCategoryFromHome);
 
@@ -167,12 +167,12 @@ class _MarketsState extends State<Markets> {
                       },
                     ),
                   ),
-                  BlocBuilder<AllAndSingleCategoryStoresCubit,
-                      AllAndSingleCategoryStoresStates>(
+                  BlocBuilder<UserAllAndSingleCategoryStoresCubit,
+                      UserAllAndSingleCategoryStoresStates>(
                     builder: (context, state) {
 
                       if (state is UserGetAllCategoriesStoresSuccessState) {
-                        List<Stores> storesModel = categoryStoresCubit
+                        List<SingleAndAllCategoriesUserStore> storesModel = categoryStoresCubit
                             .userAllCategoryStoresModel!.stores;
                         return SliverGrid(
                           delegate: SliverChildBuilderDelegate(
@@ -189,7 +189,7 @@ class _MarketsState extends State<Markets> {
                         );
                       }
                       else if (state is UserGetSingleCategoriesStoresSuccessState) {
-                        List<Stores> storesModel = categoryStoresCubit
+                        List<SingleAndAllCategoriesUserStore> storesModel = categoryStoresCubit
                             .userSingleCategoryStoresModel!.stores;
                         return SliverGrid(
                           delegate: SliverChildBuilderDelegate(

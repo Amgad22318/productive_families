@@ -6,6 +6,6 @@ class DefaultErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Icon(Icons.error_outline,color: Colors.red,size: 48.sp,);
+    return  Center(child: Icon(Icons.error_outline,color: Colors.red,size: 48.sp,));
   }
 }

@@ -1,4 +1,8 @@
 import 'dart:convert';
+
+import 'package:productive_families/data/models/shared_models/shared_classes/api_image.dart';
+
+import '../../shared_models/shared_classes/api_address.dart';
 UserLoginModel userLoginModelFromJson(String str) => UserLoginModel.fromJson(json.decode(str));
 String userLoginModelToJson(UserLoginModel data) => json.encode(data.toJson());
 class UserLoginModel {
@@ -39,22 +43,22 @@ class UserLoginModel {
 User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 class User {
-  User({
-      this.id,
-      this.name,
-      this.phone,
-      this.type,
-      this.isVerified,
-      this.isActive,
-      this.image,
-      this.address,
-      this.providerAccount,
-      this.driverAccount,
-      this.userAccount,
-      this.points,
-      this.balance,
-      this.totalOrders,
-      this.deviceToken,});
+  // User({
+  //     this.id,
+  //     this.name,
+  //     this.phone,
+  //     this.type,
+  //     this.isVerified,
+  //     this.isActive,
+  //     this.image,
+  //     this.address,
+  //     this.providerAccount,
+  //     this.driverAccount,
+  //     this.userAccount,
+  //     this.points,
+  //     this.balance,
+  //     this.totalOrders,
+  //     this.deviceToken,});
 
   User.fromJson(dynamic json) {
     id = json['id'];
@@ -63,8 +67,8 @@ class User {
     type = json['type'];
     isVerified = json['is_verified'];
     isActive = json['is_active'];
-    image = json['image'] != null ? Image.fromJson(json['image']) : null;
-    address = json['address'] != null ? Address.fromJson(json['address']) : null;
+    image =ApiImage.fromJson(json['image']);
+    address = ApiAddress.fromJson(json['address']);
     providerAccount = json['provider_account'];
     driverAccount = json['driver_account'];
     userAccount = json['user_account'];
@@ -79,13 +83,13 @@ class User {
   String? type;
   int? isVerified;
   int? isActive;
-  Image? image;
-  Address? address;
+  late ApiImage image;
+  late ApiAddress address;
   int? providerAccount;
   int? driverAccount;
   int? userAccount;
-  dynamic points;
-  dynamic balance;
+  late num points;
+  late num balance;
   int? totalOrders;
   String? deviceToken;
 
@@ -97,12 +101,12 @@ class User {
     map['type'] = type;
     map['is_verified'] = isVerified;
     map['is_active'] = isActive;
-    if (image != null) {
-      map['image'] = image?.toJson();
-    }
-    if (address != null) {
-      map['address'] = address?.toJson();
-    }
+
+      map['image'] = image.toJson();
+
+
+      map['address'] = address.toJson();
+
     map['provider_account'] = providerAccount;
     map['driver_account'] = driverAccount;
     map['user_account'] = userAccount;
@@ -115,60 +119,5 @@ class User {
 
 }
 
-Address addressFromJson(String str) => Address.fromJson(json.decode(str));
-String addressToJson(Address data) => json.encode(data.toJson());
-class Address {
-  Address({
-      this.id,
-      this.address,
-      this.lon,
-      this.lat,});
 
-  Address.fromJson(dynamic json) {
-    id = json['id'];
-    address = json['address'];
-    lon = json['lon'];
-    lat = json['lat'];
-  }
-  int? id;
-  String? address;
-  dynamic lon;
-  dynamic lat;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['address'] = address;
-    map['lon'] = lon;
-    map['lat'] = lat;
-    return map;
-  }
-
-}
-
-Image imageFromJson(String str) => Image.fromJson(json.decode(str));
-String imageToJson(Image data) => json.encode(data.toJson());
-class Image {
-  Image({
-      this.id,
-      this.path,
-      this.type,});
-
-  Image.fromJson(dynamic json) {
-    id = json['id']??0;
-    path = json['path']??'';
-    type = json['type']??'';
-  }
-  int? id;
-  String? path;
-  String? type;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['path'] = path;
-    map['type'] = type;
-    return map;
-  }
-
-}

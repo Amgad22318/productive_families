@@ -1,4 +1,7 @@
 
+import 'package:productive_families/data/models/shared_models/shared_classes/api_address.dart';
+import 'package:productive_families/data/models/shared_models/shared_classes/api_image.dart';
+
 class UserGetProfileModel {
   UserGetProfileModel.fromJson(dynamic json) {
     status = json['status'];
@@ -7,7 +10,7 @@ class UserGetProfileModel {
   }
   int? status;
   String? message;
-  late final Account account;
+  late  Account account;
 
 }
 
@@ -21,8 +24,8 @@ class Account {
     type = json['type'];
     isVerified = json['is_verified'];
     isActive = json['is_active'];
-    image = json['image'] = Image.fromJson(json['image']);
-    address = json['address'] = Address.fromJson(json['address']);
+    image = ApiImage.fromJson(json['image']);
+    address = ApiAddress.fromJson(json['address']);
     providerAccount = json['provider_account'];
     driverAccount = json['driver_account'];
     userAccount = json['user_account'];
@@ -37,8 +40,8 @@ class Account {
   String? type;
   int? isVerified;
   int? isActive;
-  late Image image;
-  Address? address;
+  late ApiImage image;
+  late ApiAddress address;
   int? providerAccount;
   int? driverAccount;
   int? userAccount;
@@ -52,31 +55,6 @@ class Account {
 }
 
 
-class Address {
-
-  Address.fromJson(dynamic json) {
-    id = json['id'];
-    address = json['address']??'';
-    lon = json['lon'];
-    lat = json['lat'];
-  }
-  int? id;
-  String? address;
-  late num lon;
-  late num lat;
-
-}
 
 
-class Image {
 
-  Image.fromJson(dynamic json) {
-    id = json['id'];
-    path = json['path'];
-    type = json['type'];
-  }
-  int? id;
-  String? path;
-  String? type;
-
-}

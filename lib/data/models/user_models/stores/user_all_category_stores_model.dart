@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../shared_classes/user_store.dart';
+import '../shared_classes/single_and_all_categories_user_store.dart';
 UserAllCategoryStoresModel userAllStoresFromJson(String str) => UserAllCategoryStoresModel.fromJson(json.decode(str));
 String userAllStoresToJson(UserAllCategoryStoresModel data) => json.encode(data.toJson());
 class UserAllCategoryStoresModel {
@@ -15,13 +15,13 @@ class UserAllCategoryStoresModel {
       stores = [];
     if (json['stores']!=null) {
       json['stores'].forEach((v) {
-        stores.add(Stores.fromJson(v));
+        stores.add(SingleAndAllCategoriesUserStore.fromJson(v));
       });
     }
   }
   late int status;
  late  String message;
-  late List<Stores> stores;
+  late List<SingleAndAllCategoriesUserStore> stores;
 // UserAllStores copyWith({  int? status,
 //   String? message,
 //   List<Stores>? stores,

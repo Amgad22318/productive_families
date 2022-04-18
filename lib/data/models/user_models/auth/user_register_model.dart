@@ -1,3 +1,6 @@
+import '../../shared_models/shared_classes/api_address.dart';
+import '../../shared_models/shared_classes/api_image.dart';
+
 class UserRegisterModel {
   UserRegisterModel.fromJson(dynamic json) {
     status = json['status'];
@@ -20,8 +23,8 @@ class Account {
     type = json['type'];
     isVerified = json['is_verified'];
     isActive = json['is_active'];
-    image = json['image'];
-    address = json['address'];
+    image = ApiImage.fromJson(json['image']);
+    address = ApiAddress.fromJson(json['address']);
     providerAccount = json['provider_account'];
     driverAccount = json['driver_account'];
     userAccount = json['user_account'];
@@ -37,8 +40,8 @@ class Account {
   String? type;
   int? isVerified;
   int? isActive;
-  dynamic image;
-  dynamic address;
+  late ApiImage image;
+  late ApiAddress address;
   int? providerAccount;
   int? driverAccount;
   int? userAccount;

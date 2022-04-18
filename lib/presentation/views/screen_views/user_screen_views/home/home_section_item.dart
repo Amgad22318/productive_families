@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/business_logic/user/stores/all_and_single_category_stores_cubit.dart';
+import 'package:productive_families/business_logic/user/stores/user_all_and_single_category_stores_cubit.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/data/models/user_models/category/user_all_categories_model.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';

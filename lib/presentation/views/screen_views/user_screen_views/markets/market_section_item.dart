@@ -5,13 +5,13 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-import '../../../../../business_logic/user/stores/all_and_single_category_stores_cubit.dart';
+import '../../../../../business_logic/user/stores/user_all_and_single_category_stores_cubit.dart';
 import '../../../../../constants/constant_methods.dart';
 
 class MarketSectionItem extends StatefulWidget {
   final int? index;
   final Categories category;
-  final AllAndSingleCategoryStoresCubit categoryStoresCubit;
+  final UserAllAndSingleCategoryStoresCubit categoryStoresCubit;
 
   MarketSectionItem({
     Key? key,
@@ -47,8 +47,8 @@ class _MarketSectionItemState extends State<MarketSectionItem> {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4),
-      child: BlocBuilder<AllAndSingleCategoryStoresCubit,
-          AllAndSingleCategoryStoresStates>(
+      child: BlocBuilder<UserAllAndSingleCategoryStoresCubit,
+          UserAllAndSingleCategoryStoresStates>(
         builder: (context, state) {
             if (widget.categoryStoresCubit.selectedCategoryIndex == widget.index) {
               itemHidden = false;

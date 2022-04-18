@@ -7,14 +7,14 @@ import 'package:productive_families/data/requests/user/stores/user_single_catego
 
 import '../../../constants/constant_methods.dart';
 
-part 'all_and_single_category_stores_state.dart';
+part 'user_all_and_single_category_stores_state.dart';
 
-class AllAndSingleCategoryStoresCubit
-    extends Cubit<AllAndSingleCategoryStoresStates> {
-  AllAndSingleCategoryStoresCubit()
+class UserAllAndSingleCategoryStoresCubit
+    extends Cubit<UserAllAndSingleCategoryStoresStates> {
+  UserAllAndSingleCategoryStoresCubit()
       : super(AllAndSingleCategoryStoresInitial());
 
-  static AllAndSingleCategoryStoresCubit get(context) =>
+  static UserAllAndSingleCategoryStoresCubit get(context) =>
       BlocProvider.of(context);
 
   int selectedCategoryIndex = 0;

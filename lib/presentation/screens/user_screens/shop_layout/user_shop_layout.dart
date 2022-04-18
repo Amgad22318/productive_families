@@ -9,7 +9,7 @@ import 'package:productive_families/presentation/screens/user_screens/user_profi
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
 
-import '../../../../business_logic/user/stores/all_and_single_category_stores_cubit.dart';
+import '../../../../business_logic/user/stores/user_all_and_single_category_stores_cubit.dart';
 
 class UserShopLayout extends StatefulWidget {
   final int index;
@@ -50,7 +50,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
           create: (context) => UserCategoryCubit()..getUserAllCategories(),
         ),
         BlocProvider(
-          create: (context) => AllAndSingleCategoryStoresCubit(),
+          create: (context) => UserAllAndSingleCategoryStoresCubit(),
         ),
       ],
       child: Scaffold(
