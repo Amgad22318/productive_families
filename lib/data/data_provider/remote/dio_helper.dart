@@ -7,8 +7,9 @@ class DioHelper {
 
   static init() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://504-dev.magdsofteg.xyz/api/',
+      baseUrl: 'https://504-merge.magdsofteg.xyz/api/',
       receiveDataWhenStatusError: true,
+
     ));
   }
 
@@ -35,6 +36,7 @@ class DioHelper {
     dio.options.headers = {
       'Authorization': token ?? ''
     };
+
     data == null? data={'language':AppLang}:  data['language'] = AppLang;
 
     printResponse('base:    ' + dio.options.baseUrl.toString());
@@ -42,6 +44,7 @@ class DioHelper {
     printResponse('header:    ' + dio.options.headers.toString());
     printResponse('url:    ' + url.toString());
     return dio.post(
+
       url,
       queryParameters: query,
       data: data,

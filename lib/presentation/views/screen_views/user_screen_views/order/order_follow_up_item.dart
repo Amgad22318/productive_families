@@ -12,7 +12,6 @@ class OrderFollowUpItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical:  10.0),
       child: Row(

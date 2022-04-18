@@ -198,7 +198,6 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                                             msg: 'برجاء ادخال الكود',
                                             toastState: ToastStates.WARNING);
                                       } else if (value.length == 4) {
-                                        printTest(codeController.text);
                                         cubit?.userRegisterConfirmPhone(
                                             phone: widget.phone!,
                                             code: codeController.text);

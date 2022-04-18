@@ -31,7 +31,7 @@ class HomeFirstSectionItem extends StatelessWidget {
               ),
             ),
             DefaultText(
-              text: ' ملابس',
+              text: 'مندوب توصيل',
               textStyle: Theme.of(context).textTheme.caption,
             )
           ],

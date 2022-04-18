@@ -19,9 +19,7 @@ Color getColor(Set<MaterialState> states,Color color) {
 }
 
 
-void logout(){
-CacheHelper.sharedPreferences.clear();
-}
+
 
 
 void printResponse(String text) {
@@ -76,6 +74,7 @@ void showToastMsg({required String msg, required ToastStates toastState}) {
 }
 
 
+
 Color chooseToastColor({required ToastStates state}) {
   Color color;
   switch (state) {
@@ -126,9 +125,9 @@ Future<Position> determinePosition() async {
         'Location permissions are permanently denied, we cannot request permissions.');
   }
 Position position =await Geolocator.getCurrentPosition(desiredAccuracy:  LocationAccuracy.best);
-printTest(position.longitude.toString());
-printTest(position.latitude.toString());
-printTest(position .toString());
+// printTest(position.longitude.toString());
+// printTest(position.latitude.toString());
+// printTest(position .toString());
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.

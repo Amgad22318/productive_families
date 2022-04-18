@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/data/models/user_models/search/user_product_search_model.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/filtering/filtering_grid_fav_dialog.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/shared/fav_bottom_sheet.dart';
+import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_icon_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class SearchGridItem extends StatelessWidget {
-  const SearchGridItem({Key? key}) : super(key: key);
+class ProductSearchGridItem extends StatelessWidget {
+  final Products productModel;
+
+  const ProductSearchGridItem({Key? key, required this.productModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +44,23 @@ class SearchGridItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  child: Image.asset(
-                    'assets/image/make_up.png',
-                    fit: BoxFit.cover,
-                  ),
+                  child: DefaultCachedNetworkImage(
+                      imageUrl: productModel.image!.path.toString(),
+                      fit: BoxFit.cover),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: DefaultIconButton(
-                    onPressed: () {showModalBottomSheet(
-                      context: context,
-                      builder: (context) => Padding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        child: FavBottomSheet(),
-                      ),
-                      backgroundColor: Colors.transparent,
-                      isScrollControlled: true,
-
-
-                    );
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: FavBottomSheet(),
+                        ),
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+                      );
                     },
                     icon: const Icon(
                       Icons.favorite_border_outlined,
@@ -78,7 +81,7 @@ class SearchGridItem extends StatelessWidget {
                       Expanded(
                         flex: 7,
                         child: DefaultText(
-                          text: 'اسم المنتج ',
+                          text: productModel.name!,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -87,7 +90,8 @@ class SearchGridItem extends StatelessWidget {
                         child: DefaultText(
                           textAlign: TextAlign.end,
                           color: goldTextAndStars,
-                          text: '\$25950.96',
+                          text: '${productModel.price.toString()} ' +
+                              AppCurrencyShortcut,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -101,7 +105,7 @@ class SearchGridItem extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: DefaultText(
-                          text: 'اسم المتجر',
+                          text: productModel.serviceName!,
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -110,7 +114,7 @@ class SearchGridItem extends StatelessWidget {
                         child: Align(
                           alignment: AlignmentDirectional.centerEnd,
                           child: RatingBarIndicator(
-                            rating: 2.6,
+                            rating: productModel.rate!.toDouble(),
                             itemBuilder: (context, index) => const Icon(
                               Icons.star,
                               color: Colors.amber,

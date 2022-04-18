@@ -20,13 +20,19 @@ class GuestFilteringScreen extends StatelessWidget {
           textStyle: Theme.of(context).textTheme.headline5,
           text: 'إسم المتجر',
         ),
-        actions: [
-          IconButton(
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, USER_REVIEWS_SEARCH_SCREEN);
+                },
+                icon: const Icon(Icons.search)),
+
+          ],
+          leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
-        ],
+              icon: Icon(Icons.arrow_back_ios))
       ),
       body: Column(
         children: [
