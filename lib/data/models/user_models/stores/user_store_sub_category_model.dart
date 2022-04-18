@@ -9,14 +9,14 @@ class UserStoreSubCategoryModel {
   //     this.message,
   //     this.store,});
 
-  UserStoreSubCategoryModel.fromJson(dynamic json) {
+  UserStoreSubCategoryModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    message = json['message']??'';
-    store = Store.fromJson(json['store']);
+    message = json['message'];
+    store = json['store'] != null ? Store.fromJson(json['store']) : null;
   }
-  late int status;
+  int? status;
   String? message;
-  late Store store;
+  Store? store;
 // UserStoreSubCategoryModel copyWith({  int? status,
 //   String? message,
 //   Store? store,
@@ -28,7 +28,9 @@ class UserStoreSubCategoryModel {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-      map['store'] = store.toJson();
+    if (store != null) {
+      map['store'] = store?.toJson();
+    }
     return map;
   }
 
@@ -43,8 +45,8 @@ class Store {
   //     this.subCategories,});
 
   Store.fromJson(dynamic json) {
-    providerId = json['id'];
-    providerName = json['name'];
+    id = json['id'];
+    name = json['name'];
     subCategories = [];
     if (json['sub_categories'] != null) {
       json['sub_categories'].forEach((v) {
@@ -52,8 +54,8 @@ class Store {
       });
     }
   }
-  late  int providerId;
-  late  String providerName;
+ late  int id;
+ late String name;
   late List<SubCategories> subCategories;
 // Store copyWith({  int? id,
 //   String? name,
@@ -64,8 +66,8 @@ class Store {
 // );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = providerId;
-    map['name'] = providerName;
+    map['id'] = id;
+    map['name'] = name;
       map['sub_categories'] = subCategories.map((v) => v.toJson()).toList();
     return map;
   }
@@ -83,9 +85,9 @@ class SubCategories {
   SubCategories.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
-    image =  ApiImage.fromJson(json['image']);
+    image = ApiImage.fromJson(json['image']);
   }
-  late int id;
+  late  int id;
   late  String name;
   late ApiImage image;
 // SubCategories copyWith({  int? id,
@@ -100,6 +102,7 @@ class SubCategories {
     map['id'] = id;
     map['name'] = name;
       map['image'] = image.toJson();
+
     return map;
   }
 

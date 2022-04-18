@@ -31,6 +31,7 @@ class DioHelper {
     required String url,
     Map<String, dynamic>? query,
     Map<String, dynamic>? data,
+    bool formData=false,
     String? token,
   }) {
     dio.options.headers = {
@@ -47,7 +48,7 @@ class DioHelper {
 
       url,
       queryParameters: query,
-      data: data,
+      data:formData? FormData.fromMap(data):data,
     );
   }
 

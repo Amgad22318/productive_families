@@ -15,9 +15,8 @@ class UserStoreSubCategoryRequest {
       Response response = await DioHelper.postData(url: EP_USER_STORE_SUBCATEGORY,data: {
         'page': page,
         'provider_id': providerId,
-      });
+      },formData: true);
       printResponse(response.data.toString());
-      printTest(response.data.status.toString());
       return UserStoreSubCategoryModel.fromJson(response.data);
     } catch (error) {
       printError('userStoreSubCategoryRequest '+error.toString());
