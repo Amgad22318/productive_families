@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/weights.dart';
+import 'package:productive_families/presentation/router/arguments/user_arguments/sub_category_product_args.dart';
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
@@ -23,7 +24,7 @@ class StoreSubCategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          Navigator.pushNamed(context, FILTERING_SCREEN);
+          Navigator.pushNamed(context, SUB_CATEGORY_PRODUCT_SCREEN,arguments:SubCategoryProductArgs(providerId: providerId, subCategoryId: subCategoriesModel.id,subCategoryName: subCategoriesModel.name) );
         },
         child: Column(
           children: [

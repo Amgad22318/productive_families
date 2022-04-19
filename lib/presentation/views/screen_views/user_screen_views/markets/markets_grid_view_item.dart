@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/presentation/router/arguments/user_arguments/store_sub_category_args.dart';
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
@@ -15,7 +16,7 @@ class MarketsGridViewItems extends StatelessWidget {
       margin: const EdgeInsets.all(8),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, STORE_SUB_CATEGORY_SCREEN,arguments: storesModel.providerId);
+          Navigator.pushNamed(context, STORE_SUB_CATEGORY_SCREEN,arguments:StoreSubCategoryArgs(providerId: storesModel.providerId, serviceName: storesModel.serviceName));
         },
         child: Column(
           children: [

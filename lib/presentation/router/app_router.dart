@@ -52,7 +52,6 @@ import 'package:productive_families/presentation/screens/user_screens/chat/custo
 import 'package:productive_families/presentation/screens/user_screens/chat/seller_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/choose_account/choose_account.dart';
 import 'package:productive_families/presentation/screens/user_screens/delivery_representative/delivery_representative_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/filter_screens/filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/chosen_market_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/markets_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
@@ -77,10 +76,13 @@ import 'package:productive_families/presentation/screens/user_screens/search/use
 import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/sub_category_product/sub_category_product_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
+import 'arguments/user_arguments/store_sub_category_args.dart';
+import 'arguments/user_arguments/sub_category_product_args.dart';
 
 class AppRouter {
   late Widget startWidget;
@@ -161,13 +163,19 @@ class AppRouter {
           builder: (_) => const SelectedFavoriteScreen(),
         );
       case endpoints.STORE_SUB_CATEGORY_SCREEN:
-        final int providerId = settings.arguments as int;
+        final StoreSubCategoryArgs args = settings.arguments as StoreSubCategoryArgs;
         return MaterialPageRoute(
-          builder: (_) =>  StoreSubCategoryScreen(providerId: providerId,),
+          builder: (_) => StoreSubCategoryScreen(
+           storeSubCategoryArgs: args,
+          ),
         );
-      case endpoints.FILTERING_SCREEN:
+      case endpoints.SUB_CATEGORY_PRODUCT_SCREEN:
+        final SubCategoryProductArgs args =
+            settings.arguments as SubCategoryProductArgs;
+
         return MaterialPageRoute(
-          builder: (_) => const FilteringScreen(),
+          builder: (_) =>
+              SubCategoryProductScreen(subCategoryProductArgs: args),
         );
       case endpoints.CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(

@@ -8,14 +8,15 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/user_models/stores/user_store_sub_category_model.dart';
+import '../../../router/arguments/user_arguments/store_sub_category_args.dart';
 import '../../../views/screen_views/user_screen_views/store_sub_category/store_sub_category_item.dart';
 import '../../../widgets/default_error_widget.dart';
 import '../../../widgets/default_loading_indicator.dart';
 
 class StoreSubCategoryScreen extends StatefulWidget {
-  final int providerId;
+  final StoreSubCategoryArgs storeSubCategoryArgs;
 
-  const StoreSubCategoryScreen({Key? key, required this.providerId})
+  const StoreSubCategoryScreen({Key? key, required this.storeSubCategoryArgs, })
       : super(key: key);
 
   @override
@@ -29,14 +30,14 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => UserStoreSubCategoryCubit()
-        ..getStoreSubCategory(providerId: widget.providerId),
+        ..getStoreSubCategory(providerId: widget.storeSubCategoryArgs.providerId),
       child: Builder(builder: (context) {
         userStoreSubCategoryCubit = UserStoreSubCategoryCubit.get(context);
         return Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
           floatingActionButton: FloatingActionButton(
             child:
-                DefaultSvg(imagePath: 'assets/icons/chat.svg', height: 14.sp),
+                DefaultSvg(imagePath: 'assets/icons/chat.svg', height: 18.sp),
             backgroundColor: Colors.white,
             onPressed: () {
               Navigator.pushNamed(context, SELLER_CHAT_SCREEN);
@@ -44,18 +45,10 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
           ),
           appBar: DefaultShopAppbar(
             centerTitle: true,
-            title: BlocBuilder<UserStoreSubCategoryCubit,
-                UserStoreSubCategoryStates>(
-              builder: (context, state) {
-                if (state is UserGetStoreSubCategorySuccessState) {
-                  return DefaultText(
-                    textStyle: Theme.of(context).textTheme.headline5,
-                    text: userStoreSubCategoryCubit.userStoreSubCategoryModel!.store!.name,
-                  );
-                }
-                else{return const SizedBox.shrink();}
-              },
-            ),
+            title: DefaultText(
+              textStyle: Theme.of(context).textTheme.headline5,
+              text: widget.storeSubCategoryArgs.serviceName,
+            )
           ),
           body: Column(
             children: [
