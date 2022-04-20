@@ -14,3 +14,7 @@ class UserGetSubCategoryProductSuccessState
 
 class UserGetSubCategoryProductErrorState
     extends UserSubCategoryProductStates {}
+
+
+class UserGetSubCategoryProductNoDataState
+    extends UserSubCategoryProductStates {}

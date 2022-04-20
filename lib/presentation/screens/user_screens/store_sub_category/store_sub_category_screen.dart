@@ -83,14 +83,14 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
                                       mainAxisSpacing: 16,
                                       crossAxisSpacing: 16,
                                       crossAxisCount: 2,
-                                      childAspectRatio: 0.75),
+                                      childAspectRatio: 0.85),
                             );
                           } else if (state
                               is UserGetStoreSubCategoryLoadingState) {
-                            return const SliverToBoxAdapter(
+                            return const SliverFillRemaining(
                                 child: DefaultLoadingIndicator());
                           } else {
-                            return const SliverToBoxAdapter(
+                            return const SliverFillRemaining(
                                 child: DefaultErrorWidget());
                           }
                         },

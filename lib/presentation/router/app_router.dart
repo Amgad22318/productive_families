@@ -149,7 +149,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AboutUsScreen(),
         );
-      case endpoints.ABOUT_PRODUCT:
+      case endpoints.USER_ABOUT_PRODUCT:
         final int productId = settings.arguments as int;
         return MaterialPageRoute(
           builder: (_) => AboutProduct(productId: productId),

@@ -13,7 +13,7 @@ class UserSubCategoryProductModel {
   UserSubCategoryProductModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message']??'';
-    subCategoryName = json['sub_category_name'];
+    subCategoryName = json['sub_category_name']??'';
     products = [];
     if (json['products'] != null) {
       json['products'].forEach((v) {
@@ -23,7 +23,7 @@ class UserSubCategoryProductModel {
   }
   int? status;
   String? message;
-  late  String subCategoryName;
+  String? subCategoryName;
   late List<Products> products;
 // UserSubCategoryProductModel copyWith({  int? status,
 //   String? message,

@@ -14,19 +14,18 @@ import '../../../../business_logic/user/stores/user_all_and_single_category_stor
 import '../../../../constants/constants.dart';
 import '../../../../data/models/user_models/category/user_all_categories_model.dart';
 import '../../../../data/models/user_models/shared_classes/single_and_all_categories_user_store.dart';
-import '../../../../data/models/user_models/stores/user_all_category_stores_model.dart';
 import '../../../views/screen_views/user_screen_views/markets/markets_grid_view_item.dart';
 import '../../../widgets/default_error_widget.dart';
 import '../../../widgets/default_loading_indicator.dart';
 
-class Markets extends StatefulWidget {
-  const Markets({Key? key}) : super(key: key);
+class StoresScreen extends StatefulWidget {
+  const StoresScreen({Key? key}) : super(key: key);
 
   @override
-  State<Markets> createState() => _MarketsState();
+  State<StoresScreen> createState() => _StoresScreenState();
 }
 
-class _MarketsState extends State<Markets> {
+class _StoresScreenState extends State<StoresScreen> {
   late UserCategoryCubit userCategoryCubit;
   late UserAllAndSingleCategoryStoresCubit categoryStoresCubit;
 
@@ -208,16 +207,16 @@ class _MarketsState extends State<Markets> {
 
                       else if (state
                           is UserGetStoresLoadingState||state is UserChangeSelectedCategoryIndexState) {
-                        return const SliverToBoxAdapter(
+                        return const SliverFillRemaining(
                           child: DefaultLoadingIndicator(),
                         );
                       } else if(state is UserGetAllCategoriesStoresErrorState ){
-                        return const SliverToBoxAdapter(
-                          child: Center(child: DefaultErrorWidget()),
+                        return const SliverFillRemaining(
+                          child: DefaultErrorWidget(),
                         );
                       }
                       else{
-                        return const SliverToBoxAdapter(
+                        return const SliverFillRemaining(
                           child: DefaultLoadingIndicator(),
                         );
                       }

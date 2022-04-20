@@ -4,7 +4,7 @@ import 'package:productive_families/business_logic/user/category/user_category_c
 import 'package:productive_families/business_logic/user/local/user_local_cubit.dart';
 import 'package:productive_families/presentation/screens/user_screens/favorite/favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/home/user_home_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/markets/markets.dart';
+import 'package:productive_families/presentation/screens/user_screens/stores/stores_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/user_profile/user_profile_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
@@ -60,7 +60,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
               child: TabBarView(
                 children: [
                   UserHomeScreen(),
-                  Markets(),
+                  StoresScreen(),
                   FavoriteScreen(),
                   UserProfileScreen(),
                 ],

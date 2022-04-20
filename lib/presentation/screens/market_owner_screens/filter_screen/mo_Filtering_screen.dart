@@ -6,7 +6,7 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/new_product/mo_add_new_product_screen.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/filtering_grid_view/mo_filtering_grid_view_item.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/filtering/filtering_grid_view_item.dart';
+import 'package:productive_families/presentation/views/screen_views/user_screen_views/filtering/sub_category_product_grid_Item.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/favorite_button_with_number.dart';

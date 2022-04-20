@@ -26,6 +26,10 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
         userSubCategoryProductModel = value;
         emit(UserGetSubCategoryProductSuccessState());
       }
+      else if (value.status == 204) {
+
+        emit(UserGetSubCategoryProductNoDataState());
+      }
 
     }).catchError((error) {
 
