@@ -24,6 +24,10 @@ const EP_USER_ALL_CATEGORY_STORES= 'stores/all';
 const EP_USER_SINGLE_CATEGORY_STORES= 'category/stores';
 const EP_USER_STORE_SUBCATEGORY= 'store/show';
 const EP_USER_STORE_SUBCATEGORY_PRODUCT= 'store/sub_category/products';
+const EP_USER_ADD_PRODUCT_TO_CART= 'order/add/product';
+const EP_USER_DELETE_PRODUCT_FROM_CART= 'order/delete/cart';
+const EP_USER_SHOW_CART_PRODUCTS= 'order/show/carts/products';
+const EP_USER_MODIFY_CART_PRODUCT_QUANTITY= 'order/modify/cart/product/quantity';
 
 ////// MO Api
 

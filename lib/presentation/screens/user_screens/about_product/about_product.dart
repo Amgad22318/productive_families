@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:productive_families/business_logic/user/add_product_to_cart/user_add_product_to_cart_cubit.dart';
+import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
+import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/about_product/about_product_review_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/shared/fav_bottom_sheet.dart';
@@ -32,6 +35,7 @@ class AboutProduct extends StatefulWidget {
 class _AboutProductState extends State<AboutProduct> {
   late int fullProductCarouselSliderImagesActiveIndex;
   late bool fullProductDescription;
+  late UserAddProductToCartCubit userAddProductToCartCubit;
 
   @override
   void initState() {
@@ -100,21 +104,22 @@ class _AboutProductState extends State<AboutProduct> {
                                           userShowProductModel
                                               .product!.productImages.length,
                                           (index) => Padding(
-                                            padding:  EdgeInsets.symmetric(horizontal: 8.sp),
-                                            child: ClipRRect(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 8.sp),
+                                                child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(24),
                                                   clipBehavior: Clip.antiAlias,
                                                   child: DefaultCachedNetworkImage(
                                                       imageUrl:
                                                           userShowProductModel
-                                                                  .product!
-                                                                  .productImages[
-                                                                      index]
-                                                                  .path! ,
+                                                              .product!
+                                                              .productImages[
+                                                                  index]
+                                                              .path!,
                                                       fit: BoxFit.cover),
                                                 ),
-                                          )),
+                                              )),
                                       options: CarouselOptions(
                                           enlargeCenterPage: true,
                                           onPageChanged: (index, reason) {
@@ -278,7 +283,6 @@ class _AboutProductState extends State<AboutProduct> {
                                                 ))
                                           ],
                                         ),
-
                                         Text(
                                           userShowProductModel
                                               .product!.description,
@@ -294,46 +298,80 @@ class _AboutProductState extends State<AboutProduct> {
                                       ],
                                     ),
                                   ),
-                                  if(userShowProductModel
+                                  if (userShowProductModel
                                       .product!.rates.isNotEmpty)
-                                  DefaultText(
-                                    textStyle:
-                                        Theme.of(context).textTheme.subtitle1,
-                                    text: 'تقييمات المنتج',
-                                  ),
+                                    DefaultText(
+                                      textStyle:
+                                          Theme.of(context).textTheme.subtitle1,
+                                      text: 'تقييمات المنتج',
+                                    ),
                                   ListView.builder(
-                                      physics: const NeverScrollableScrollPhysics(),
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
                                       itemCount: userShowProductModel
                                           .product!.rates.length,
                                       itemBuilder: (context, index) =>
-                                          AboutProductReviewItem(rateModel: userShowProductModel
-                                              .product!.rates[index])),
-                                  if(userShowProductModel
+                                          AboutProductReviewItem(
+                                              rateModel: userShowProductModel
+                                                  .product!.rates[index])),
+                                  if (userShowProductModel
                                       .product!.rates.isNotEmpty)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 100.0, vertical: 16),
-                                    child: DefaultMaterialButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(context,
-                                            USER_PRODUCT_ALL_REVIEWS_SCREEN);
-                                      },
-                                      height: 50,
-                                      text: 'كل التقييمات',
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 100.0, vertical: 16),
+                                      child: DefaultMaterialButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(context,
+                                              USER_PRODUCT_ALL_REVIEWS_SCREEN);
+                                        },
+                                        height: 50,
+                                        text: 'كل التقييمات',
+                                      ),
                                     ),
-                                  ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0, vertical: 8),
-                                    child: DefaultMaterialButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, BASKET_SCREEN);
-                                      },
-                                      fontSize: 20,
-                                      height: 50,
-                                      text: 'اضافة للسلة',
+                                    child: BlocProvider(
+                                      create: (context) =>
+                                          UserAddProductToCartCubit(),
+                                      child: Builder(builder: (context) {
+                                        userAddProductToCartCubit =
+                                            UserAddProductToCartCubit.get(
+                                                context);
+                                        return BlocListener<
+                                            UserAddProductToCartCubit,
+                                            UserAddProductToCartStates>(
+                                          listener: (context, state) {
+                                            if (state
+                                                is UserAddProductToCartSuccessState) {
+                                              showToastMsg(
+                                                  msg: state.message,
+                                                  toastState:
+                                                      ToastStates.SUCCESS);
+                                              Navigator.pushNamed(
+                                                  context, BASKET_SCREEN);
+                                            } else if (state
+                                                is UserAddProductToCartWrongProviderState) {
+                                              showToastMsg(
+                                                  msg: state.message,
+                                                  toastState:
+                                                      ToastStates.ERROR);
+                                            }
+                                          },
+                                          child: DefaultMaterialButton(
+                                            onPressed: () {
+                                              userAddProductToCartCubit
+                                                  .userAddProductToCart(
+                                                      productId:
+                                                          widget.productId);
+                                            },
+                                            fontSize: 20,
+                                            height: 50,
+                                            text: 'اضافة للسلة',
+                                          ),
+                                        );
+                                      }),
                                     ),
                                   ),
                                 ],
@@ -344,9 +382,11 @@ class _AboutProductState extends State<AboutProduct> {
                       ),
                     );
                   } else if (state is UserGetProductDetailsLoadingState) {
-                    return const Expanded(child: Center(child: CircularProgressIndicator()));
+                    return const Expanded(
+                        child: Center(child: CircularProgressIndicator()));
                   } else {
-                    return const Expanded(child:  Center(child: DefaultErrorWidget()));
+                    return const Expanded(
+                        child: Center(child: DefaultErrorWidget()));
                   }
                 },
               );
