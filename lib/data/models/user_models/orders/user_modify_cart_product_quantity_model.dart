@@ -1,13 +1,13 @@
 import 'dart:convert';
-UserModifyProductQuantityModel userModifyProductQuantityModelFromJson(String str) => UserModifyProductQuantityModel.fromJson(json.decode(str));
-String userModifyProductQuantityModelToJson(UserModifyProductQuantityModel data) => json.encode(data.toJson());
-class UserModifyProductQuantityModel {
+UserModifyCartProductQuantityModel userModifyProductQuantityModelFromJson(String str) => UserModifyCartProductQuantityModel.fromJson(json.decode(str));
+String userModifyProductQuantityModelToJson(UserModifyCartProductQuantityModel data) => json.encode(data.toJson());
+class UserModifyCartProductQuantityModel {
   // UserModifyProductQuantityModel({
   //     this.status,
   //     this.message,
   //     this.quantity,});
 
-  UserModifyProductQuantityModel.fromJson(dynamic json) {
+  UserModifyCartProductQuantityModel.fromJson(dynamic json) {
     status = json['status']??0;
     message = json['message'];
     quantity = json['quantity'];
