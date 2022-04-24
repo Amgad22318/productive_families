@@ -12,7 +12,7 @@ class UserUpdateAddressRequest {
     required String address,
   }) async {
     try {
-      Response response = await DioHelper.postData(url: EP_USER_PROFILE_UPDATE_ADDRESS,token:'Bearer  $accessToken',data: {
+      Response response = await DioHelper.postData(url: EP_USER_PROFILE_UPDATE_ADDRESS,token:accessToken,data: {
         'lat': lat,
         'lon': lon,
         'address': address,

@@ -19,6 +19,7 @@ class DefaultCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return imageUrl!=''? CachedNetworkImage(
+
       fit:fit,
       width: width,
       height: height,

@@ -23,6 +23,11 @@ const EP_USER_ALL_CATEGORIES= 'categories/all';
 const EP_USER_ALL_CATEGORY_STORES= 'stores/all';
 const EP_USER_SINGLE_CATEGORY_STORES= 'category/stores';
 const EP_USER_STORE_SUBCATEGORY= 'store/show';
+const EP_USER_STORE_SUBCATEGORY_PRODUCT= 'store/sub_category/products';
+const EP_USER_ADD_PRODUCT_TO_CART= 'order/add/product';
+const EP_USER_DELETE_PRODUCT_FROM_CART= 'order/delete/cart';
+const EP_USER_SHOW_CART_PRODUCTS= 'order/show/carts/products';
+const EP_USER_MODIFY_CART_PRODUCT_QUANTITY= 'order/modify/cart/product/quantity';
 
 ////// MO Api
 
@@ -50,7 +55,7 @@ const USER_LOGIN_SCREEN = '/USER_LOGIN_SCREEN';
 const REGISTER_SCREEN = '/register';
 const TERMS_AND_CONDITIONS = '/terms_and_conditions';
 const ABOUT_US_SCREEN = '/ABOUT_US_SCREEN';
-const ABOUT_PRODUCT = '/about_product';
+const USER_ABOUT_PRODUCT = '/about_product';
 const OTP_SCREEN = '/otp';
 const SHOP_LAYOUT = '/shop_layout';
 const ORDERS_SCREEN = '/ORDERS_SCREEN';
@@ -71,7 +76,7 @@ const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
 const QUOTATIONS_SCREEN = '/quotations_screen';
 const STORE_SUB_CATEGORY_SCREEN = '/STORE_SUB_CATEGORY_SCREEN';
 const NOTIFICATIONS_SCREEN = '/notifications_screen';
-const FILTERING_SCREEN = '/FILTERING_SCREEN';
+const SUB_CATEGORY_PRODUCT_SCREEN = '/SUB_CATEGORY_PRODUCT_SCREEN';
 const CHOSEN_MARKET_PRICE_FILTERING_SCREEN =
     '/CHOSEN_MARKET_PRICE_FILTERING_SCREEN';
 const MARKETS_PRICE_FILTERING_SCREEN = '/MARKETS_PRICE_FILTERING_SCREEN';

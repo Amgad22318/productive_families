@@ -88,8 +88,8 @@ class User {
   int? providerAccount;
   int? driverAccount;
   int? userAccount;
-  late num points;
-  late num balance;
+  dynamic points;
+  dynamic balance;
   int? totalOrders;
   String? deviceToken;
 

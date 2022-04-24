@@ -16,7 +16,7 @@ class UserUpdateProfileRequest {
       ) async {
 
     try {
-      Response response = await DioHelper.postData(url: EP_USER_PROFILE_UPDATE,token:'Bearer  $accessToken',data: {
+      Response response = await DioHelper.postData(url: EP_USER_PROFILE_UPDATE,token:accessToken,data: {
         'image':image??'',
         'phone': phone,
         'name': name,

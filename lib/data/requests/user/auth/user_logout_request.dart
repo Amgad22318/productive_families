@@ -11,7 +11,7 @@ class UserLogOutRequest {
   static Future userLogOutRequest(
   ) async {
     try {
-      Response response = await DioHelper.postData(url: EP_USER_LOGOUT,token: 'Bearer  $accessToken');
+      Response response = await DioHelper.postData(url: EP_USER_LOGOUT,token: accessToken);
       printResponse(response.data.toString());
       return UserLogoutModel.fromJson(response.data);
     } catch (error) {

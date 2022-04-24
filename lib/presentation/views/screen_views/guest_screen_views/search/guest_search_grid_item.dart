@@ -20,7 +20,7 @@ class GuestSearchGridItem extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, ABOUT_PRODUCT);
+          Navigator.pushNamed(context, USER_ABOUT_PRODUCT);
         },
         child: Column(
           children: [
