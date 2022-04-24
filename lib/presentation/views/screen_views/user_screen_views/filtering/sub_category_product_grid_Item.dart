@@ -67,7 +67,7 @@ class SubCategoryProductGridItem extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10.h,
+              height: 8.h,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 4),
                 child: Column(

@@ -47,7 +47,6 @@ import 'package:productive_families/presentation/screens/shared_screens/search/u
 import 'package:productive_families/presentation/screens/user_screens/about_ordered_product/about_ordered_product_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
-import 'package:productive_families/presentation/screens/user_screens/basket/basket_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/seller_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/choose_account/choose_account.dart';
@@ -80,6 +79,7 @@ import 'package:productive_families/presentation/screens/user_screens/sub_catego
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
+import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 import 'arguments/user_arguments/store_sub_category_args.dart';
 import 'arguments/user_arguments/sub_category_product_args.dart';
@@ -219,7 +219,7 @@ class AppRouter {
         );
       case endpoints.BASKET_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const BasketScreen(),
+          builder: (_) => const CartScreen(),
         );
       case endpoints.ORDER_LOCATION:
         return MaterialPageRoute(
