@@ -77,7 +77,8 @@ const DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN =
     '/delivery_representative_locator_screen';
 const SPECIFY_LOCATION = '/specify_location';
 const BASKET_SCREEN = '/basket_screen';
-const ORDER_LOCATION = '/order_location';
+const ORDER_LOCATION_PICKING_SCREEN = '/ORDER_LOCATION_PICKING_SCREEN';
+const ORDER_LOCATION_FOLLOW_UP_SCREEN = '/ORDER_LOCATION_FOLLOW_UP_SCREEN';
 const FIRST_TIME_LOCATION_PICKER = '/FIRST_TIME_LOCATION_PICKER';
 const ORDER_DETAILS_SCREEN = '/order_details_screen';
 const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';

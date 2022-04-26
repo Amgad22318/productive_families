@@ -91,7 +91,7 @@ class OrderConfirmationScreen extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, SPECIFY_LOCATION);
+                            Navigator.pushNamed(context, ORDER_LOCATION_PICKING_SCREEN);
                           },
                           icon: SvgPicture.asset(
                             "assets/icons/location.svg",

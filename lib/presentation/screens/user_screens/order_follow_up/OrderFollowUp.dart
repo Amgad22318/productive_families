@@ -144,7 +144,7 @@ class OrderFollowUp extends StatelessWidget {
                         vertical: 40.0, horizontal: 20),
                     child: DefaultMaterialButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, ORDER_LOCATION);
+                        Navigator.pushNamed(context, ORDER_LOCATION_FOLLOW_UP_SCREEN);
                       },
                       text: 'متابعة الطلب على الخريطه',
                     ),

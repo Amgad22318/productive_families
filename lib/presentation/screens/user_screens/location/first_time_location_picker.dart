@@ -14,6 +14,7 @@ import 'package:productive_families/presentation/screens/user_screens/chat/custo
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
+import 'package:productive_families/presentation/widgets/default_map.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
@@ -124,7 +125,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                       Positioned.fill(child: Builder(
                         builder: (context) {
                           return globalCubit.currentPosition != null
-                              ? GoogleMap(
+                              ? DefaultMap(
                                   onTap: (argument) {
                                     clickedMarkerLat = argument.latitude;
                                     clickedMarkerLng = argument.longitude;
@@ -134,6 +135,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   },
                                   myLocationEnabled: true,
                                   myLocationButtonEnabled: true,
+
                                   mapType: MapType.normal,
                                   initialCameraPosition: CameraPosition(
                                     target: LatLng(

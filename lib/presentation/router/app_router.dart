@@ -57,7 +57,7 @@ import 'package:productive_families/presentation/screens/user_screens/filter_scr
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/first_time_location_picker.dart';
-import 'package:productive_families/presentation/screens/user_screens/location/order_location.dart';
+import 'package:productive_families/presentation/screens/user_screens/location/order_location_picking_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/specify_location.dart';
 import 'package:productive_families/presentation/screens/user_screens/login/user_login_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/notifications/notifications_screen.dart';
@@ -80,6 +80,7 @@ import 'package:productive_families/presentation/screens/user_screens/terms_and_
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
 import '../screens/user_screens/cart/cart_screen.dart';
+import '../screens/user_screens/location/order_location_follow_up_screen.dart';
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 import 'arguments/user_arguments/store_sub_category_args.dart';
 import 'arguments/user_arguments/sub_category_product_args.dart';
@@ -221,9 +222,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CartScreen(),
         );
-      case endpoints.ORDER_LOCATION:
+      case endpoints.ORDER_LOCATION_PICKING_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => OrderLocation(),
+          builder: (_) => OrderLocationPickingScreen(),
+        );
+        case endpoints.ORDER_LOCATION_FOLLOW_UP_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => OrderLocationFollowUpScreen(),
         );
       case endpoints.ORDER_DETAILS_SCREEN:
         return MaterialPageRoute(
