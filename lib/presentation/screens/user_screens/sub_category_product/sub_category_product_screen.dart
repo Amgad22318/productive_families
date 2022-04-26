@@ -12,6 +12,7 @@ import 'package:productive_families/presentation/widgets/default_loading_indicat
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/favorite_button_with_number.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/user_models/products/user_sub_category_product_model.dart';
 
@@ -185,11 +186,11 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
                               childCount: productList.length,
                             ),
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     mainAxisSpacing: 8,
                                     crossAxisSpacing: 8,
                                     crossAxisCount: 2,
-                                    childAspectRatio: 0.87),
+                                    childAspectRatio: 45.w/29.h),
                           );
                         } else if (state
                             is UserGetSubCategoryProductLoadingState) {

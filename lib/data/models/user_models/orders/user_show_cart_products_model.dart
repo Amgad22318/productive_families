@@ -56,7 +56,7 @@ class Products {
   Products.fromJson(dynamic json) {
     cartId = json['cart_id'];
     productId = json['product_id'];
-    serviceName = json['service_name'];
+    productName = json['product_name'];
     description = json['description'];
     price = json['price'];
     quantity = json['quantity'];
@@ -64,7 +64,7 @@ class Products {
   }
  late int cartId;
  late int productId;
- late String serviceName;
+ late String productName;
  late String description;
  late int price;
  late int quantity;
@@ -88,7 +88,7 @@ class Products {
     final map = <String, dynamic>{};
     map['cart_id'] = cartId;
     map['product_id'] = productId;
-    map['service_name'] = serviceName;
+    map['service_name'] = productName;
     map['description'] = description;
     map['price'] = price;
     map['quantity'] = quantity;

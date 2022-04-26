@@ -197,11 +197,11 @@ class _StoresScreenState extends State<StoresScreen> {
                             childCount: storesModel.length,
                           ),
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                               SliverGridDelegateWithFixedCrossAxisCount(
                                   mainAxisSpacing: 4,
                                   crossAxisSpacing: 2,
                                   crossAxisCount: 2,
-                                  childAspectRatio: 1.1),
+                                  childAspectRatio: 45.w/30.h),
                         );
                       }
 

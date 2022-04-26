@@ -9,6 +9,7 @@ class DioHelper {
     dio = Dio(BaseOptions(
       baseUrl: 'https://504-merge.magdsofteg.xyz/api/',
       receiveDataWhenStatusError: true,
+      connectTimeout: 30*1000
 
     ));
   }

@@ -22,8 +22,9 @@ class MarketsGridViewItems extends StatelessWidget {
         },
         child: Column(
           children: [
-             SizedBox.fromSize(
-               size: Size.fromRadius(7.h),
+             SizedBox(
+              height: 9.h,
+               width: 9.h,
                child: ClipOval(clipBehavior:Clip.antiAlias,
                   child:DefaultCachedNetworkImage(imageUrl: storesModel.providerImage.path!, fit: BoxFit.cover,)),
              ),

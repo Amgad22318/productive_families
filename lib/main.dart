@@ -16,7 +16,7 @@ Future<void> main() async {
   await CacheHelper.init();
 
   runApp(DevicePreview(
-      enabled: false,
+      enabled: true,
       isToolbarVisible: true,
       builder: (context) => MyApp(
             appRouter: AppRouter(),
