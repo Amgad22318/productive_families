@@ -116,7 +116,7 @@ class _AboutProductState extends State<AboutProduct> {
                                                               .product!
                                                               .productImages[
                                                                   index]
-                                                              .path!,
+                                                              .path,
                                                       fit: BoxFit.cover),
                                                 ),
                                               )),

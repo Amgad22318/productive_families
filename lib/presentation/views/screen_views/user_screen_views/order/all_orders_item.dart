@@ -4,10 +4,21 @@ import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_outlined_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-class OrdersItem extends StatelessWidget {
-  final Color color;
+class AllOrdersItem extends StatefulWidget {
 
-  OrdersItem({required this.color, Key? key}) : super(key: key);
+  AllOrdersItem({ Key? key}) : super(key: key);
+
+  @override
+  State<AllOrdersItem> createState() => _AllOrdersItemState();
+}
+
+class _AllOrdersItemState extends State<AllOrdersItem> {
+  late Color color=Colors.red;
+  @override
+  void initState() {
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

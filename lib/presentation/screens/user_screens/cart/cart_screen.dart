@@ -10,7 +10,6 @@ import 'package:productive_families/presentation/widgets/default_outlined_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-import '../../../../business_logic/user/cart/user_cart_modifying_cubit.dart';
 import '../../../views/screen_views/user_screen_views/basket/cart_item.dart';
 
 class CartScreen extends StatefulWidget {

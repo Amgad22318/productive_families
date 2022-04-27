@@ -34,7 +34,7 @@ class AboutProductReviewItem extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                  DefaultCachedNetworkImage(imageUrl: rateModel.reviewImage.path!, fit: BoxFit.cover)
+                  DefaultCachedNetworkImage(imageUrl: rateModel.reviewImage.path, fit: BoxFit.cover)
                   ],
                 ),
               ),

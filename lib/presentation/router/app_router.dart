@@ -66,7 +66,6 @@ import 'package:productive_families/presentation/screens/user_screens/order_conf
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_second_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
-import 'package:productive_families/presentation/screens/user_screens/orders/orders_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
@@ -81,6 +80,7 @@ import 'package:productive_families/presentation/views/screen_views/user_screen_
 
 import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/location/order_location_follow_up_screen.dart';
+import '../screens/user_screens/orders/all_orders_screen.dart';
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 import 'arguments/user_arguments/store_sub_category_args.dart';
 import 'arguments/user_arguments/sub_category_product_args.dart';
@@ -155,19 +155,20 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AboutProduct(productId: productId),
         );
-      case endpoints.ORDERS_SCREEN:
+      case endpoints.USER_ALL_ORDERS_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => const OrdersScreen(),
+          builder: (_) => const UserAllOrdersScreen(),
         );
       case endpoints.SELECTED_FAVORITE_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const SelectedFavoriteScreen(),
         );
       case endpoints.STORE_SUB_CATEGORY_SCREEN:
-        final StoreSubCategoryArgs args = settings.arguments as StoreSubCategoryArgs;
+        final StoreSubCategoryArgs args =
+            settings.arguments as StoreSubCategoryArgs;
         return MaterialPageRoute(
           builder: (_) => StoreSubCategoryScreen(
-           storeSubCategoryArgs: args,
+            storeSubCategoryArgs: args,
           ),
         );
       case endpoints.SUB_CATEGORY_PRODUCT_SCREEN:
@@ -226,7 +227,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => OrderLocationPickingScreen(),
         );
-        case endpoints.ORDER_LOCATION_FOLLOW_UP_SCREEN:
+      case endpoints.ORDER_LOCATION_FOLLOW_UP_SCREEN:
         return MaterialPageRoute(
           builder: (_) => OrderLocationFollowUpScreen(),
         );

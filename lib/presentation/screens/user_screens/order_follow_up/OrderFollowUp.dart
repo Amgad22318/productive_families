@@ -15,7 +15,7 @@ class OrderFollowUp extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushNamedAndRemoveUntil(
-            context, ORDERS_SCREEN, (route) => false);
+            context, USER_ALL_ORDERS_SCREEN, (route) => false);
         return true;
       },
       child: Scaffold(
@@ -29,7 +29,7 @@ class OrderFollowUp extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(context, ORDERS_SCREEN, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, USER_ALL_ORDERS_SCREEN, (route) => false);
 
                 })
           ],

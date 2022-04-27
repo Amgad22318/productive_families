@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 @immutable
@@ -10,6 +9,4 @@ class UserGetAllCategoriesLoadingState extends UserCategoryStates {}
 
 class UserGetAllCategoriesSuccessState extends UserCategoryStates {}
 
-class UserGetAllCategoriesErrorState extends UserCategoryStates {
-
-}
+class UserGetAllCategoriesErrorState extends UserCategoryStates {}

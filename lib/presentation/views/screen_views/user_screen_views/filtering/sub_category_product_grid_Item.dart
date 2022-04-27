@@ -36,7 +36,7 @@ class SubCategoryProductGridItem extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
 
-                  child: DefaultCachedNetworkImage(imageUrl: productModel.image.path!, fit: BoxFit.cover)
+                  child: DefaultCachedNetworkImage(imageUrl: productModel.image.path, fit: BoxFit.cover)
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

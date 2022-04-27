@@ -26,7 +26,7 @@ class MarketsGridViewItems extends StatelessWidget {
               height: 9.h,
                width: 9.h,
                child: ClipOval(clipBehavior:Clip.antiAlias,
-                  child:DefaultCachedNetworkImage(imageUrl: storesModel.providerImage.path!, fit: BoxFit.cover,)),
+                  child:DefaultCachedNetworkImage(imageUrl: storesModel.providerImage.path, fit: BoxFit.cover,)),
              ),
             DefaultText(
               maxLines: 1,

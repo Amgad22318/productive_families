@@ -68,7 +68,7 @@ class UserProfileScreen extends StatelessWidget {
                           ClipOval(
                             clipBehavior: Clip.antiAlias,
                             child: DefaultCachedNetworkImage(
-                              imageUrl: userGetProfileModel!.account.image.path??''
+                              imageUrl: userGetProfileModel!.account.image.path
                                   .toString(),
                               fit: BoxFit.cover,
                               width: 140,
