@@ -44,7 +44,6 @@ import 'package:productive_families/presentation/screens/market_owner_screens/sh
 import 'package:productive_families/presentation/screens/market_owner_screens/start/mo_start_screen.dart';
 import 'package:productive_families/presentation/screens/market_owner_screens/terms_and_conditions/mo_terms_and_conditions.dart';
 import 'package:productive_families/presentation/screens/shared_screens/search/user_reviews_search_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/about_ordered_product/about_ordered_product_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_product/about_product.dart';
 import 'package:productive_families/presentation/screens/user_screens/about_us/about_us.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
@@ -64,7 +63,7 @@ import 'package:productive_families/presentation/screens/user_screens/notificati
 import 'package:productive_families/presentation/screens/user_screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_second_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/order_details/user_show_order_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews_screen.dart';
@@ -235,9 +234,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const OrderDetailsScreen(),
         );
-      case endpoints.ORDER_DETAILS_SECOND_SCREEN:
+      case endpoints.USER_SHOW_ORDER_SCREEN:
+        final int orderId = settings.arguments as int;
+
         return MaterialPageRoute(
-          builder: (_) => const OrderDetailsSecondScreen(),
+          builder: (_) => UserShowOrderScreen(
+            orderId: orderId,
+          ),
         );
       case endpoints.QUOTATIONS_SCREEN:
         return MaterialPageRoute(
@@ -352,10 +355,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MarketOwnerAddNewProductScreen(),
         );
-      case endpoints.ABOUT_ORDERED_PRODUCT_SCREEN:
-        return MaterialPageRoute(
-          builder: (_) => const AboutOrderedProductScreen(),
-        );
+
       case endpoints.DELIVERY_REPRESENTATIVE_DELIVERY_ORDERS_SCREEN:
         return MaterialPageRoute(
           builder: (_) => const DeliveryRepresentativeDeliveryOrders(),

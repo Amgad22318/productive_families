@@ -67,6 +67,7 @@ class Orders {
     _providerId = json['provider_id'];
     _serviceName = json['service_name'];
     _status = json['status'];
+    _statusString = json['status_string'];
     _voucherId = json['voucher_id'];
     _image = json['image'] != null ? ApiImage.fromJson(json['image']) : null;
     _askForDriver = json['ask_for_driver'];
@@ -77,6 +78,7 @@ class Orders {
   int? _providerId;
   String? _serviceName;
   String? _status;
+  String? _statusString;
   int? _voucherId;
   ApiImage? _image;
   int? _askForDriver;
@@ -87,6 +89,7 @@ class Orders {
   int get providerId => _providerId??0;
   String get serviceName => _serviceName??"";
   String get status => _status??"";
+  String get statusString => _statusString??"";
   int get voucherId => _voucherId??0;
   ApiImage get apiImage => _image??ApiImage();
   int get askForDriver => _askForDriver??0;
@@ -99,6 +102,7 @@ class Orders {
     map['provider_id'] = _providerId;
     map['service_name'] = _serviceName;
     map['status'] = _status;
+    map['status_string'] = _statusString;
     map['voucher_id'] = _voucherId;
     if (_image != null) {
       map['image'] = _image?.toJson();

@@ -10,7 +10,8 @@ import 'package:productive_families/presentation/widgets/default_outlined_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-import '../../../views/screen_views/user_screen_views/basket/cart_item.dart';
+import '../../../views/screen_views/user_screen_views/cart/cart_item.dart';
+
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
