@@ -19,6 +19,8 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
+import '../../../../constants/shared_preferences_keys.dart';
+
 class FirstTimeLocationPicker extends StatefulWidget {
   const FirstTimeLocationPicker({Key? key}) : super(key: key);
 
@@ -129,7 +131,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   onTap: (argument) {
                                     clickedMarkerLat = argument.latitude;
                                     clickedMarkerLng = argument.longitude;
-                                    globalCubit.convertPositionToAddress(
+                                    globalCubit.getAddress(
                                         lat: clickedMarkerLat,
                                         lon: clickedMarkerLng);
                                   },
@@ -226,7 +228,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                             msg: state.message,
                                             toastState: ToastStates.SUCCESS);
                                         locationController.text = '';
-                                        CacheHelper.saveDataToSP(key: SP_FIRST_TIME_LOCATION_PICKED, value: true);
+                                        CacheHelper.saveDataToSP(key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED, value: true);
                                         Navigator.pushNamedAndRemoveUntil(
                                             context,
                                             SHOP_LAYOUT,

@@ -9,6 +9,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
 import '../../../../business_logic/user/show_order/user_show_order_cubit.dart';
+import '../../../../data/models/user_models/orders/user_show_order_model.dart';
 import '../../../widgets/default_error_widget.dart';
 import '../../../widgets/default_loading_indicator.dart';
 import '../../../widgets/default_material_button.dart';
@@ -60,13 +61,45 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                 builder: (context, state) {
                   if (state is UserShowOrderSuccessState) {
                     userShowOrderCubit = UserShowOrderCubit.get(context);
-
-                    return ListView.builder(
-                      itemBuilder: (context, index) => ShowOrderScreenItem(
-                          orderProductModel: userShowOrderCubit
-                              .userShowOrderModel.orderProducts[index]),
-                      itemCount: userShowOrderCubit
-                          .userShowOrderModel.orderProducts.length,
+                    OrderDetails orderDetails=  userShowOrderCubit.userShowOrderModel.orderDetails;
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            itemBuilder: (context, index) =>
+                                ShowOrderScreenItem(
+                                    orderProductModel: userShowOrderCubit
+                                        .userShowOrderModel
+                                        .orderProducts[index]),
+                            itemCount: userShowOrderCubit
+                                .userShowOrderModel.orderProducts.length,
+                          ),
+                        ),
+                        PaymentSummaryItem(
+                          children: [
+                            DefaultText(
+                              text: 'ملخص الدفع',
+                              textStyle: Theme.of(context).textTheme.bodyText1,
+                              color: const Color(0xFF9FBBEB),
+                            ),
+                             PaymentSummaryInnerItem(
+                                text: 'تكلفة الدفع:', price:orderDetails.orderPrice==0?'0': '+ ${orderDetails.orderPrice}'),
+                             PaymentSummaryInnerItem(
+                                text: 'الضريبه المضافه:', price:orderDetails.vat==0?'0': '+ ${orderDetails.vat}'),
+                             PaymentSummaryInnerItem(
+                                text: 'رسوم الشحن:', price:orderDetails.driverCost==0?'0': '+ ${orderDetails.driverCost}'),
+                             PaymentSummaryInnerItem(
+                                text: 'كود الخصم:', price:orderDetails.voucherDiscount==0?'0':  '- ${orderDetails.voucherDiscount}'),
+                            const Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                  end: 8.0, start: 8.0),
+                              child: DottedLineSeparator(),
+                            ),
+                             PaymentSummaryInnerItem(
+                                text: 'السعر الكلى:', price: orderDetails.netPrice.toString()),
+                          ],
+                        ),
+                      ],
                     );
                   } else if (state is UserShowOrderLoadingState) {
                     return const DefaultLoadingIndicator();
@@ -75,29 +108,6 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                   }
                 },
               ),
-            ),
-            PaymentSummaryItem(
-              children: [
-                DefaultText(
-                  text: 'ملخص الدفع',
-                  textStyle: Theme.of(context).textTheme.bodyText1,
-                  color: const Color(0xFF9FBBEB),
-                ),
-                const PaymentSummaryInnerItem(
-                    text: 'تكلفة الدفع:', price: '279.00\$'),
-                const PaymentSummaryInnerItem(
-                    text: 'الضريبه المضافه:', price: '10.00\$'),
-                const PaymentSummaryInnerItem(
-                    text: 'رسوم الشحن:', price: '10.00\$'),
-                const PaymentSummaryInnerItem(
-                    text: 'كود الخصم:', price: '10.00\$'),
-                const Padding(
-                  padding: EdgeInsetsDirectional.only(end: 8.0, start: 8.0),
-                  child: DottedLineSeparator(),
-                ),
-                const PaymentSummaryInnerItem(
-                    text: 'السعر الكلى:', price: '299.00\$'),
-              ],
             ),
             Padding(
               padding: const EdgeInsets.only(

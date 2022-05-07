@@ -22,6 +22,7 @@ class _OrderLocationFollowUpScreenState extends State<OrderLocationFollowUpScree
 
   late double clickedMarkerLat;
   late double clickedMarkerLng;
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final Completer<GoogleMapController> _controller = Completer();
 

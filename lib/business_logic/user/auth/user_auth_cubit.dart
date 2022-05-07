@@ -14,6 +14,7 @@ import 'package:productive_families/data/requests/user/auth/user_logout_request.
 import 'package:productive_families/data/requests/user/auth/user_register_confirm_phone_request.dart';
 import 'package:productive_families/data/requests/user/auth/user_register_request.dart';
 
+import '../../../constants/shared_preferences_keys.dart';
 import '../../../data/requests/user/auth/user_register_resend_confirmation_code_request.dart';
 
 part 'user_auth_state.dart';
@@ -35,21 +36,21 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
       if (userLoginModel!.status.toString() == '200') {
         accessToken='Bearer  '+userLoginModel!.accessToken!;
         CacheHelper.saveDataToSP(
-            key: SP_ACCESS_TOKEN_KEY, value:accessToken);
+            key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY, value:accessToken);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_TYPE_KEY, value: userLoginModel?.user?.type);
+            key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY, value: userLoginModel?.user?.type);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_NAME_KEY, value: userLoginModel?.user?.name);
+            key: SharedPreferencesKeys.SP_ACCOUNT_NAME_KEY, value: userLoginModel?.user?.name);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_PHONE_KEY, value: userLoginModel?.user?.phone);
+            key: SharedPreferencesKeys.SP_ACCOUNT_PHONE_KEY, value: userLoginModel?.user?.phone);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_BALANCE_KEY, value: userLoginModel?.user?.balance);
+            key:SharedPreferencesKeys.SP_ACCOUNT_BALANCE_KEY, value: userLoginModel?.user?.balance);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_POINTS_KEY, value: userLoginModel?.user?.points);
+            key: SharedPreferencesKeys.SP_ACCOUNT_POINTS_KEY, value: userLoginModel?.user?.points);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_IMAGE_KEY, value: userLoginModel?.user?.image);
+            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY, value: userLoginModel?.user?.image);
         CacheHelper.saveDataToSP(
-            key: SP_ACCOUNT_TOTAL_ORDERS_KEY,
+            key: SharedPreferencesKeys.SP_ACCOUNT_TOTAL_ORDERS_KEY,
             value: userLoginModel?.user?.totalOrders);
 
         emit(UserLoginSuccessState());

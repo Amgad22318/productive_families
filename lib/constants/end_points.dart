@@ -37,23 +37,11 @@ const EP_USER_FINISH_ORDER_PROCESS= 'finishe/order/process';
 const EP_USER_DELETE_PRODUCT_FROM_CART= 'order/delete/cart';
 const EP_USER_SHOW_CART_PRODUCTS= 'order/show/carts/products';
 const EP_USER_MODIFY_CART_PRODUCT_QUANTITY= 'order/modify/cart/product/quantity';
+const EP_USER_PROMO_CODE_DETAILS= 'promocodeDetail';
 
 ////// MO Api
 
 ////// DR Api
-
-///////////////////////////////// sharedPreferences Keys /////////////////////////////////////////////
-const String SP_ACCESS_TOKEN_KEY='SP_ACCESS_TOKEN_KEY';
-const String SP_ACCOUNT_TYPE_KEY='SP_ACCOUNT_TYPE_KEY';
-const String SP_ACCOUNT_NAME_KEY='SP_ACCOUNT_Name_KEY';
-const String SP_ACCOUNT_PHONE_KEY='SP_ACCOUNT_PHONE_KEY';
-const String SP_ACCOUNT_BALANCE_KEY='SP_ACCOUNT_BALANCE_KEY';
-
-const String SP_ACCOUNT_POINTS_KEY='SP_ACCOUNT_POINTS_KEY';
-const String SP_ACCOUNT_IMAGE_KEY='SP_ACCOUNT_IMAGE_KEY';
-const String SP_ACCOUNT_TOTAL_ORDERS_KEY='SP_ACCOUNT_TOTAL_ORDERS_KEY';
-const String SP_FIRST_TIME_LOCATION_PICKED='SP_FIRST_TIME_LOCATION_PICKED';
-
 
 
 ///////////////////////////////// Screens PushNamed Names/////////////////////////////////////////////

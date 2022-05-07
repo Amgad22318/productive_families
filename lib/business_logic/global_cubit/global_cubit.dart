@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
@@ -24,13 +23,11 @@ class GlobalCubit extends Cubit<GlobalStates> {
   }
   String? convertedAddress;
 
-  void convertPositionToAddress({
+  void getAddress({
     required double lat,
     required double lon,
   }) async {
-    List<Placemark> placeMarks = await placemarkFromCoordinates(lat, lon);
-    Placemark place = placeMarks[0];
-    convertedAddress='${place.street} ${place.locality}';
+    convertedAddress=await convertPositionToAddress(lat: lat, lon: lon);
     emit(ConvertPositionToAddressState());
   }
 }

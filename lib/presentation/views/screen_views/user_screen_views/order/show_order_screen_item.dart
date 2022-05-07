@@ -12,14 +12,12 @@ import 'package:sizer/sizer.dart';
 
 class ShowOrderScreenItem extends StatelessWidget {
   final OrderProducts orderProductModel;
-
   const ShowOrderScreenItem({Key? key, required this.orderProductModel})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double textScale = MediaQuery.textScaleFactorOf(context);
-
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: InkWell(
@@ -28,11 +26,12 @@ class ShowOrderScreenItem extends StatelessWidget {
               arguments: orderProductModel.id);
         },
         child: Card(
+          clipBehavior: Clip.antiAlias,
           elevation: 5,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: LimitedBox(
-            maxHeight: 21.h * textScale,
+            maxHeight: 18.h * textScale,
             child: Row(
               children: [
                 Flexible(

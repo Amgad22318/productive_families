@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/business_logic/user/start_order_process_and_order_location/user_start_order_process_and__order_location_cubit.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
@@ -77,6 +78,7 @@ import 'package:productive_families/presentation/screens/user_screens/sub_catego
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
+import '../../constants/shared_preferences_keys.dart';
 import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/location/order_location_follow_up_screen.dart';
 import '../screens/user_screens/orders/all_orders_screen.dart';
@@ -88,10 +90,12 @@ class AppRouter {
   late Widget startWidget;
 
   AppRouter() {
-    accessToken = CacheHelper.getDataFromSP(key: endpoints.SP_ACCESS_TOKEN_KEY);
-    accountType = CacheHelper.getDataFromSP(key: endpoints.SP_ACCOUNT_TYPE_KEY);
+    accessToken = CacheHelper.getDataFromSP(
+        key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY);
+    accountType = CacheHelper.getDataFromSP(
+        key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY);
     bool locationPicked = CacheHelper.getDataFromSP(
-            key: endpoints.SP_FIRST_TIME_LOCATION_PICKED) ??
+            key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED) ??
         false;
 
     if (accessToken != null) {
@@ -223,8 +227,11 @@ class AppRouter {
           builder: (_) => const CartScreen(),
         );
       case endpoints.ORDER_LOCATION_PICKING_SCREEN:
+        final UserStartOrderProcessAndOrderLocationCubit cubit =
+            settings.arguments as UserStartOrderProcessAndOrderLocationCubit;
+
         return MaterialPageRoute(
-          builder: (_) => OrderLocationPickingScreen(),
+          builder: (_) => OrderLocationPickingScreen(userStartOrderProcessAndOrderLocationCubit: cubit),
         );
       case endpoints.ORDER_LOCATION_FOLLOW_UP_SCREEN:
         return MaterialPageRoute(

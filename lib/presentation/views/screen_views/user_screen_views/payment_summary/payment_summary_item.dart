@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class PaymentSummaryInnerItem extends StatelessWidget {
@@ -16,7 +17,8 @@ class PaymentSummaryInnerItem extends StatelessWidget {
             text: text,
             textStyle: Theme.of(context).textTheme.caption),
         DefaultText(
-          text: price,
+
+          text: price+' $AppCurrencyShortcut',
           textStyle: Theme.of(context).textTheme.caption!.copyWith(fontWeight: FontWeight.bold),
         )
       ],
