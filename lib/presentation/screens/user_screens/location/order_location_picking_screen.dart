@@ -32,7 +32,6 @@ class _OrderLocationPickingScreenState
   late double clickedMarkerLat;
   late double clickedMarkerLng;
   final Completer<GoogleMapController> _controller = Completer();
-  final TextEditingController SpecifyLocationController = TextEditingController();
 
 
   @override
@@ -76,6 +75,7 @@ class _OrderLocationPickingScreenState
                         setState(() {
                           clickedMarkerLat = argument.latitude;
                           clickedMarkerLng = argument.longitude;
+                          widget.userStartOrderProcessAndOrderLocationCubit.getAddress(lat:  argument.latitude, lon:  argument.longitude);
                         });
                       },
                       initialCameraPosition: AppInitialCameraPosition,
@@ -124,13 +124,15 @@ class _OrderLocationPickingScreenState
                               DefaultFormField(
                                   hintText: '',
                                   prefixIcon:  const Icon(Icons.location_on_outlined,color: Colors.white),
-                                  controller: SpecifyLocationController,
+                                  controller: widget.userStartOrderProcessAndOrderLocationCubit.locationController,
                                   validator: (p0) {},
                                   keyboardType: TextInputType.text),
                               const SizedBox(height: 15),
                               DefaultMaterialButton(
                                 text: 'استملت الطلب',
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
                               )
                             ],
                           ),

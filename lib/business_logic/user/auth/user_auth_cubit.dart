@@ -48,7 +48,7 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_POINTS_KEY, value: userLoginModel?.user?.points);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY, value: userLoginModel?.user?.image);
+            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY, value: userLoginModel?.user?.image.path);
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_TOTAL_ORDERS_KEY,
             value: userLoginModel?.user?.totalOrders);

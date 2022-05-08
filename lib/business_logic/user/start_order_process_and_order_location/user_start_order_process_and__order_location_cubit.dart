@@ -38,7 +38,7 @@ class UserStartOrderProcessAndOrderLocationCubit
 
 
 
-  late UserStartOrderProcessModel userStartOrderProcessModel;
+   UserStartOrderProcessModel userStartOrderProcessModel=UserStartOrderProcessModel();
 
   void userStartOrderProcess({
     required String address,
@@ -46,7 +46,7 @@ class UserStartOrderProcessAndOrderLocationCubit
     required num lon,
     required String note,
     required String userPhone,
-    required int voucherID,
+    required int? voucherID,
   }) async {
     emit(UserStartOrderProcessLoadingState());
     UserStartOrderProcessRequest()
@@ -73,7 +73,7 @@ class UserStartOrderProcessAndOrderLocationCubit
 
 
 
-  late UserPromoCodeDetailsModel userPromoCodeDetailsModel;
+   UserPromoCodeDetailsModel userPromoCodeDetailsModel=UserPromoCodeDetailsModel();
 
   void userPromoCodeCheck({
     required String code,

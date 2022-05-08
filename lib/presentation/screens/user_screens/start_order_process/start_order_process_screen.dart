@@ -14,15 +14,15 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 
 import '../../../../constants/shared_preferences_keys.dart';
 
-class OrderConfirmationScreen extends StatefulWidget {
-  OrderConfirmationScreen({Key? key}) : super(key: key);
+class UserStartOrderProcessScreen extends StatefulWidget {
+  const UserStartOrderProcessScreen({Key? key}) : super(key: key);
 
   @override
-  State<OrderConfirmationScreen> createState() =>
-      _OrderConfirmationScreenState();
+  State<UserStartOrderProcessScreen> createState() =>
+      _UserStartOrderProcessScreenState();
 }
 
-class _OrderConfirmationScreenState extends State<OrderConfirmationScreen> {
+class _UserStartOrderProcessScreenState extends State<UserStartOrderProcessScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController discountCodeController = TextEditingController();
@@ -84,6 +84,14 @@ class _OrderConfirmationScreenState extends State<OrderConfirmationScreen> {
                           showToastMsg(
                               msg: state.message,
                               toastState: ToastStates.ERROR);
+                        }
+
+                        if(state is UserStartOrderProcessSuccessState){
+                          showToastMsg(
+                              msg: state.message,
+                              toastState: ToastStates.SUCCESS);
+                          Navigator.pushNamed(
+                              context, ORDER_ADDRESS_CONFIRMATION_SCREEN,arguments: _startOrderAndLocationCubit.userStartOrderProcessModel.orderDetails);
                         }
                       },
                       child: Form(
@@ -166,7 +174,12 @@ class _OrderConfirmationScreenState extends State<OrderConfirmationScreen> {
                               height: 100,
                               controller: _startOrderAndLocationCubit
                                   .locationController,
-                              validator: (p0) {},
+                              validator: (text) {
+
+                                if (text!.isEmpty) {
+                                  return 'اختر مكان التوصيل';
+                                }
+                              },
                               keyboardType: TextInputType.multiline,
                               backgroundColor: orderFormFieldBackGroundGrey,
                               maxLines: 5,
@@ -204,8 +217,7 @@ class _OrderConfirmationScreenState extends State<OrderConfirmationScreen> {
                                               .voucher
                                               .id);
                                 }
-                                Navigator.pushNamed(
-                                    context, ORDER_ADDRESS_CONFIRMATION_SCREEN);
+
                               },
                               text: 'تأكيد الطلب',
                             )

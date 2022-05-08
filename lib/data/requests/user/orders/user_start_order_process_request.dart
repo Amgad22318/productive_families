@@ -13,7 +13,7 @@ class UserStartOrderProcessRequest {
     required num lon,
     required String note,
     required String userPhone,
-    required int voucherID,
+    required int? voucherID,
   }) async {
     try {
       Response response = await DioHelper.postData(url: EP_USER_START_ORDER_PROCESS,data: {

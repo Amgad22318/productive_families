@@ -25,8 +25,9 @@ class CacheHelper {
 
       return await sharedPreferences.setDouble(key.name, value.toDouble());
     } else {
-       printTest('saveDataToSP '+value.toString());
-      return false;
+      value??=0;
+       printTest('saveDataToSP ${key.name} '+value.toString());
+       return await sharedPreferences.setDouble(key.name, value.toDouble());
     }
   }
 

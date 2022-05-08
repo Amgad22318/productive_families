@@ -58,13 +58,12 @@ import 'package:productive_families/presentation/screens/user_screens/filter_scr
 import 'package:productive_families/presentation/screens/user_screens/location/delivery_representative_locator_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/first_time_location_picker.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/order_location_picking_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/location/specify_location.dart';
+import 'package:productive_families/presentation/screens/user_screens/location/update_user_location.dart';
 import 'package:productive_families/presentation/screens/user_screens/login/user_login_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/notifications/notifications_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_address_confirmation/order_address_confirmation_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/order_confirmation/order_confirmation_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/order_details/order_details_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/order_details/user_show_order_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/order_details/order_products_checkout_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/order_details/show_order_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews_screen.dart';
@@ -79,9 +78,11 @@ import 'package:productive_families/presentation/screens/user_screens/terms_and_
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
 import '../../constants/shared_preferences_keys.dart';
+import '../../data/models/user_models/orders/user_start_order_process_model.dart';
 import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/location/order_location_follow_up_screen.dart';
 import '../screens/user_screens/orders/all_orders_screen.dart';
+import '../screens/user_screens/start_order_process/start_order_process_screen.dart';
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 import 'arguments/user_arguments/store_sub_category_args.dart';
 import 'arguments/user_arguments/sub_category_product_args.dart';
@@ -206,9 +207,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => SellerChatScreen(),
         );
-      case endpoints.ORDER_CONFIRMATION_SCREEN:
+      case endpoints.USER_START_ORDER_PROCESS_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => OrderConfirmationScreen(),
+          builder: (_) => UserStartOrderProcessScreen(),
         );
       case endpoints.DELIVERY_REPRESENTATIVE_SCREEN:
         return MaterialPageRoute(
@@ -218,9 +219,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => DeliveryRepresentativeLocatorScreen(),
         );
-      case endpoints.SPECIFY_LOCATION:
+      case endpoints.UPDATE_USER_LOCATION:
         return MaterialPageRoute(
-          builder: (_) => SpecifyLocation(),
+          builder: (_) => UpdateUserLocation(),
         );
       case endpoints.BASKET_SCREEN:
         return MaterialPageRoute(
@@ -237,9 +238,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => OrderLocationFollowUpScreen(),
         );
-      case endpoints.ORDER_DETAILS_SCREEN:
+      case endpoints.ORDER_PRODUCTS_CHECKOUT_SCREEN:
+        final int orderId = settings.arguments as int;
+
         return MaterialPageRoute(
-          builder: (_) => const OrderDetailsScreen(),
+          builder: (_) =>  OrderProductsCheckOutScreen(orderId: orderId),
         );
       case endpoints.USER_SHOW_ORDER_SCREEN:
         final int orderId = settings.arguments as int;
@@ -267,8 +270,9 @@ class AppRouter {
           builder: (_) => const NotificationsScreen(),
         );
       case endpoints.ORDER_ADDRESS_CONFIRMATION_SCREEN:
+        final OrderDetails orderDetails = settings.arguments as OrderDetails;
         return MaterialPageRoute(
-          builder: (_) => const OrderAddressConfirmationScreen(),
+          builder: (_) =>  OrderAddressConfirmationScreen(orderDetails: orderDetails),
         );
       case endpoints.ORDER_FOLLOW_UP:
         return MaterialPageRoute(

@@ -168,7 +168,7 @@ class UserProfileScreen extends StatelessWidget {
                               padding: EdgeInsets.zero,
                               iconSize: 51,
                               onPressed: () {
-                                Navigator.pushNamed(context, SPECIFY_LOCATION);
+                                Navigator.pushNamed(context, UPDATE_USER_LOCATION);
                               },
                               icon: Row(
                                 mainAxisSize: MainAxisSize.min,

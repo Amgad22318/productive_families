@@ -110,7 +110,7 @@ class _CartScreenState extends State<CartScreen> {
                               child: DefaultMaterialButton(
                                 onPressed: () {
                                   Navigator.pushNamed(
-                                      context, ORDER_CONFIRMATION_SCREEN);
+                                      context, USER_START_ORDER_PROCESS_SCREEN);
                                 },
                                 text: 'تأكيد الطلب',
                               )),

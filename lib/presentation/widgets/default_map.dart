@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -11,6 +13,8 @@ class DefaultMap extends StatelessWidget {
   final bool zoomControlsEnabled;
   final bool zoomGesturesEnabled;
   final MapType mapType;
+  final EdgeInsets padding;
+  final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
 
   const DefaultMap({
     Key? key,
@@ -22,12 +26,14 @@ class DefaultMap extends StatelessWidget {
     this.myLocationButtonEnabled = true,
     this.mapType = MapType.normal,
     this.zoomControlsEnabled = true,
-    this.zoomGesturesEnabled = true,
+    this.zoomGesturesEnabled = true, this.padding=const EdgeInsets.all(0), this.gestureRecognizers= const   {},
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      padding:padding ,
+
       zoomGesturesEnabled: zoomGesturesEnabled,
       zoomControlsEnabled: zoomControlsEnabled,
       initialCameraPosition: initialCameraPosition,
@@ -37,6 +43,7 @@ class DefaultMap extends StatelessWidget {
       myLocationEnabled: myLocationEnabled,
       myLocationButtonEnabled: myLocationButtonEnabled,
       mapType: mapType,
+      gestureRecognizers:gestureRecognizers ,
     );
   }
 }

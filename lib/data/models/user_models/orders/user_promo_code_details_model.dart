@@ -73,7 +73,7 @@ class Voucher {
   int? _maxUsage;
   int? _isActive;
 
-  int get id => _id??0;
+  int? get id => _id;
   String get code => _code??"";
   num get discount => _discount??0;
   String get startAt => _startAt??"";

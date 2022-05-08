@@ -14,7 +14,7 @@ class UserLocalCubit extends Cubit<UserLocalStates> {
 
   static UserLocalCubit get(context) => BlocProvider.of(context);
 
-  UserUpdateAddressModel? updateAddressModel;
+  UserUpdateAddressModel updateAddressModel=UserUpdateAddressModel();
 
   void updateUserLocation({
     required double lat,
@@ -22,16 +22,16 @@ class UserLocalCubit extends Cubit<UserLocalStates> {
     required String address,
   }) async {
     emit(UserUpdateAddressLoadingState());
-    UserUpdateAddressRequest.userUpdateAddressRequest(
+    UserUpdateAddressRequest().userUpdateAddressRequest(
             lat: lat, lon: lon, address: address)
         .then((value) {
-      updateAddressModel = value;
 
-      if (updateAddressModel!.status.toString() == '200') {
-        emit(UserUpdateAddressSuccessState(updateAddressModel!.message!));
+      if (value.status == 200) {
+        updateAddressModel = value;
+        emit(UserUpdateAddressSuccessState(updateAddressModel.message));
       }
     }).catchError((error) {
-      emit(UserUpdateAddressErrorState(updateAddressModel!.message!));
+      emit(UserUpdateAddressErrorState(updateAddressModel.message));
       printError(error.toString());
     });
   }
