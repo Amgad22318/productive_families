@@ -148,7 +148,7 @@ class _OrderProductsCheckOutScreenState
                 child: DefaultMaterialButton(
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, ORDER_FOLLOW_UP, (route) => false);
+                        context, USER_ORDER_TRACKS_SCREEN, (route) => false);
                   },
                   text: 'تأكيد الطلب',
                 ),

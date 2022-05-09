@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/business_logic/user/local/user_local_cubit.dart';
 import 'package:productive_families/business_logic/user/start_order_process_and_order_location/user_start_order_process_and__order_location_cubit.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
@@ -64,7 +65,7 @@ import 'package:productive_families/presentation/screens/user_screens/notificati
 import 'package:productive_families/presentation/screens/user_screens/order_address_confirmation/order_address_confirmation_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_details/order_products_checkout_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/order_details/show_order_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/order_follow_up/OrderFollowUp.dart';
+import 'package:productive_families/presentation/screens/user_screens/order_tracks/user_order_tracks_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/otp/user_otp_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/product_all_reviews/user_product_all_reviews_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
@@ -220,8 +221,10 @@ class AppRouter {
           builder: (_) => DeliveryRepresentativeLocatorScreen(),
         );
       case endpoints.UPDATE_USER_LOCATION:
+        final UserLocalCubit cubit =
+        settings.arguments as UserLocalCubit;
         return MaterialPageRoute(
-          builder: (_) => UpdateUserLocation(),
+          builder: (_) => UpdateUserLocation(userLocalCubit: cubit),
         );
       case endpoints.BASKET_SCREEN:
         return MaterialPageRoute(
@@ -274,9 +277,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) =>  OrderAddressConfirmationScreen(orderDetails: orderDetails),
         );
-      case endpoints.ORDER_FOLLOW_UP:
+      case endpoints.USER_ORDER_TRACKS_SCREEN:
+        final int orderId = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (_) => const OrderFollowUp(),
+          builder: (_) =>  UserOrderTracksScreen(orderId: orderId),
         );
       case endpoints.FIRST_TIME_LOCATION_PICKER:
         return MaterialPageRoute(

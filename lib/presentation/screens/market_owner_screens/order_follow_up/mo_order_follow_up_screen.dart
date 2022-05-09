@@ -3,10 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/views/screen_views/market_owner_screen_views/order_follow_up_bottom_sheet/mo_order_tracking_bottom_sheet.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/order_follow_up_item.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+
+import '../../../views/screen_views/market_owner_screen_views/order_follow_up/mo_order_follow_up.dart';
 
 class MarketOwnerOrderFollowUp extends StatelessWidget {
   const MarketOwnerOrderFollowUp({Key? key}) : super(key: key);
@@ -114,32 +115,28 @@ class MarketOwnerOrderFollowUp extends StatelessWidget {
                           ),
                           Column(
                             children: [
-                              OrderFollowUpItem(
-                                text: 'تم الموافقه على الطلب',
-                                date: '02:00 pm',
-                                isDone: true,
-                              ),
-                              OrderFollowUpItem(
+
+                              MOOrderFollowUpItem(
                                 text: 'الطلب قيد التحضير',
                                 date: '02:00 pm',
                                 isDone: true,
                               ),
-                              OrderFollowUpItem(
+                              MOOrderFollowUpItem(
                                 text: 'الطلب قيد التوصيل',
                                 date: '02:00 pm',
                                 isDone: false,
                               ),
-                              OrderFollowUpItem(
+                              MOOrderFollowUpItem(
                                 text: 'تم توصيل الطلب',
                                 date: '02:00 pm',
                                 isDone: false,
                               ),
-                              OrderFollowUpItem(
+                              MOOrderFollowUpItem(
                                 text: 'تم توصيل الطلب',
                                 date: '02:00 pm',
                                 isDone: false,
                               ),
-                              OrderFollowUpItem(
+                              MOOrderFollowUpItem(
                                 text: 'تم توصيل الطلب',
                                 date: '02:00 pm',
                                 isDone: false,

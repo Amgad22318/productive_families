@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DefaultLoadingIndicator extends StatelessWidget {
-  const DefaultLoadingIndicator({Key? key}) : super(key: key);
+  final Color? color;
+  const DefaultLoadingIndicator({Key? key, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
+    return  Center(child: CircularProgressIndicator(color: color,));
   }
 }

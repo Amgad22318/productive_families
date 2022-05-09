@@ -18,7 +18,6 @@ class UserProfileScreen extends StatelessWidget {
   UserProfileScreen({Key? key}) : super(key: key);
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
   final GlobalKey<FormState> profileFormKey = GlobalKey<FormState>();
 
   @override
@@ -94,7 +93,7 @@ class UserProfileScreen extends StatelessWidget {
                   builder: (context) {
                     nameController.text=userGetProfileModel.account.name!;
                     phoneController.text=userGetProfileModel.account.phone!;
-                    locationController.text=userGetProfileModel.account.address.address;
+                    userLocalCubit.userLocationController.text=userGetProfileModel.account.address.address;
                     return SingleChildScrollView(
                       child: Column(
                         children: [
@@ -161,14 +160,14 @@ class UserProfileScreen extends StatelessWidget {
                             hintText: '',
                             textColor: darkBlue,
                             horizontalPadding: 32,
-                            controller: locationController,
+                            controller: userLocalCubit.userLocationController ,
                             keyboardType: TextInputType.text,
                             backgroundColor: Colors.transparent,
                             suffixIcon: IconButton(
                               padding: EdgeInsets.zero,
                               iconSize: 51,
                               onPressed: () {
-                                Navigator.pushNamed(context, UPDATE_USER_LOCATION);
+                                Navigator.pushNamed(context, UPDATE_USER_LOCATION,arguments: userLocalCubit);
                               },
                               icon: Row(
                                 mainAxisSize: MainAxisSize.min,

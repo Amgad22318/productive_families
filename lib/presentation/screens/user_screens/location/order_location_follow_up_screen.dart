@@ -61,12 +61,6 @@ class _OrderLocationFollowUpScreenState extends State<OrderLocationFollowUpScree
               child: Stack(
                 children: [
                   Positioned.fill(child:DefaultMap(
-                    onTap: (argument) {
-                      clickedMarkerLat = argument.latitude;
-                      clickedMarkerLng = argument.longitude;
-
-                    },
-
 
                     initialCameraPosition: AppInitialCameraPosition,
                     markers: {

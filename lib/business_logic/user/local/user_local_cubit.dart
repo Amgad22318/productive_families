@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/data/models/user_models/products/user_top_rated_products_model.dart';
@@ -13,25 +14,44 @@ class UserLocalCubit extends Cubit<UserLocalStates> {
   UserLocalCubit() : super(UserLocalInitial());
 
   static UserLocalCubit get(context) => BlocProvider.of(context);
+  final TextEditingController userLocationController = TextEditingController();
 
   UserUpdateAddressModel updateAddressModel=UserUpdateAddressModel();
+
+
+
+  late num lat;
+  late num lon;
+
+  void getAddress({
+    required double lat,
+    required double lon,
+  }) async {
+    this.lat=lat;
+    this.lon=lon;
+    userLocationController.text=await convertPositionToAddress(lat: lat, lon: lon);
+    emit(ConvertPositionToAddressState());
+  }
+
+
+
 
   void updateUserLocation({
     required double lat,
     required double lon,
     required String address,
   }) async {
-    emit(UserUpdateAddressLoadingState());
+    emit(UserUpdateAddressFirstTimeLoadingState());
     UserUpdateAddressRequest().userUpdateAddressRequest(
             lat: lat, lon: lon, address: address)
         .then((value) {
 
       if (value.status == 200) {
         updateAddressModel = value;
-        emit(UserUpdateAddressSuccessState(updateAddressModel.message));
+        emit(UserUpdateAddressFirstTimeSuccessState(updateAddressModel.message));
       }
     }).catchError((error) {
-      emit(UserUpdateAddressErrorState(updateAddressModel.message));
+      emit(UserUpdateAddressFirstTimeErrorState(updateAddressModel.message));
       printError(error.toString());
     });
   }

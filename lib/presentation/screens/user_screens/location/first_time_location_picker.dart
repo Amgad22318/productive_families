@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +17,6 @@ import 'package:productive_families/presentation/widgets/default_map.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
-
 import '../../../../constants/shared_preferences_keys.dart';
 
 class FirstTimeLocationPicker extends StatefulWidget {
@@ -223,7 +221,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   BlocListener<UserLocalCubit, UserLocalStates>(
                                     listener: (context, state) {
                                       if (state
-                                          is UserUpdateAddressSuccessState) {
+                                          is UserUpdateAddressFirstTimeSuccessState) {
                                         showToastMsg(
                                             msg: state.message,
                                             toastState: ToastStates.SUCCESS);
@@ -234,7 +232,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                             SHOP_LAYOUT,
                                             (route) => false);
                                       } else if (state
-                                          is UserUpdateAddressErrorState) {
+                                          is UserUpdateAddressFirstTimeErrorState) {
                                         showToastMsg(
                                             msg: state.message,
                                             toastState: ToastStates.ERROR);

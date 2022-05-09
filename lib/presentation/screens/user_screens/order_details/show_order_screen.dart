@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:productive_families/constants/constant_methods.dart';
+import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/payment_summary_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/order/show_order_screen_item.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/payment_summary/payment_summary_item.dart';
@@ -9,6 +11,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
 import '../../../../business_logic/user/show_order/user_show_order_cubit.dart';
+import '../../../../constants/enums.dart';
 import '../../../../data/models/user_models/orders/user_show_order_model.dart';
 import '../../../widgets/default_error_widget.dart';
 import '../../../widgets/default_loading_indicator.dart';
@@ -99,6 +102,25 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                                 text: 'السعر الكلى:', price: orderDetails.netPrice.toString()),
                           ],
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 15, right: 20, left: 20, top: 20),
+                          child: DefaultMaterialButton(
+                            onPressed: () {
+                              if(orderDetails.status=='processing'||
+                                  orderDetails.status=='acceptedByDriver'||
+                                  orderDetails.status=='onTheWay'||
+                                  orderDetails.status=='delivered'){
+                                Navigator.pushNamed(context, USER_ORDER_TRACKS_SCREEN,arguments:orderDetails.id );
+
+                              }
+                              else{
+                                showToastMsg(msg: 'لا يمكن تتبع الطلب في الوقت الحالي', toastState: ToastStates.WARNING);
+                              }
+                            },
+                            text: 'تتبع الطلب',
+                          ),
+                        )
                       ],
                     );
                   } else if (state is UserShowOrderLoadingState) {
@@ -109,14 +131,7 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 15, right: 20, left: 20, top: 20),
-              child: DefaultMaterialButton(
-                onPressed: () {},
-                text: 'تتبع الطلب',
-              ),
-            )
+
           ],
         ),
       ),

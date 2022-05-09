@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-class DottedLineSeparator extends StatelessWidget {
-  final double height;
+
+class DefaultDottedLine extends StatelessWidget {
+  final double dashWidth;
+  final double dashHeight;
   final Color color;
-  final Axis axis ;
-  const DottedLineSeparator({this.axis = Axis.horizontal,this.height = 1, this.color = Colors.black});
+  final Axis axis;
+
+  const DefaultDottedLine(
+      {Key? key,
+      this.axis = Axis.horizontal,
+      this.dashWidth = 1,
+      this.color = Colors.black,
+      this.dashHeight = 1})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final boxWidth = constraints.constrainWidth();
-        final dashWidth = 5.0;
-        final dashHeight = height;
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
         return Flex(
           children: List.generate(dashCount, (_) {
