@@ -1,6 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/enums.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
@@ -10,9 +14,14 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../../../data/models/user_models/orders/user_start_order_process_model.dart';
+import '../../../widgets/default_map.dart';
 
 class OrderAddressConfirmationScreen extends StatefulWidget {
-  const OrderAddressConfirmationScreen({Key? key}) : super(key: key);
+  final OrderDetails orderDetails;
+  const OrderAddressConfirmationScreen({Key? key,required this.orderDetails}) : super(key: key);
 
   @override
   State<OrderAddressConfirmationScreen> createState() =>
@@ -21,13 +30,28 @@ class OrderAddressConfirmationScreen extends StatefulWidget {
 
 class _OrderAddressConfirmationScreenState
     extends State<OrderAddressConfirmationScreen> {
+  final Completer<GoogleMapController> _controller = Completer();
+   late double clickedMarkerLat;
+   late double clickedMarkerLng;
+  late CameraPosition initialCameraPosition;
+  @override
+  void initState() {
+    initialCameraPosition=CameraPosition(
+      target: LatLng(widget.orderDetails.toLocation.lat.toDouble(), widget.orderDetails.toLocation.lon.toDouble()),
+      zoom: 9,
+    );
+    clickedMarkerLat=widget.orderDetails.toLocation.lat.toDouble();
+    clickedMarkerLng=widget.orderDetails.toLocation.lon.toDouble();
+    super.initState();
+  }
+
 
   OrderAddressConfirmationRadioValues? _character =
       OrderAddressConfirmationRadioValues.paypal;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: DefaultShopAppbar(
         height: 80,
@@ -53,21 +77,33 @@ class _OrderAddressConfirmationScreenState
           Expanded(
             child: ListView(
               children: [
-                SizedBox(
-                  height: size.height * 0.04,
-                ),
+
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                  child: Container(
-                    height: size.height * 0.25,
-                    width: double.infinity,
-                    color: Colors.black,
-                    // child: ,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 60.0,vertical: 20),
+                  child:  SizedBox(
+                    height: 30.h,width: 80.w,
+                    child: DefaultMap(
+                      initialCameraPosition:  initialCameraPosition,
+                      markers: {
+                         Marker(
+                            markerId: const MarkerId('chosenLocation'),
+                            infoWindow:
+                            const InfoWindow(title: 'الموقع المختار',),
+                            position:
+                            LatLng(clickedMarkerLat, clickedMarkerLng)),
+                      },
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                      gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                        Factory<OneSequenceGestureRecognizer>(
+                              () =>  EagerGestureRecognizer(),
+                        ),
+                      },
+                    ),
+                  )
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: DefaultText(
@@ -79,14 +115,14 @@ class _OrderAddressConfirmationScreenState
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: DefaultText(
                     text:
-                        'تطبيق للربط بين الاسر المنتجة وعلائهم على أن يوفر بيئة.تطبيق للربط بين ال',
+                       widget.orderDetails.toLocation.address,
                     color: greyText,
                     maxLines: 4,
                     textStyle: Theme.of(context).textTheme.caption,
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 15,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -164,20 +200,21 @@ class _OrderAddressConfirmationScreenState
                      textStyle: Theme.of(context).textTheme.bodyText1,
                      color:const Color(0xFF9FBBEB),
                    ),
-                   const PaymentSummaryInnerItem(text: 'تكلفة الدفع:', price: '279.00\$'),
-                   const PaymentSummaryInnerItem(text: 'الضريبه المضافه:', price: '10.00\$'),
-                   const PaymentSummaryInnerItem(text: 'رسوم الشحن:', price: '10.00\$'),
-                   const PaymentSummaryInnerItem(text: 'كود الخصم:', price: '10.00\$'),
-
-
-
-
-
-                   const  Padding(
-                     padding: EdgeInsets.symmetric(vertical: 8.0),
+                   PaymentSummaryInnerItem(
+                       text: 'تكلفة الدفع:', price:widget.orderDetails.orderPrice==0?'0': '+ ${widget.orderDetails.orderPrice}'),
+                   PaymentSummaryInnerItem(
+                       text: 'الضريبه المضافه:', price:widget.orderDetails.vat==0?'0': '+ ${widget.orderDetails.vat}'),
+                   PaymentSummaryInnerItem(
+                       text: 'رسوم الشحن:', price:widget.orderDetails.driverCost==0?'0': '+ ${widget.orderDetails.driverCost}'),
+                   PaymentSummaryInnerItem(
+                       text: 'كود الخصم:', price:widget.orderDetails.voucherDiscount==0?'0':  '- ${widget.orderDetails.voucherDiscount}'),
+                   const Padding(
+                     padding: EdgeInsetsDirectional.only(
+                         end: 8.0, start: 8.0),
                      child: DottedLineSeparator(),
                    ),
-                   PaymentSummaryInnerItem(text:  'السعر الكلى:', price: '299.00\$'),
+                   PaymentSummaryInnerItem(
+                       text: 'السعر الكلى:', price: widget.orderDetails.netPrice.toString()),
                  ],),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -185,7 +222,7 @@ class _OrderAddressConfirmationScreenState
                   child: DefaultMaterialButton(
                     onPressed: () {
                       Navigator.pushNamed(
-                          context, ORDER_DETAILS_SCREEN,);
+                          context, ORDER_PRODUCTS_CHECKOUT_SCREEN,arguments: widget.orderDetails.id);
                     },
                     text: 'تأكيد الطلب',
                   ),

@@ -35,11 +35,12 @@ class DefaultFormField extends StatelessWidget {
   final BoxConstraints? suffixIconConstraints;
   final bool readOnly;
   final int? maxLength;
-
+  final TextDirection? textDirection;
 
   const DefaultFormField(
       {Key? key,
-      required this.controller, this.validator,
+      required this.controller,
+      this.validator,
       this.onTap,
       this.labelText,
       required this.keyboardType,
@@ -70,13 +71,13 @@ class DefaultFormField extends StatelessWidget {
       this.suffixIconConstraints,
       this.readOnly = false,
       this.cursorColor = Colors.white,
-      this.maxLength})
+      this.maxLength,
+      this.textDirection = TextDirection.rtl})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
       alignment: containerAlignment,
       height: height,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -84,7 +85,6 @@ class DefaultFormField extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: TextFormField(
-
         maxLength: maxLength,
         readOnly: readOnly,
         cursorColor: cursorColor,
@@ -92,7 +92,7 @@ class DefaultFormField extends StatelessWidget {
         textAlignVertical: TextAlignVertical.center,
         textAlign: TextAlign.start,
         maxLines: maxLines,
-        textDirection: TextDirection.rtl,
+        textDirection: textDirection,
         initialValue: initialValue,
         controller: controller,
         validator: validator,
@@ -113,8 +113,9 @@ class DefaultFormField extends StatelessWidget {
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           suffixIconConstraints: suffixIconConstraints,
-          labelStyle:
-              Theme.of(context).textTheme.caption!.copyWith(color: labelColor, ),
+          labelStyle: Theme.of(context).textTheme.caption!.copyWith(
+                color: labelColor,
+              ),
           labelText: labelText,
           border: inputBorder,
           enabledBorder: inputEnabledBorder,

@@ -5,7 +5,7 @@ import 'package:productive_families/data/requests/user/products/user_show_produc
 
 import '../../../constants/constant_methods.dart';
 
-part 'product_details_state.dart';
+part 'user_product_details_state.dart';
 
 class UserProductDetailsCubit extends Cubit<UserProductDetailsStates> {
   UserProductDetailsCubit() : super(ProductDetailsInitial());

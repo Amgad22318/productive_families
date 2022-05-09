@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/data/models/user_models/orders/user_order_tracks_model.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
 class OrderFollowUpItem extends StatelessWidget {
-  final bool isDone;
-  final String text;
-  final String date;
+ final Tracks trackModel;
 
   OrderFollowUpItem(
-      {required this.isDone, required this.text, required this.date});
+      {required this.trackModel});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:  10.0),
+      padding: const EdgeInsets.symmetric(vertical:  4.0),
       child: Row(
         children: [
-          if (isDone) ...[
+          if (trackModel.check) ...[
             const CircleAvatar(
               backgroundColor: orderFollowUpGreyCheck,
               child: Icon(
@@ -25,7 +24,7 @@ class OrderFollowUpItem extends StatelessWidget {
                 size: 25,
               ),
             ),
-          ]else if(isDone == false)...[
+          ]else if(trackModel.check == false)...[
             const CircleAvatar(
               backgroundColor: orderFollowUpGreyCheck,
 
@@ -38,9 +37,9 @@ class OrderFollowUpItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DefaultText(
-                  text: text, textStyle: Theme.of(context).textTheme.bodyText1),
+                  text: trackModel.statusString, textStyle: Theme.of(context).textTheme.bodyText1),
               DefaultText(
-                  text: date, textStyle: Theme.of(context).textTheme.bodyText2),
+                  text: trackModel.time, textStyle: Theme.of(context).textTheme.bodyText2),
             ],
           ),
         ],

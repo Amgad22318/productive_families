@@ -2,6 +2,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
@@ -141,3 +142,12 @@ Position position =await Geolocator.getCurrentPosition(desiredAccuracy:  Locatio
   return position ;
 }
 
+
+Future<String> convertPositionToAddress({
+  required double lat,
+  required double lon,
+}) async {
+  List<Placemark> placeMarks = await placemarkFromCoordinates(lat, lon);
+  Placemark place = placeMarks[0];
+ return '${place.street} ${place.locality}';
+}

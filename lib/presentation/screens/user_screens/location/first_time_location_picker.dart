@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,9 +13,11 @@ import 'package:productive_families/presentation/screens/user_screens/chat/custo
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_form_field.dart';
+import 'package:productive_families/presentation/widgets/default_map.dart';
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
+import '../../../../constants/shared_preferences_keys.dart';
 
 class FirstTimeLocationPicker extends StatefulWidget {
   const FirstTimeLocationPicker({Key? key}) : super(key: key);
@@ -124,16 +125,17 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                       Positioned.fill(child: Builder(
                         builder: (context) {
                           return globalCubit.currentPosition != null
-                              ? GoogleMap(
+                              ? DefaultMap(
                                   onTap: (argument) {
                                     clickedMarkerLat = argument.latitude;
                                     clickedMarkerLng = argument.longitude;
-                                    globalCubit.convertPositionToAddress(
+                                    globalCubit.getAddress(
                                         lat: clickedMarkerLat,
                                         lon: clickedMarkerLng);
                                   },
                                   myLocationEnabled: true,
                                   myLocationButtonEnabled: true,
+
                                   mapType: MapType.normal,
                                   initialCameraPosition: CameraPosition(
                                     target: LatLng(
@@ -219,18 +221,18 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   BlocListener<UserLocalCubit, UserLocalStates>(
                                     listener: (context, state) {
                                       if (state
-                                          is UserUpdateAddressSuccessState) {
+                                          is UserUpdateAddressFirstTimeSuccessState) {
                                         showToastMsg(
                                             msg: state.message,
                                             toastState: ToastStates.SUCCESS);
                                         locationController.text = '';
-                                        CacheHelper.saveDataToSP(key: SP_FIRST_TIME_LOCATION_PICKED, value: true);
+                                        CacheHelper.saveDataToSP(key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED, value: true);
                                         Navigator.pushNamedAndRemoveUntil(
                                             context,
                                             SHOP_LAYOUT,
                                             (route) => false);
                                       } else if (state
-                                          is UserUpdateAddressErrorState) {
+                                          is UserUpdateAddressFirstTimeErrorState) {
                                         showToastMsg(
                                             msg: state.message,
                                             toastState: ToastStates.ERROR);

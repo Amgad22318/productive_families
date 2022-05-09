@@ -14,8 +14,8 @@ import 'package:productive_families/presentation/widgets/default_icon_button.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../../business_logic/user/cart/user_cart_modifying_cubit.dart';
 import '../../../../../business_logic/user/cart_get_data/user_cart_get_data_cubit.dart';
+import '../../../../../business_logic/user/cart_modifying/user_cart_modifying_cubit.dart';
 
 class CartItem extends StatefulWidget {
   final Products productModel;
@@ -87,7 +87,7 @@ class _CartItemState extends State<CartItem> {
                           flex: 15,
                           child: SizedBox.expand(
                             child: DefaultCachedNetworkImage(
-                                imageUrl: widget.productModel.image.path!,
+                                imageUrl: widget.productModel.image.path,
                                 fit: BoxFit.cover),
                           )),
                       const Spacer(),

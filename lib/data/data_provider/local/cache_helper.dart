@@ -1,34 +1,33 @@
-import 'package:productive_families/constants/constant_methods.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../constants/constant_methods.dart';
+import '../../../constants/shared_preferences_keys.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;
+
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-
-  static dynamic getDataFromSP({required String key}) {
-    return sharedPreferences.get(key);
+  static dynamic getDataFromSP({required SharedPreferencesKeys key}) {
+    return sharedPreferences.get(key.name);
   }
 
   static Future<bool> saveDataToSP(
-      {required String key, required dynamic value}) async {
+      {required SharedPreferencesKeys key, required dynamic value}) async {
     if (value is bool) {
-     // printTest(value.toString());
-      return await sharedPreferences.setBool(key, value);
+      return await sharedPreferences.setBool(key.name, value);
     } else if (value is String) {
-     // printTest(value.toString());
 
-      return await sharedPreferences.setString(key, value);
-    } else if (value is int) {
-     // printTest(value.toString());
+      return await sharedPreferences.setString(key.name, value);
+    } else if (value is num) {
 
-      return await sharedPreferences.setInt(key, value);
+      return await sharedPreferences.setDouble(key.name, value.toDouble());
     } else {
-      value ??= 0.0;
-     // printTest(value.toString());
-      return await sharedPreferences.setDouble(key, value);
+      value??=0;
+       printTest('saveDataToSP ${key.name} '+value.toString());
+       return await sharedPreferences.setDouble(key.name, value.toDouble());
     }
   }
 

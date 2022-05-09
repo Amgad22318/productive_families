@@ -6,7 +6,7 @@ import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
 import '../../../models/user_models/profile/user_update_address_model.dart';
 
 class UserUpdateAddressRequest {
-  static Future userUpdateAddressRequest({
+   Future userUpdateAddressRequest({
     required double lat,
     required double lon,
     required String address,

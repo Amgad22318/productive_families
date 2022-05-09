@@ -20,7 +20,7 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../business_logic/user/product_details/product_details_cubit.dart';
+import '../../../../business_logic/user/product_details/user_product_details_cubit.dart';
 import '../../../../data/models/user_models/products/user_show_product_model.dart';
 
 class AboutProduct extends StatefulWidget {
@@ -116,7 +116,7 @@ class _AboutProductState extends State<AboutProduct> {
                                                               .product!
                                                               .productImages[
                                                                   index]
-                                                              .path!,
+                                                              .path,
                                                       fit: BoxFit.cover),
                                                 ),
                                               )),

@@ -37,23 +37,11 @@ const EP_USER_FINISH_ORDER_PROCESS= 'finishe/order/process';
 const EP_USER_DELETE_PRODUCT_FROM_CART= 'order/delete/cart';
 const EP_USER_SHOW_CART_PRODUCTS= 'order/show/carts/products';
 const EP_USER_MODIFY_CART_PRODUCT_QUANTITY= 'order/modify/cart/product/quantity';
+const EP_USER_PROMO_CODE_DETAILS= 'promocodeDetail';
 
 ////// MO Api
 
 ////// DR Api
-
-///////////////////////////////// sharedPreferences Keys /////////////////////////////////////////////
-const String SP_ACCESS_TOKEN_KEY='SP_ACCESS_TOKEN_KEY';
-const String SP_ACCOUNT_TYPE_KEY='SP_ACCOUNT_TYPE_KEY';
-const String SP_ACCOUNT_NAME_KEY='SP_ACCOUNT_Name_KEY';
-const String SP_ACCOUNT_PHONE_KEY='SP_ACCOUNT_PHONE_KEY';
-const String SP_ACCOUNT_BALANCE_KEY='SP_ACCOUNT_BALANCE_KEY';
-
-const String SP_ACCOUNT_POINTS_KEY='SP_ACCOUNT_POINTS_KEY';
-const String SP_ACCOUNT_IMAGE_KEY='SP_ACCOUNT_IMAGE_KEY';
-const String SP_ACCOUNT_TOTAL_ORDERS_KEY='SP_ACCOUNT_TOTAL_ORDERS_KEY';
-const String SP_FIRST_TIME_LOCATION_PICKED='SP_FIRST_TIME_LOCATION_PICKED';
-
 
 
 ///////////////////////////////// Screens PushNamed Names/////////////////////////////////////////////
@@ -67,20 +55,21 @@ const ABOUT_US_SCREEN = '/ABOUT_US_SCREEN';
 const USER_ABOUT_PRODUCT = '/about_product';
 const OTP_SCREEN = '/otp';
 const SHOP_LAYOUT = '/shop_layout';
-const ORDERS_SCREEN = '/ORDERS_SCREEN';
+const USER_ALL_ORDERS_SCREEN = '/ORDERS_SCREEN';
 const SELECTED_FAVORITE_SCREEN = '/SELECTED_FAVORITE_SCREEN';
 const CUSTOMER_SERVICES_CHAT_SCREEN = '/customer_services_chat_screen';
 const SELLER_CHAT_SCREEN = '/seller_chat_screen';
-const ORDER_CONFIRMATION_SCREEN = '/order_confirmation_screen';
+const USER_START_ORDER_PROCESS_SCREEN = '/USER_START_ORDER_PROCESS_SCREEN';
 const DELIVERY_REPRESENTATIVE_SCREEN = '/delivery_representative_screen';
 const DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN =
     '/delivery_representative_locator_screen';
-const SPECIFY_LOCATION = '/specify_location';
+const UPDATE_USER_LOCATION = '/specify_location';
 const BASKET_SCREEN = '/basket_screen';
-const ORDER_LOCATION = '/order_location';
+const ORDER_LOCATION_PICKING_SCREEN = '/ORDER_LOCATION_PICKING_SCREEN';
+const ORDER_LOCATION_FOLLOW_UP_SCREEN = '/ORDER_LOCATION_FOLLOW_UP_SCREEN';
 const FIRST_TIME_LOCATION_PICKER = '/FIRST_TIME_LOCATION_PICKER';
-const ORDER_DETAILS_SCREEN = '/order_details_screen';
-const ORDER_DETAILS_SECOND_SCREEN = '/order_details_second_screen';
+const ORDER_PRODUCTS_CHECKOUT_SCREEN = '/ORDER_PRODUCTS_CHECKOUT_SCREEN';
+const USER_SHOW_ORDER_SCREEN = '/USER_SHOW_ORDER_SCREEN';
 const ORDER_ADDRESS_CONFIRMATION_SCREEN = '/order_address_confirmation_screen';
 const QUOTATIONS_SCREEN = '/quotations_screen';
 const STORE_SUB_CATEGORY_SCREEN = '/STORE_SUB_CATEGORY_SCREEN';
@@ -95,8 +84,7 @@ const USER_PRODUCT_SEARCH_SCREEN = '/USER_PRODUCT_SEARCH_SCREEN';
 const USER_REVIEWS_SEARCH_SCREEN = '/USER_REVIEWS_SEARCH_SCREEN';
 const DISPLAY_REPRESENTATIVE_PRICE_ITEM = '/DISPLAY_REPRESENTATIVE_PRICE_ITEM';
 const CHOOSE_ACCOUNT_SCREEN = '/CHOOSE_ACCOUNT_SCREEN';
-const ORDER_FOLLOW_UP = '/ORDER_FOLLOW_UP';
-const ABOUT_ORDERED_PRODUCT_SCREEN = '/ABOUT_ORDERED_PRODUCT_SCREEN';
+const USER_ORDER_TRACKS_SCREEN = '/USER_ORDER_TRACKS_SCREEN';
 const USER_PRODUCT_ALL_REVIEWS_SCREEN = '/USER_PRODUCT_ALL_REVIEWS_SCREEN';
 
 //DELIVERY_REPRESENTATIVE

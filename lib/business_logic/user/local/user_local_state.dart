@@ -5,18 +5,18 @@ abstract class UserLocalStates {}
 
 class UserLocalInitial extends UserLocalStates {}
 
-class UserUpdateAddressLoadingState extends UserLocalStates {}
+class UserUpdateAddressFirstTimeLoadingState extends UserLocalStates {}
 
-class UserUpdateAddressSuccessState extends UserLocalStates {
+class UserUpdateAddressFirstTimeSuccessState extends UserLocalStates {
   final String message;
 
-  UserUpdateAddressSuccessState(this.message);
+  UserUpdateAddressFirstTimeSuccessState(this.message);
 }
 
-class UserUpdateAddressErrorState extends UserLocalStates {
+class UserUpdateAddressFirstTimeErrorState extends UserLocalStates {
   final String message;
 
-  UserUpdateAddressErrorState(this.message);
+  UserUpdateAddressFirstTimeErrorState(this.message);
 }
 
 
@@ -42,4 +42,5 @@ class UserGetTopRatedProductsLoadingState extends UserLocalStates {}
 class UserGetTopRatedProductsSuccessState extends UserLocalStates {}
 
 class UserGetTopRatedProductsErrorState extends UserLocalStates {}
+class ConvertPositionToAddressState extends UserLocalStates {}
 

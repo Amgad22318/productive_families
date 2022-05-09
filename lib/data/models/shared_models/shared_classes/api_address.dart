@@ -3,29 +3,39 @@ import 'dart:convert';
 ApiAddress addressFromJson(String str) => ApiAddress.fromJson(json.decode(str));
 String addressToJson(ApiAddress data) => json.encode(data.toJson());
 class ApiAddress {
-  // Address({
-  //     this.id,
-  //     this.address,
-  //     this.lon,
-  //     this.lat,});
+  ApiAddress({
+    int? id,
+    String? address,
+    num? lon,
+    num? lat,}){
+    _id = id;
+    _address = address;
+    _lon = lon;
+    _lat = lat;
+  }
 
   ApiAddress.fromJson(dynamic json) {
-    id = json['id']??0;
-    address = json['address']??'';
-    lon = json['lon']??0;
-    lat = json['lat']??0;
+    _id = json['id'];
+    _address = json['address'];
+    _lon = json['lon'];
+    _lat = json['lat'];
   }
-  late int id;
-  late String address;
-  late num lon;
-  late num lat;
+  int? _id;
+  String? _address;
+  num? _lon;
+  num? _lat;
+
+  int get id => _id??0;
+  String get address => _address??"";
+  num get lon => _lon??0;
+  num get lat => _lat??0;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
-    map['address'] = address;
-    map['lon'] = lon;
-    map['lat'] = lat;
+    map['id'] = _id;
+    map['address'] = _address;
+    map['lon'] = _lon;
+    map['lat'] = _lat;
     return map;
   }
 

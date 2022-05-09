@@ -78,7 +78,7 @@ class NavigationDrawer extends StatelessWidget {
             text: 'طلباتك',
             icon: 'assets/icons/bag.svg',
             onTap: () {
-              Navigator.pushNamed(context, ORDERS_SCREEN);
+              Navigator.pushNamed(context, USER_ALL_ORDERS_SCREEN);
             },
           ),
           BlocProvider(

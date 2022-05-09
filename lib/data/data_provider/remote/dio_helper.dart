@@ -42,9 +42,9 @@ class DioHelper {
     data == null? data={'language':AppLang}:  data['language'] = AppLang;
 
     printResponse('base:    ' + dio.options.baseUrl.toString());
-    printResponse('body:    ' + data.toString());
-    printResponse('header:    ' + dio.options.headers.toString());
     printResponse('url:    ' + url.toString());
+    printResponse('header:    ' + dio.options.headers.toString());
+    printResponse('body:    ' + data.toString());
     return dio.post(
 
       url,
