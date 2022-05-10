@@ -169,29 +169,11 @@ class UserProfileScreen extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pushNamed(context, UPDATE_USER_LOCATION,arguments: userLocalCubit);
                               },
-                              icon: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 16.0),
-                                    child: DefaultText(
-                                      textScaleFactor: 1,
-                                      text: 'تغيير',
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(
-                                              decoration: TextDecoration.underline,
-                                              fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  SvgPicture.asset(
-                                    'assets/icons/location.svg',
-                                    color: darkBlue,
-                                    width: 24,
-                                    height: 24,
-                                  )
-                                ],
+                              icon: SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                color: darkBlue,
+                                width: 24,
+                                height: 24,
                               ),
                             ),
                             inputEnabledBorder: const UnderlineInputBorder(

@@ -131,6 +131,17 @@ class _OrderProductsCheckOutScreenState
                                   price: orderDetails.netPrice.toString()),
                             ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 20, right: 20, left: 20, top: 30),
+                            child: DefaultMaterialButton(
+                              onPressed: () {
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, USER_ORDER_TRACKS_SCREEN, (route) => false,arguments:orderDetails.id );
+                              },
+                              text: 'تأكيد الطلب',
+                            ),
+                          )
                         ],
                       );
                     }
@@ -142,17 +153,7 @@ class _OrderProductsCheckOutScreenState
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 20, right: 20, left: 20, top: 30),
-                child: DefaultMaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, USER_ORDER_TRACKS_SCREEN, (route) => false);
-                  },
-                  text: 'تأكيد الطلب',
-                ),
-              )
+
             ],
           ),
         ),
