@@ -7,6 +7,7 @@ import '../../../../constants/end_points.dart';
 import '../../../data_provider/remote/dio_helper.dart';
 
 class UserFavoriteGroupProductsRequest {
+
   Future userFavoriteGroupProductsRequest({
     required int page,
     required int groupId,
