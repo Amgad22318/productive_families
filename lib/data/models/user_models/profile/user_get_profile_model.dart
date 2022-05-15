@@ -1,60 +1,46 @@
+import 'dart:convert';
 
-import 'package:productive_families/data/models/shared_models/shared_classes/api_address.dart';
-import 'package:productive_families/data/models/shared_models/shared_classes/api_image.dart';
-
+import '../../shared_models/shared_classes/api_account.dart';
+UserGetProfileModel userGetProfileModelFromJson(String str) => UserGetProfileModel.fromJson(json.decode(str));
+String userGetProfileModelToJson(UserGetProfileModel data) => json.encode(data.toJson());
 class UserGetProfileModel {
+  UserGetProfileModel({
+      int? status, 
+      String? message,
+    ApiAccount? account,}){
+    _status = status;
+    _message = message;
+    _account = account;
+}
+
   UserGetProfileModel.fromJson(dynamic json) {
-    status = json['status'];
-    message = json['message'];
-    account = json['account'] =   Account.fromJson(json['account']);
+    _status = json['status'];
+    _message = json['message'];
+    _account = json['account'] != null ? ApiAccount.fromJson(json['account']) : null;
   }
-  int? status;
-  String? message;
-  late  Account account;
+  int? _status;
+  String? _message;
+  ApiAccount? _account;
+
+  set setAccount(ApiAccount value) {
+    _account = value;
+  }
+
+  int get status => _status??0;
+  String get message => _message??'';
+  ApiAccount get account => _account??ApiAccount();
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['status'] = _status;
+    map['message'] = _message;
+    if (_account != null) {
+      map['account'] = _account?.toJson();
+    }
+    return map;
+  }
 
 }
-
-
-class Account {
-
-  Account.fromJson(dynamic json) {
-    id = json['id'];
-    name = json['name'];
-    phone = json['phone'];
-    type = json['type'];
-    isVerified = json['is_verified'];
-    isActive = json['is_active'];
-    image = ApiImage.fromJson(json['image']);
-    address = ApiAddress.fromJson(json['address']);
-    providerAccount = json['provider_account'];
-    driverAccount = json['driver_account'];
-    userAccount = json['user_account'];
-    points = json['points']??0;
-    balance = json['balance']??0;
-    totalOrders = json['total_orders']??0;
-    deviceToken = json['device_token'];
-  }
-  int? id;
-  String? name;
-  String? phone;
-  String? type;
-  int? isVerified;
-  int? isActive;
-  late ApiImage image;
-  late ApiAddress address;
-  int? providerAccount;
-  int? driverAccount;
-  int? userAccount;
-  num? points;
-  num? balance;
-  int? totalOrders;
-  String? deviceToken;
-
-
-
-}
-
-
 
 
 

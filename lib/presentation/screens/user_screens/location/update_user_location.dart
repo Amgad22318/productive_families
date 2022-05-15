@@ -11,16 +11,16 @@ import 'package:productive_families/presentation/widgets/default_material_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
-import '../../../../business_logic/user/local/user_local_cubit.dart';
+import '../../../../business_logic/user/profile/user_profile_cubit.dart';
 import '../../../../constants/constant_methods.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/enums.dart';
 import '../../../widgets/default_map.dart';
 
 class UpdateUserLocation extends StatefulWidget {
-  final UserLocalCubit userLocalCubit;
+  final UserProfileCubit userProfileCubit;
 
-  const UpdateUserLocation({Key? key, required this.userLocalCubit})
+  const UpdateUserLocation({Key? key, required this.userProfileCubit})
       : super(key: key);
 
   @override
@@ -70,7 +70,7 @@ late UpdateUserLocationCubit _updateUserLocationCubit;
                     showToastMsg(
                         msg: state.message,
                         toastState: ToastStates.SUCCESS);
-                    widget.userLocalCubit
+                    widget.userProfileCubit
                         .getUserProfileData();
                     Navigator.pop(context);
                   } else if (state

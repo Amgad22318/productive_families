@@ -1,16 +1,15 @@
-
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:productive_families/constants/constants.dart';
-import 'package:productive_families/data/data_provider/local/cache_helper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 
 import 'enums.dart';
 
-Color getColor(Set<MaterialState> states,Color color) {
+Color getColor(Set<MaterialState> states, Color color) {
   const Set<MaterialState> interactiveStates = <MaterialState>{
     MaterialState.pressed,
   };
@@ -20,20 +19,18 @@ Color getColor(Set<MaterialState> states,Color color) {
   return color;
 }
 
-
-
-
-
 void printResponse(String text) {
   if (kDebugMode) {
     print('\x1B[33m$text\x1B[0m');
   }
 }
+
 void printError(String text) {
   if (kDebugMode) {
     print('\x1B[31m$text\x1B[0m');
   }
 }
+
 void printTest(String text) {
   if (kDebugMode) {
     print('\x1B[32m$text\x1B[0m');
@@ -54,11 +51,12 @@ void navigateToAndFinish(BuildContext context, Widget widget) {
     MaterialPageRoute(
       builder: (context) => widget,
     ),
-        (Route<dynamic> route) {
+    (Route<dynamic> route) {
       return false;
     },
   );
 }
+
 void navigatePushReplacement(BuildContext context, Widget widget) {
   Navigator.pushReplacement(
     context,
@@ -67,8 +65,6 @@ void navigatePushReplacement(BuildContext context, Widget widget) {
     ),
   );
 }
-
-
 
 void showToastMsg({required String msg, required ToastStates toastState}) {
   Fluttertoast.showToast(
@@ -80,8 +76,6 @@ void showToastMsg({required String msg, required ToastStates toastState}) {
       textColor: Colors.black,
       fontSize: 16.0);
 }
-
-
 
 Color chooseToastColor({required ToastStates state}) {
   Color color;
@@ -98,6 +92,7 @@ Color chooseToastColor({required ToastStates state}) {
   }
   return color;
 }
+
 Future<Position> determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;
@@ -128,20 +123,21 @@ Future<Position> determinePosition() async {
 
   if (permission == LocationPermission.deniedForever) {
     // Permissions are denied forever, handle appropriately.
-    printError('Location permissions are permanently denied, we cannot request permissions.');
+    printError(
+        'Location permissions are permanently denied, we cannot request permissions.');
     return Future.error(
         'Location permissions are permanently denied, we cannot request permissions.');
   }
-Position position =await Geolocator.getCurrentPosition(desiredAccuracy:  LocationAccuracy.best);
+  Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.best);
 // printTest(position.longitude.toString());
 // printTest(position.latitude.toString());
 // printTest(position .toString());
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
-  return position ;
+  return position;
 }
-
 
 Future<String> convertPositionToAddress({
   required double lat,
@@ -149,5 +145,23 @@ Future<String> convertPositionToAddress({
 }) async {
   List<Placemark> placeMarks = await placemarkFromCoordinates(lat, lon);
   Placemark place = placeMarks[0];
- return '${place.street} ${place.locality}';
+  return '${place.street} ${place.locality}';
+}
+
+Future<XFile?> pickImage(ImageSource source) async {
+  XFile? image = await ImagePicker()
+      .pickImage(source: source, maxHeight: 2048, maxWidth: 2048,);
+  if(image!=null){
+    return image;
+  }
+  else{
+    return null;
+  }
+
+}
+
+Future multipartConvertImage({  required XFile image,
+}) async{
+
+    return  MultipartFile.fromFileSync(image.path, filename: image.path.split('/').last);
 }

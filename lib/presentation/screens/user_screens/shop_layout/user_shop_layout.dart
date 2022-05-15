@@ -43,7 +43,6 @@ class _UserShopLayoutState extends State<UserShopLayout>
       providers: [
         BlocProvider(
           create: (context) => UserLocalCubit()
-            ..getUserProfileData()
             ..getUserTopRatedProducts(),
         ),
         BlocProvider(
@@ -58,7 +57,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
           children: [
             Expanded(
               child: TabBarView(
-                children: [
+                children: const [
                   UserHomeScreen(),
                   StoresScreen(),
                   FavoriteScreen(),

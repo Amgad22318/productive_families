@@ -60,6 +60,7 @@ dependencies:
   shared_preferences: ^2.0.13
   sizer: ^2.0.15
   flutter_html: ^3.0.0-alpha.3
+  image_picker: ^0.8.5+3
 
 
 dev_dependencies:

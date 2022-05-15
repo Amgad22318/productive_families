@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:productive_families/business_logic/user/local/user_local_cubit.dart';
 import 'package:productive_families/business_logic/user/start_order_process_and_order_location/user_start_order_process_and__order_location_cubit.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
@@ -78,6 +77,7 @@ import 'package:productive_families/presentation/screens/user_screens/sub_catego
 import 'package:productive_families/presentation/screens/user_screens/terms_and_conditions/terms_and_conditions.dart';
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
+import '../../business_logic/user/profile/user_profile_cubit.dart';
 import '../../constants/shared_preferences_keys.dart';
 import '../../data/models/user_models/orders/user_start_order_process_model.dart';
 import '../screens/user_screens/cart/cart_screen.dart';
@@ -221,10 +221,10 @@ class AppRouter {
           builder: (_) => DeliveryRepresentativeLocatorScreen(),
         );
       case endpoints.UPDATE_USER_LOCATION:
-        final UserLocalCubit cubit =
-        settings.arguments as UserLocalCubit;
+        final UserProfileCubit cubit =
+        settings.arguments as UserProfileCubit;
         return MaterialPageRoute(
-          builder: (_) => UpdateUserLocation(userLocalCubit: cubit),
+          builder: (_) => UpdateUserLocation(userProfileCubit: cubit),
         );
       case endpoints.BASKET_SCREEN:
         return MaterialPageRoute(
