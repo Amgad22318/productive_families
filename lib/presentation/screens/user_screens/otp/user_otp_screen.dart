@@ -16,9 +16,9 @@ import '../../../../constants/enums.dart';
 import '../../../widgets/default_text_button.dart';
 
 class UserOtpScreen extends StatefulWidget {
-  final String? phone;
+  final String phone;
 
-  const UserOtpScreen({Key? key, this.phone}) : super(key: key);
+  const UserOtpScreen({Key? key,required this.phone}) : super(key: key);
 
   @override
   _UserOtpScreenState createState() => _UserOtpScreenState();

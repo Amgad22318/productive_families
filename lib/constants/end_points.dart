@@ -44,6 +44,7 @@ const EP_USER_ADD_FAVORITE_GROUP = 'add/favorites/group';
 const EP_USER_ALL_FAVORITE_GROUPS = 'favorites/groups/all';
 const EP_USER_SEARCH_FAVORITE_GROUP = 'search/favorites';
 const EP_USER_RATE_PRODUCT = 'arate/product';
+const EP_USER_ADD_PRODUCT_TO_FAVORITE = 'add/favorites/group/product';
 ////// MO Api
 
 ////// DR Api
@@ -60,7 +61,7 @@ const USER_ABOUT_PRODUCT = '/about_product';
 const OTP_SCREEN = '/otp';
 const SHOP_LAYOUT = '/shop_layout';
 const USER_ALL_ORDERS_SCREEN = '/ORDERS_SCREEN';
-const SELECTED_FAVORITE_SCREEN = '/SELECTED_FAVORITE_SCREEN';
+const SELECTED_FAVORITE_GROUP_SCREEN = '/SELECTED_FAVORITE_GROUP_SCREEN';
 const CUSTOMER_SERVICES_CHAT_SCREEN = '/customer_services_chat_screen';
 const SELLER_CHAT_SCREEN = '/seller_chat_screen';
 const USER_START_ORDER_PROCESS_SCREEN = '/USER_START_ORDER_PROCESS_SCREEN';

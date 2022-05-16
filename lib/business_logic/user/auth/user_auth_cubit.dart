@@ -56,7 +56,7 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
         emit(UserLoginSuccessState());
       } else {
 
-        emit(UserLoginErrorState(userLoginModel!.message));
+        emit(UserLoginErrorState(userLoginModel!.message,userLoginModel!.status));
       }
     }).catchError((error) {
       printResponse('UserLogin' + error.toString());

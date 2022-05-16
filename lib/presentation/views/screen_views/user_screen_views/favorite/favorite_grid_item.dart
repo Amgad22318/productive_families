@@ -1,16 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/presentation/views/screen_views/user_screen_views/shared/category_item.dart';
+import 'package:productive_families/constants/weights.dart';
+import 'package:productive_families/presentation/router/arguments/user_arguments/user_selected_favorite_group_args.dart';
+import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../../../../data/models/user_models/favorites/user_all_favorite_groups_model.dart';
+import '../../../../widgets/default_text.dart';
 
 class MarketFavoriteItem extends StatelessWidget {
-  const MarketFavoriteItem({Key? key}) : super(key: key);
+  final Groups groupModel;
+
+  const MarketFavoriteItem({Key? key, required this.groupModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          Navigator.pushNamed(context, SELECTED_FAVORITE_SCREEN);
+          Navigator.pushNamed(context, SELECTED_FAVORITE_GROUP_SCREEN,
+              arguments: UserSelectedFavoriteGroupArgs(
+                  groupId: groupModel.id, title: groupModel.title));
         },
-        child: CategoryItem());
+        child: Column(
+          children: [
+            Container(
+              height: 25.h,
+              width: 40.w,
+              clipBehavior: Clip.antiAlias,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
+              child: DefaultCachedNetworkImage(
+                  imageUrl: groupModel.icon.path, fit: BoxFit.cover),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DefaultText(
+                text: groupModel.title,
+                fontSize: 16.sp,
+                fontWeight: FontWeights.bold,
+                maxLines: 1,
+              ),
+            )
+          ],
+        ));
   }
 }

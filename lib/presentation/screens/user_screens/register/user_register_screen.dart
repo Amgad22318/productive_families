@@ -11,6 +11,8 @@ import 'package:productive_families/presentation/widgets/default_icon_button.dar
 import 'package:productive_families/presentation/widgets/default_material_button.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
+import '../../../../constants/end_points.dart';
+
 class UserRegisterScreen extends StatefulWidget {
   const UserRegisterScreen({Key? key}) : super(key: key);
 
@@ -116,7 +118,8 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                         toastState: ToastStates.ERROR);
                                   }
                                   if (state is UserRegisterSuccessState) {
-                                    navigatePushReplacement(context, UserOtpScreen(phone: phoneController.text));
+                                    Navigator.pushNamed(context, OTP_SCREEN,arguments: phoneController.text);
+
                                   }
                                 },
                                 builder: (context, state) {

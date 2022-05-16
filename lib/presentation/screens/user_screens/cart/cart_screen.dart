@@ -10,6 +10,7 @@ import 'package:productive_families/presentation/widgets/default_outlined_button
 import 'package:productive_families/presentation/widgets/default_shop_appbar.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
+import '../../../styles/colors.dart';
 import '../../../views/screen_views/user_screen_views/cart/cart_item.dart';
 
 
@@ -78,7 +79,7 @@ class _CartScreenState extends State<CartScreen> {
                                 child: DefaultLoadingIndicator());
                           } else if (state is UserGetCartProductEmptyState) {
                             return const SliverFillRemaining(
-                                child: Icon(Icons.add_shopping_cart,size: 48,));
+                                child: Icon(Icons.add_shopping_cart,size: 48,color: darkBlue,));
                           }
                           else {
                             return const SliverFillRemaining(

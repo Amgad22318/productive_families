@@ -70,7 +70,6 @@ import 'package:productive_families/presentation/screens/user_screens/product_al
 import 'package:productive_families/presentation/screens/user_screens/quotations/quotations_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/register/user_register_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/search/user_product_search_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/selected_favorite/selected_favorite_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/shop_layout/user_shop_layout.dart';
 import 'package:productive_families/presentation/screens/user_screens/start/user_start_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/sub_category_product/sub_category_product_screen.dart';
@@ -83,10 +82,12 @@ import '../../data/models/user_models/orders/user_start_order_process_model.dart
 import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/location/order_location_follow_up_screen.dart';
 import '../screens/user_screens/orders/all_orders_screen.dart';
+import '../screens/user_screens/selected_favorite_group/selected_favorite_group_screen.dart';
 import '../screens/user_screens/start_order_process/start_order_process_screen.dart';
 import '../screens/user_screens/store_sub_category/store_sub_category_screen.dart';
 import 'arguments/user_arguments/store_sub_category_args.dart';
 import 'arguments/user_arguments/sub_category_product_args.dart';
+import 'arguments/user_arguments/user_selected_favorite_group_args.dart';
 
 class AppRouter {
   late Widget startWidget;
@@ -140,8 +141,9 @@ class AppRouter {
           builder: (_) => const DisplayRepresentativePriceItem(),
         );
       case endpoints.OTP_SCREEN:
+        final String phoneNum = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => UserOtpScreen(),
+          builder: (_) => UserOtpScreen(phone: phoneNum),
         );
       case endpoints.SHOP_LAYOUT:
         return MaterialPageRoute(
@@ -164,9 +166,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const UserAllOrdersScreen(),
         );
-      case endpoints.SELECTED_FAVORITE_SCREEN:
+      case endpoints.SELECTED_FAVORITE_GROUP_SCREEN:
+        final UserSelectedFavoriteGroupArgs args =
+            settings.arguments as UserSelectedFavoriteGroupArgs;
+
         return MaterialPageRoute(
-          builder: (_) => const SelectedFavoriteScreen(),
+          builder: (_) =>
+              SelectedFavoriteGroupScreen(userSelectedFavoriteGroupArgs: args),
         );
       case endpoints.STORE_SUB_CATEGORY_SCREEN:
         final StoreSubCategoryArgs args =
@@ -221,8 +227,7 @@ class AppRouter {
           builder: (_) => DeliveryRepresentativeLocatorScreen(),
         );
       case endpoints.UPDATE_USER_LOCATION:
-        final UserProfileCubit cubit =
-        settings.arguments as UserProfileCubit;
+        final UserProfileCubit cubit = settings.arguments as UserProfileCubit;
         return MaterialPageRoute(
           builder: (_) => UpdateUserLocation(userProfileCubit: cubit),
         );
@@ -235,7 +240,8 @@ class AppRouter {
             settings.arguments as UserStartOrderProcessAndOrderLocationCubit;
 
         return MaterialPageRoute(
-          builder: (_) => OrderLocationPickingScreen(userStartOrderProcessAndOrderLocationCubit: cubit),
+          builder: (_) => OrderLocationPickingScreen(
+              userStartOrderProcessAndOrderLocationCubit: cubit),
         );
       case endpoints.ORDER_LOCATION_FOLLOW_UP_SCREEN:
         return MaterialPageRoute(
@@ -245,7 +251,7 @@ class AppRouter {
         final int orderId = settings.arguments as int;
 
         return MaterialPageRoute(
-          builder: (_) =>  OrderProductsCheckOutScreen(orderId: orderId),
+          builder: (_) => OrderProductsCheckOutScreen(orderId: orderId),
         );
       case endpoints.USER_SHOW_ORDER_SCREEN:
         final int orderId = settings.arguments as int;
@@ -275,12 +281,13 @@ class AppRouter {
       case endpoints.ORDER_ADDRESS_CONFIRMATION_SCREEN:
         final OrderDetails orderDetails = settings.arguments as OrderDetails;
         return MaterialPageRoute(
-          builder: (_) =>  OrderAddressConfirmationScreen(orderDetails: orderDetails),
+          builder: (_) =>
+              OrderAddressConfirmationScreen(orderDetails: orderDetails),
         );
       case endpoints.USER_ORDER_TRACKS_SCREEN:
         final int orderId = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (_) =>  UserOrderTracksScreen(orderId: orderId),
+          builder: (_) => UserOrderTracksScreen(orderId: orderId),
         );
       case endpoints.FIRST_TIME_LOCATION_PICKER:
         return MaterialPageRoute(
