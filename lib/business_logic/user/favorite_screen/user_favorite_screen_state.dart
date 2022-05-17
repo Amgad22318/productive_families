@@ -8,7 +8,7 @@ class UserFavoriteScreenInitial extends UserFavoriteScreenState {}
 class UserGetAllFavoriteScreenGroupsLoadingState extends UserFavoriteScreenState {}
 
 class UserGetAllFavoriteScreenGroupsSuccessState extends UserFavoriteScreenState {
-  final List<Groups> groups;
+  final List<ApiUserFavoriteGroups> groups;
   UserGetAllFavoriteScreenGroupsSuccessState(this.groups);
 }
 class UserGetAllFavoriteScreenGroupsEmptyState extends UserFavoriteScreenState {}

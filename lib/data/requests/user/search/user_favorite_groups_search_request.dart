@@ -6,8 +6,8 @@ import '../../../../constants/constants.dart';
 import '../../../../constants/end_points.dart';
 import '../../../data_provider/remote/dio_helper.dart';
 
-class UserSearchFavoriteGroupRequest {
-  Future userSearchFavoriteGroupRequest({
+class UserFavoriteGroupSearchRequest {
+  Future userFavoriteGroupSearchRequest({
     required String keyWord,
     required int page,
   }) async {
@@ -19,7 +19,7 @@ class UserSearchFavoriteGroupRequest {
       printResponse(response.data.toString());
       return UserFavoriteGroupsSearchModel.fromJson(response.data);
     } catch (error) {
-      printError('userSearchFavoriteGroupRequest '+error.toString());
+      printError('userFavoriteGroupSearchRequest '+error.toString());
       return null;
     }
   }

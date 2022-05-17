@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/constants/weights.dart';
+import 'package:productive_families/data/models/shared_models/shared_classes/api_user__favorite_group.dart';
 import 'package:productive_families/presentation/router/arguments/user_arguments/user_selected_favorite_group_args.dart';
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:sizer/sizer.dart';
@@ -9,7 +10,7 @@ import '../../../../../data/models/user_models/favorites/user_all_favorite_group
 import '../../../../widgets/default_text.dart';
 
 class MarketFavoriteItem extends StatelessWidget {
-  final Groups groupModel;
+  final ApiUserFavoriteGroups groupModel;
 
   const MarketFavoriteItem({Key? key, required this.groupModel})
       : super(key: key);
@@ -31,7 +32,7 @@ class MarketFavoriteItem extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(16)),
               child: DefaultCachedNetworkImage(
-                  imageUrl: groupModel.icon.path, fit: BoxFit.cover),
+                  imageUrl: groupModel.image.path, fit: BoxFit.cover),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

@@ -56,7 +56,7 @@ class ProductSearchGridItem extends StatelessWidget {
                         context: context,
                         builder: (context) => Padding(
                           padding: MediaQuery.of(context).viewInsets,
-                          child: FavBottomSheet(),
+                          child: FavBottomSheet(productId:productModel.id!),
                         ),
                         backgroundColor: Colors.transparent,
                         isScrollControlled: true,

@@ -180,7 +180,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                                         Theme.of(context).textTheme.button,
                                     onPressed: () {
                                       cubit?.userRegisterResendConfirmationCode(
-                                          phone: widget.phone!);
+                                          phone: widget.phone);
                                     },
                                   ),
                                 ),
@@ -199,7 +199,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                                             toastState: ToastStates.WARNING);
                                       } else if (value.length == 4) {
                                         cubit?.userRegisterConfirmPhone(
-                                            phone: widget.phone!,
+                                            phone: widget.phone,
                                             code: codeController.text);
                                       }
                                     },

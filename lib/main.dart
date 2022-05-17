@@ -7,6 +7,7 @@ import 'package:productive_families/presentation/router/app_router.dart';
 import 'package:productive_families/presentation/styles/themes.dart';
 import 'package:sizer/sizer.dart';
 
+import 'business_logic/user/favorite_state/user_favorite_state_cubit.dart';
 import 'data/data_provider/local/cache_helper.dart';
 import 'data/data_provider/remote/dio_helper.dart';
 
@@ -38,7 +39,10 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => GlobalCubit(),
-          )
+          ),
+          BlocProvider(
+            create: (context) => UserFavoriteStateCubit(),
+          ),
         ],
         child: Sizer(
           builder: (context, orientation, deviceType) {

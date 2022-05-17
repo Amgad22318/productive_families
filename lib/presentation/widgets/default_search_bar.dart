@@ -37,7 +37,7 @@ final String? Function(String?)? validator;
       this.initialValue,
       this.hintText = 'بحث',
       this.backgroundColor = Colors.transparent,
-      this.height = 50,
+      this.height ,
       this.radius = 30.0,
       this.maxLines,
       this.enabled = true,
