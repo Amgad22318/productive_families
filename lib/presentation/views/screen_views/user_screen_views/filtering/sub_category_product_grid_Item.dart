@@ -46,7 +46,7 @@ class SubCategoryProductGridItem extends StatelessWidget {
                           context: context,
                           builder: (context) => Padding(
                               padding: MediaQuery.of(context).viewInsets,
-                            child: const FavBottomSheet(),
+                            child:  FavBottomSheet(productId: productModel.id),
                           ),
                           backgroundColor: Colors.transparent,
                           isScrollControlled: true,

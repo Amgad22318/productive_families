@@ -103,6 +103,9 @@ class UserLoginScreen extends StatelessWidget {
                                         msg: state.message ??
                                             'برجاء المحاولة مرة اخرى',
                                         toastState: ToastStates.ERROR);
+                                    if(state.status==413){
+                                      Navigator.pushNamed(context, OTP_SCREEN,arguments: phoneController.text);
+                                    }
                                   }
                                   if (state is UserLoginSuccessState) {
                                     Navigator.pushNamedAndRemoveUntil(

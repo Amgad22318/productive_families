@@ -85,7 +85,8 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
                                       crossAxisCount: 2,
                                       childAspectRatio: 0.85),
                             );
-                          } else if (state
+                          }
+                          else if (state
                               is UserGetStoreSubCategoryLoadingState) {
                             return const SliverFillRemaining(
                                 child: DefaultLoadingIndicator());

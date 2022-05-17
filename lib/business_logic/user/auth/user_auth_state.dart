@@ -11,8 +11,9 @@ class UserLoginSuccessState extends UserAuthStates {}
 
 class UserLoginErrorState extends UserAuthStates {
   final String? message;
+  final int? status;
 
-  UserLoginErrorState(this.message);
+  UserLoginErrorState(this.message, this.status);
 }
 
 

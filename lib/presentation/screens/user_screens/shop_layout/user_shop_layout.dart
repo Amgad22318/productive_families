@@ -9,6 +9,7 @@ import 'package:productive_families/presentation/screens/user_screens/user_profi
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/styles/custom_icons.dart';
 
+import '../../../../business_logic/user/favorite_state/user_favorite_state_cubit.dart';
 import '../../../../business_logic/user/stores/user_all_and_single_category_stores_cubit.dart';
 
 class UserShopLayout extends StatefulWidget {
