@@ -35,8 +35,11 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
       userLoginModel = value;
       if (userLoginModel!.status.toString() == '200') {
         accessToken='Bearer  '+userLoginModel!.accessToken!;
+        userId=userLoginModel!.user!.id;
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY, value:accessToken);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY, value:userId);
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY, value: userLoginModel?.user?.type);
         CacheHelper.saveDataToSP(

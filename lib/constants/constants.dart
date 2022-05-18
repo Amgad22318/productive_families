@@ -15,6 +15,7 @@ CameraPosition AppInitialCameraPosition = const CameraPosition(
 ///////////////////////////////// sharedPreferences constant /////////////////////////////////////////////
 
 String? accessToken;
+num? userId;
 
 Position? userPosition;
 String? accountType;

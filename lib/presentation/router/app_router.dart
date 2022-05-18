@@ -97,6 +97,8 @@ class AppRouter {
         key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY);
     accountType = CacheHelper.getDataFromSP(
         key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY);
+    userId = CacheHelper.getDataFromSP(
+        key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY);
     bool locationPicked = CacheHelper.getDataFromSP(
             key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED) ??
         false;
@@ -146,8 +148,10 @@ class AppRouter {
           builder: (_) => UserOtpScreen(phone: phoneNum),
         );
       case endpoints.SHOP_LAYOUT:
+        final int index = settings.arguments as int;
+
         return MaterialPageRoute(
-          builder: (_) => const UserShopLayout(),
+          builder: (_) =>  UserShopLayout(index: index),
         );
       case endpoints.TERMS_AND_CONDITIONS:
         return MaterialPageRoute(

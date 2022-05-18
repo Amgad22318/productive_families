@@ -58,7 +58,7 @@ class Products {
       String? description,
     num? price,
       ApiImage? image,
-      bool? favorite,
+      int? favorite,
     num? rate,
       int? rateTimes,}){
     _id = id;
@@ -86,7 +86,7 @@ class Products {
   String? _description;
   num? _price;
   ApiImage? _image;
-  bool? _favorite;
+  int? _favorite;
   num? _rate;
   int? _rateTimes;
 
@@ -95,7 +95,7 @@ class Products {
   String get description => _description??"";
   num get price => _price??0;
   ApiImage get image => _image??ApiImage();
-  bool get favorite => _favorite??false;
+  int get favorite => _favorite??0;
   num get rate => _rate??0;
   int get rateTimes => _rateTimes??0;
 

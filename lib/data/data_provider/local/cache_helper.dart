@@ -21,10 +21,14 @@ class CacheHelper {
     } else if (value is String) {
 
       return await sharedPreferences.setString(key.name, value);
-    } else if (value is num) {
+    } else if (value is double) {
 
       return await sharedPreferences.setDouble(key.name, value.toDouble());
-    } else {
+    }else if (value is int) {
+
+      return await sharedPreferences.setInt(key.name, value);
+    }
+    else {
       value??=0;
        printTest('saveDataToSP ${key.name} '+value.toString());
        return await sharedPreferences.setDouble(key.name, value.toDouble());

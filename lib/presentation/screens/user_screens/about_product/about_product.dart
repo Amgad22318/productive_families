@@ -79,17 +79,13 @@ class _AboutProductState extends State<AboutProduct> {
             Image.asset(
               'assets/image/appbar_half_circle.png',
             ),
-            BlocConsumer<UserProductDetailsCubit, UserProductDetailsStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
-              builder: (context, state) {
-                if (state is UserGetProductDetailsSuccessState) {
+            BlocBuilder<UserProductDetailsCubit, UserProductDetailsStates>(
+              builder: (context, builderState) {
+                if (builderState is UserGetProductDetailsSuccessState) {
                   UserProductDetailsCubit userProductDetailsCubit =
                       UserProductDetailsCubit.get(context);
                   UserShowProductModel userShowProductModel =
                       userProductDetailsCubit.userShowProductModel!;
-
                   return Expanded(
                     child: SingleChildScrollView(
                       child: Column(
@@ -129,7 +125,7 @@ class _AboutProductState extends State<AboutProduct> {
                                                 index;
                                           });
                                         },
-                                        autoPlay: true,
+                                        autoPlay: false,
                                         height: 180,
                                         initialPage: 0,
                                         autoPlayInterval:
@@ -147,20 +143,17 @@ class _AboutProductState extends State<AboutProduct> {
                                     listener: (context, state) {
                                       if (state
                                           is UserFavoriteGroupProductAddOrDeleteSuccessState) {
-                                        if (state.productId==userShowProductModel.product!.id) {
-                                          if (userShowProductModel
-                                                  .product!.favorite ==
-                                              1) {
-                                            setState(() {
-                                              userShowProductModel
-                                                  .product!.favorite = 0;
-                                            });
-                                          } else if (userShowProductModel
-                                                  .product!.favorite ==
-                                              0) {
+                                        if (state.productId ==
+                                            userShowProductModel.product!.id) {
+                                          if (state.favoriteGroupCount > 0) {
                                             setState(() {
                                               userShowProductModel
                                                   .product!.favorite = 1;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              userShowProductModel
+                                                  .product!.favorite = 0;
                                             });
                                           }
                                         }
@@ -410,7 +403,7 @@ class _AboutProductState extends State<AboutProduct> {
                       ),
                     ),
                   );
-                } else if (state is UserGetProductDetailsLoadingState) {
+                } else if (builderState is UserGetProductDetailsLoadingState) {
                   return const Expanded(child: DefaultLoadingIndicator());
                 } else {
                   return const Expanded(child: DefaultErrorWidget());

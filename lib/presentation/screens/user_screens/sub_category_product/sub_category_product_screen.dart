@@ -15,6 +15,7 @@ import 'package:productive_families/presentation/widgets/favorite_button_with_nu
 import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/user_models/products/user_sub_category_product_model.dart';
+import '../../../styles/custom_icons.dart';
 
 class SubCategoryProductScreen extends StatefulWidget {
   final SubCategoryProductArgs subCategoryProductArgs;
@@ -29,13 +30,17 @@ class SubCategoryProductScreen extends StatefulWidget {
       _SubCategoryProductScreenState();
 }
 
-class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
+class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
+    with SingleTickerProviderStateMixin {
   late UserSubCategoryProductCubit userSubCategoryProductCubit;
   ScrollController? _scrollController;
   late bool isFabVisible;
+  late final TabController controller;
 
   @override
   void initState() {
+    controller = TabController(length: 4, vsync: this);
+    controller.index = 1;
     isFabVisible = false;
     _scrollController = ScrollController();
     super.initState();
@@ -56,15 +61,17 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
             subCategoryId: widget.subCategoryProductArgs.subCategoryId),
       child: Builder(builder: (context) {
         userSubCategoryProductCubit = UserSubCategoryProductCubit.get(context);
-        return Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        return Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
           floatingActionButton: isFabVisible
-              ? FloatingActionButton(child: const Icon(Icons.arrow_upward),
+              ? FloatingActionButton(
+                  child: const Icon(Icons.arrow_upward),
                   onPressed: () {
                     _scrollController?.animateTo(0,
                         duration: const Duration(seconds: 1),
                         curve: Curves.fastOutSlowIn);
                     setState(() {
-                      isFabVisible=false;
+                      isFabVisible = false;
                     });
                   },
                 )
@@ -99,14 +106,14 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
                     if (notification.direction == ScrollDirection.reverse) {
                       if (!isFabVisible) {
                         setState(() {
-                          isFabVisible=true;
+                          isFabVisible = true;
                         });
                       }
-                    } else if(notification.direction == ScrollDirection.forward) {
+                    } else if (notification.direction ==
+                        ScrollDirection.forward) {
                       if (isFabVisible) {
                         setState(() {
-                          isFabVisible=false;
-                        
+                          isFabVisible = false;
                         });
                       }
                     }
@@ -186,11 +193,11 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
                               childCount: productList.length,
                             ),
                             gridDelegate:
-                                 SliverGridDelegateWithFixedCrossAxisCount(
+                                SliverGridDelegateWithFixedCrossAxisCount(
                                     mainAxisSpacing: 8,
                                     crossAxisSpacing: 8,
                                     crossAxisCount: 2,
-                                    childAspectRatio: 45.w/29.h),
+                                    childAspectRatio: 45.w / 29.h),
                           );
                         } else if (state
                             is UserGetSubCategoryProductLoadingState) {
@@ -210,6 +217,41 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen> {
                 ),
               ),
             ],
+          ),
+          bottomNavigationBar: Material(
+            color: darkBlue,
+            child: TabBar(
+              controller: controller,
+              onTap: (index) {
+                if (index == 0) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 0);
+                } else if (index == 1) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 1);
+                } else if (index == 2) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 2);
+                } else if (index == 3) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 3);
+                }
+              },
+              tabs: const [
+                Tab(icon: Icon(CustomIcons.home, size: 18)),
+                Tab(icon: Icon(CustomIcons.shop, size: 18)),
+                Tab(
+                    icon: Icon(
+                  CustomIcons.heart,
+                  size: 18,
+                )),
+                Tab(icon: Icon(Icons.person)),
+              ],
+            ),
           ),
         );
       }),
