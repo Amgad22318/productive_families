@@ -295,7 +295,7 @@ class AppRouter {
         );
       case endpoints.FIRST_TIME_LOCATION_PICKER:
         return MaterialPageRoute(
-          builder: (_) => FirstTimeLocationPicker(),
+          builder: (_) => const FirstTimeLocationPicker(),
         );
       case endpoints.DELIVERY_REPRESENTATIVE_START_SCREEN:
         return MaterialPageRoute(

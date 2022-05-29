@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/constants.dart';
-import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/data/models/user_models/auth/user_login_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_logout_model.dart';
@@ -34,32 +33,38 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
         .then((value) {
       userLoginModel = value;
       if (userLoginModel!.status.toString() == '200') {
-        accessToken='Bearer  '+userLoginModel!.accessToken!;
-        userId=userLoginModel!.user!.id;
+        accessToken = 'Bearer  ' + userLoginModel!.accessToken!;
+        userId = userLoginModel!.user!.id;
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY, value:accessToken);
+            key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY, value: accessToken);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY, value:userId);
+            key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY, value: userId);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY, value: userLoginModel?.user?.type);
+            key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY,
+            value: userLoginModel?.user?.type);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_NAME_KEY, value: userLoginModel?.user?.name);
+            key: SharedPreferencesKeys.SP_ACCOUNT_NAME_KEY,
+            value: userLoginModel?.user?.name);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_PHONE_KEY, value: userLoginModel?.user?.phone);
+            key: SharedPreferencesKeys.SP_ACCOUNT_PHONE_KEY,
+            value: userLoginModel?.user?.phone);
         CacheHelper.saveDataToSP(
-            key:SharedPreferencesKeys.SP_ACCOUNT_BALANCE_KEY, value: userLoginModel?.user?.balance);
+            key: SharedPreferencesKeys.SP_ACCOUNT_BALANCE_KEY,
+            value: userLoginModel?.user?.balance);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_POINTS_KEY, value: userLoginModel?.user?.points);
+            key: SharedPreferencesKeys.SP_ACCOUNT_POINTS_KEY,
+            value: userLoginModel?.user?.points);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY, value: userLoginModel?.user?.image.path);
+            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY,
+            value: userLoginModel?.user?.image.path);
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_TOTAL_ORDERS_KEY,
             value: userLoginModel?.user?.totalOrders);
 
         emit(UserLoginSuccessState());
       } else {
-
-        emit(UserLoginErrorState(userLoginModel!.message,userLoginModel!.status));
+        emit(UserLoginErrorState(
+            userLoginModel!.message, userLoginModel!.status));
       }
     }).catchError((error) {
       printResponse('UserLogin' + error.toString());
@@ -92,7 +97,8 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
     });
   }
 
-  UserRegisterConfirmPhoneModel? userRegisterConfirmPhoneModel;
+  UserRegisterConfirmPhoneModel userRegisterConfirmPhoneModel =
+      UserRegisterConfirmPhoneModel();
 
   void userRegisterConfirmPhone({
     required String phone,
@@ -103,13 +109,40 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
             phone: phone, code: code)
         .then((value) {
       userRegisterConfirmPhoneModel = value;
-      if (userRegisterConfirmPhoneModel!.status.toString() == '200') {
+      if (value.status == 200) {
+        accessToken = 'Bearer  ' + userRegisterConfirmPhoneModel.accessToken;
+        userId = userRegisterConfirmPhoneModel.user.id;
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY, value: accessToken);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY, value: userId);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY,
+            value: userRegisterConfirmPhoneModel.user.type);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_NAME_KEY,
+            value: userRegisterConfirmPhoneModel.user.name);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_PHONE_KEY,
+            value: userRegisterConfirmPhoneModel.user.phone);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_BALANCE_KEY,
+            value: userRegisterConfirmPhoneModel.user.balance);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_POINTS_KEY,
+            value: userRegisterConfirmPhoneModel.user.points);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_IMAGE_KEY,
+            value: userRegisterConfirmPhoneModel.user.image.path);
+        CacheHelper.saveDataToSP(
+            key: SharedPreferencesKeys.SP_ACCOUNT_TOTAL_ORDERS_KEY,
+            value: userRegisterConfirmPhoneModel.user.totalOrders);
+
         emit(UserRegisterConfirmPhoneSuccessState(
-            userRegisterConfirmPhoneModel!.message
-        ));
+            userRegisterConfirmPhoneModel.message));
       } else {
         emit(UserRegisterConfirmPhoneErrorState(
-            userRegisterConfirmPhoneModel!.message));
+            userRegisterConfirmPhoneModel.message));
       }
     }).catchError((error) {
       printResponse('userRegisterConfirmPhone' + error.toString());
@@ -123,7 +156,8 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
     required String phone,
   }) {
     emit(UserRegisterResendConfirmationCodeLoadingState());
-    UserRegisterResendConfirmationCode.userRegisterResendConfirmationCode(phone: phone)
+    UserRegisterResendConfirmationCode.userRegisterResendConfirmationCode(
+            phone: phone)
         .then((value) {
       userRegisterResendConfirmationCodeModel = value;
       if (userRegisterResendConfirmationCodeModel!.status.toString() == '200') {
@@ -137,25 +171,20 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
     });
   }
 
+  UserLogoutModel? userLogoutModel;
 
-UserLogoutModel? userLogoutModel;
-  void userLogout(
-  ) {
+  void userLogout() {
     emit(UserLogoutLoadingState());
-    UserLogOutRequest.userLogOutRequest()
-        .then((value) {
+    UserLogOutRequest.userLogOutRequest().then((value) {
       userLogoutModel = value;
-      if (userLogoutModel!=null&&userLogoutModel?.status.toString() == '200') {
+      if (userLogoutModel != null &&
+          userLogoutModel?.status.toString() == '200') {
         emit(UserLogoutSuccessState());
       } else {
-
         emit(UserLogoutErrorState());
       }
     }).catchError((error) {
       printResponse('userLogout ' + error.toString());
     });
   }
-
-
-
 }

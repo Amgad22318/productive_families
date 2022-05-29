@@ -135,7 +135,8 @@ class _UserProductSearchScreenState extends State<UserProductSearchScreen> {
                                           .userProductSearchModel!
                                           .products[index])),
                             );
-                          } else if (state is UserProductSearchLoadingState) {
+                          }
+                          else if (state is UserProductSearchLoadingState) {
                             return const DefaultLoadingIndicator();
                           } else if (state is UserProductSearchEmptyState) {
                             return Center(
