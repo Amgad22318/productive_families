@@ -135,8 +135,9 @@ class AppRouter {
           builder: (_) => const UserRegisterScreen(),
         );
       case endpoints.USER_PRODUCT_ALL_REVIEWS_SCREEN:
+        final int productId = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (_) => const UserProductAllReviewsScreen(),
+          builder: (_) => UserProductAllReviewsScreen(productId: productId),
         );
       case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
         return MaterialPageRoute(
@@ -151,7 +152,7 @@ class AppRouter {
         final int index = settings.arguments as int;
 
         return MaterialPageRoute(
-          builder: (_) =>  UserShopLayout(index: index),
+          builder: (_) => UserShopLayout(index: index),
         );
       case endpoints.TERMS_AND_CONDITIONS:
         return MaterialPageRoute(

@@ -336,7 +336,7 @@ class _AboutProductState extends State<AboutProduct> {
                                         .product!.rates.length,
                                     itemBuilder: (context, index) =>
                                         AboutProductReviewItem(
-                                            rateModel: userShowProductModel
+                                            reviewModel: userShowProductModel
                                                 .product!.rates[index])),
                                 if (userShowProductModel
                                     .product!.rates.isNotEmpty)
@@ -346,7 +346,9 @@ class _AboutProductState extends State<AboutProduct> {
                                     child: DefaultMaterialButton(
                                       onPressed: () {
                                         Navigator.pushNamed(context,
-                                            USER_PRODUCT_ALL_REVIEWS_SCREEN);
+                                            USER_PRODUCT_ALL_REVIEWS_SCREEN,
+                                            arguments: userShowProductModel
+                                                .product?.id);
                                       },
                                       height: 50,
                                       text: 'كل التقييمات',

@@ -16,11 +16,6 @@ class UserLoginErrorState extends UserAuthStates {
   UserLoginErrorState(this.message, this.status);
 }
 
-
-
-
-
-
 class UserRegisterLoadingState extends UserAuthStates {}
 
 class UserRegisterSuccessState extends UserAuthStates {}
@@ -31,15 +26,12 @@ class UserRegisterErrorState extends UserAuthStates {
   UserRegisterErrorState(this.message);
 }
 
-
-
 class UserRegisterConfirmPhoneLoadingState extends UserAuthStates {}
 
 class UserRegisterConfirmPhoneSuccessState extends UserAuthStates {
   final String? message;
 
   UserRegisterConfirmPhoneSuccessState(this.message);
-
 }
 
 class UserRegisterConfirmPhoneErrorState extends UserAuthStates {
@@ -47,7 +39,6 @@ class UserRegisterConfirmPhoneErrorState extends UserAuthStates {
 
   UserRegisterConfirmPhoneErrorState(this.message);
 }
-
 
 class UserRegisterResendConfirmationCodeLoadingState extends UserAuthStates {}
 
@@ -59,14 +50,10 @@ class UserRegisterResendConfirmationCodeErrorState extends UserAuthStates {
   UserRegisterResendConfirmationCodeErrorState(this.message);
 }
 
-
-
 class UserLogoutLoadingState extends UserAuthStates {}
 
 class UserLogoutSuccessState extends UserAuthStates {}
 
 class UserLogoutErrorState extends UserAuthStates {
-
   UserLogoutErrorState();
 }
-

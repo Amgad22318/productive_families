@@ -45,6 +45,7 @@ const EP_USER_ALL_FAVORITE_GROUPS = 'favorites/groups/all';
 const EP_USER_SEARCH_FAVORITE_GROUP = 'search/favorites';
 const EP_USER_RATE_PRODUCT = 'arate/product';
 const EP_USER_ADD_PRODUCT_TO_FAVORITE = 'add/favorites/group/product';
+const EP_USER_PRODUCT_RATES = 'product/rates';
 ////// MO Api
 
 ////// DR Api
