@@ -8,16 +8,16 @@ import '../../../constants/constant_methods.dart';
 
 part 'rate_product_state.dart';
 
-class RateProductCubit extends Cubit<RateProductState> {
-  RateProductCubit() : super(RateProductInitial());
+class UserRateProductCubit extends Cubit<UserRateProductState> {
+  UserRateProductCubit() : super(RateProductInitial());
 
-  static RateProductCubit get(context) =>
-      BlocProvider.of<RateProductCubit>(context);
+  static UserRateProductCubit get(context) =>
+      BlocProvider.of<UserRateProductCubit>(context);
 
   UserRateProductModel userRateProductModel = UserRateProductModel();
 
   void rateProduct({
-    required String comment,
+    required String? comment,
     required int productId,
     required int rate,
     required XFile? image,

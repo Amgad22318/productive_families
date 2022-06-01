@@ -39,7 +39,8 @@ class _UserAllOrdersScreenState extends State<UserAllOrdersScreen> {
               IconButton(
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, SHOP_LAYOUT, (route) => false);
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 0);
                 },
                 padding: EdgeInsetsDirectional.zero,
                 icon: SvgPicture.asset(
@@ -61,11 +62,13 @@ class _UserAllOrdersScreenState extends State<UserAllOrdersScreen> {
                   child: BlocConsumer<UserAllOrdersCubit, UserAllOrdersState>(
                 listener: (context, state) {
                   if (state is UserCancelOrderSuccessState) {
-                    userAllOrdersCubit.userAllOrdersModel.orders.removeAt(state.itemIndex);
+                    userAllOrdersCubit.userAllOrdersModel.orders
+                        .removeAt(state.itemIndex);
                   }
                 },
                 builder: (context, state) {
-                  if (state is UserGetAllOrdersSuccessState||state is UserCancelOrderSuccessState) {
+                  if (state is UserGetAllOrdersSuccessState ||
+                      state is UserCancelOrderSuccessState) {
                     userAllOrdersCubit = UserAllOrdersCubit.get(context);
                     return ListView.builder(
                       itemCount:
@@ -76,17 +79,15 @@ class _UserAllOrdersScreenState extends State<UserAllOrdersScreen> {
                           userAllOrdersCubit: userAllOrdersCubit,
                           itemIndex: index),
                     );
-                  }
-                  else if (state is UserGetAllOrdersLoadingState||state is UserCancelOrderLoadingState) {
+                  } else if (state is UserGetAllOrdersLoadingState ||
+                      state is UserCancelOrderLoadingState) {
                     return const DefaultLoadingIndicator();
-                  }
-                  else if (state is UserGetAllOrdersEmptyState) {
+                  } else if (state is UserGetAllOrdersEmptyState) {
                     return Icon(
                       Icons.playlist_add,
                       size: 48.sp,
                     );
-                  }
-                  else {
+                  } else {
                     return const DefaultErrorWidget();
                   }
                 },

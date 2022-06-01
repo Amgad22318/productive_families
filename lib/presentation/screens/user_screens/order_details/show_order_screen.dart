@@ -10,6 +10,7 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/dotted_line_seperator.dart';
 
+import '../../../../business_logic/user/rate_product/rate_product_cubit.dart';
 import '../../../../business_logic/user/show_order/user_show_order_cubit.dart';
 import '../../../../constants/enums.dart';
 import '../../../../data/models/user_models/orders/user_show_order_model.dart';
@@ -32,9 +33,13 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          UserShowOrderCubit()..showOrder(orderId: widget.orderId),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              UserShowOrderCubit()..showOrder(orderId: widget.orderId),
+        ),
+      ],
       child: Scaffold(
         appBar: DefaultShopAppbar(
           height: 80,
@@ -64,7 +69,8 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                 builder: (context, state) {
                   if (state is UserShowOrderSuccessState) {
                     userShowOrderCubit = UserShowOrderCubit.get(context);
-                    OrderDetails orderDetails=  userShowOrderCubit.userShowOrderModel.orderDetails;
+                    OrderDetails orderDetails =
+                        userShowOrderCubit.userShowOrderModel.orderDetails;
                     return Column(
                       children: [
                         Expanded(
@@ -85,21 +91,34 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                               textStyle: Theme.of(context).textTheme.bodyText1,
                               color: const Color(0xFF9FBBEB),
                             ),
-                             PaymentSummaryInnerItem(
-                                text: 'تكلفة الدفع:', price:orderDetails.orderPrice==0?'0': '+ ${orderDetails.orderPrice}'),
-                             PaymentSummaryInnerItem(
-                                text: 'الضريبه المضافه:', price:orderDetails.vat==0?'0': '+ ${orderDetails.vat}'),
-                             PaymentSummaryInnerItem(
-                                text: 'رسوم الشحن:', price:orderDetails.driverCost==0?'0': '+ ${orderDetails.driverCost}'),
-                             PaymentSummaryInnerItem(
-                                text: 'كود الخصم:', price:orderDetails.voucherDiscount==0?'0':  '- ${orderDetails.voucherDiscount}'),
+                            PaymentSummaryInnerItem(
+                                text: 'تكلفة الدفع:',
+                                price: orderDetails.orderPrice == 0
+                                    ? '0'
+                                    : '+ ${orderDetails.orderPrice}'),
+                            PaymentSummaryInnerItem(
+                                text: 'الضريبه المضافه:',
+                                price: orderDetails.vat == 0
+                                    ? '0'
+                                    : '+ ${orderDetails.vat}'),
+                            PaymentSummaryInnerItem(
+                                text: 'رسوم الشحن:',
+                                price: orderDetails.driverCost == 0
+                                    ? '0'
+                                    : '+ ${orderDetails.driverCost}'),
+                            PaymentSummaryInnerItem(
+                                text: 'كود الخصم:',
+                                price: orderDetails.voucherDiscount == 0
+                                    ? '0'
+                                    : '- ${orderDetails.voucherDiscount}'),
                             const Padding(
                               padding: EdgeInsetsDirectional.only(
                                   end: 8.0, start: 8.0),
                               child: DottedLineSeparator(),
                             ),
-                             PaymentSummaryInnerItem(
-                                text: 'السعر الكلى:', price: orderDetails.netPrice.toString()),
+                            PaymentSummaryInnerItem(
+                                text: 'السعر الكلى:',
+                                price: orderDetails.netPrice.toString()),
                           ],
                         ),
                         Padding(
@@ -107,15 +126,17 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                               bottom: 15, right: 20, left: 20, top: 20),
                           child: DefaultMaterialButton(
                             onPressed: () {
-                              if(orderDetails.status=='processing'||
-                                  orderDetails.status=='acceptedByDriver'||
-                                  orderDetails.status=='onTheWay'||
-                                  orderDetails.status=='delivered'){
-                                Navigator.pushNamed(context, USER_ORDER_TRACKS_SCREEN,arguments:orderDetails.id );
-
-                              }
-                              else{
-                                showToastMsg(msg: 'لا يمكن تتبع الطلب في الوقت الحالي', toastState: ToastStates.WARNING);
+                              if (orderDetails.status == 'processing' ||
+                                  orderDetails.status == 'acceptedByDriver' ||
+                                  orderDetails.status == 'onTheWay' ||
+                                  orderDetails.status == 'delivered') {
+                                Navigator.pushNamed(
+                                    context, USER_ORDER_TRACKS_SCREEN,
+                                    arguments: orderDetails.id);
+                              } else {
+                                showToastMsg(
+                                    msg: 'لا يمكن تتبع الطلب في الوقت الحالي',
+                                    toastState: ToastStates.WARNING);
                               }
                             },
                             text: 'تتبع الطلب',
@@ -131,7 +152,6 @@ class _UserShowOrderScreenState extends State<UserShowOrderScreen> {
                 },
               ),
             ),
-
           ],
         ),
       ),

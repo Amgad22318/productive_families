@@ -1,19 +1,19 @@
 part of 'rate_product_cubit.dart';
 
 @immutable
-abstract class RateProductState {}
+abstract class UserRateProductState {}
 
-class RateProductInitial extends RateProductState {}
+class RateProductInitial extends UserRateProductState {}
 
-class UserRateProductLoadingState extends RateProductState {}
+class UserRateProductLoadingState extends UserRateProductState {}
 
-class UserRateProductSuccessState extends RateProductState {
+class UserRateProductSuccessState extends UserRateProductState {
   final String msg;
 
   UserRateProductSuccessState({required this.msg});
 }
 
-class UserRateProductErrorState extends RateProductState {
+class UserRateProductErrorState extends UserRateProductState {
   final String msg;
 
   UserRateProductErrorState({required this.msg});

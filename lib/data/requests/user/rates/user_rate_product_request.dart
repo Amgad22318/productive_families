@@ -9,23 +9,27 @@ import '../../../data_provider/remote/dio_helper.dart';
 
 class UserRateProductRequest {
   Future userRateProductRequest({
-    required String comment,
+    required String? comment,
     required int productId,
     required int rate,
     required XFile? image,
-
   }) async {
     try {
-      Response response = await DioHelper.postData(url: EP_USER_RATE_PRODUCT,data: {
-        'comment': comment,
-        'product_id': productId,
-        'rate': rate,
-        'image': image==null?null:await multipartConvertImage(image: image),
-      },token:accessToken );
+      Response response = await DioHelper.postData(
+          url: EP_USER_RATE_PRODUCT,
+          data: {
+            if (comment != null) 'comment': comment,
+            'product_id': productId,
+            'rate': rate,
+            if (image != null)
+              'image': await multipartConvertImage(image: image),
+          },
+          token: accessToken,
+          formData: true);
       printResponse(response.data.toString());
       return UserRateProductModel.fromJson(response.data);
     } catch (error) {
-      printError('userRateProductRequest '+error.toString());
+      printError('userRateProductRequest ' + error.toString());
       return null;
     }
   }

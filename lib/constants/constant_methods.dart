@@ -149,19 +149,18 @@ Future<String> convertPositionToAddress({
 }
 
 Future<XFile?> pickImage(ImageSource source) async {
-  XFile? image = await ImagePicker()
-      .pickImage(source: source, maxHeight: 2048, maxWidth: 2048,);
-  if(image!=null){
+  XFile? image = await ImagePicker().pickImage(
+      source: source, maxHeight: 1024, maxWidth: 1024, imageQuality: 50);
+  if (image != null) {
     return image;
-  }
-  else{
+  } else {
     return null;
   }
-
 }
 
-Future multipartConvertImage({  required XFile image,
-}) async{
-
-    return  MultipartFile.fromFileSync(image.path, filename: image.path.split('/').last);
+Future multipartConvertImage({
+  required XFile image,
+}) async {
+  return MultipartFile.fromFileSync(image.path,
+      filename: image.path.split('/').last);
 }

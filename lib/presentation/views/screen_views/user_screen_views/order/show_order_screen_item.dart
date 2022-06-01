@@ -12,6 +12,7 @@ import 'package:sizer/sizer.dart';
 
 class ShowOrderScreenItem extends StatelessWidget {
   final OrderProducts orderProductModel;
+
   const ShowOrderScreenItem({Key? key, required this.orderProductModel})
       : super(key: key);
 
@@ -76,7 +77,8 @@ class ShowOrderScreenItem extends StatelessWidget {
                                       isScrollControlled: true,
                                       context: context,
                                       builder: (context) =>
-                                          OrderDetailsBottomSheet());
+                                          OrderDetailsBottomSheet(
+                                              productId: orderProductModel.id));
                                 },
                                 textColor: darkBlue,
                               )

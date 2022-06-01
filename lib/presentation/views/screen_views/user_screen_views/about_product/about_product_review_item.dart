@@ -59,7 +59,7 @@ class AboutProductReviewItem extends StatelessWidget {
                       ),
                       DefaultRatingBarIndicator(
                         rating: reviewModel.rate.toDouble(),
-                        itemCount: 4,
+                        itemCount: 5,
                         itemSize: 20,
                       ),
                       DefaultText(
