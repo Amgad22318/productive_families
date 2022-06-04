@@ -13,9 +13,9 @@ class QuotationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(
+            context, SHOP_LAYOUT, (route) => false);
         return true;
-
       },
       child: Scaffold(
         appBar: DefaultShopAppbar(
@@ -24,10 +24,11 @@ class QuotationsScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                 Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, SHOP_LAYOUT, (route) => false,
+                      arguments: 0);
                 },
                 icon: SvgPicture.asset('assets/icons/back_arrow.svg'))
-
           ],
           title: const DefaultText(
             text: 'عروض الأسعار',
@@ -36,10 +37,11 @@ class QuotationsScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const Image(image: AssetImage('assets/image/appbar_half_circle.png')),
+            const Image(
+                image: AssetImage('assets/image/appbar_half_circle.png')),
             Expanded(
                 child: ListView(
-              children:const [
+              children: const [
                 QuotationsItem(),
                 QuotationsItem(),
                 QuotationsItem(),

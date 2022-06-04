@@ -46,6 +46,7 @@ const EP_USER_SEARCH_FAVORITE_GROUP = 'search/favorites';
 const EP_USER_RATE_PRODUCT = 'arate/product';
 const EP_USER_ADD_PRODUCT_TO_FAVORITE = 'add/favorites/group/product';
 const EP_USER_PRODUCT_RATES = 'product/rates';
+const EP_USER_REQUEST_DRIVER = 'make/ask_for_driver';
 ////// MO Api
 
 ////// DR Api
@@ -66,9 +67,10 @@ const SELECTED_FAVORITE_GROUP_SCREEN = '/SELECTED_FAVORITE_GROUP_SCREEN';
 const CUSTOMER_SERVICES_CHAT_SCREEN = '/customer_services_chat_screen';
 const SELLER_CHAT_SCREEN = '/seller_chat_screen';
 const USER_START_ORDER_PROCESS_SCREEN = '/USER_START_ORDER_PROCESS_SCREEN';
-const DELIVERY_REPRESENTATIVE_SCREEN = '/delivery_representative_screen';
-const DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN =
-    '/delivery_representative_locator_screen';
+const REQUEST_DRIVER_SCREEN = '/REQUEST_DRIVER_SCREEN';
+const REQUEST_DRIVER_FROM_LOCATION_SCREEN =
+    '/REQUEST_DRIVER_FROM_LOCATION_SCREEN';
+const REQUEST_DRIVER_TO_LOCATION_SCREEN = '/REQUEST_DRIVER_TO_LOCATION_SCREEN';
 const UPDATE_USER_LOCATION = '/UPDATE_USER_LOCATION';
 const BASKET_SCREEN = '/basket_screen';
 const ORDER_LOCATION_PICKING_SCREEN = '/ORDER_LOCATION_PICKING_SCREEN';
