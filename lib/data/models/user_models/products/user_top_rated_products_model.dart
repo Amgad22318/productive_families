@@ -1,105 +1,48 @@
 import 'dart:convert';
 
+import 'package:productive_families/data/models/shared_models/shared_classes/api_product.dart';
+
 UserTopRatedProductsModel userTopRatedProductsModelFromJson(String str) =>
     UserTopRatedProductsModel.fromJson(json.decode(str));
-
 String userTopRatedProductsModelToJson(UserTopRatedProductsModel data) =>
     json.encode(data.toJson());
 
 class UserTopRatedProductsModel {
+  UserTopRatedProductsModel({
+    int? status,
+    String? message,
+    List<ApiProduct>? products,
+  }) {
+    _status = status;
+    _message = message;
+    _products = products;
+  }
+
   UserTopRatedProductsModel.fromJson(dynamic json) {
-    status = json['status'];
-    message = json['message'];
-    products = [];
-    json['products'].forEach((v) {
-      products.add(Products.fromJson(v));
-    });
-  }
-
-  int? status;
-  late String message;
-  late List<Products> products;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    map['message'] = message;
-    map['products'] = products.map((v) => v.toJson()).toList();
-    return map;
-  }
-}
-
-Products productsFromJson(String str) => Products.fromJson(json.decode(str));
-
-String productsToJson(Products data) => json.encode(data.toJson());
-
-class Products {
-  Products.fromJson(dynamic json) {
-    id = json['id'];
-    subCategoryName = json['sub_category_name'];
-    subCategoryId = json['sub_category_id'];
-    serviceName = json['service_name'];
-    providerId = json['provider_id'];
-    name = json['name'];
-    price = json['price'];
-    image = json['image'] != null ? ProductImage.fromJson(json['image']) : null;
-    favorite = json['favorite'];
-    rate = json['rate'];
-    rateTimes = json['rate_times'];
-  }
-
-  int? id;
-  late String subCategoryName;
-  int? subCategoryId;
-  late String serviceName;
-  int? providerId;
-  late String name;
-  late num price;
-  ProductImage? image;
-  late int favorite;
-  late num rate;
-  late int rateTimes;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['sub_category_name'] = subCategoryName;
-    map['sub_category_id'] = subCategoryId;
-    map['service_name'] = serviceName;
-    map['provider_id'] = providerId;
-    map['name'] = name;
-    map['price'] = price;
-    if (image != null) {
-      map['image'] = image?.toJson();
+    _status = json['status'];
+    _message = json['message'];
+    if (json['products'] != null) {
+      _products = [];
+      json['products'].forEach((v) {
+        _products?.add(ApiProduct.fromJson(v));
+      });
     }
-    map['favorite'] = favorite;
-    map['rate'] = rate;
-    map['rate_times'] = rateTimes;
-    return map;
   }
-}
+  int? _status;
+  String? _message;
+  List<ApiProduct>? _products;
 
-ProductImage imageFromJson(String str) =>
-    ProductImage.fromJson(json.decode(str));
-
-String imageToJson(ProductImage data) => json.encode(data.toJson());
-
-class ProductImage {
-  ProductImage.fromJson(dynamic json) {
-    id = json['id'];
-    path = json['path'];
-    type = json['type'];
-  }
-
-  int? id;
-  String? path;
-  String? type;
+  int get status => _status ?? 0;
+  String get message => _message ?? "";
+  List<ApiProduct> get products => _products ?? [];
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
-    map['path'] = path;
-    map['type'] = type;
+    map['status'] = _status;
+    map['message'] = _message;
+    if (_products != null) {
+      map['products'] = _products?.map((v) => v.toJson()).toList();
+    }
     return map;
   }
 }

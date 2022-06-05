@@ -12,10 +12,11 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../../business_logic/user/favorite_state/user_favorite_state_cubit.dart';
+import '../../../../../data/models/shared_models/shared_classes/api_product.dart';
 import '../shared/fav_bottom_sheet.dart';
 
 class SubCategoryProductGridItem extends StatefulWidget {
-  final Products productModel;
+  final ApiProduct productModel;
 
   const SubCategoryProductGridItem({Key? key, required this.productModel})
       : super(key: key);
@@ -63,11 +64,11 @@ class _SubCategoryProductGridItemState
                           if (state.productId == widget.productModel.id) {
                             if (state.favoriteGroupCount > 0) {
                               setState(() {
-                                widget.productModel.favorite = 1;
+                                widget.productModel.setFavorite = 1;
                               });
                             } else {
                               setState(() {
-                                widget.productModel.favorite = 0;
+                                widget.productModel.setFavorite = 0;
                               });
                             }
                           }

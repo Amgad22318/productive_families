@@ -12,7 +12,8 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
 
   static UserSubCategoryProductCubit get(context) => BlocProvider.of(context);
 
-  UserSubCategoryProductModel? userSubCategoryProductModel;
+  UserSubCategoryProductModel userSubCategoryProductModel =
+      UserSubCategoryProductModel();
 
   void getSubCategoryProduct({
     required int providerId,
@@ -20,25 +21,19 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
   }) async {
     emit(UserGetSubCategoryProductLoadingState());
     UserSubCategoryProductsRequest.userSubCategoryProductsRequest(
-        page: 1, providerId: providerId,subCategoryId: subCategoryId)
+            page: 1, providerId: providerId, subCategoryId: subCategoryId)
         .then((value) {
       if (value.status == 200) {
         userSubCategoryProductModel = value;
         emit(UserGetSubCategoryProductSuccessState());
-      }
-      else if (value.status == 204) {
-
+      } else if (value.status == 204) {
         emit(UserGetSubCategoryProductNoDataState());
       }
-
     }).catchError((error) {
-
       emit(UserGetSubCategoryProductErrorState());
       printError('getStoreSubCategory ' + error.toString());
     });
   }
-
-
 
   void getSubCategoryProductLoadMore({
     required int providerId,
@@ -46,19 +41,15 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
   }) async {
     emit(UserGetSubCategoryProductLoadingState());
     UserSubCategoryProductsRequest.userSubCategoryProductsRequest(
-        page: 1, providerId: providerId,subCategoryId: subCategoryId)
+            page: 1, providerId: providerId, subCategoryId: subCategoryId)
         .then((value) {
       if (value.status == 200) {
         userSubCategoryProductModel = value;
         emit(UserGetSubCategoryProductSuccessState());
       }
-
     }).catchError((error) {
-
       emit(UserGetSubCategoryProductErrorState());
       printError('getStoreSubCategory ' + error.toString());
     });
   }
-
-
 }
