@@ -16,7 +16,6 @@ import 'package:productive_families/presentation/widgets/favorite_button_with_nu
 import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/shared_models/shared_classes/api_product.dart';
-import '../../../../data/models/user_models/products/user_sub_category_product_model.dart';
 import '../../../styles/custom_icons.dart';
 
 class SubCategoryProductScreen extends StatefulWidget {
@@ -62,9 +61,10 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => UserSubCategoryProductCubit()
-          ..getSubCategoryProduct(
+          ..setProviderAndSubCategoryId(
               providerId: widget.subCategoryProductArgs.providerId,
-              subCategoryId: widget.subCategoryProductArgs.subCategoryId),
+              subCategoryId: widget.subCategoryProductArgs.subCategoryId)
+          ..getSubCategoryProduct(),
         child: BlocBuilder<UserSubCategoryProductCubit,
             UserSubCategoryProductStates>(
           builder: (context, state) {
@@ -108,25 +108,26 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                     )
                   : null,
               appBar: DefaultShopAppbar(
-                  centerTitle: true,
-                  title: DefaultText(
-                    textStyle: Theme.of(context).textTheme.headline5,
-                    text: widget.subCategoryProductArgs.subCategoryName,
-                  ),
-                  actions: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, USER_REVIEWS_SEARCH_SCREEN);
-                        },
-                        icon: const Icon(Icons.search)),
-                    const FavoriteButtonWithNumber(),
-                  ],
-                  leading: IconButton(
+                centerTitle: true,
+                title: DefaultText(
+                  textStyle: Theme.of(context).textTheme.headline5,
+                  text: widget.subCategoryProductArgs.subCategoryName,
+                ),
+                actions: [
+                  IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamed(
+                            context, USER_REVIEWS_SEARCH_SCREEN);
                       },
-                      icon: const Icon(Icons.arrow_back_ios))),
+                      icon: const Icon(Icons.search)),
+                  const FavoriteButtonWithNumber(),
+                ],
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios)),
+              ),
               body: Column(
                 children: [
                   Image.asset(
@@ -136,9 +137,9 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                     child: NotificationListener(
                       onNotification: (notification) {
                         itemCounter =
-                            (_scrollController.offset / 15.h).round() + 1;
-                        if (itemCounter != tempItemCounter &&
-                            itemCounter % 2 == 0) {
+                            ((_scrollController.offset * 2 - 15.h) / 15.h)
+                                .ceil();
+                        if (itemCounter != tempItemCounter) {
                           setState(() {
                             printTest(itemCounter.toString());
                             tempItemCounter = itemCounter;
@@ -180,7 +181,9 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                                           child: InkWell(
                                             onTap: () {
                                               Navigator.pushNamed(context,
-                                                  CHOSEN_MARKET_PRICE_FILTERING_SCREEN);
+                                                  CHOSEN_MARKET_PRICE_FILTERING_SCREEN,
+                                                  arguments:
+                                                      userSubCategoryProductCubit);
                                             },
                                             child: Row(
                                               mainAxisAlignment:
@@ -207,7 +210,9 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                                           child: InkWell(
                                             onTap: () {
                                               Navigator.pushNamed(context,
-                                                  CHOSEN_MARKET_ORDERING_SCREEN);
+                                                  CHOSEN_MARKET_ORDERING_SCREEN,
+                                                  arguments:
+                                                      userSubCategoryProductCubit);
                                             },
                                             child: Row(
                                               mainAxisAlignment:
@@ -261,7 +266,7 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                                     return const SliverFillRemaining(
                                         child: DefaultLoadingIndicator());
                                   } else if (state
-                                      is UserGetSubCategoryProductNoDataState) {
+                                      is UserGetSubCategoryProductEmptyState) {
                                     return const SliverFillRemaining(
                                         child: DefaultErrorWidget());
                                   } else {

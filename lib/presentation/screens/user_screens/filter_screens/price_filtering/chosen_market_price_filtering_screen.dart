@@ -10,22 +10,29 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
+import '../../../../../business_logic/user/sub_category_product/user_sub_category_product_cubit.dart';
+
 class ChosenMarketPriceFilteringScreen extends StatefulWidget {
-  const ChosenMarketPriceFilteringScreen({Key? key}) : super(key: key);
+  final UserSubCategoryProductCubit userSubCategoryProductCubit;
+  const ChosenMarketPriceFilteringScreen(
+      {Key? key, required this.userSubCategoryProductCubit})
+      : super(key: key);
 
   @override
-  State<ChosenMarketPriceFilteringScreen> createState() => _ChosenMarketPriceFilteringScreenState();
+  State<ChosenMarketPriceFilteringScreen> createState() =>
+      _ChosenMarketPriceFilteringScreenState();
 }
 
-class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilteringScreen> {
+class _ChosenMarketPriceFilteringScreenState
+    extends State<ChosenMarketPriceFilteringScreen> {
   late SfRangeValues _initialValues;
 
   late double firstSliderValue;
   late double secondSliderValue;
   late double max;
   late double min;
-  FilteringScreenPriceFilterRadioValues? _character = FilteringScreenPriceFilterRadioValues.offers;
-
+  FilteringScreenPriceFilterRadioValues _fillter_sellected =
+      FilteringScreenPriceFilterRadioValues.offers;
 
   @override
   void initState() {
@@ -66,7 +73,8 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                    onPressed: () {                      Navigator.pop(context);
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
                     icon: SvgPicture.asset('assets/icons/message.svg')),
                 DefaultText(
@@ -82,7 +90,7 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
                 SfRangeSelectorTheme(
                   data: SfRangeSelectorThemeData(
                     tooltipBackgroundColor: filterInActiveYellow,
-                      activeTrackColor: filterYellow,
+                    activeTrackColor: filterYellow,
                     inactiveTrackColor: filterInActiveYellow,
                     thumbColor: defaultYellow,
                   ),
@@ -107,10 +115,10 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
                   title: const Text('العروض'),
                   leading: Radio<FilteringScreenPriceFilterRadioValues>(
                     value: FilteringScreenPriceFilterRadioValues.offers,
-                    groupValue: _character,
+                    groupValue: _fillter_sellected,
                     onChanged: (FilteringScreenPriceFilterRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _fillter_sellected = value!;
                       });
                     },
                   ),
@@ -119,21 +127,26 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
                   title: const Text('الأقرب للمنزل'),
                   leading: Radio<FilteringScreenPriceFilterRadioValues>(
                     value: FilteringScreenPriceFilterRadioValues.closeToHome,
-                    groupValue: _character,
+                    groupValue: _fillter_sellected,
                     onChanged: (FilteringScreenPriceFilterRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _fillter_sellected = value!;
                       });
                     },
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 64),
                   child: DefaultMaterialButton(
                     height: 40,
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.userSubCategoryProductCubit.filterBy =
+                          _fillter_sellected.name;
+                      Navigator.pop(context);
+                      widget.userSubCategoryProductCubit
+                          .getSubCategoryProduct();
+                    },
                     text: 'تصفية',
                   ),
                 )
@@ -147,8 +160,7 @@ class _ChosenMarketPriceFilteringScreenState extends State<ChosenMarketPriceFilt
 
   Widget buildChart() {
     return SfCartesianChart(
-
-borderWidth: 0,
+      borderWidth: 0,
       plotAreaBorderWidth: 0,
       margin: EdgeInsets.zero,
       primaryXAxis: NumericAxis(
@@ -160,7 +172,6 @@ borderWidth: 0,
       series: <ChartSeries>[
         ColumnSeries<Data, double>(
             dataSource: getChartData(),
-
             color: filterYellow,
             borderColor: Colors.transparent,
             borderRadius: BorderRadius.circular(24),

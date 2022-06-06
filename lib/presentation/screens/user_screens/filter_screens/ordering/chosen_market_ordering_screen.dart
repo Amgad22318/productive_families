@@ -6,17 +6,24 @@ import 'package:productive_families/presentation/widgets/default_shop_appbar.dar
 import 'package:productive_families/presentation/widgets/default_text.dart';
 import 'package:productive_families/presentation/widgets/favorite_button_with_number.dart';
 
+import '../../../../../business_logic/user/sub_category_product/user_sub_category_product_cubit.dart';
+
 class ChosenMarketOrderingScreen extends StatefulWidget {
-  const ChosenMarketOrderingScreen({Key? key}) : super(key: key);
+  final UserSubCategoryProductCubit userSubCategoryProductCubit;
+
+  const ChosenMarketOrderingScreen(
+      {Key? key, required this.userSubCategoryProductCubit})
+      : super(key: key);
 
   @override
-  State<ChosenMarketOrderingScreen> createState() => _ChosenMarketOrderingScreenState();
+  State<ChosenMarketOrderingScreen> createState() =>
+      _ChosenMarketOrderingScreenState();
 }
 
-class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen> {
-
-  FilteringOrderingScreenRadioValues? _character = FilteringOrderingScreenRadioValues.bestSeller;
-
+class _ChosenMarketOrderingScreenState
+    extends State<ChosenMarketOrderingScreen> {
+  FilteringOrderingScreenRadioValues _sort_sellected =
+      FilteringOrderingScreenRadioValues.top_sales;
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +58,14 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
                       Navigator.pop(context);
                     },
                     icon: SvgPicture.asset('assets/icons/sort.svg')),
-
                 ListTile(
                   title: const Text('الأكثر مبيعا'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.bestSeller,
-                    groupValue: _character,
+                    value: FilteringOrderingScreenRadioValues.top_sales,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
@@ -67,11 +73,11 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
                 ListTile(
                   title: const Text('الأكثر تقيما'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.mostRated,
-                    groupValue: _character,
+                    value: FilteringOrderingScreenRadioValues.top_rated,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
@@ -79,11 +85,11 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
                 ListTile(
                   title: const Text('أقل سعر إلى أعلى سعر'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.lowToHighPrice,
-                    groupValue: _character,
+                    value: FilteringOrderingScreenRadioValues.less_price,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
@@ -91,11 +97,11 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
                 ListTile(
                   title: const Text('أعلى سعر إلى أقل سعر'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.highToLowPrice,
-                    groupValue: _character,
+                    value: FilteringOrderingScreenRadioValues.higher_price,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
@@ -103,36 +109,39 @@ class _ChosenMarketOrderingScreenState extends State<ChosenMarketOrderingScreen>
                 ListTile(
                   title: const Text('من الأحدث للأقدم'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.newest,
-                    groupValue: _character,
+                    value: FilteringOrderingScreenRadioValues.latest,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
                 ),
                 ListTile(
-
                   title: const Text('من الأقدم للأحدث'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
                     value: FilteringOrderingScreenRadioValues.oldest,
-                    groupValue: _character,
+                    groupValue: _sort_sellected,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
-                        _character = value;
+                        _sort_sellected = value!;
                       });
                     },
                   ),
                 ),
-
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 64),
                   child: DefaultMaterialButton(
                     height: 40,
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.userSubCategoryProductCubit.sortBy =
+                          _sort_sellected.name;
+                      Navigator.pop(context);
+                      widget.userSubCategoryProductCubit
+                          .getSubCategoryProduct();
+                    },
                     text: 'ترتيب',
                   ),
                 )

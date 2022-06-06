@@ -78,6 +78,7 @@ import 'package:productive_families/presentation/screens/user_screens/terms_and_
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
 import '../../business_logic/user/profile/user_profile_cubit.dart';
+import '../../business_logic/user/sub_category_product/user_sub_category_product_cubit.dart';
 import '../../constants/shared_preferences_keys.dart';
 import '../../data/models/user_models/orders/user_start_order_process_model.dart';
 import '../screens/user_screens/cart/cart_screen.dart';
@@ -198,8 +199,11 @@ class AppRouter {
               SubCategoryProductScreen(subCategoryProductArgs: args),
         );
       case endpoints.CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
+        UserSubCategoryProductCubit cubit =
+            settings.arguments as UserSubCategoryProductCubit;
         return MaterialPageRoute(
-          builder: (_) => const ChosenMarketPriceFilteringScreen(),
+          builder: (_) => ChosenMarketPriceFilteringScreen(
+              userSubCategoryProductCubit: cubit),
         );
       case endpoints.MARKETS_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
@@ -210,8 +214,11 @@ class AppRouter {
           builder: (_) => const MarketsOrderingScreen(),
         );
       case endpoints.CHOSEN_MARKET_ORDERING_SCREEN:
+        UserSubCategoryProductCubit cubit =
+            settings.arguments as UserSubCategoryProductCubit;
         return MaterialPageRoute(
-          builder: (_) => const ChosenMarketOrderingScreen(),
+          builder: (_) =>
+              ChosenMarketOrderingScreen(userSubCategoryProductCubit: cubit),
         );
       case endpoints.CUSTOMER_SERVICES_CHAT_SCREEN:
         return MaterialPageRoute(

@@ -10,13 +10,14 @@ class GuestChosenMarketOrderingScreen extends StatefulWidget {
   const GuestChosenMarketOrderingScreen({Key? key}) : super(key: key);
 
   @override
-  State<GuestChosenMarketOrderingScreen> createState() => _GuestChosenMarketOrderingScreenState();
+  State<GuestChosenMarketOrderingScreen> createState() =>
+      _GuestChosenMarketOrderingScreenState();
 }
 
-class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrderingScreen> {
-
-  FilteringOrderingScreenRadioValues? _character = FilteringOrderingScreenRadioValues.bestSeller;
-
+class _GuestChosenMarketOrderingScreenState
+    extends State<GuestChosenMarketOrderingScreen> {
+  FilteringOrderingScreenRadioValues? _character =
+      FilteringOrderingScreenRadioValues.top_sales;
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +51,10 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                       Navigator.pop(context);
                     },
                     icon: SvgPicture.asset('assets/icons/sort.svg')),
-
                 ListTile(
                   title: const Text('الأكثر مبيعا'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.bestSeller,
+                    value: FilteringOrderingScreenRadioValues.top_sales,
                     groupValue: _character,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
@@ -66,7 +66,7 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                 ListTile(
                   title: const Text('الأكثر تقيما'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.mostRated,
+                    value: FilteringOrderingScreenRadioValues.top_rated,
                     groupValue: _character,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
@@ -78,7 +78,7 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                 ListTile(
                   title: const Text('أقل سعر إلى أعلى سعر'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.lowToHighPrice,
+                    value: FilteringOrderingScreenRadioValues.less_price,
                     groupValue: _character,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
@@ -90,7 +90,7 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                 ListTile(
                   title: const Text('أعلى سعر إلى أقل سعر'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.highToLowPrice,
+                    value: FilteringOrderingScreenRadioValues.higher_price,
                     groupValue: _character,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
@@ -102,7 +102,7 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                 ListTile(
                   title: const Text('من الأحدث للأقدم'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
-                    value: FilteringOrderingScreenRadioValues.newest,
+                    value: FilteringOrderingScreenRadioValues.latest,
                     groupValue: _character,
                     onChanged: (FilteringOrderingScreenRadioValues? value) {
                       setState(() {
@@ -112,7 +112,6 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                   ),
                 ),
                 ListTile(
-
                   title: const Text('من الأقدم للأحدث'),
                   leading: Radio<FilteringOrderingScreenRadioValues>(
                     value: FilteringOrderingScreenRadioValues.oldest,
@@ -124,8 +123,6 @@ class _GuestChosenMarketOrderingScreenState extends State<GuestChosenMarketOrder
                     },
                   ),
                 ),
-
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 64),

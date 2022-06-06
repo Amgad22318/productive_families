@@ -48,6 +48,7 @@ const EP_USER_ADD_PRODUCT_TO_FAVORITE = 'add/favorites/group/product';
 const EP_USER_PRODUCT_RATES = 'product/rates';
 const EP_USER_REQUEST_DRIVER = 'make/ask_for_driver';
 ////// MO Api
+const EP_DR_LOGIN = 'drivers/login';
 
 ////// DR Api
 
