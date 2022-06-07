@@ -11,6 +11,6 @@ enum FilteringOrderingScreenRadioValues {
 
 enum MarketOrderingScreenRadioValues { bestSeller, mostRated, newest, oldest }
 
-enum FilteringScreenPriceFilterRadioValues { closeToHome, offers }
+enum FilteringScreenPriceFilterRadioValues { nearest_to_home, offers }
 
 enum OrderAddressConfirmationRadioValues { paypal, shopPay }

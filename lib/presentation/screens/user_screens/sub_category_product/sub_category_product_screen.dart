@@ -52,12 +52,6 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
   }
 
   @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => UserSubCategoryProductCubit()

@@ -12,8 +12,8 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
 
   static UserSubCategoryProductCubit get(context) => BlocProvider.of(context);
 
-  int? priceFrom;
-  int? priceTo;
+  num? priceFrom;
+  num? priceTo;
   num? lat;
   num? lon;
   String? sortBy;
