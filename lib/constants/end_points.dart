@@ -48,9 +48,15 @@ const EP_USER_ADD_PRODUCT_TO_FAVORITE = 'add/favorites/group/product';
 const EP_USER_PRODUCT_RATES = 'product/rates';
 const EP_USER_REQUEST_DRIVER = 'make/ask_for_driver';
 ////// MO Api
-const EP_DR_LOGIN = 'drivers/login';
 
 ////// DR Api
+const EP_DR_LOGIN = 'drivers/login';
+const EP_DR_REGISTER = 'drivers/register';
+const EP_DR_CONFIRM_REGISTER_PHONE = 'drivers/account/verification';
+const EP_DR_RESEND_CONFIRM_CODE = 'drivers/resend/code';
+const EP_DR_LOGOUT = 'drivers/logout';
+const EP_DR_SHOW = 'drivers/profile/show';
+const EP_DR_PROFILE_UPDATE_ADDRESS = 'drivers/profile/update/address';
 
 ///////////////////////////////// Screens PushNamed Names/////////////////////////////////////////////
 

@@ -5,15 +5,15 @@ import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
 import '../../../models/shared_models/auth/logout_model.dart';
 
-class UserLogOutRequest {
-  Future userLogOutRequest(
+class DRLogOutRequest {
+  Future dRLogOutRequest(
   ) async {
     try {
-      Response response = await DioHelper.postData(url: EP_USER_LOGOUT,token: accessToken);
+      Response response = await DioHelper.postData(url: EP_DR_LOGOUT,token: accessToken);
       printResponse(response.data.toString());
       return LogoutModel.fromJson(response.data);
     } catch (error) {
-      printError(error.toString());
+      printError('dRLogOutRequest ' + error.toString());
       return null;
     }
   }
