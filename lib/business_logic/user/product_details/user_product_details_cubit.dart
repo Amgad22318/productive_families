@@ -12,14 +12,15 @@ class UserProductDetailsCubit extends Cubit<UserProductDetailsStates> {
 
   static UserProductDetailsCubit get(context) => BlocProvider.of(context);
 
-  UserShowProductModel? userShowProductModel;
+  UserShowProductModel userShowProductModel = UserShowProductModel();
 
   void getUserProductDetails({required int productId}) async {
     emit(UserGetProductDetailsLoadingState());
     UserShowProductsRequest.userShowProductsRequest(productId: productId)
         .then((value) {
+      userShowProductModel = value;
+
       if (value.status == 200) {
-        userShowProductModel = value;
         emit(UserGetProductDetailsSuccessState());
       }
     }).catchError((error) {

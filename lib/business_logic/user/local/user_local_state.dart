@@ -19,17 +19,10 @@ class UserUpdateAddressFirstTimeErrorState extends UserLocalStates {
   UserUpdateAddressFirstTimeErrorState(this.message);
 }
 
-
-
-
-
-
-
-
 class UserGetTopRatedProductsLoadingState extends UserLocalStates {}
 
 class UserGetTopRatedProductsSuccessState extends UserLocalStates {}
 
 class UserGetTopRatedProductsErrorState extends UserLocalStates {}
-class ConvertPositionToAddressState extends UserLocalStates {}
 
+class ConvertPositionToAddressState extends UserLocalStates {}

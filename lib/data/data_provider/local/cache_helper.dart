@@ -14,6 +14,10 @@ class CacheHelper {
     return sharedPreferences.get(key.name);
   }
 
+  static String getString({required SharedPreferencesKeys key}) {
+    return sharedPreferences.getString(key.name) ?? "";
+  }
+
   static Future<bool> saveDataToSP(
       {required SharedPreferencesKeys key, required dynamic value}) async {
     if (value is bool) {

@@ -11,6 +11,8 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
   UserSubCategoryProductCubit() : super(UserSubCategoryProductInitial());
 
   static UserSubCategoryProductCubit get(context) => BlocProvider.of(context);
+  int currentPage = 2;
+  bool isLoadingMoreData = false;
 
   num? priceFrom;
   num? priceTo;
@@ -41,8 +43,6 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
             subCategoryId: subCategoryId,
             priceFrom: priceFrom,
             priceTo: priceTo,
-            lat: lat,
-            lon: lon,
             sortBy: sortBy,
             filterBy: filterBy)
         .then((value) {
@@ -51,10 +51,47 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
         emit(UserGetSubCategoryProductSuccessState());
       } else if (value.status == 204) {
         emit(UserGetSubCategoryProductEmptyState());
+      } else {
+        emit(UserGetSubCategoryProductErrorState());
       }
     }).catchError((error) {
-      emit(UserGetSubCategoryProductErrorState());
-      printError('getStoreSubCategory ' + error.toString());
+      printError('getSubCategoryProduct ' + error.toString());
+    });
+  }
+
+  void getSubCategoryProductLoadMore({
+    required int page,
+  }) async {
+    if (currentPage > userSubCategoryProductModel.pageCount ||
+        isLoadingMoreData) {
+      return;
+    }
+    isLoadingMoreData = true;
+    UserSubCategoryProductsRequest()
+        .userSubCategoryProductsRequest(
+            page: page,
+            providerId: providerId,
+            subCategoryId: subCategoryId,
+            priceFrom: priceFrom,
+            priceTo: priceTo,
+            sortBy: sortBy,
+            filterBy: filterBy)
+        .then((value) {
+      UserSubCategoryProductModel userSubCategoryProductTempModel =
+          UserSubCategoryProductModel();
+      userSubCategoryProductTempModel = value;
+      if (value.status == 200) {
+        userSubCategoryProductModel.products
+            .addAll(userSubCategoryProductTempModel.products);
+        currentPage++;
+
+        emit(UserGetSubCategoryProductSuccessState());
+        isLoadingMoreData = false;
+      } else {
+        emit(UserGetSubCategoryProductErrorState());
+      }
+    }).catchError((error) {
+      printError('getSubCategoryProductLoadMore ' + error.toString());
     });
   }
 }
