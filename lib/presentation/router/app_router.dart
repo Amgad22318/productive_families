@@ -103,7 +103,7 @@ class AppRouter {
     userId = CacheHelper.getDataFromSP(
         key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY);
     bool locationPicked = CacheHelper.getDataFromSP(
-            key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED) ??
+            key: SharedPreferencesKeys.SP_LOCATION_PICKED) ??
         false;
 
     if (accessToken != null) {

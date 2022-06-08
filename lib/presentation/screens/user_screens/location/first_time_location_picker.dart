@@ -135,7 +135,6 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                   },
                                   myLocationEnabled: true,
                                   myLocationButtonEnabled: true,
-
                                   mapType: MapType.normal,
                                   initialCameraPosition: CameraPosition(
                                     target: LatLng(
@@ -226,11 +225,11 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                             msg: state.message,
                                             toastState: ToastStates.SUCCESS);
                                         locationController.text = '';
-                                        CacheHelper.saveDataToSP(key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED, value: true);
                                         Navigator.pushNamedAndRemoveUntil(
                                             context,
                                             SHOP_LAYOUT,
-                                            (route) => false,arguments: 0);
+                                            (route) => false,
+                                            arguments: 0);
                                       } else if (state
                                           is UserUpdateAddressFirstTimeErrorState) {
                                         showToastMsg(

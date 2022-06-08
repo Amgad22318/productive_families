@@ -46,6 +46,8 @@ class _AboutProductState extends State<AboutProduct> {
     super.initState();
   }
 
+  late UserProductDetailsCubit userProductDetailsCubit;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -82,10 +84,10 @@ class _AboutProductState extends State<AboutProduct> {
             BlocBuilder<UserProductDetailsCubit, UserProductDetailsStates>(
               builder: (context, builderState) {
                 if (builderState is UserGetProductDetailsSuccessState) {
-                  UserProductDetailsCubit userProductDetailsCubit =
+                  userProductDetailsCubit =
                       UserProductDetailsCubit.get(context);
                   UserShowProductModel userShowProductModel =
-                      userProductDetailsCubit.userShowProductModel!;
+                      userProductDetailsCubit.userShowProductModel;
                   return Expanded(
                     child: SingleChildScrollView(
                       child: Column(
@@ -98,7 +100,7 @@ class _AboutProductState extends State<AboutProduct> {
                                 CarouselSlider(
                                     items: List.generate(
                                         userShowProductModel
-                                            .product!.productImages.length,
+                                            .product.images.length,
                                         (index) => Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 8.sp),
@@ -110,9 +112,8 @@ class _AboutProductState extends State<AboutProduct> {
                                                     DefaultCachedNetworkImage(
                                                         imageUrl:
                                                             userShowProductModel
-                                                                .product!
-                                                                .productImages[
-                                                                    index]
+                                                                .product
+                                                                .images[index]
                                                                 .path,
                                                         fit: BoxFit.cover),
                                               ),
@@ -144,16 +145,16 @@ class _AboutProductState extends State<AboutProduct> {
                                       if (state
                                           is UserFavoriteGroupProductAddOrDeleteSuccessState) {
                                         if (state.productId ==
-                                            userShowProductModel.product!.id) {
+                                            userShowProductModel.product.id) {
                                           if (state.favoriteGroupCount > 0) {
                                             setState(() {
                                               userShowProductModel
-                                                  .product!.favorite = 1;
+                                                  .product.setFavorite = 1;
                                             });
                                           } else {
                                             setState(() {
                                               userShowProductModel
-                                                  .product!.favorite = 0;
+                                                  .product.setFavorite = 0;
                                             });
                                           }
                                         }
@@ -170,7 +171,7 @@ class _AboutProductState extends State<AboutProduct> {
                                               child: FavBottomSheet(
                                                   productId:
                                                       userShowProductModel
-                                                          .product!.id),
+                                                          .product.id),
                                             ),
                                             backgroundColor: Colors.transparent,
                                             isScrollControlled: true,
@@ -178,7 +179,7 @@ class _AboutProductState extends State<AboutProduct> {
                                         },
                                         icon: Icon(
                                           userShowProductModel
-                                                      .product!.favorite ==
+                                                      .product.favorite ==
                                                   0
                                               ? Icons.favorite_border_outlined
                                               : Icons.favorite,
@@ -197,8 +198,7 @@ class _AboutProductState extends State<AboutProduct> {
                             child: AnimatedSmoothIndicator(
                               duration: const Duration(milliseconds: 1500),
                               curve: Curves.fastLinearToSlowEaseIn,
-                              count: userShowProductModel
-                                  .product!.productImages.length,
+                              count: userShowProductModel.product.images.length,
                               // backend must put limit
                               activeIndex:
                                   fullProductCarouselSliderImagesActiveIndex,
@@ -235,12 +235,12 @@ class _AboutProductState extends State<AboutProduct> {
                                       .textTheme
                                       .subtitle1
                                       ?.copyWith(fontWeight: FontWeight.bold),
-                                  text: userShowProductModel.product!.name,
+                                  text: userShowProductModel.product.name,
                                 ),
                                 DefaultText(
                                   textStyle:
                                       Theme.of(context).textTheme.bodyText2,
-                                  text: userShowProductModel.product!.price
+                                  text: userShowProductModel.product.price
                                           .toString() +
                                       ' $AppCurrencyShortcut',
                                 ),
@@ -248,7 +248,7 @@ class _AboutProductState extends State<AboutProduct> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     RatingBarIndicator(
-                                      rating: userShowProductModel.product!.rate
+                                      rating: userShowProductModel.product.rate
                                           .toDouble(),
                                       itemBuilder: (context, index) =>
                                           const Icon(
@@ -265,7 +265,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     DefaultText(
                                       color: Colors.grey,
                                       text:
-                                          '(${userShowProductModel.product!.rateTimes} تقييم)',
+                                          '(${userShowProductModel.product.rateTimes} تقييم)',
                                       textStyle:
                                           Theme.of(context).textTheme.overline,
                                     ),
@@ -309,7 +309,7 @@ class _AboutProductState extends State<AboutProduct> {
                                       ),
                                       Text(
                                         userShowProductModel
-                                            .product!.description,
+                                            .product.description,
                                         maxLines:
                                             fullProductDescription ? null : 1,
                                         overflow: fullProductDescription
@@ -322,7 +322,7 @@ class _AboutProductState extends State<AboutProduct> {
                                   ),
                                 ),
                                 if (userShowProductModel
-                                    .product!.rates.isNotEmpty)
+                                    .product.rates.isNotEmpty)
                                   DefaultText(
                                     textStyle:
                                         Theme.of(context).textTheme.subtitle1,
@@ -333,13 +333,13 @@ class _AboutProductState extends State<AboutProduct> {
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount: userShowProductModel
-                                        .product!.rates.length,
+                                        .product.rates.length,
                                     itemBuilder: (context, index) =>
                                         AboutProductReviewItem(
                                             reviewModel: userShowProductModel
-                                                .product!.rates[index])),
+                                                .product.rates[index])),
                                 if (userShowProductModel
-                                    .product!.rates.isNotEmpty)
+                                    .product.rates.isNotEmpty)
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 100.0, vertical: 16),
@@ -348,7 +348,7 @@ class _AboutProductState extends State<AboutProduct> {
                                         Navigator.pushNamed(context,
                                             USER_PRODUCT_ALL_REVIEWS_SCREEN,
                                             arguments: userShowProductModel
-                                                .product?.id);
+                                                .product.id);
                                       },
                                       height: 50,
                                       text: 'كل التقييمات',

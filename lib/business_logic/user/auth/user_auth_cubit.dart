@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:productive_families/constants/constant_methods.dart';
@@ -40,8 +42,8 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY, value: userId);
         CacheHelper.saveDataToSP(
-            key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY,
-            value: userLoginModel?.user?.address.toJson());
+            key: SharedPreferencesKeys.SP_USER_LOCATION,
+            value: jsonEncode(userLoginModel?.user?.address.toJson()));
         CacheHelper.saveDataToSP(
             key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY,
             value: userLoginModel?.user?.type);
