@@ -16,6 +16,8 @@ class UserProductSearchRequest {
       Response response = await DioHelper.postData(url: EP_USER_SEARCH_HOME,data: {
         'key_word': keyWord,
         'page': page,
+        'user_id': userId,
+
       });
       printResponse(response.data.toString());
       return UserProductSearchModel.fromJson(response.data);

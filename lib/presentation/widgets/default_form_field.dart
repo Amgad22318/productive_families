@@ -36,6 +36,7 @@ class DefaultFormField extends StatelessWidget {
   final bool readOnly;
   final int? maxLength;
   final TextDirection? textDirection;
+  final TextAlign textAlign;
 
   const DefaultFormField(
       {Key? key,
@@ -72,7 +73,8 @@ class DefaultFormField extends StatelessWidget {
       this.readOnly = false,
       this.cursorColor = Colors.white,
       this.maxLength,
-      this.textDirection = TextDirection.rtl})
+      this.textDirection = TextDirection.rtl,
+      this.textAlign = TextAlign.start})
       : super(key: key);
 
   @override
@@ -90,7 +92,7 @@ class DefaultFormField extends StatelessWidget {
         cursorColor: cursorColor,
         enabled: enabled,
         textAlignVertical: TextAlignVertical.center,
-        textAlign: TextAlign.start,
+        textAlign: textAlign,
         maxLines: maxLines,
         textDirection: textDirection,
         initialValue: initialValue,

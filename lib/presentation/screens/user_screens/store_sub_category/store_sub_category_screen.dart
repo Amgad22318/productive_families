@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:productive_families/business_logic/user/store_sub_category/user_store_sub_category_cubit.dart';
 import 'package:productive_families/constants/end_points.dart';
 import 'package:productive_families/presentation/widgets/DefaultSvg.dart';
@@ -9,6 +10,8 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/user_models/stores/user_store_sub_category_model.dart';
 import '../../../router/arguments/user_arguments/store_sub_category_args.dart';
+import '../../../styles/colors.dart';
+import '../../../styles/custom_icons.dart';
 import '../../../views/screen_views/user_screen_views/store_sub_category/store_sub_category_item.dart';
 import '../../../widgets/default_error_widget.dart';
 import '../../../widgets/default_loading_indicator.dart';
@@ -23,8 +26,15 @@ class StoreSubCategoryScreen extends StatefulWidget {
   State<StoreSubCategoryScreen> createState() => _StoreSubCategoryScreenState();
 }
 
-class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
+class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> with SingleTickerProviderStateMixin {
   late UserStoreSubCategoryCubit userStoreSubCategoryCubit;
+  late final TabController controller;
+
+  @override
+  void initState() {
+    controller = TabController(length: 4, vsync: this);
+    controller.index = 1;    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +55,14 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
           ),
           appBar: DefaultShopAppbar(
             centerTitle: true,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: SvgPicture.asset('assets/icons/back_arrow.svg'),
+                )
+              ],
             title: DefaultText(
               textStyle: Theme.of(context).textTheme.headline5,
               text: widget.storeSubCategoryArgs.serviceName,
@@ -101,6 +119,36 @@ class _StoreSubCategoryScreenState extends State<StoreSubCategoryScreen> {
                 ),
               )
             ],
+          ),
+          bottomNavigationBar: Material(
+            color: darkBlue,
+            child: TabBar(
+              controller: controller,
+              onTap: (index) {
+                if(index==0){
+                  Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false,arguments: 0);
+                }
+                else if(index==1){
+                  Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false,arguments: 1);
+                }
+                else if(index==2){
+                  Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false,arguments: 2);
+                }
+                else if(index==3){
+                  Navigator.pushNamedAndRemoveUntil(context, SHOP_LAYOUT, (route) => false,arguments: 3);
+                }
+              },
+              tabs: const [
+                Tab(icon: Icon(CustomIcons.home, size: 18)),
+                Tab(icon: Icon(CustomIcons.shop, size: 18)),
+                Tab(
+                    icon: Icon(
+                      CustomIcons.heart,
+                      size: 18,
+                    )),
+                Tab(icon: Icon(Icons.person)),
+              ],
+            ),
           ),
         );
       }),

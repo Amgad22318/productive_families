@@ -18,22 +18,26 @@ class DefaultCachedNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return imageUrl!=''? CachedNetworkImage(
-
-      fit:fit,
-      width: width,
-      height: height,
-      imageUrl: imageUrl,
-      progressIndicatorBuilder: (context, url, downloadProgress) {
-        return Center(child: CircularProgressIndicator(value:downloadProgress.downloaded.toDouble() ,));
-      },
-      errorWidget: (context, url, error) => const Padding(
-        padding: EdgeInsets.all(16),
-        child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
-      ),
-    ):const Padding(
-      padding: EdgeInsets.all(16),
-      child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
-    );
+    return imageUrl != ''
+        ? CachedNetworkImage(
+            fit: fit,
+            width: width,
+            height: height,
+            imageUrl: imageUrl,
+            progressIndicatorBuilder: (context, url, downloadProgress) {
+              return Center(
+                  child: CircularProgressIndicator(
+                value: downloadProgress.downloaded.toDouble(),
+              ));
+            },
+            errorWidget: (context, url, error) => const Padding(
+              padding: EdgeInsets.all(16),
+              child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
+            ),
+          )
+        : const Padding(
+            padding: EdgeInsets.all(16),
+            child: DefaultSvg(imagePath: 'assets/icons/default_photo.svg'),
+          );
   }
 }

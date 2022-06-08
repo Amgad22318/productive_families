@@ -230,7 +230,7 @@ class _FirstTimeLocationPickerState extends State<FirstTimeLocationPicker> {
                                         Navigator.pushNamedAndRemoveUntil(
                                             context,
                                             SHOP_LAYOUT,
-                                            (route) => false);
+                                            (route) => false,arguments: 0);
                                       } else if (state
                                           is UserUpdateAddressFirstTimeErrorState) {
                                         showToastMsg(

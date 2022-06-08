@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productive_families/business_logic/user/request_driver/user_request_driver_cubit.dart';
 import 'package:productive_families/business_logic/user/start_order_process_and_order_location/user_start_order_process_and__order_location_cubit.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart' as endpoints;
@@ -50,12 +51,12 @@ import 'package:productive_families/presentation/screens/user_screens/about_us/a
 import 'package:productive_families/presentation/screens/user_screens/chat/customer_services_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/chat/seller_chat_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/choose_account/choose_account.dart';
-import 'package:productive_families/presentation/screens/user_screens/delivery_representative/delivery_representative_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/delivery_representative/request_driver_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/chosen_market_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/ordering/markets_ordering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/chosen_market_price_filtering_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/filter_screens/price_filtering/markets_price_filtering_screen.dart';
-import 'package:productive_families/presentation/screens/user_screens/location/delivery_representative_locator_screen.dart';
+import 'package:productive_families/presentation/screens/user_screens/location/request_driver_from_location_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/first_time_location_picker.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/order_location_picking_screen.dart';
 import 'package:productive_families/presentation/screens/user_screens/location/update_user_location.dart';
@@ -77,10 +78,12 @@ import 'package:productive_families/presentation/screens/user_screens/terms_and_
 import 'package:productive_families/presentation/views/screen_views/user_screen_views/notification/display_representative_price_item.dart';
 
 import '../../business_logic/user/profile/user_profile_cubit.dart';
+import '../../business_logic/user/sub_category_product/user_sub_category_product_cubit.dart';
 import '../../constants/shared_preferences_keys.dart';
 import '../../data/models/user_models/orders/user_start_order_process_model.dart';
 import '../screens/user_screens/cart/cart_screen.dart';
 import '../screens/user_screens/location/order_location_follow_up_screen.dart';
+import '../screens/user_screens/location/request_driver_to_location_screen.dart';
 import '../screens/user_screens/orders/all_orders_screen.dart';
 import '../screens/user_screens/selected_favorite_group/selected_favorite_group_screen.dart';
 import '../screens/user_screens/start_order_process/start_order_process_screen.dart';
@@ -97,6 +100,8 @@ class AppRouter {
         key: SharedPreferencesKeys.SP_ACCESS_TOKEN_KEY);
     accountType = CacheHelper.getDataFromSP(
         key: SharedPreferencesKeys.SP_ACCOUNT_TYPE_KEY);
+    userId = CacheHelper.getDataFromSP(
+        key: SharedPreferencesKeys.SP_ACCOUNT_USERID_KEY);
     bool locationPicked = CacheHelper.getDataFromSP(
             key: SharedPreferencesKeys.SP_FIRST_TIME_LOCATION_PICKED) ??
         false;
@@ -133,8 +138,9 @@ class AppRouter {
           builder: (_) => const UserRegisterScreen(),
         );
       case endpoints.USER_PRODUCT_ALL_REVIEWS_SCREEN:
+        final int productId = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (_) => const UserProductAllReviewsScreen(),
+          builder: (_) => UserProductAllReviewsScreen(productId: productId),
         );
       case endpoints.DISPLAY_REPRESENTATIVE_PRICE_ITEM:
         return MaterialPageRoute(
@@ -146,8 +152,10 @@ class AppRouter {
           builder: (_) => UserOtpScreen(phone: phoneNum),
         );
       case endpoints.SHOP_LAYOUT:
+        final int index = settings.arguments as int;
+
         return MaterialPageRoute(
-          builder: (_) => const UserShopLayout(),
+          builder: (_) => UserShopLayout(index: index),
         );
       case endpoints.TERMS_AND_CONDITIONS:
         return MaterialPageRoute(
@@ -191,8 +199,11 @@ class AppRouter {
               SubCategoryProductScreen(subCategoryProductArgs: args),
         );
       case endpoints.CHOSEN_MARKET_PRICE_FILTERING_SCREEN:
+        UserSubCategoryProductCubit cubit =
+            settings.arguments as UserSubCategoryProductCubit;
         return MaterialPageRoute(
-          builder: (_) => const ChosenMarketPriceFilteringScreen(),
+          builder: (_) => ChosenMarketPriceFilteringScreen(
+              userSubCategoryProductCubit: cubit),
         );
       case endpoints.MARKETS_PRICE_FILTERING_SCREEN:
         return MaterialPageRoute(
@@ -203,8 +214,11 @@ class AppRouter {
           builder: (_) => const MarketsOrderingScreen(),
         );
       case endpoints.CHOSEN_MARKET_ORDERING_SCREEN:
+        UserSubCategoryProductCubit cubit =
+            settings.arguments as UserSubCategoryProductCubit;
         return MaterialPageRoute(
-          builder: (_) => const ChosenMarketOrderingScreen(),
+          builder: (_) =>
+              ChosenMarketOrderingScreen(userSubCategoryProductCubit: cubit),
         );
       case endpoints.CUSTOMER_SERVICES_CHAT_SCREEN:
         return MaterialPageRoute(
@@ -218,13 +232,25 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => UserStartOrderProcessScreen(),
         );
-      case endpoints.DELIVERY_REPRESENTATIVE_SCREEN:
+      case endpoints.REQUEST_DRIVER_SCREEN:
         return MaterialPageRoute(
-          builder: (_) => DeliveryRepresentativeScreen(),
+          builder: (_) => RequestDriverScreen(),
         );
-      case endpoints.DELIVERY_REPRESENTATIVE_LOCATOR_SCREEN:
+      case endpoints.REQUEST_DRIVER_FROM_LOCATION_SCREEN:
+        final UserRequestDriverCubit cubit =
+            settings.arguments as UserRequestDriverCubit;
+
         return MaterialPageRoute(
-          builder: (_) => DeliveryRepresentativeLocatorScreen(),
+          builder: (_) =>
+              RequestDriverFromLocationScreen(userRequestDriverCubit: cubit),
+        );
+      case endpoints.REQUEST_DRIVER_TO_LOCATION_SCREEN:
+        final UserRequestDriverCubit cubit =
+            settings.arguments as UserRequestDriverCubit;
+
+        return MaterialPageRoute(
+          builder: (_) =>
+              RequestDriverToLocationScreen(userRequestDriverCubit: cubit),
         );
       case endpoints.UPDATE_USER_LOCATION:
         final UserProfileCubit cubit = settings.arguments as UserProfileCubit;
@@ -291,7 +317,7 @@ class AppRouter {
         );
       case endpoints.FIRST_TIME_LOCATION_PICKER:
         return MaterialPageRoute(
-          builder: (_) => FirstTimeLocationPicker(),
+          builder: (_) => const FirstTimeLocationPicker(),
         );
       case endpoints.DELIVERY_REPRESENTATIVE_START_SCREEN:
         return MaterialPageRoute(

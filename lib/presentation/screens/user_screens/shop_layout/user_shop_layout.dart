@@ -75,6 +75,7 @@ class _UserShopLayoutState extends State<UserShopLayout>
             controller: controller,
             onTap: (index) {
               setState(() {
+
                 controller.index = index;
               });
             },

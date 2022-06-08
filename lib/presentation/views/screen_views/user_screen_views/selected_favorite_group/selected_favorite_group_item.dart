@@ -30,7 +30,7 @@ class SelectedFavoriteGroupItem extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, USER_ABOUT_PRODUCT,arguments:productModel.id );
+          Navigator.pushReplacementNamed(context, USER_ABOUT_PRODUCT,arguments:productModel.id );
         },
         child: Card(
 

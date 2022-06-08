@@ -36,7 +36,7 @@ class UserProductSearchCubit extends Cubit<UserProductSearchStates> {
         } else {
           UserProductSearchModel tempUserProductSearchModel = value;
           userProductSearchModel?.products
-              ?.addAll(tempUserProductSearchModel.products!);
+              .addAll(tempUserProductSearchModel.products);
           isLoadingMoreData = false;
 
           nextPage+=1;

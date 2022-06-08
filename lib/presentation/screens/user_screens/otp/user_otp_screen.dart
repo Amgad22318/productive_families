@@ -122,7 +122,7 @@ class _UserOtpScreenState extends State<UserOtpScreen> {
                                         onPressed: () {
                                           Navigator.pop(context);
                                           Navigator.pushReplacementNamed(
-                                              context, USER_LOGIN_SCREEN);
+                                              context, FIRST_TIME_LOCATION_PICKER);
                                         },
                                       ));
                             } else if (state

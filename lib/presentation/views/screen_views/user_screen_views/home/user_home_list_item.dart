@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/constants/end_points.dart';
-import 'package:productive_families/data/models/user_models/products/user_top_rated_products_model.dart';
 import 'package:productive_families/presentation/styles/colors.dart';
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_text.dart';
 
+import '../../../../../data/models/shared_models/shared_classes/api_product.dart';
+
 class UserHomeListItem extends StatelessWidget {
-  final Products productModel;
-  const UserHomeListItem({Key? key, required this.productModel}) : super(key: key);
+  final ApiProduct productModel;
+  const UserHomeListItem({Key? key, required this.productModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, USER_ABOUT_PRODUCT,arguments: productModel.id);
+        Navigator.pushNamed(context, USER_ABOUT_PRODUCT,
+            arguments: productModel.id);
       },
       child: Card(
         clipBehavior: Clip.antiAlias,
@@ -38,8 +41,8 @@ class UserHomeListItem extends StatelessWidget {
                   ],
                 ),
               ),
-              child: DefaultCachedNetworkImage(imageUrl:
-              productModel.image?.path??'',
+              child: DefaultCachedNetworkImage(
+                imageUrl: productModel.image.path,
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +52,8 @@ class UserHomeListItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Expanded(flex: 3,
+                      Expanded(
+                        flex: 3,
                         child: DefaultText(
                           text: productModel.name,
                           textStyle: Theme.of(context).textTheme.overline,
@@ -60,7 +64,8 @@ class UserHomeListItem extends StatelessWidget {
                         child: DefaultText(
                           textAlign: TextAlign.end,
                           color: goldTextAndStars,
-                          text: productModel.price.toString()+' $AppCurrencyShortcut',
+                          text: productModel.price.toString() +
+                              ' $AppCurrencyShortcut',
                           textStyle: Theme.of(context).textTheme.overline,
                         ),
                       ),
@@ -86,7 +91,6 @@ class UserHomeListItem extends StatelessWidget {
                         itemSize: 9.0,
                         direction: Axis.horizontal,
                       ),
-
                       DefaultText(
                         color: Colors.grey,
                         text: '(${productModel.rateTimes} تقييم)',

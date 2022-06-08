@@ -12,53 +12,49 @@ class UserSubCategoryProductCubit extends Cubit<UserSubCategoryProductStates> {
 
   static UserSubCategoryProductCubit get(context) => BlocProvider.of(context);
 
-  UserSubCategoryProductModel? userSubCategoryProductModel;
+  num? priceFrom;
+  num? priceTo;
+  num? lat;
+  num? lon;
+  String? sortBy;
+  String? filterBy;
+  late int providerId;
+  late int subCategoryId;
 
-  void getSubCategoryProduct({
+  void setProviderAndSubCategoryId({
     required int providerId,
     required int subCategoryId,
-  }) async {
+  }) {
+    this.providerId = providerId;
+    this.subCategoryId = subCategoryId;
+  }
+
+  UserSubCategoryProductModel userSubCategoryProductModel =
+      UserSubCategoryProductModel();
+
+  void getSubCategoryProduct() async {
     emit(UserGetSubCategoryProductLoadingState());
-    UserSubCategoryProductsRequest.userSubCategoryProductsRequest(
-        page: 1, providerId: providerId,subCategoryId: subCategoryId)
+    UserSubCategoryProductsRequest()
+        .userSubCategoryProductsRequest(
+            page: 1,
+            providerId: providerId,
+            subCategoryId: subCategoryId,
+            priceFrom: priceFrom,
+            priceTo: priceTo,
+            lat: lat,
+            lon: lon,
+            sortBy: sortBy,
+            filterBy: filterBy)
         .then((value) {
       if (value.status == 200) {
         userSubCategoryProductModel = value;
         emit(UserGetSubCategoryProductSuccessState());
+      } else if (value.status == 204) {
+        emit(UserGetSubCategoryProductEmptyState());
       }
-      else if (value.status == 204) {
-
-        emit(UserGetSubCategoryProductNoDataState());
-      }
-
     }).catchError((error) {
-
       emit(UserGetSubCategoryProductErrorState());
       printError('getStoreSubCategory ' + error.toString());
     });
   }
-
-
-
-  void getSubCategoryProductLoadMore({
-    required int providerId,
-    required int subCategoryId,
-  }) async {
-    emit(UserGetSubCategoryProductLoadingState());
-    UserSubCategoryProductsRequest.userSubCategoryProductsRequest(
-        page: 1, providerId: providerId,subCategoryId: subCategoryId)
-        .then((value) {
-      if (value.status == 200) {
-        userSubCategoryProductModel = value;
-        emit(UserGetSubCategoryProductSuccessState());
-      }
-
-    }).catchError((error) {
-
-      emit(UserGetSubCategoryProductErrorState());
-      printError('getStoreSubCategory ' + error.toString());
-    });
-  }
-
-
 }

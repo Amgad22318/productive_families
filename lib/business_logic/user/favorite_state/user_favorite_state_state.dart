@@ -10,8 +10,10 @@ class UserFavoriteGroupProductAddOrDeleteSuccessState
     extends UserFavoriteStateStates {
   final String message;
   final int productId;
+  final int favoriteGroupCount;
 
-  UserFavoriteGroupProductAddOrDeleteSuccessState(this.message, this.productId);
+  UserFavoriteGroupProductAddOrDeleteSuccessState(
+      {required this.message,required this.productId, required this.favoriteGroupCount});
 }
 
 class UserFavoriteGroupProductAddOrDeleteFailState

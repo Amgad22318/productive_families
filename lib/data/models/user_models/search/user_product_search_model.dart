@@ -1,36 +1,48 @@
 import 'dart:convert';
+
+import 'package:productive_families/data/models/shared_models/shared_classes/api_image.dart';
 UserProductSearchModel userProductSearchModelFromJson(String str) => UserProductSearchModel.fromJson(json.decode(str));
 String userProductSearchModelToJson(UserProductSearchModel data) => json.encode(data.toJson());
 class UserProductSearchModel {
   UserProductSearchModel({
-      this.status, 
-      this.message, 
-      this.keyWord, 
-      this.products,});
+      int? status, 
+      String? message, 
+      String? keyWord, 
+      List<Products>? products,}){
+    _status = status;
+    _message = message;
+    _keyWord = keyWord;
+    _products = products;
+}
 
   UserProductSearchModel.fromJson(dynamic json) {
-    status = json['status'];
-    message = json['message']??'';
-    keyWord = json['key_word']??'';
+    _status = json['status'];
+    _message = json['message'];
+    _keyWord = json['key_word'];
     if (json['products'] != null) {
-      products = [];
+      _products = [];
       json['products'].forEach((v) {
-        products?.add(Products.fromJson(v));
+        _products?.add(Products.fromJson(v));
       });
     }
   }
-  int? status;
-  String? message;
-  String? keyWord;
-  List<Products>? products;
+  int? _status;
+  String? _message;
+  String? _keyWord;
+  List<Products>? _products;
+
+  int get status => _status??0;
+  String get message => _message??"";
+  String get keyWord => _keyWord??"";
+  List<Products> get products => _products??[];
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['status'] = status;
-    map['message'] = message;
-    map['key_word'] = keyWord;
-    if (products != null) {
-      map['products'] = products?.map((v) => v.toJson()).toList();
+    map['status'] = _status;
+    map['message'] = _message;
+    map['key_word'] = _keyWord;
+    if (_products != null) {
+      map['products'] = _products?.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -41,82 +53,89 @@ Products productsFromJson(String str) => Products.fromJson(json.decode(str));
 String productsToJson(Products data) => json.encode(data.toJson());
 class Products {
   Products({
-      this.id, 
-      this.subCategoryName, 
-      this.subCategoryId, 
-      this.serviceName, 
-      this.providerId, 
-      this.name, 
-      this.price, 
-      this.image, 
-      this.rate, 
-      this.rateTimes,});
+      int? id, 
+      String? subCategoryName, 
+      int? subCategoryId, 
+      String? serviceName, 
+      int? providerId, 
+      String? name,
+    num? price,
+      int? favourite, 
+      ApiImage? image,
+    num? rate,
+      int? rateTimes,}){
+    _id = id;
+    _subCategoryName = subCategoryName;
+    _subCategoryId = subCategoryId;
+    _serviceName = serviceName;
+    _providerId = providerId;
+    _name = name;
+    _price = price;
+    _favourite = favourite;
+    _image = image;
+    _rate = rate;
+    _rateTimes = rateTimes;
+}
 
   Products.fromJson(dynamic json) {
-    id = json['id'];
-    subCategoryName = json['sub_category_name'];
-    subCategoryId = json['sub_category_id'];
-    serviceName = json['service_name'];
-    providerId = json['provider_id'];
-    name = json['name'];
-    price = json['price'];
-    image = json['image'] != null ? ProductImage.fromJson(json['image']) : null;
-    rate = json['rate'];
-    rateTimes = json['rate_times'];
+    _id = json['id'];
+    _subCategoryName = json['sub_category_name'];
+    _subCategoryId = json['sub_category_id'];
+    _serviceName = json['service_name'];
+    _providerId = json['provider_id'];
+    _name = json['name'];
+    _price = json['price'];
+    _favourite = json['favourite'];
+    _image = json['image'] != null ? ApiImage.fromJson(json['image']) : null;
+    _rate = json['rate'];
+    _rateTimes = json['rate_times'];
   }
-  int? id;
-  String? subCategoryName;
-  int? subCategoryId;
-  String? serviceName;
-  int? providerId;
-  String? name;
-  int? price;
-  ProductImage? image;
-  num? rate;
-  int? rateTimes;
+  int? _id;
+  String? _subCategoryName;
+  int? _subCategoryId;
+  String? _serviceName;
+  int? _providerId;
+  String? _name;
+  num? _price;
+  int? _favourite;
+
+  set setFavourite(int value) {
+    _favourite = value;
+  }
+
+  ApiImage? _image;
+  num? _rate;
+  int? _rateTimes;
+
+  int get id => _id??0;
+  String get subCategoryName => _subCategoryName??"";
+  int get subCategoryId => _subCategoryId??0;
+  String get serviceName => _serviceName??"";
+  int get providerId => _providerId??0;
+  String get name => _name??"";
+  num get price => _price??0;
+  int get favourite => _favourite??0;
+  ApiImage get image => _image??ApiImage();
+  num get rate => _rate??0;
+  int get rateTimes => _rateTimes??0;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
-    map['sub_category_name'] = subCategoryName;
-    map['sub_category_id'] = subCategoryId;
-    map['service_name'] = serviceName;
-    map['provider_id'] = providerId;
-    map['name'] = name;
-    map['price'] = price;
-    if (image != null) {
-      map['image'] = image?.toJson();
+    map['id'] = _id;
+    map['sub_category_name'] = _subCategoryName;
+    map['sub_category_id'] = _subCategoryId;
+    map['service_name'] = _serviceName;
+    map['provider_id'] = _providerId;
+    map['name'] = _name;
+    map['price'] = _price;
+    map['favourite'] = _favourite;
+    if (_image != null) {
+      map['image'] = _image?.toJson();
     }
-    map['rate'] = rate;
-    map['rate_times'] = rateTimes;
+    map['rate'] = _rate;
+    map['rate_times'] = _rateTimes;
     return map;
   }
 
 }
 
-ProductImage imageFromJson(String str) => ProductImage.fromJson(json.decode(str));
-String imageToJson(ProductImage data) => json.encode(data.toJson());
-class ProductImage {
-  ProductImage({
-      this.id, 
-      this.path, 
-      this.type,});
-
-  ProductImage.fromJson(dynamic json) {
-    id = json['id'];
-    path = json['path'];
-    type = json['type'];
-  }
-  int? id;
-  String? path;
-  String? type;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['path'] = path;
-    map['type'] = type;
-    return map;
-  }
-
-}

@@ -4,12 +4,14 @@ import 'package:productive_families/data/models/user_models/products/user_show_p
 import 'package:productive_families/presentation/widgets/default_cached_network_image.dart';
 import 'package:productive_families/presentation/widgets/default_rating_bar_indicator.dart';
 
+import '../../../../../data/models/shared_models/shared_classes/api_review.dart';
 import '../../../../styles/colors.dart';
 import '../../../../widgets/default_text.dart';
 
 class AboutProductReviewItem extends StatelessWidget {
- final Rates rateModel;
-  const AboutProductReviewItem( {Key? key,required this.rateModel}) : super(key: key);
+  final ApiReview reviewModel;
+  const AboutProductReviewItem({Key? key, required this.reviewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ class AboutProductReviewItem extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                  DefaultCachedNetworkImage(imageUrl: rateModel.reviewImage.path, fit: BoxFit.cover)
+                    DefaultCachedNetworkImage(
+                        imageUrl: reviewModel.reviewImage.path,
+                        fit: BoxFit.cover)
                   ],
                 ),
               ),
@@ -48,21 +52,19 @@ class AboutProductReviewItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: rateModel.userName,
-                        fontWeight: FontWeights.bold ,
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .bodyText1,
+                        text: reviewModel.userName,
+                        fontWeight: FontWeights.bold,
+                        textStyle: Theme.of(context).textTheme.bodyText1,
                         // textStyle: TextStyle(),
                       ),
-                        DefaultRatingBarIndicator(
-                        rating: rateModel.rate.toDouble(),
-                        itemCount: 4,
+                      DefaultRatingBarIndicator(
+                        rating: reviewModel.rate.toDouble(),
+                        itemCount: 5,
                         itemSize: 20,
                       ),
                       DefaultText(
                         maxLines: 2,
-                        text: rateModel.comment,
+                        text: reviewModel.comment,
                         textStyle: Theme.of(context).textTheme.bodyText2,
                         // textStyle: TextStyle(),
                       ),

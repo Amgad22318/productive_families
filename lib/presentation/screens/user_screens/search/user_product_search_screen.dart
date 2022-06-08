@@ -126,16 +126,17 @@ class _UserProductSearchScreenState extends State<UserProductSearchScreen> {
                               crossAxisCount: 2,
                               crossAxisSpacing: 6,
                               mainAxisSpacing: 6,
-                              childAspectRatio: 1 / 1.15,
+                              childAspectRatio:40.w / 22.h,
                               children: List.generate(
                                   searchCubit
-                                      .userProductSearchModel!.products!.length,
+                                      .userProductSearchModel!.products.length,
                                   (index) => ProductSearchGridItem(
                                       productModel: searchCubit
                                           .userProductSearchModel!
-                                          .products![index])),
+                                          .products[index])),
                             );
-                          } else if (state is UserProductSearchLoadingState) {
+                          }
+                          else if (state is UserProductSearchLoadingState) {
                             return const DefaultLoadingIndicator();
                           } else if (state is UserProductSearchEmptyState) {
                             return Center(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../shared_models/shared_classes/api_image.dart';
+import '../../shared_models/shared_classes/api_review.dart';
 
 UserShowProductModel userShowProductModelFromJson(String str) =>
     UserShowProductModel.fromJson(json.decode(str));
@@ -71,7 +72,7 @@ class Product {
 
     rates = [];
     json['rates'].forEach((v) {
-      rates.add(Rates.fromJson(v));
+      rates.add(ApiReview.fromJson(v));
     });
   }
 
@@ -83,7 +84,7 @@ class Product {
   late int favorite;
   late num rate;
   late int rateTimes;
-  late List<Rates> rates;
+  late List<ApiReview> rates;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -102,52 +103,3 @@ class Product {
     return map;
   }
 }
-
-Rates ratesFromJson(String str) => Rates.fromJson(json.decode(str));
-
-String ratesToJson(Rates data) => json.encode(data.toJson());
-
-class Rates {
-  // Rates({
-  //   this.id,
-  //   this.userName,
-  //   this.userImage,
-  //   this.rate,
-  //   this.comment,
-  //   this.image,
-  // });
-
-  Rates.fromJson(dynamic json) {
-    id = json['id'];
-    userName = json['user_name'];
-    userImage = json['user_image'] != null
-        ? ApiImage.fromJson(json['user_image'])
-        : null;
-    rate = json['rate'];
-    comment = json['comment'];
-    reviewImage =ApiImage.fromJson(json['image']);
-  }
-
-  late int id;
-  late String userName;
-  ApiImage? userImage;
-  late int rate;
-  late String comment;
- late ApiImage reviewImage;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['user_name'] = userName;
-
-    map['rate'] = rate;
-    map['comment'] = comment;
-      map['image'] = reviewImage.toJson();
-
-    return map;
-  }
-}
-
-
-
-

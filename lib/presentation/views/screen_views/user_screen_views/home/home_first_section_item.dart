@@ -11,10 +11,10 @@ class HomeFirstSectionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4),
+      padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, DELIVERY_REPRESENTATIVE_SCREEN);
+          Navigator.pushNamed(context, REQUEST_DRIVER_SCREEN);
         },
         child: Column(
           children: [

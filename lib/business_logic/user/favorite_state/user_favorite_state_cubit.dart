@@ -9,12 +9,12 @@ part 'user_favorite_state_state.dart';
 
 class UserFavoriteStateCubit extends Cubit<UserFavoriteStateStates> {
   UserFavoriteStateCubit() : super(FavoriteStateInitial());
+
   static UserFavoriteStateCubit get(context) => BlocProvider.of(context);
 
-
   UserAddAndRemoveProductToFavoritesModel
-  userAddAndRemoveProductToFavoritesModel =
-  UserAddAndRemoveProductToFavoritesModel();
+      userAddAndRemoveProductToFavoritesModel =
+      UserAddAndRemoveProductToFavoritesModel();
 
   void userFavoritesGroupAddOrDeleteProduct({
     required int groupId,
@@ -22,12 +22,15 @@ class UserFavoriteStateCubit extends Cubit<UserFavoriteStateStates> {
   }) async {
     UserAddAndRemoveProductToFavoriteRequest()
         .userAddAndRemoveProductToFavoriteRequest(
-        productId: productId, groupId: groupId)
+            productId: productId, groupId: groupId)
         .then((value) async {
       if (value.status == 200) {
         userAddAndRemoveProductToFavoritesModel = value;
         emit(UserFavoriteGroupProductAddOrDeleteSuccessState(
-            userAddAndRemoveProductToFavoritesModel.message,productId));
+            message: userAddAndRemoveProductToFavoritesModel.message,
+            productId: productId,
+            favoriteGroupCount:
+                userAddAndRemoveProductToFavoritesModel.favoriteGroupCount));
       } else {
         userAddAndRemoveProductToFavoritesModel = value;
 
@@ -39,5 +42,4 @@ class UserFavoriteStateCubit extends Cubit<UserFavoriteStateStates> {
       printError('userFavoritesGroupAddOrDeleteProduct ' + error.toString());
     });
   }
-
 }
