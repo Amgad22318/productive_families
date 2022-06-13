@@ -5,22 +5,21 @@ import 'package:productive_families/data/data_provider/remote/dio_helper.dart';
 
 import '../../../models/delivery_representative_models/auth/dr_login_model.dart';
 
-class DRLoginRequest {
-  Future dRLoginRequest({
+class DRConfirmRegisterPhoneRequest {
+  Future dRConfirmRegisterPhoneRequest({
     required String phone,
-    required String password,
+    required String code,
   }) async {
     try {
-      Response response = await DioHelper.postData(url: EP_DR_LOGIN, data: {
-        'device_token': 'zee_device',
+      Response response = await DioHelper.postData(url: EP_DR_CONFIRM_REGISTER_PHONE, data: {
         'type': 'drivers',
         'phone': phone,
-        'password': password,
+        'code': code,
       });
       printResponse(response.data.toString());
       return DRLoginModel.fromJson(response.data);
     } catch (error) {
-      printError('dRLoginRequest ' + error.toString());
+      printError('dRConfirmRegisterPhoneRequest ' + error.toString());
       return null;
     }
   }

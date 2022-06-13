@@ -6,7 +6,7 @@ import 'package:productive_families/constants/constant_methods.dart';
 import 'package:productive_families/constants/constants.dart';
 import 'package:productive_families/data/data_provider/local/cache_helper.dart';
 import 'package:productive_families/data/models/user_models/auth/user_login_model.dart';
-import 'package:productive_families/data/models/user_models/auth/user_logout_model.dart';
+import 'package:productive_families/data/models/shared_models/auth/logout_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_confirm_phone_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_model.dart';
 import 'package:productive_families/data/models/user_models/auth/user_register_resend_confirmation_code_model.dart';
@@ -176,11 +176,11 @@ class UserAuthCubit extends Cubit<UserAuthStates> {
     });
   }
 
-  UserLogoutModel? userLogoutModel;
+  LogoutModel? userLogoutModel;
 
   void userLogout() {
     emit(UserLogoutLoadingState());
-    UserLogOutRequest.userLogOutRequest().then((value) {
+    UserLogOutRequest().userLogOutRequest().then((value) {
       userLogoutModel = value;
       if (userLogoutModel != null &&
           userLogoutModel?.status.toString() == '200') {
