@@ -108,7 +108,7 @@ class _SubCategoryProductGridItemState
             SizedBox(
               height: 8.h,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 4),
+                padding: EdgeInsets.symmetric(horizontal: 3, vertical: 1.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

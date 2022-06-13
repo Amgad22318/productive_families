@@ -40,11 +40,12 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
   late final TabController tabController;
   late int itemCounter;
   late int tempItemCounter;
+  late double gridItemSize;
 
   @override
   void initState() {
     tabController = TabController(length: 4, vsync: this);
-
+    gridItemSize = 30.h;
     tabController.index = 1;
     fabSwitch = false;
     itemCounter = 0;
@@ -65,11 +66,15 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
           builder: (context, state) {
             userSubCategoryProductCubit =
                 UserSubCategoryProductCubit.get(context);
+
             return Scaffold(
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.startFloat,
               floatingActionButton: userSubCategoryProductCubit
-                      .userSubCategoryProductModel.products.isNotEmpty
+                          .userSubCategoryProductModel.products.isNotEmpty &&
+                      userSubCategoryProductCubit
+                              .userSubCategoryProductModel.products.length >
+                          5
                   ? FloatingActionButton(
                       child: fabSwitch
                           ? const Icon(Icons.arrow_upward)
@@ -132,9 +137,11 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                     child: NotificationListener(
                       onNotification: (notification) {
                         itemCounter =
-                            ((_scrollController.offset * 2 - 15.h) / 15.h)
-                                .ceil();
-                        if (itemCounter != tempItemCounter) {
+                            (_scrollController.offset / ((gridItemSize) / 2))
+                                    .ceil() +
+                                4;
+                        if (itemCounter != tempItemCounter &&
+                            itemCounter % 2 == 0) {
                           setState(() {
                             printTest(itemCounter.toString());
                             tempItemCounter = itemCounter;
@@ -144,6 +151,15 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                       },
                       child: NotificationListener<UserScrollNotification>(
                         onNotification: (notification) {
+                          if (notification.metrics.atEdge) {
+                            if (notification.metrics.pixels == 0) {
+                            } else {
+                              userSubCategoryProductCubit
+                                  .getSubCategoryProductLoadMore(
+                                      page: userSubCategoryProductCubit
+                                          .currentPage);
+                            }
+                          }
                           if (notification.direction ==
                               ScrollDirection.forward) {
                             if (!fabSwitch) {
@@ -161,126 +177,116 @@ class _SubCategoryProductScreenState extends State<SubCategoryProductScreen>
                           }
                           return true;
                         },
-                        child: DefaultEdgeNotificationListener(
-                          onBottom: () {
-                            printTest('ssssssssssss');
-                            userSubCategoryProductCubit
-                                .getSubCategoryProductLoadMore(
-                                    page: userSubCategoryProductCubit
-                                        .currentPage);
-                          },
-                          child: CustomScrollView(
-                              controller: _scrollController,
-                              slivers: [
-                                SliverToBoxAdapter(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 24.0),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Navigator.pushNamed(context,
-                                                    CHOSEN_MARKET_PRICE_FILTERING_SCREEN,
-                                                    arguments:
-                                                        userSubCategoryProductCubit);
-                                              },
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  SvgPicture.asset(
-                                                      'assets/icons/filter.svg'),
-                                                  DefaultText(
-                                                    text: 'تصفية',
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .button,
-                                                    color: greyText,
-                                                  )
-                                                ],
-                                              ),
+                        child: CustomScrollView(
+                            controller: _scrollController,
+                            slivers: [
+                              SliverToBoxAdapter(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 24.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  CHOSEN_MARKET_PRICE_FILTERING_SCREEN,
+                                                  arguments:
+                                                      userSubCategoryProductCubit);
+                                            },
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                    'assets/icons/filter.svg'),
+                                                DefaultText(
+                                                  text: 'تصفية',
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .button,
+                                                  color: greyText,
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 24.0),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Navigator.pushNamed(context,
-                                                    CHOSEN_MARKET_ORDERING_SCREEN,
-                                                    arguments:
-                                                        userSubCategoryProductCubit);
-                                              },
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  SvgPicture.asset(
-                                                      'assets/icons/sort.svg'),
-                                                  DefaultText(
-                                                    text: 'ترتيب',
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .button,
-                                                    color: greyText,
-                                                  )
-                                                ],
-                                              ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 24.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  CHOSEN_MARKET_ORDERING_SCREEN,
+                                                  arguments:
+                                                      userSubCategoryProductCubit);
+                                            },
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                    'assets/icons/sort.svg'),
+                                                DefaultText(
+                                                  text: 'ترتيب',
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .button,
+                                                  color: greyText,
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                BlocBuilder<UserSubCategoryProductCubit,
-                                    UserSubCategoryProductStates>(
-                                  builder: (context, state) {
-                                    if (state
-                                        is UserGetSubCategoryProductSuccessState) {
-                                      List<ApiProduct> productList =
-                                          userSubCategoryProductCubit
-                                              .userSubCategoryProductModel
-                                              .products;
-                                      return SliverGrid(
-                                        delegate: SliverChildBuilderDelegate(
-                                          (context, index) {
-                                            return SubCategoryProductGridItem(
-                                                productModel:
-                                                    productList[index]);
-                                          },
-                                          childCount: productList.length,
-                                        ),
-                                        gridDelegate:
-                                            SliverGridDelegateWithFixedCrossAxisCount(
-                                          mainAxisSpacing: 8,
-                                          crossAxisSpacing: 8,
-                                          crossAxisCount: 2,
-                                          mainAxisExtent: 30.h,
-                                        ),
-                                      );
-                                    } else if (state
-                                        is UserGetSubCategoryProductLoadingState) {
-                                      return const SliverFillRemaining(
-                                          child: DefaultLoadingIndicator());
-                                    } else if (state
-                                        is UserGetSubCategoryProductEmptyState) {
-                                      return const SliverFillRemaining(
-                                          child: DefaultErrorWidget());
-                                    } else {
-                                      return const SliverFillRemaining(
-                                          child: DefaultErrorWidget());
-                                    }
-                                  },
-                                )
-                              ]),
-                        ),
+                              ),
+                              BlocBuilder<UserSubCategoryProductCubit,
+                                  UserSubCategoryProductStates>(
+                                builder: (context, state) {
+                                  if (state
+                                      is UserGetSubCategoryProductSuccessState) {
+                                    List<ApiProduct> productList =
+                                        userSubCategoryProductCubit
+                                            .userSubCategoryProductModel
+                                            .products;
+                                    return SliverGrid(
+                                      delegate: SliverChildBuilderDelegate(
+                                        (context, index) {
+                                          return SubCategoryProductGridItem(
+                                              productModel: productList[index]);
+                                        },
+                                        childCount: productList.length,
+                                      ),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        mainAxisSpacing: 0,
+                                        crossAxisSpacing: 0,
+                                        mainAxisExtent: gridItemSize,
+                                      ),
+                                    );
+                                  } else if (state
+                                      is UserGetSubCategoryProductLoadingState) {
+                                    return const SliverFillRemaining(
+                                        child: DefaultLoadingIndicator());
+                                  } else if (state
+                                      is UserGetSubCategoryProductEmptyState) {
+                                    return const SliverFillRemaining(
+                                        child: DefaultErrorWidget());
+                                  } else {
+                                    return const SliverFillRemaining(
+                                        child: DefaultErrorWidget());
+                                  }
+                                },
+                              )
+                            ]),
                       ),
                     ),
                   ),
