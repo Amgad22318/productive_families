@@ -1,100 +1,158 @@
 import 'dart:convert';
 
 import 'package:productive_families/data/models/shared_models/shared_classes/api_image.dart';
-UserShowCartProductsModel userShowCartProductsModelFromJson(String str) => UserShowCartProductsModel.fromJson(json.decode(str));
-String userShowCartProductsModelToJson(UserShowCartProductsModel data) => json.encode(data.toJson());
+
+UserShowCartProductsModel userShowCartProductsModelFromJson(String str) =>
+    UserShowCartProductsModel.fromJson(json.decode(str));
+String userShowCartProductsModelToJson(UserShowCartProductsModel data) =>
+    json.encode(data.toJson());
+
 class UserShowCartProductsModel {
-  // UserShowCartProductsModel({
-  //     this.status,
-  //     this.message,
-  //     this.products,});
+  UserShowCartProductsModel({
+    int? status,
+    String? message,
+    List<Products>? products,
+    int? pageCount,
+  }) {
+    _status = status;
+    _message = message;
+    _products = products;
+    _pageCount = pageCount;
+  }
 
   UserShowCartProductsModel.fromJson(dynamic json) {
-    status = json['status'];
-    message = json['message'];
-    products = [];
+    _status = json['status'];
+    _message = json['message'];
     if (json['products'] != null) {
+      _products = [];
       json['products'].forEach((v) {
-        products?.add(Products.fromJson(v));
+        _products?.add(Products.fromJson(v));
       });
     }
+    _pageCount = json['page_count'];
   }
-  late int status;
-  String? message;
-  List<Products>? products;
-// UserShowCartProductsModel copyWith({  int? status,
-//   String? message,
-//   List<Products>? products,
-// }) => UserShowCartProductsModel(  status: status ?? this.status,
-//   message: message ?? this.message,
-//   products: products ?? this.products,
-// );
+  int? _status;
+  String? _message;
+  List<Products>? _products;
+  int? _pageCount;
+
+  int get status => _status ?? 0;
+  String get message => _message ?? '';
+  List<Products> get products => _products ?? [];
+  int get pageCount => _pageCount ?? 0;
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['status'] = status;
-    map['message'] = message;
-    if (products != null) {
-      map['products'] = products?.map((v) => v.toJson()).toList();
+    map['status'] = _status;
+    map['message'] = _message;
+    if (_products != null) {
+      map['products'] = _products?.map((v) => v.toJson()).toList();
     }
+    map['page_count'] = _pageCount;
     return map;
   }
-
 }
 
 Products productsFromJson(String str) => Products.fromJson(json.decode(str));
 String productsToJson(Products data) => json.encode(data.toJson());
+
 class Products {
-  // Products({
-  //     this.cartId,
-  //     this.productId,
-  //     this.serviceName,
-  //     this.description,
-  //     this.price,
-  //     this.quantity,
-  //     this.image,});
+  Products({
+    int? cartId,
+    int? productId,
+    String? productName,
+    String? serviceName,
+    String? description,
+    num? price,
+    int? quantity,
+    ApiImage? image,
+  }) {
+    _cartId = cartId;
+    _productId = productId;
+    _productName = productName;
+    _serviceName = serviceName;
+    _description = description;
+    _price = price;
+    _quantity = quantity;
+    _image = image;
+  }
 
   Products.fromJson(dynamic json) {
-    cartId = json['cart_id'];
-    productId = json['product_id'];
-    productName = json['product_name'];
-    description = json['description'];
-    price = json['price'];
-    quantity = json['quantity'];
-    image =  ApiImage.fromJson(json['image']) ;
+    _cartId = json['cart_id'];
+    _productId = json['product_id'];
+    _productName = json['product_name'];
+    _serviceName = json['service_name'];
+    _description = json['description'];
+    _price = json['price'];
+    _quantity = json['quantity'];
+    _image = json['image'] != null ? ApiImage.fromJson(json['image']) : null;
   }
- late int cartId;
- late int productId;
- late String productName;
- late String description;
- late int price;
- late int quantity;
- late ApiImage image;
-// Products copyWith({  int? cartId,
-//   int? productId,
-//   String? serviceName,
-//   String? description,
-//   int? price,
-//   int? quantity,
-//   Image? image,
-// }) => Products(  cartId: cartId ?? this.cartId,
-//   productId: productId ?? this.productId,
-//   serviceName: serviceName ?? this.serviceName,
-//   description: description ?? this.description,
-//   price: price ?? this.price,
-//   quantity: quantity ?? this.quantity,
-//   image: image ?? this.image,
-// );
+  int? _cartId;
+  int? _productId;
+  String? _productName;
+  String? _serviceName;
+  String? _description;
+  num? _price;
+  int? _quantity;
+  ApiImage? _image;
+
+  int get cartId => _cartId ?? 0;
+  int get productId => _productId ?? 0;
+  String get productName => _productName ?? "";
+  String get serviceName => _serviceName ?? "";
+  String get description => _description ?? "";
+  num get price => _price ?? 0;
+  int get quantity => _quantity ?? 0;
+  ApiImage get image => _image ?? ApiImage();
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['cart_id'] = cartId;
-    map['product_id'] = productId;
-    map['service_name'] = productName;
-    map['description'] = description;
-    map['price'] = price;
-    map['quantity'] = quantity;
-      map['image'] = image.toJson();
+    map['cart_id'] = _cartId;
+    map['product_id'] = _productId;
+    map['product_name'] = _productName;
+    map['service_name'] = _serviceName;
+    map['description'] = _description;
+    map['price'] = _price;
+    map['quantity'] = _quantity;
+    if (_image != null) {
+      map['image'] = _image?.toJson();
+    }
     return map;
   }
-
 }
 
+Image imageFromJson(String str) => Image.fromJson(json.decode(str));
+String imageToJson(Image data) => json.encode(data.toJson());
+
+class Image {
+  Image({
+    dynamic id,
+    dynamic path,
+    dynamic type,
+  }) {
+    _id = id;
+    _path = path;
+    _type = type;
+  }
+
+  Image.fromJson(dynamic json) {
+    _id = json['id'];
+    _path = json['path'];
+    _type = json['type'];
+  }
+  dynamic _id;
+  dynamic _path;
+  dynamic _type;
+
+  dynamic get id => _id;
+  dynamic get path => _path;
+  dynamic get type => _type;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['path'] = _path;
+    map['type'] = _type;
+    return map;
+  }
+}

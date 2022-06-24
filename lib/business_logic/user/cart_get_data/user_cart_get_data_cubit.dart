@@ -13,17 +13,15 @@ class UserCartGetDataCubit extends Cubit<UserCartGetDataState> {
 
   UserShowCartProductsModel? userShowCartProductsModel;
 
-  void removeItem(int index){
-    userShowCartProductsModel!.products!.removeAt(index);
-    if( userShowCartProductsModel!.products!.isEmpty){
+  void removeItem(int index) {
+    userShowCartProductsModel!.products.removeAt(index);
+    if (userShowCartProductsModel!.products.isEmpty) {
       emit(UserGetCartProductEmptyState());
-
-    }
-else{
+    } else {
       emit(UserCartItemRemovedState());
-
     }
   }
+
   void getCartProducts() async {
     emit(UserGetCartProductLoadingState());
     UserShowCartProductsRequest()

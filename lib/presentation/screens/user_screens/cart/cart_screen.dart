@@ -13,7 +13,6 @@ import 'package:productive_families/presentation/widgets/default_text.dart';
 import '../../../styles/colors.dart';
 import '../../../views/screen_views/user_screen_views/cart/cart_item.dart';
 
-
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -55,33 +54,36 @@ class _CartScreenState extends State<CartScreen> {
                   SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     sliver: Builder(builder: (context) {
-                      userCartGetDataCubit =
-                          UserCartGetDataCubit.get(context);
+                      userCartGetDataCubit = UserCartGetDataCubit.get(context);
                       return BlocBuilder<UserCartGetDataCubit,
                           UserCartGetDataState>(
-
                         builder: (context, state) {
-                          if (state is UserGetCartProductSuccessState ||state is UserCartItemRemovedState) {
+                          if (state is UserGetCartProductSuccessState ||
+                              state is UserCartItemRemovedState) {
                             return SliverList(
                                 delegate: SliverChildBuilderDelegate(
-                                    (context, index) => CartItem(userCartGetDataCubit: userCartGetDataCubit,
-                                        productModel:
-                                            userCartGetDataCubit
-                                                .userShowCartProductsModel!
-                                                .products![index],
+                                    (context, index) => CartItem(
+                                        userCartGetDataCubit:
+                                            userCartGetDataCubit,
+                                        productModel: userCartGetDataCubit
+                                            .userShowCartProductsModel!
+                                            .products[index],
                                         index: index),
                                     childCount: userCartGetDataCubit
                                         .userShowCartProductsModel!
-                                        .products!
+                                        .products
                                         .length));
                           } else if (state is UserGetCartProductLoadingState) {
                             return const SliverFillRemaining(
                                 child: DefaultLoadingIndicator());
                           } else if (state is UserGetCartProductEmptyState) {
                             return const SliverFillRemaining(
-                                child: Icon(Icons.add_shopping_cart,size: 48,color: darkBlue,));
-                          }
-                          else {
+                                child: Icon(
+                              Icons.add_shopping_cart,
+                              size: 48,
+                              color: darkBlue,
+                            ));
+                          } else {
                             return const SliverFillRemaining(
                                 child: DefaultErrorWidget());
                           }
